@@ -1,0 +1,1252 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/4/2023 8:38:19 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-I0N0R4UT"
+  DTS:CreatorName="LAPTOP-I0N0R4UT\Lenovo"
+  DTS:DTSID="{6A048A62-1690-4928-BAE7-EB49A5986300}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5270.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="63"
+  DTS:VersionGUID="{C1138023-9B04-427E-ABF1-18DB642DA2FF}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[(local).BI_Stage]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{5A23E2C8-F909-4A20-8D8E-3C6AD9E6C926}"
+      DTS:ObjectName="(local).BI_Stage">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=(local);Initial Catalog=BI_Stage;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{5A23E2C8-F909-4A20-8D8E-3C6AD9E6C926}(local).BI_Stage;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[(local).master]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{879D59A5-9918-4EF8-B228-7E658F788200}"
+      DTS:ObjectName="(local).master">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=(local);Initial Catalog=master;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{879D59A5-9918-4EF8-B228-7E658F788200}(local).master;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{B4B08074-76D1-45B1-B77E-CB7E973AC58A}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=D:\BI\DATH\supermarket_sales.xls;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Re-SetUp Databases and Tables"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:DTSID="{2DDB611D-3289-4E2A-8019-0DB900638D28}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Re-SetUp Databases and Tables"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_3c51a2f841134ab69cc114d847bd6b03"
+          VSTAMajorVersion="16"
+          VSTAMinorVersion="0"
+          Language="CSharp">
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.resx"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+          <ProjectItem
+            Name="ST_3c51a2f841134ab69cc114d847bd6b03.csproj"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7DED22C1-1F83-4B02-894B-C2E57D111CAD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ST_3c51a2f841134ab69cc114d847bd6b03</RootNamespace>
+    <AssemblyName>ST_3c51a2f841134ab69cc114d847bd6b03</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptMain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
+        <Host Name="ScriptTask" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_ST160</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></ProjectItem>
+          <ProjectItem
+            Name="ScriptMain.cs"
+            Encoding="UTF8"><![CDATA[#region Help:  Introduction to the script task
+/* The Script Task allows you to perform virtually any operation that can be accomplished in
+ * a .Net application within the context of an Integration Services control flow. 
+ * 
+ * Expand the other regions which have "Help" prefixes for examples of specific ways to use
+ * Integration Services features within this script task. */
+#endregion
+
+
+#region Namespaces
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Runtime;
+using System.Windows.Forms;
+using System.Xml;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+#endregion
+
+namespace ST_3c51a2f841134ab69cc114d847bd6b03
+{
+    /// <summary>
+    /// ScriptMain is the entry point class of the script.  Do not change the name, attributes,
+    /// or parent of this class.
+    /// </summary>
+	[Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+	public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+	{
+        #region Help:  Using Integration Services variables and parameters in a script
+        /* To use a variable in this script, first ensure that the variable has been added to 
+         * either the list contained in the ReadOnlyVariables property or the list contained in 
+         * the ReadWriteVariables property of this script task, according to whether or not your
+         * code needs to write to the variable.  To add the variable, save this script, close this instance of
+         * Visual Studio, and update the ReadOnlyVariables and 
+         * ReadWriteVariables properties in the Script Transformation Editor window.
+         * To use a parameter in this script, follow the same steps. Parameters are always read-only.
+         * 
+         * Example of reading from a variable:
+         *  DateTime startTime = (DateTime) Dts.Variables["System::StartTime"].Value;
+         * 
+         * Example of writing to a variable:
+         *  Dts.Variables["User::myStringVariable"].Value = "new value";
+         * 
+         * Example of reading from a package parameter:
+         *  int batchId = (int) Dts.Variables["$Package::batchId"].Value;
+         *  
+         * Example of reading from a project parameter:
+         *  int batchId = (int) Dts.Variables["$Project::batchId"].Value;
+         * 
+         * Example of reading from a sensitive project parameter:
+         *  int batchId = (int) Dts.Variables["$Project::batchId"].GetSensitiveValue();
+         * */
+
+        #endregion
+
+        #region Help:  Firing Integration Services events from a script
+        /* This script task can fire events for logging purposes.
+         * 
+         * Example of firing an error event:
+         *  Dts.Events.FireError(18, "Process Values", "Bad value", "", 0);
+         * 
+         * Example of firing an information event:
+         *  Dts.Events.FireInformation(3, "Process Values", "Processing has started", "", 0, ref fireAgain)
+         * 
+         * Example of firing a warning event:
+         *  Dts.Events.FireWarning(14, "Process Values", "No values received for input", "", 0);
+         * */
+        #endregion
+
+        #region Help:  Using Integration Services connection managers in a script
+        /* Some types of connection managers can be used in this script task.  See the topic 
+         * "Working with Connection Managers Programatically" for details.
+         * 
+         * Example of using an ADO.Net connection manager:
+         *  object rawConnection = Dts.Connections["Sales DB"].AcquireConnection(Dts.Transaction);
+         *  SqlConnection myADONETConnection = (SqlConnection)rawConnection;
+         *  //Use the connection in some code here, then release the connection
+         *  Dts.Connections["Sales DB"].ReleaseConnection(rawConnection);
+         *
+         * Example of using a File connection manager
+         *  object rawConnection = Dts.Connections["Prices.zip"].AcquireConnection(Dts.Transaction);
+         *  string filePath = (string)rawConnection;
+         *  //Use the connection in some code here, then release the connection
+         *  Dts.Connections["Prices.zip"].ReleaseConnection(rawConnection);
+         * */
+        #endregion
+
+
+        /// <summary>
+        /// This method is called when this script task executes in the control flow.
+        /// Before returning from this method, set the value of Dts.TaskResult to indicate success or failure.
+        /// To open Help, press F1.
+        /// </summary>
+        /// 
+
+        public enum HandleSqlConnection
+        {
+            OpenAndClose,
+            OpenAndKeep
+        }
+        public enum HandleExistence
+        {
+            DoNothing,
+            Truncate,
+            Delete
+        }
+        public enum DeleteMethod
+        {
+            Truncate,
+            Delete
+        }
+
+        class UnityFunction
+        {
+            public static HandleExistence fFormatExistedHandler(string method)
+            {
+                method = method.ToLower();
+                switch (method)
+                {
+                    case "donothing":
+                        return HandleExistence.DoNothing;
+                    case "truncate":
+                        return HandleExistence.Truncate;
+                    case "delete":
+                        return HandleExistence.Delete;
+                    default:
+                        throw new ArgumentException("method doesn't exist");
+                }
+            }
+            public static bool fDatabaseExisted(ref SqlConnection connection, string databaseName, HandleSqlConnection? HandleSqlConnenctionOption = null)
+            {
+                // Check the connection state and open it if closed.
+                var currentConnectionState = connection.State;
+                if (currentConnectionState == ConnectionState.Closed) { connection.Open(); }
+
+                // Check db existence
+                string queryCheckDBExistence = $"SELECT COUNT(*) FROM sys.databases WHERE name = '{databaseName}'";
+                int databaseCount = 0;
+                using (SqlCommand command = new SqlCommand(queryCheckDBExistence, connection)) { databaseCount = (int)command.ExecuteScalar(); }
+
+                // change back to current connection state or new connect state based on ConnectionOption
+                if ((!HandleSqlConnenctionOption.HasValue && currentConnectionState == ConnectionState.Closed) || (HandleSqlConnenctionOption == HandleSqlConnection.OpenAndClose)) { connection.Close(); }
+                return databaseCount > 0;
+            }
+
+            public static bool fTableExistedInDatabase(ref SqlConnection connection, string databaseName, string tableName, bool? AdreadyCheckDBIsExistedResult = null, HandleSqlConnection? HandleSqlConnenctionOption = null)
+            {
+                // Check the connection state and open it if closed.
+                var currentConnectionState = connection.State;
+                if (currentConnectionState == ConnectionState.Closed) { connection.Open(); }
+
+                // Check db existence
+                bool dbIsExited = AdreadyCheckDBIsExistedResult ?? fDatabaseExisted(ref connection, databaseName);
+                if (!dbIsExited) { throw new ArgumentException($"{databaseName} not existed"); }
+
+                // Check table existed
+                string checkTableIsExistedQuery = $"SELECT COUNT(*) FROM {databaseName}.INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = '{tableName}'";
+                int tableIsExistedQuery = 0;
+                using (SqlCommand command = new SqlCommand(checkTableIsExistedQuery, connection)) { tableIsExistedQuery = Convert.ToInt32(command.ExecuteScalar()); }
+
+                // Change back to current connection state or new connect state based on ConnectionOption
+                if ((!HandleSqlConnenctionOption.HasValue && currentConnectionState == ConnectionState.Closed) || (HandleSqlConnenctionOption == HandleSqlConnection.OpenAndClose)) { connection.Close(); }
+
+                return tableIsExistedQuery > 0;
+            }
+
+            public static void fDeleteTableInDatabase(ref SqlConnection connection, string databaseName, string tableName, DeleteMethod method = DeleteMethod.Truncate, bool? AdreadyCheckDBIsExistedResult = null, bool? AdreadyCheckTableIsExistedResult = null, bool ChangeDatabaseCurrentlyUse = false, HandleSqlConnection? HandleSqlConnenctionOption = null)
+            {
+                // Check the connection state and open it if closed.
+                var currentConnectionState = connection.State;
+                if (currentConnectionState == ConnectionState.Closed) { connection.Open(); }
+
+                // Check db existence and table existed (will be checked in fTableExistedInDatabase)
+                bool tableIsExisted = AdreadyCheckTableIsExistedResult ?? fTableExistedInDatabase(ref connection, databaseName, tableName, AdreadyCheckDBIsExistedResult, HandleSqlConnection.OpenAndKeep);
+
+                // Change db context:
+                string DBCurrentlyUsing;
+                string queryGetDBCurrentlyUsing = $"SELECT DB_NAME()";
+                using (SqlCommand command = new SqlCommand(queryGetDBCurrentlyUsing, connection)) { DBCurrentlyUsing = command.ExecuteScalar().ToString(); }
+                if (queryGetDBCurrentlyUsing != databaseName)
+                {
+                    string queryChangeDatabaseConnection = $"USE {databaseName}";
+                    using (SqlCommand command = new SqlCommand(queryChangeDatabaseConnection, connection)) { command.ExecuteNonQuery(); }
+                }
+
+                // return if table not existed
+                if (tableIsExisted) { Console.WriteLine($"[{databaseName}].[dbo].[{tableName}] not existed"); return; }
+
+                // Find table and ref table
+                List<string> EffectedTable = new List<string>();
+
+                Queue<string> tbNames = new Queue<string>();
+                tbNames.Enqueue(tableName);
+                while (tbNames.Count > 0)
+                {
+                    string currentTableName = tbNames.Dequeue();
+                    EffectedTable.Add(currentTableName);
+                    string query = @"
+                        SELECT
+                            fk.name AS ForeignKeyName,
+                            tp.name AS TableName,
+                            cp.name AS ColumnName
+                        FROM
+                            sys.foreign_keys AS fk
+                        INNER JOIN
+                            sys.tables AS tp ON fk.parent_object_id = tp.object_id
+                        INNER JOIN
+                            sys.tables AS tr ON fk.referenced_object_id = tr.object_id
+                        INNER JOIN
+                            sys.foreign_key_columns AS fkc ON fk.object_id = fkc.constraint_object_id
+                        INNER JOIN
+                            sys.columns AS cp ON fkc.parent_column_id = cp.column_id AND fkc.parent_object_id = cp.object_id
+                        INNER JOIN
+                            sys.columns AS cr ON fkc.referenced_column_id = cr.column_id AND fkc.referenced_object_id = cr.object_id
+                        WHERE
+                            tr.name = @TableName";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@TableName", tableName);
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                string referencingTableName = reader["TableName"].ToString();
+                                if (!EffectedTable.Contains(referencingTableName) && !tbNames.Contains(referencingTableName))
+                                {
+                                    tbNames.Enqueue(referencingTableName);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                //Console.WriteLine(string.Join(", ", EffectedTable));
+
+                // Delete or truncate tables
+                string queryDeleteOrTruncate = $"{(method == DeleteMethod.Truncate ? "TRUNCATE TABLE " : "DELETE FROM ")}";
+                for (int iterater = EffectedTable.Count - 1; iterater >= 0; iterater--)
+                {
+                    string query = queryDeleteOrTruncate + EffectedTable[iterater];
+                    using (SqlCommand command = new SqlCommand(query, connection)) { command.ExecuteScalar(); }
+                }
+
+                // Change back to original db
+                if (!ChangeDatabaseCurrentlyUse) { using (SqlCommand command = new SqlCommand($"USE {DBCurrentlyUsing}", connection)) { command.ExecuteNonQuery(); } }
+
+                // change back to current connection state or new connect state based on ConnectionOption
+                if ((!HandleSqlConnenctionOption.HasValue && currentConnectionState == ConnectionState.Closed) || (HandleSqlConnenctionOption == HandleSqlConnection.OpenAndClose)) { connection.Close(); }
+            }
+
+            public static void fCreateTableInDatabase(ref SqlConnection connection, string databaseName, string tableName, string createTableQuery, HandleExistence method = HandleExistence.Truncate, bool? AdreadyCheckDBIsExistedResult = null, bool? AdreadyCheckTableIsExistedResult = null, bool ChangeDatabaseCurrentlyUse = false, HandleSqlConnection? HandleSqlConnenctionOption = null)
+            {
+                // Check the connection state and open it if closed.
+                var currentConnectionState = connection.State;
+                if (currentConnectionState == ConnectionState.Closed) { connection.Open(); }
+
+                // Check db existence and table existed (will be checked in fTableExistedInDatabase)
+                bool tableIsExisted = AdreadyCheckTableIsExistedResult ?? fTableExistedInDatabase(ref connection, databaseName, tableName, AdreadyCheckDBIsExistedResult, HandleSqlConnection.OpenAndKeep);
+
+                // Change db context:
+                string DBCurrentlyUsing;
+                string queryGetDBCurrentlyUsing = $"SELECT DB_NAME()";
+                using (SqlCommand command = new SqlCommand(queryGetDBCurrentlyUsing, connection)) { DBCurrentlyUsing = command.ExecuteScalar().ToString(); }
+                if (queryGetDBCurrentlyUsing != databaseName)
+                {
+                    string queryChangeDatabaseConnection = $"USE {databaseName}";
+                    using (SqlCommand command = new SqlCommand(queryChangeDatabaseConnection, connection)) { command.ExecuteNonQuery(); }
+                }
+
+                // Delete or Trucate existed table
+                if (tableIsExisted)
+                {
+                    switch (method)
+                    {
+                        case HandleExistence.DoNothing:
+                            Console.WriteLine($"[{databaseName}].[{tableName}] existed and how to handle existed is DoNothing so there aren't action to take");
+                            return;
+                        case HandleExistence.Truncate:
+                            fDeleteTableInDatabase(ref connection, databaseName, tableName, DeleteMethod.Truncate, AdreadyCheckDBIsExistedResult, tableIsExisted, false, HandleSqlConnection.OpenAndKeep);
+                            Console.WriteLine($"[{databaseName}].[{tableName}] has been truncated");
+                            return;
+                        case HandleExistence.Delete:
+                            fDeleteTableInDatabase(ref connection, databaseName, tableName, DeleteMethod.Delete, AdreadyCheckDBIsExistedResult, tableIsExisted, false, HandleSqlConnection.OpenAndKeep);
+                            break;
+                    }
+                }
+                // Create table
+                using (SqlCommand command = new SqlCommand(createTableQuery, connection)) { command.ExecuteScalar(); }
+
+
+                // Change back to original db
+                if (!ChangeDatabaseCurrentlyUse) { using (SqlCommand command = new SqlCommand($"USE {DBCurrentlyUsing}", connection)) { command.ExecuteNonQuery(); } }
+
+                // change back to current connection state or new connect state based on ConnectionOption
+                if ((!HandleSqlConnenctionOption.HasValue && currentConnectionState == ConnectionState.Closed) || (HandleSqlConnenctionOption == HandleSqlConnection.OpenAndClose)) { connection.Close(); }
+
+            }
+
+            public static bool fTriggerExistedInDatabase(ref SqlConnection connection, string databaseName, string triggerName, bool? AdreadyCheckDBIsExistedResult = null, HandleSqlConnection? HandleSqlConnenctionOption = null)
+            {
+                // Check the connection state and open it if closed.
+                var currentConnectionState = connection.State;
+                if (currentConnectionState == ConnectionState.Closed) { connection.Open(); }
+
+                // Check db existence
+                bool dbIsExited = AdreadyCheckDBIsExistedResult ?? fDatabaseExisted(ref connection, databaseName);
+                if (!dbIsExited) { throw new ArgumentException($"{databaseName} not existed"); }
+
+                // Check table existed
+                string checkTriggerQuery = $"SELECT COUNT(*) FROM {databaseName}.sys.triggers WHERE name = '{triggerName}'";
+                int triggerIsExisted = 0;
+                using (SqlCommand command = new SqlCommand(checkTriggerQuery, connection)) { triggerIsExisted = Convert.ToInt32(command.ExecuteScalar()); }
+
+                // Change back to current connection state or new connect state based on ConnectionOption
+                if ((!HandleSqlConnenctionOption.HasValue && currentConnectionState == ConnectionState.Closed) || (HandleSqlConnenctionOption == HandleSqlConnection.OpenAndClose)) { connection.Close(); }
+
+                return triggerIsExisted > 0;
+            }
+
+            public static void fDeleteTriggerInDatabase(ref SqlConnection connection, string databaseName, string triggerName, bool? AdreadyCheckDBIsExistedResult = null, bool? AdreadyCheckTriggerIsExistedResult = null, bool ChangeDatabaseCurrentlyUse = false, HandleSqlConnection? HandleSqlConnenctionOption = null)
+            {
+                // Check the connection state and open it if closed.
+                var currentConnectionState = connection.State;
+                if (currentConnectionState == ConnectionState.Closed) { connection.Open(); }
+
+                // Check db existence and trigger existed (will be checked in fTriggerExistedInDatabase)
+                bool triggerIsExisted = AdreadyCheckTriggerIsExistedResult ?? fTriggerExistedInDatabase(ref connection, databaseName, triggerName, AdreadyCheckDBIsExistedResult, HandleSqlConnection.OpenAndKeep);
+
+                // Change db context:
+                string DBCurrentlyUsing;
+                string queryGetDBCurrentlyUsing = $"SELECT DB_NAME()";
+                using (SqlCommand command = new SqlCommand(queryGetDBCurrentlyUsing, connection)) { DBCurrentlyUsing = command.ExecuteScalar().ToString(); }
+                if (queryGetDBCurrentlyUsing != databaseName)
+                {
+                    string queryChangeDatabaseConnection = $"USE {databaseName}";
+                    using (SqlCommand command = new SqlCommand(queryChangeDatabaseConnection, connection)) { command.ExecuteNonQuery(); }
+                }
+
+                // return if table not existed
+                if (triggerIsExisted) { Console.WriteLine($"[{databaseName}].[dbo].[{triggerName}] not existed"); return; }
+
+                // Delete trigger
+                string deleteTriggerQuery = $"DROP TRIGGER {triggerName}"; ;
+                using (SqlCommand command = new SqlCommand(deleteTriggerQuery, connection)) { command.ExecuteScalar(); }
+
+                // Change back to original db
+                if (!ChangeDatabaseCurrentlyUse) { using (SqlCommand command = new SqlCommand($"USE {DBCurrentlyUsing}", connection)) { command.ExecuteNonQuery(); } }
+
+                // change back to current connection state or new connect state based on ConnectionOption
+                if ((!HandleSqlConnenctionOption.HasValue && currentConnectionState == ConnectionState.Closed) || (HandleSqlConnenctionOption == HandleSqlConnection.OpenAndClose)) { connection.Close(); }
+            }
+
+            public static void fCreateTriggerInDatabase(ref SqlConnection connection, string databaseName, string triggerName, string createTriggerQuery, HandleExistence method = HandleExistence.Delete, bool? AdreadyCheckDBIsExistedResult = null, bool? AdreadyCheckTriggerIsExistedResult = null, bool ChangeDatabaseCurrentlyUse = false, HandleSqlConnection? HandleSqlConnenctionOption = null)
+            {
+                // Check the connection state and open it if closed.
+                var currentConnectionState = connection.State;
+                if (currentConnectionState == ConnectionState.Closed) { connection.Open(); }
+
+                // Check db existence and trigger existed (will be checked in fTriggerExistedInDatabase)
+                bool triggerIsExisted = AdreadyCheckTriggerIsExistedResult ?? fTriggerExistedInDatabase(ref connection, databaseName, triggerName, AdreadyCheckDBIsExistedResult, HandleSqlConnection.OpenAndKeep);
+
+                // Change db context:
+                string DBCurrentlyUsing;
+                string queryGetDBCurrentlyUsing = $"SELECT DB_NAME()";
+                using (SqlCommand command = new SqlCommand(queryGetDBCurrentlyUsing, connection)) { DBCurrentlyUsing = command.ExecuteScalar().ToString(); }
+                if (queryGetDBCurrentlyUsing != databaseName)
+                {
+                    string queryChangeDatabaseConnection = $"USE {databaseName}";
+                    using (SqlCommand command = new SqlCommand(queryChangeDatabaseConnection, connection)) { command.ExecuteNonQuery(); }
+                }
+
+                // Delete or Trucate existed table
+                if (triggerIsExisted)
+                {
+                    switch (method)
+                    {
+                        case HandleExistence.DoNothing:
+                            Console.WriteLine($"[{databaseName}].[{triggerName}] existed and how to handle existed is DoNothing so there aren't action to take");
+                            return;
+                        case HandleExistence.Truncate:
+                            throw new ArgumentException("Can not truncate trigger");
+                        case HandleExistence.Delete:
+                            string deleteTriggerQuery = $"DROP TRIGGER {triggerName}"; ;
+                            using (SqlCommand command = new SqlCommand(deleteTriggerQuery, connection)) { command.ExecuteScalar(); }
+                            break;
+                    }
+                }
+                // Create trigger
+                using (SqlCommand command = new SqlCommand(createTriggerQuery, connection)) { command.ExecuteScalar(); }
+
+                // Change back to original db
+                if (!ChangeDatabaseCurrentlyUse) { using (SqlCommand command = new SqlCommand($"USE {DBCurrentlyUsing}", connection)) { command.ExecuteNonQuery(); } }
+
+                // change back to current connection state or new connect state based on ConnectionOption
+                if ((!HandleSqlConnenctionOption.HasValue && currentConnectionState == ConnectionState.Closed) || (HandleSqlConnenctionOption == HandleSqlConnection.OpenAndClose)) { connection.Close(); }
+
+            }
+        }
+        public void Main()
+		{
+            // TODO: Add your code here
+            // > Specified variables:
+            string configFilePath = @"D:\BI\DATH\Config.xml";
+            // > Script:
+
+            // >> Load Condfig
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(configFilePath);
+            string connectionString = xmlDoc.SelectSingleNode("/Root/SQLServerConnnectionString").InnerText;
+            XmlNodeList databaseNodes = xmlDoc.SelectNodes("/Root/Databases/Database");
+
+
+            HandleExistence DatabaseExistenceHandleMethod = UnityFunction.fFormatExistedHandler(xmlDoc.SelectSingleNode("/Root/HandleExistedMethod/Database").InnerText);
+            HandleExistence DatabaseTableExistenceHandleMethod = UnityFunction.fFormatExistedHandler(xmlDoc.SelectSingleNode("/Root/HandleExistedMethod/Table").InnerText);
+            HandleExistence DatabaseTriggerExistenceHandleMethod = UnityFunction.fFormatExistedHandler(xmlDoc.SelectSingleNode("/Root/HandleExistedMethod/Trigger").InnerText);
+
+            // >> Handle:
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            //UnityFunction.fDeleteTableFunc(ref connection, "AdventureWorks2012", "product", " ", HandleExistence.Delete);
+
+            foreach (XmlNode databaseNode in databaseNodes)
+            {
+                string databaseName = databaseNode.SelectSingleNode("Name").InnerText;
+
+                if (connection.State != ConnectionState.Open) connection.Open();
+                // ---- CREATE DATABASE ----:
+                // CREATE DATABASE - step 1: check db existence
+                bool databaseExisted = UnityFunction.fDatabaseExisted(ref connection, databaseName);
+
+                // CREATE DATABASE - step 2: handle existence and create db
+                if (databaseExisted && DatabaseExistenceHandleMethod == HandleExistence.Delete)
+                {
+                    // CREATE DATABASE - step 2.1: drop db
+                    string queryDBExistenceHandle = $"DROP DATABASE {databaseName}";
+                    using (SqlCommand command = new SqlCommand(queryDBExistenceHandle, connection)) { command.ExecuteScalar(); }
+                    databaseExisted = false;
+                }
+                // CREATE DATABASE - step 2.2: create db
+                if (!databaseExisted)
+                {
+                    string queryDBCreation = $"CREATE DATABASE {databaseName}";
+                    using (SqlCommand command = new SqlCommand(queryDBCreation, connection)) { command.ExecuteScalar(); }
+                    databaseExisted = true;
+                }
+
+                // ---- CREATE METATABLE FOR DB ----:
+                XmlNodeList MetaTables = databaseNode.SelectNodes("MetaTables/Table");
+                if (MetaTables != null)
+                {
+                    foreach (XmlNode table in MetaTables)
+                    {
+                        string tableName = table.SelectSingleNode("Name").InnerText;
+                        string createTableQuery = table.SelectSingleNode("CreationQuery").InnerText;
+                        UnityFunction.fCreateTableInDatabase(ref connection, databaseName, tableName, createTableQuery, DatabaseTableExistenceHandleMethod, true, false, true, HandleSqlConnection.OpenAndKeep);
+                    }
+                }
+                // ---- CREATE TRIGGER FOR DB ----:
+                XmlNodeList Triggers = databaseNode.SelectNodes("TriggerOnDatabase/Trigger");
+                if (Triggers != null)
+                {
+                    foreach (XmlNode trigger in Triggers)
+                    {
+                        string tableName = trigger.SelectSingleNode("Name").InnerText;
+                        string createTriggerQuery = trigger.SelectSingleNode("CreationQuery").InnerText;
+                        UnityFunction.fCreateTriggerInDatabase(ref connection, databaseName, tableName, createTriggerQuery, DatabaseTriggerExistenceHandleMethod, true, false, true, HandleSqlConnection.OpenAndKeep);
+                    }
+                }
+                // ---- CREATE TABLE FOR DB ----:
+                XmlNodeList Tables = databaseNode.SelectNodes("Tables/Table");
+                if (Tables != null)
+                {
+                    foreach (XmlNode table in Tables)
+                    {
+                        string tableName = table.SelectSingleNode("Name").InnerText;
+                        string createTableQuery = table.SelectSingleNode("CreationQuery").InnerText;
+                        UnityFunction.fCreateTableInDatabase(ref connection, databaseName, tableName, createTableQuery, DatabaseTableExistenceHandleMethod, true, false, true, HandleSqlConnection.OpenAndKeep);
+                    }
+                }
+            }
+            //Dts.Variables["User::ConfigInfo"].Value = databaseStructure;
+            if (connection.State == ConnectionState.Open) { connection.Close(); }
+
+            Dts.TaskResult = (int)ScriptResults.Success;
+		}
+
+        #region ScriptResults declaration
+        /// <summary>
+        /// This enum provides a convenient shorthand within the scope of this class for setting the
+        /// result of the script.
+        /// 
+        /// This code was generated automatically.
+        /// </summary>
+        enum ScriptResults
+        {
+            Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success,
+            Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+        };
+        #endregion
+
+	}
+}]]></ProjectItem>
+          <ProjectItem
+            Name="Project"
+            Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:CodeName>ST_3c51a2f841134ab69cc114d847bd6b03</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>ST_3c51a2f841134ab69cc114d847bd6b03</msb:DisplayName>
+    <msb:ProjectId>{1EF204C2-D504-4611-88C0-A4249A17D3C3}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="ST_3c51a2f841134ab69cc114d847bd6b03.csproj" />
+    <msb:File Include="ScriptMain.cs" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+  </msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_3c51a2f841134ab69cc114d847bd6b03.Properties.Settings.get_Default():ST_3c51a2f841134ab69cc114d847bd6b03.Properties.Sett" +
+    "ings")]
+
+namespace ST_3c51a2f841134ab69cc114d847bd6b03.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_3c51a2f841134ab69cc114d847bd6b03")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_3c51a2f841134ab69cc114d847bd6b03")]
+[assembly: AssemblyCopyright("Copyright @  2023")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_3c51a2f841134ab69cc114d847bd6b03.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_3c51a2f841134ab69cc114d847bd6b03.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_3c51a2f841134ab69cc114d847bd6b03.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_3c51a2f841134ab69cc114d847bd6b03.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_3c51a2f841134ab69cc114d847bd6b03.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <BinaryItem
+            Name="ST_3c51a2f841134ab69cc114d847bd6b03.dll">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
+EBAFAC8GAAABABYGAAACAEsBAAADAEEBEBAEAMkAEBAFAHMIEBAGAJEIEBAHAKMBEBAIAC8GAAAB
+ABYGAAACAEsBAAADAEEBAAAEAFQJEBAFAMkAEBAGAHMIEBAHAJEIEBAIAKMBEBAJAC8GAAABABYG
+AAACAEsBAAADAFgBEBAEAHMIEBAFAC8GAAABABYGAAACAEsBAAADAFgBEBAEAHMIEBAFALIIEBAG
+AKMBEBAHAC8GAAABABYGAAACAEsBAAADAFgBAAAEAHUJEBAFAMkAEBAGAHMIEBAHALIIEBAIAKMB
+EBAJAC8GCQAXBwEAEQAXBwYAGQAXBwoAKQAXBxAAMQAXBxAAOQAXBxAAQQAXBxAASQAXBxAAUQAX
+BxAAWQAXBxAAYQAXBxAAaQAXBwYA4QAXBwYAAQEXBxUAEQEXBwYAGQEXBwYAGQGNABAAkQDwAEoA
+kQA5CVAAkQC6B1QAgQAXBxAAeQAJB1oAiQAGCV8AIQGiAmMAIQGSBQYAKQFHCG8AoQAXB3UAMQGH
+Bl8AqQCRAgYAFAAXB4IADAAXB4IAiQAwCYgAIQGLAgYAcQAxCIwAOQHVCAEAcQAXBwYAuQAXBwYA
+QQEnAZIAQQFHCZsA6QAXB6EACQEXBwYAKQH1BlAAKQGICakAWQEXBxAAKQFHCL8ADACOBIgADABh
+CMYAFACOBIgAFABhCMYAKQFHCOAAaQEbAOYAuQDFBFAAKQGUCakAMQFlCRoBcQFkAR4BHAAXBwYA
+JAAXBwYAJAB5BIIAJABxBMYAHACSAIIAoQAaCC8BeQGBBDUBoQCwBj0BiQFxBUIBHAD+B0cBJAD+
+B0cBiQGIAIgAJAASCRoBHAASCRoBHABxBU0BCAAUAKEBEgAVAKEBCAAYAKYBCAAgAKEBCAAkAKYB
+EgAlAKEBCAAoAKsBEgApAKEBCAAwAKEBCAA0AKYBCAA5AKEBCAA8AKEBEgA9AKEBCABAAKYBEgBB
+AKEBAgBFALABEgBJAKEBCABdAKYBEgBhAKEBEgBlAKEBAgBpALABEgBtAKEBEgB9AKEBEgCBAKEB
+EgCRAKEBEgCVAKEBAgCZALABEgCdAKEBCACxAKsBEgC1AKEBEgC5AKEBAgC9ALABEgDBAKEBKQBz
+AJwCLgALAHQCLgATAH0CLgAbAJwCLgAjAKUCLgArAM4CLgAzAM4CLgA7AM4CLgBDAKUCLgBLANQC
+LgBTAM4CLgBbAOsCQwBjAKYBSQBzAJwCYQB7AKYBYwBrAKYBGwCvAMsA6wBTAXABAwABAAQAAwAA
+AMIGZQIAAJsBagIAAGsIbwICAAQAAwACAAUABQABAAYABQACAAcABwBoAHwAIwEpAQSAAAABAAAA
+JSK7SwAAAAAAACMAAAAEAAAAAAAAAAAAAACPAWQAAAAAABAAAAAAAAAAAAAAAJgBzgQAAAAABAAA
+AAAAAAAAAAAAjwFmBQAAAAAEAAAAAAAAAAAAAACPAVgAAAAAAAQAAAAAAAAAAAAAAI8BegUAAAAA
+AAAAAAEAAABoBwAABQACAAYAAgAHAAIACAACAAkAAgAAAAAAAE51bGxhYmxlYDEAUXVldWVgMQBM
+aXN0YDEAVG9JbnQzMgBTVF8zYzUxYTJmODQxMTM0YWI2OWNjMTE0ZDg0N2JkNmIwMwA8TW9kdWxl
+PgB2YWx1ZV9fAFN5c3RlbS5EYXRhAG1zY29ybGliAFN5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmlj
+AFJlYWQATG9hZABBZGQAZkRhdGFiYXNlRXhpc3RlZABEYkNvbW1hbmQAU3FsQ29tbWFuZABEZWxl
+dGVNZXRob2QAbWV0aG9kAGRlZmF1bHRJbnN0YW5jZQBIYW5kbGVFeGlzdGVuY2UAU2VsZWN0U2lu
+Z2xlTm9kZQBYbWxOb2RlAElEaXNwb3NhYmxlAFJ1bnRpbWVUeXBlSGFuZGxlAEdldFR5cGVGcm9t
+SGFuZGxlAENvbnNvbGUAdGFibGVOYW1lAGRhdGFiYXNlTmFtZQB0cmlnZ2VyTmFtZQBXcml0ZUxp
+bmUAVHlwZQBGYWlsdXJlAGdldF9DdWx0dXJlAHNldF9DdWx0dXJlAHJlc291cmNlQ3VsdHVyZQBD
+aGFuZ2VEYXRhYmFzZUN1cnJlbnRseVVzZQBWU1RBUlRTY3JpcHRPYmplY3RNb2RlbEJhc2UAQXBw
+bGljYXRpb25TZXR0aW5nc0Jhc2UAZlRhYmxlRXhpc3RlZEluRGF0YWJhc2UAZlRyaWdnZXJFeGlz
+dGVkSW5EYXRhYmFzZQBmQ3JlYXRlVGFibGVJbkRhdGFiYXNlAGZEZWxldGVUYWJsZUluRGF0YWJh
+c2UAZkNyZWF0ZVRyaWdnZXJJbkRhdGFiYXNlAGZEZWxldGVUcmlnZ2VySW5EYXRhYmFzZQBPcGVu
+QW5kQ2xvc2UARGlzcG9zZQBUcnVuY2F0ZQBnZXRfU3RhdGUARWRpdG9yQnJvd3NhYmxlU3RhdGUA
+Q29ubmVjdGlvblN0YXRlAERlbGV0ZQBDb21waWxlckdlbmVyYXRlZEF0dHJpYnV0ZQBEZWJ1Z2dl
+ck5vblVzZXJDb2RlQXR0cmlidXRlAERlYnVnZ2FibGVBdHRyaWJ1dGUARWRpdG9yQnJvd3NhYmxl
+QXR0cmlidXRlAEFzc2VtYmx5VGl0bGVBdHRyaWJ1dGUAQXNzZW1ibHlUcmFkZW1hcmtBdHRyaWJ1
+dGUAVGFyZ2V0RnJhbWV3b3JrQXR0cmlidXRlAEFzc2VtYmx5Q29uZmlndXJhdGlvbkF0dHJpYnV0
+ZQBBc3NlbWJseURlc2NyaXB0aW9uQXR0cmlidXRlAENvbXBpbGF0aW9uUmVsYXhhdGlvbnNBdHRy
+aWJ1dGUAQXNzZW1ibHlQcm9kdWN0QXR0cmlidXRlAEFzc2VtYmx5Q29weXJpZ2h0QXR0cmlidXRl
+AFNTSVNTY3JpcHRUYXNrRW50cnlQb2ludEF0dHJpYnV0ZQBBc3NlbWJseUNvbXBhbnlBdHRyaWJ1
+dGUAUnVudGltZUNvbXBhdGliaWxpdHlBdHRyaWJ1dGUARGVxdWV1ZQBFbnF1ZXVlAEFkZFdpdGhW
+YWx1ZQBnZXRfSGFzVmFsdWUAdmFsdWUARG9Ob3RoaW5nAFN5c3RlbS5SdW50aW1lLlZlcnNpb25p
+bmcAVG9TdHJpbmcATWljcm9zb2Z0LlNxbFNlcnZlci5TY3JpcHRUYXNrAE1pY3Jvc29mdC5TcWxT
+ZXJ2ZXIuRHRzLlRhc2tzLlNjcmlwdFRhc2sAU2NyaXB0T2JqZWN0TW9kZWwAU3lzdGVtLkNvbXBv
+bmVudE1vZGVsAFNUXzNjNTFhMmY4NDExMzRhYjY5Y2MxMTRkODQ3YmQ2YjAzLmRsbABTeXN0ZW0u
+WG1sAGdldF9JdGVtAFN5c3RlbQBFbnVtAHJlc291cmNlTWFuAE9wZW4AU2NyaXB0TWFpbgBTeXN0
+ZW0uQ29uZmlndXJhdGlvbgBTeXN0ZW0uR2xvYmFsaXphdGlvbgBTeXN0ZW0uUmVmbGVjdGlvbgBT
+cWxQYXJhbWV0ZXJDb2xsZWN0aW9uAERiQ29ubmVjdGlvbgBIYW5kbGVTcWxDb25uZWN0aW9uAGNv
+bm5lY3Rpb24AVW5pdHlGdW5jdGlvbgBIYW5kbGVTcWxDb25uZW5jdGlvbk9wdGlvbgBBcmd1bWVu
+dEV4Y2VwdGlvbgBTeXN0ZW0uRGF0YS5Db21tb24AQ3VsdHVyZUluZm8AT3BlbkFuZEtlZXAARXhl
+Y3V0ZVNjYWxhcgBEYkRhdGFSZWFkZXIAU3FsRGF0YVJlYWRlcgBFeGVjdXRlUmVhZGVyAGdldF9S
+ZXNvdXJjZU1hbmFnZXIAZkZvcm1hdEV4aXN0ZWRIYW5kbGVyAFNxbFBhcmFtZXRlcgBUb0xvd2Vy
+AElFbnVtZXJhdG9yAEdldEVudW1lcmF0b3IALmN0b3IALmNjdG9yAFN5c3RlbS5EaWFnbm9zdGlj
+cwBTeXN0ZW0uUnVudGltZS5Db21waWxlclNlcnZpY2VzAFN5c3RlbS5SZXNvdXJjZXMAU1RfM2M1
+MWEyZjg0MTEzNGFiNjljYzExNGQ4NDdiZDZiMDMuUHJvcGVydGllcy5SZXNvdXJjZXMucmVzb3Vy
+Y2VzAERlYnVnZ2luZ01vZGVzAFNlbGVjdE5vZGVzAFNUXzNjNTFhMmY4NDExMzRhYjY5Y2MxMTRk
+ODQ3YmQ2YjAzLlByb3BlcnRpZXMAU2V0dGluZ3MAQ29udGFpbnMAU3lzdGVtLkNvbGxlY3Rpb25z
+AGdldF9QYXJhbWV0ZXJzAFN1Y2Nlc3MAZ2V0X0R0cwBTY3JpcHRSZXN1bHRzAENvbmNhdABPYmpl
+Y3QAZ2V0X0RlZmF1bHQAR2V0VmFsdWVPckRlZmF1bHQAQWRyZWFkeUNoZWNrREJJc0V4aXN0ZWRS
+ZXN1bHQAQWRyZWFkeUNoZWNrVGFibGVJc0V4aXN0ZWRSZXN1bHQAQWRyZWFkeUNoZWNrVHJpZ2dl
+cklzRXhpc3RlZFJlc3VsdABzZXRfVGFza1Jlc3VsdABTeXN0ZW0uRGF0YS5TcWxDbGllbnQAWG1s
+RG9jdW1lbnQAZ2V0X0N1cnJlbnQAZ2V0X0NvdW50AENvbnZlcnQAWG1sTm9kZUxpc3QATW92ZU5l
+eHQAZ2V0X0lubmVyVGV4dABnZXRfQXNzZW1ibHkAY3JlYXRlVGFibGVRdWVyeQBFeGVjdXRlTm9u
+UXVlcnkAY3JlYXRlVHJpZ2dlclF1ZXJ5AG9wX0VxdWFsaXR5AG9wX0luZXF1YWxpdHkAAAAAK0QA
+OgBcAEIASQBcAEQAQQBUAEgAXABDAG8AbgBmAGkAZwAuAHgAbQBsAABBLwBSAG8AbwB0AC8AUwBR
+AEwAUwBlAHIAdgBlAHIAQwBvAG4AbgBuAGUAYwB0AGkAbwBuAFMAdAByAGkAbgBnAAAxLwBSAG8A
+bwB0AC8ARABhAHQAYQBiAGEAcwBlAHMALwBEAGEAdABhAGIAYQBzAGUAAEUvAFIAbwBvAHQALwBI
+AGEAbgBkAGwAZQBFAHgAaQBzAHQAZQBkAE0AZQB0AGgAbwBkAC8ARABhAHQAYQBiAGEAcwBlAAA/
+LwBSAG8AbwB0AC8ASABhAG4AZABsAGUARQB4AGkAcwB0AGUAZABNAGUAdABoAG8AZAAvAFQAYQBi
+AGwAZQAAQy8AUgBvAG8AdAAvAEgAYQBuAGQAbABlAEUAeABpAHMAdABlAGQATQBlAHQAaABvAGQA
+LwBUAHIAaQBnAGcAZQByAAAJTgBhAG0AZQAAHUQAUgBPAFAAIABEAEEAVABBAEIAQQBTAEUAIAAA
+IUMAUgBFAEEAVABFACAARABBAFQAQQBCAEEAUwBFACAAACFNAGUAdABhAFQAYQBiAGwAZQBzAC8A
+VABhAGIAbABlAAAbQwByAGUAYQB0AGkAbwBuAFEAdQBlAHIAeQAAM1QAcgBpAGcAZwBlAHIATwBu
+AEQAYQB0AGEAYgBhAHMAZQAvAFQAcgBpAGcAZwBlAHIAABlUAGEAYgBsAGUAcwAvAFQAYQBiAGwA
+ZQAAcVMAVABfADMAYwA1ADEAYQAyAGYAOAA0ADEAMQAzADQAYQBiADYAOQBjAGMAMQAxADQAZAA4
+ADQANwBiAGQANgBiADAAMwAuAFAAcgBvAHAAZQByAHQAaQBlAHMALgBSAGUAcwBvAHUAcgBjAGUA
+cwAAE2QAbwBuAG8AdABoAGkAbgBnAAARdAByAHUAbgBjAGEAdABlAAANZABlAGwAZQB0AGUAAClt
+AGUAdABoAG8AZAAgAGQAbwBlAHMAbgAnAHQAIABlAHgAaQBzAHQAAWNTAEUATABFAEMAVAAgAEMA
+TwBVAE4AVAAoACoAKQAgAEYAUgBPAE0AIABzAHkAcwAuAGQAYQB0AGEAYgBhAHMAZQBzACAAVwBI
+AEUAUgBFACAAbgBhAG0AZQAgAD0AIAAnAAEDJwABGSAAbgBvAHQAIABlAHgAaQBzAHQAZQBkAAAr
+UwBFAEwARQBDAFQAIABDAE8AVQBOAFQAKAAqACkAIABGAFIATwBNACAAAF8uAEkATgBGAE8AUgBN
+AEEAVABJAE8ATgBfAFMAQwBIAEUATQBBAC4AVABBAEIATABFAFMAIABXAEgARQBSAEUAIABUAEEA
+QgBMAEUAXwBOAEEATQBFACAAPQAgACcAASFTAEUATABFAEMAVAAgAEQAQgBfAE4AQQBNAEUAKAAp
+AAAJVQBTAEUAIAAAA1sAABNdAC4AWwBkAGIAbwBdAC4AWwAAG10AIABuAG8AdAAgAGUAeABpAHMA
+dABlAGQAAIhZDQAKACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAA
+IAAgAFMARQBMAEUAQwBUAA0ACgAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAg
+ACAAIAAgACAAIAAgACAAIAAgAGYAawAuAG4AYQBtAGUAIABBAFMAIABGAG8AcgBlAGkAZwBuAEsA
+ZQB5AE4AYQBtAGUALAANAAoAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAg
+ACAAIAAgACAAIAAgACAAIAB0AHAALgBuAGEAbQBlACAAQQBTACAAVABhAGIAbABlAE4AYQBtAGUA
+LAANAAoAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAg
+ACAAIABjAHAALgBuAGEAbQBlACAAQQBTACAAQwBvAGwAdQBtAG4ATgBhAG0AZQANAAoAIAAgACAA
+IAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAARgBSAE8ATQANAAoAIAAg
+ACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIABzAHkA
+cwAuAGYAbwByAGUAaQBnAG4AXwBrAGUAeQBzACAAQQBTACAAZgBrAA0ACgAgACAAIAAgACAAIAAg
+ACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIABJAE4ATgBFAFIAIABKAE8ASQBOAA0A
+CgAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAg
+AHMAeQBzAC4AdABhAGIAbABlAHMAIABBAFMAIAB0AHAAIABPAE4AIABmAGsALgBwAGEAcgBlAG4A
+dABfAG8AYgBqAGUAYwB0AF8AaQBkACAAPQAgAHQAcAAuAG8AYgBqAGUAYwB0AF8AaQBkAA0ACgAg
+ACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIABJAE4ATgBFAFIA
+IABKAE8ASQBOAA0ACgAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAg
+ACAAIAAgACAAIAAgAHMAeQBzAC4AdABhAGIAbABlAHMAIABBAFMAIAB0AHIAIABPAE4AIABmAGsA
+LgByAGUAZgBlAHIAZQBuAGMAZQBkAF8AbwBiAGoAZQBjAHQAXwBpAGQAIAA9ACAAdAByAC4AbwBi
+AGoAZQBjAHQAXwBpAGQADQAKACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAA
+IAAgACAAIAAgAEkATgBOAEUAUgAgAEoATwBJAE4ADQAKACAAIAAgACAAIAAgACAAIAAgACAAIAAg
+ACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAcwB5AHMALgBmAG8AcgBlAGkAZwBuAF8A
+awBlAHkAXwBjAG8AbAB1AG0AbgBzACAAQQBTACAAZgBrAGMAIABPAE4AIABmAGsALgBvAGIAagBl
+AGMAdABfAGkAZAAgAD0AIABmAGsAYwAuAGMAbwBuAHMAdAByAGEAaQBuAHQAXwBvAGIAagBlAGMA
+dABfAGkAZAANAAoAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAg
+ACAASQBOAE4ARQBSACAASgBPAEkATgANAAoAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAA
+IAAgACAAIAAgACAAIAAgACAAIAAgACAAIABzAHkAcwAuAGMAbwBsAHUAbQBuAHMAIABBAFMAIABj
+AHAAIABPAE4AIABmAGsAYwAuAHAAYQByAGUAbgB0AF8AYwBvAGwAdQBtAG4AXwBpAGQAIAA9ACAA
+YwBwAC4AYwBvAGwAdQBtAG4AXwBpAGQAIABBAE4ARAAgAGYAawBjAC4AcABhAHIAZQBuAHQAXwBv
+AGIAagBlAGMAdABfAGkAZAAgAD0AIABjAHAALgBvAGIAagBlAGMAdABfAGkAZAANAAoAIAAgACAA
+IAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAASQBOAE4ARQBSACAASgBP
+AEkATgANAAoAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAA
+IAAgACAAIABzAHkAcwAuAGMAbwBsAHUAbQBuAHMAIABBAFMAIABjAHIAIABPAE4AIABmAGsAYwAu
+AHIAZQBmAGUAcgBlAG4AYwBlAGQAXwBjAG8AbAB1AG0AbgBfAGkAZAAgAD0AIABjAHIALgBjAG8A
+bAB1AG0AbgBfAGkAZAAgAEEATgBEACAAZgBrAGMALgByAGUAZgBlAHIAZQBuAGMAZQBkAF8AbwBi
+AGoAZQBjAHQAXwBpAGQAIAA9ACAAYwByAC4AbwBiAGoAZQBjAHQAXwBpAGQADQAKACAAIAAgACAA
+IAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgAFcASABFAFIARQANAAoAIAAg
+ACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAB0AHIA
+LgBuAGEAbQBlACAAPQAgAEAAVABhAGIAbABlAE4AYQBtAGUAABVAAFQAYQBiAGwAZQBOAGEAbQBl
+AAATVABhAGIAbABlAE4AYQBtAGUAABlEAEUATABFAFQARQAgAEYAUgBPAE0AIAAAH1QAUgBVAE4A
+QwBBAFQARQAgAFQAQQBCAEwARQAgAAABAAddAC4AWwAAgJ9dACAAZQB4AGkAcwB0AGUAZAAgAGEA
+bgBkACAAaABvAHcAIAB0AG8AIABoAGEAbgBkAGwAZQAgAGUAeABpAHMAdABlAGQAIABpAHMAIABE
+AG8ATgBvAHQAaABpAG4AZwAgAHMAbwAgAHQAaABlAHIAZQAgAGEAcgBlAG4AJwB0ACAAYQBjAHQA
+aQBvAG4AIAB0AG8AIAB0AGEAawBlAAEpXQAgAGgAYQBzACAAYgBlAGUAbgAgAHQAcgB1AG4AYwBh
+AHQAZQBkAAA5LgBzAHkAcwAuAHQAcgBpAGcAZwBlAHIAcwAgAFcASABFAFIARQAgAG4AYQBtAGUA
+IAA9ACAAJwABG0QAUgBPAFAAIABUAFIASQBHAEcARQBSACAAADFDAGEAbgAgAG4AbwB0ACAAdABy
+AHUAbgBjAGEAdABlACAAdAByAGkAZwBnAGUAcgAAAEtWpSLDGhVJjvrHaj/i8qYABCABAQgDIAAB
+BSABARERBCABAQ4FIAEBEX0uBxkODhI9ERgRGBEYEkESRRJJDgISPRI9Ej0VEU0BERQSURJREkUO
+DhJVDg4ODgUgARJJDgMgAA4FIAESPQ4EIAASRQMgABwEIAARYQYVEU0BERQFAAIODg4GIAIBDhJB
+BRURTQECBSABARMAAyAAAgUgABKAnQgAARKAoRGApQUgABKAqQcgAgEOEoCpBQACAg4ODwcFEWEI
+ElEVEU0BERQRFAYAAw4ODg4EIAATABQHBhFhCBURTQECFRFNAREUElERFAUAAQ4dDgQAAQgcLgcT
+EWECDg4VEmUBDhUSaQEODhURTQECElESUQ4SURJtDggSURJRFRFNAREUERQDIAAIBAABAQ4FFRJl
+AQ4FFRJpAQ4FIAASgL0HIAISgMEOHAQgABJtBCABHA4FIAECEwAFIAETAAgcBwsRYQIODhURTQEC
+ElESURJRElEVEU0BERQRFB4HDBFhAg4OFRFNAQISURJRElESURJRFRFNAREUERQIt3pcVhk04IkI
+iYRdzYCAzJEEAAAAAAQBAAAABAIAAAABAAMGEnUDBhJ5AwYSEAIGCAMGERQDBhEYAwYRHAMGESQE
+AAASdQQAABJ5BQABARJ5BAAAEhADAAABBQABERgODQADAhASQQ4VEU0BERQTAAUCEBJBDg4VEU0B
+AhURTQERFBsACAEQEkEODhEcFRFNAQIVEU0BAgIVEU0BERQcAAkBEBJBDg4OERgVEU0BAhURTQEC
+AhURTQERFBkABwEQEkEODhURTQECFRFNAQICFRFNAREUBAgAEnUECAASeQQIABIQCAEACAAAAAAA
+HgEAAQBUAhZXcmFwTm9uRXhjZXB0aW9uVGhyb3dzAQgBAAIAAAAAACgBACNTVF8zYzUxYTJmODQx
+MTM0YWI2OWNjMTE0ZDg0N2JkNmIwMwAABQEAAAAAFgEAEUNvcHlyaWdodCBAICAyMDIzAABJAQAa
+Lk5FVEZyYW1ld29yayxWZXJzaW9uPXY0LjcBAFQOFEZyYW1ld29ya0Rpc3BsYXlOYW1lEi5ORVQg
+RnJhbWV3b3JrIDQuNwAAALQAAADOyu++AQAAAJEAAABsU3lzdGVtLlJlc291cmNlcy5SZXNvdXJj
+ZVJlYWRlciwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJs
+aWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5I1N5c3RlbS5SZXNvdXJjZXMuUnVudGltZVJlc291
+cmNlU2V0AgAAAAAAAAAAAAAAUEFEUEFEULQAAABgVAAAAAAAAAAAAAB6VAAAACAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAbFQAAAAAAAAAAAAAAABfQ29yRGxsTWFpbgBtc2NvcmVlLmRsbAAAAAAA/yUA
+IAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAEAAAABgAAIAAAAAA
+AAAAAAAAAAAAAAEAAQAAADAAAIAAAAAAAAAAAAAAAAAAAAEAAAAAAEgAAABYYAAAGgQAAAAAAAAA
+AAAAGgQ0AAAAVgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8AAAAAAL0E7/4AAAEAAAABALtL
+JSIAAAEAu0slIj8AAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAABEAAAAAQBWAGEAcgBGAGkAbABl
+AEkAbgBmAG8AAAAAACQABAAAAFQAcgBhAG4AcwBsAGEAdABpAG8AbgAAAAAAAACwBHoDAAABAFMA
+dAByAGkAbgBnAEYAaQBsAGUASQBuAGYAbwAAAFYDAAABADAAMAAwADAAMAA0AGIAMAAAABoAAQAB
+AEMAbwBtAG0AZQBuAHQAcwAAAAAAAAAiAAEAAQBDAG8AbQBwAGEAbgB5AE4AYQBtAGUAAAAAAAAA
+AABwACQAAQBGAGkAbABlAEQAZQBzAGMAcgBpAHAAdABpAG8AbgAAAAAAUwBUAF8AMwBjADUAMQBh
+ADIAZgA4ADQAMQAxADMANABhAGIANgA5AGMAYwAxADEANABkADgANAA3AGIAZAA2AGIAMAAzAAAA
+PgAPAAEARgBpAGwAZQBWAGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAuADgANwA0ADEALgAxADkAMwA4
+ADcAAAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBUAF8AMwBjADUAMQBhADIA
+ZgA4ADQAMQAxADMANABhAGIANgA5AGMAYwAxADEANABkADgANAA3AGIAZAA2AGIAMAAzAC4AZABs
+AGwAAABIABIAAQBMAGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQAAABDAG8AcAB5AHIAaQBnAGgA
+dAAgAEAAIAAgADIAMAAyADMAAAAqAAEAAQBMAGUAZwBhAGwAVAByAGEAZABlAG0AYQByAGsAcwAA
+AAAAAAAAAHgAKAABAE8AcgBpAGcAaQBuAGEAbABGAGkAbABlAG4AYQBtAGUAAABTAFQAXwAzAGMA
+NQAxAGEAMgBmADgANAAxADEAMwA0AGEAYgA2ADkAYwBjADEAMQA0AGQAOAA0ADcAYgBkADYAYgAw
+ADMALgBkAGwAbAAAAGgAJAABAFAAcgBvAGQAdQBjAHQATgBhAG0AZQAAAAAAUwBUAF8AMwBjADUA
+MQBhADIAZgA4ADQAMQAxADMANABhAGIANgA5AGMAYwAxADEANABkADgANAA3AGIAZAA2AGIAMAAz
+AAAAQgAPAAEAUAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgA4ADcANAAxAC4A
+MQA5ADMAOAA3AAAAAABGAA8AAQBBAHMAcwBlAG0AYgBsAHkAIABWAGUAcgBzAGkAbwBuAAAAMQAu
+ADAALgA4ADcANAAxAC4AMQA5ADMAOAA3AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAADAAAAIw0AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
+        </ScriptProject>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="230,42"
+          Id="Package\Re-SetUp Databases and Tables"
+          TopLeft="483,110" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
