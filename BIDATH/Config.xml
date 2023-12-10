@@ -118,8 +118,6 @@
                         CREATE TABLE [ProductLine] (
                             [Product line] nvarchar(255),
                             [ProductLineID] nvarchar(255),
-                            [Branch] nvarchar(255),
-                            [City] nvarchar(255)
                         )
                     </CreationQuery>
                 </Table>
@@ -142,7 +140,6 @@
                             [gross margin percentage] float,
                             [gross income] float,
                             [Rating] float,
-                            [City] nvarchar(255)
                         )
                     </CreationQuery>
                 </Table>
@@ -244,6 +241,8 @@
                             [CityID_SK] [int] PRIMARY KEY IDENTITY(1,1),
                             [Branch] [nvarchar](255) NULL,
                             [City] [nvarchar](255) NULL,
+                            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                         )
                     </CreationQuery>
                 </Table>
@@ -254,6 +253,8 @@
                             [CustomerID_SK] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
                             [Customer type] [nvarchar](255) NULL,
                             [Gender] [nvarchar](255) NULL,
+                            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                         )
                     </CreationQuery>
                 </Table>
@@ -263,6 +264,8 @@
                         CREATE TABLE [Payment](
                             [PaymentID_SK] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
                             [Payment] [nvarchar](255) NULL,
+                            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                         )
                     </CreationQuery>
                 </Table>
@@ -273,6 +276,8 @@
                             [ProductLineID_SK] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
                             [ProductLineID_NK] [nvarchar](255) NULL,
                             [ProductLine] [nvarchar](255) NULL,
+                            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                         )
                     </CreationQuery>
                 </Table>
@@ -284,8 +289,38 @@
                             [ProductID_NK] [nvarchar](255) NULL,
                             [UnitPrice] [float] NULL,
                             [ProductLineID_SK] [int] NULL,
+                            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                             FOREIGN KEY (ProductLineID_SK) REFERENCES Productline(ProductLineID_SK)
                         )
+                    </CreationQuery>
+                </Table>
+                <Table>
+                    <Name>SupermarketSale</Name>
+                    <CreationQuery>
+                        CREATE TABLE [SupermarketSale] (
+                            [InvoiceID_sk] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
+                            [InvoiceID_nk] nvarchar(255),
+                            [Quantity] float,
+                            [Tax_5_percent] float,
+                            [Total] float,
+                            [Date] datetime,
+                            [Time] datetime,
+                            [cogs] float,
+                            [gross_margin_percentage] float,
+                            [gross_income] float,
+                            [Rating] float,
+                            [CityID_SK] int,
+                            [CustomerID_SK] int,
+                            [PaymentID_SK] int,
+                            [ProductID_SK] int,
+                            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                            FOREIGN KEY ([CityID_SK]) REFERENCES [City]([CityID_SK]),
+                            FOREIGN KEY ([CustomerID_SK]) REFERENCES [Customer]([CustomerID_SK]),
+                            FOREIGN KEY ([PaymentID_SK]) REFERENCES [Payment]([PaymentID_SK]),
+                            FOREIGN KEY ([ProductID_SK]) REFERENCES [Product]([ProductID_SK])
+                        );
                     </CreationQuery>
                 </Table>
             </Tables>

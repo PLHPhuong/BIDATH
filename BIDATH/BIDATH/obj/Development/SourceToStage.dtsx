@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="75"
-  DTS:VersionGUID="{446A3F90-B834-489E-A692-0CAD5C71105E}">
+  DTS:VersionBuild="82"
+  DTS:VersionGUID="{98956D03-ECF6-4769-968F-DACA669167B5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -126,13 +126,13 @@
   </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Data Flow Task"
+      DTS:refId="Package\Extract Data from Stage"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
       DTS:DTSID="{197b3528-7047-4f22-b55d-04d108571466}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Data Flow Task"
+      DTS:ObjectName="Extract Data from Stage"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -140,7 +140,7 @@
           version="1">
           <components>
             <component
-              refId="Package\Data Flow Task\Source_city"
+              refId="Package\Extract Data from Stage\Source_city"
               componentClassID="Microsoft.ExcelSource"
               contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Excel Source"
@@ -181,7 +181,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Source_city.Connections[OleDbConnection]"
+                  refId="Package\Extract Data from Stage\Source_city.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
                   connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
                   description="The OLE DB runtime connection used to access the database."
@@ -189,71 +189,71 @@
               </connections>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Source_city.Outputs[Excel Source Output]"
+                  refId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Output]"
                   name="Excel Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_city.Outputs[Excel Source Output].Columns[Branch]"
+                      refId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Output].Columns[Branch]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Source_city.Outputs[Excel Source Output].ExternalColumns[Branch]"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Output].ExternalColumns[Branch]"
                       length="255"
-                      lineageId="Package\Data Flow Task\Source_city.Outputs[Excel Source Output].Columns[Branch]"
+                      lineageId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Output].Columns[Branch]"
                       name="Branch"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_city.Outputs[Excel Source Output].Columns[City]"
+                      refId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Output].Columns[City]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Source_city.Outputs[Excel Source Output].ExternalColumns[City]"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Output].ExternalColumns[City]"
                       length="255"
-                      lineageId="Package\Data Flow Task\Source_city.Outputs[Excel Source Output].Columns[City]"
+                      lineageId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Output].Columns[City]"
                       name="City"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Source_city.Outputs[Excel Source Output].ExternalColumns[Branch]"
+                      refId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Output].ExternalColumns[Branch]"
                       dataType="wstr"
                       length="255"
                       name="Branch" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Source_city.Outputs[Excel Source Output].ExternalColumns[City]"
+                      refId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Output].ExternalColumns[City]"
                       dataType="wstr"
                       length="255"
                       name="City" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Source_city.Outputs[Excel Source Error Output]"
+                  refId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Error Output]"
                   isErrorOut="true"
                   name="Excel Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_city.Outputs[Excel Source Error Output].Columns[Branch]"
+                      refId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Error Output].Columns[Branch]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Data Flow Task\Source_city.Outputs[Excel Source Error Output].Columns[Branch]"
+                      lineageId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Error Output].Columns[Branch]"
                       name="Branch" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_city.Outputs[Excel Source Error Output].Columns[City]"
+                      refId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Error Output].Columns[City]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Data Flow Task\Source_city.Outputs[Excel Source Error Output].Columns[City]"
+                      lineageId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Error Output].Columns[City]"
                       name="City" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_city.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Source_city.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_city.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Source_city.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -262,7 +262,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Source_product"
+              refId="Package\Extract Data from Stage\Source_product"
               componentClassID="Microsoft.ExcelSource"
               contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Excel Source"
@@ -303,7 +303,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Source_product.Connections[OleDbConnection]"
+                  refId="Package\Extract Data from Stage\Source_product.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
                   connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
                   description="The OLE DB runtime connection used to access the database."
@@ -311,89 +311,89 @@
               </connections>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Source_product.Outputs[Excel Source Output]"
+                  refId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output]"
                   name="Excel Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_product.Outputs[Excel Source Output].Columns[ProductID]"
+                      refId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output].Columns[ProductID]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Source_product.Outputs[Excel Source Output].ExternalColumns[ProductID]"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output].ExternalColumns[ProductID]"
                       length="255"
-                      lineageId="Package\Data Flow Task\Source_product.Outputs[Excel Source Output].Columns[ProductID]"
+                      lineageId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output].Columns[ProductID]"
                       name="ProductID"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_product.Outputs[Excel Source Output].Columns[Unit price]"
+                      refId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output].Columns[Unit price]"
                       dataType="r8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Source_product.Outputs[Excel Source Output].ExternalColumns[Unit price]"
-                      lineageId="Package\Data Flow Task\Source_product.Outputs[Excel Source Output].Columns[Unit price]"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output].ExternalColumns[Unit price]"
+                      lineageId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output].Columns[Unit price]"
                       name="Unit price"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_product.Outputs[Excel Source Output].Columns[ProductLine]"
+                      refId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output].Columns[ProductLine]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Source_product.Outputs[Excel Source Output].ExternalColumns[ProductLine]"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output].ExternalColumns[ProductLine]"
                       length="255"
-                      lineageId="Package\Data Flow Task\Source_product.Outputs[Excel Source Output].Columns[ProductLine]"
+                      lineageId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output].Columns[ProductLine]"
                       name="ProductLine"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Source_product.Outputs[Excel Source Output].ExternalColumns[ProductID]"
+                      refId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output].ExternalColumns[ProductID]"
                       dataType="wstr"
                       length="255"
                       name="ProductID" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Source_product.Outputs[Excel Source Output].ExternalColumns[Unit price]"
+                      refId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output].ExternalColumns[Unit price]"
                       dataType="r8"
                       name="Unit price" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Source_product.Outputs[Excel Source Output].ExternalColumns[ProductLine]"
+                      refId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output].ExternalColumns[ProductLine]"
                       dataType="wstr"
                       length="255"
                       name="ProductLine" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Source_product.Outputs[Excel Source Error Output]"
+                  refId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Error Output]"
                   isErrorOut="true"
                   name="Excel Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_product.Outputs[Excel Source Error Output].Columns[ProductID]"
+                      refId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Error Output].Columns[ProductID]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Data Flow Task\Source_product.Outputs[Excel Source Error Output].Columns[ProductID]"
+                      lineageId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Error Output].Columns[ProductID]"
                       name="ProductID" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_product.Outputs[Excel Source Error Output].Columns[Unit price]"
+                      refId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Error Output].Columns[Unit price]"
                       dataType="r8"
-                      lineageId="Package\Data Flow Task\Source_product.Outputs[Excel Source Error Output].Columns[Unit price]"
+                      lineageId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Error Output].Columns[Unit price]"
                       name="Unit price" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_product.Outputs[Excel Source Error Output].Columns[ProductLine]"
+                      refId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Error Output].Columns[ProductLine]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Data Flow Task\Source_product.Outputs[Excel Source Error Output].Columns[ProductLine]"
+                      lineageId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Error Output].Columns[ProductLine]"
                       name="ProductLine" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_product.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Source_product.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_product.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Source_product.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -402,7 +402,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Source_ProductLine"
+              refId="Package\Extract Data from Stage\Source_ProductLine"
               componentClassID="Microsoft.ExcelSource"
               contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Excel Source"
@@ -443,7 +443,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Source_ProductLine.Connections[OleDbConnection]"
+                  refId="Package\Extract Data from Stage\Source_ProductLine.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
                   connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
                   description="The OLE DB runtime connection used to access the database."
@@ -451,71 +451,71 @@
               </connections>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Source_ProductLine.Outputs[Excel Source Output]"
+                  refId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Output]"
                   name="Excel Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_ProductLine.Outputs[Excel Source Output].Columns[Product line]"
+                      refId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Output].Columns[Product line]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Source_ProductLine.Outputs[Excel Source Output].ExternalColumns[Product line]"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Output].ExternalColumns[Product line]"
                       length="255"
-                      lineageId="Package\Data Flow Task\Source_ProductLine.Outputs[Excel Source Output].Columns[Product line]"
+                      lineageId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Output].Columns[Product line]"
                       name="Product line"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_ProductLine.Outputs[Excel Source Output].Columns[ProductLineID]"
+                      refId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Output].Columns[ProductLineID]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Source_ProductLine.Outputs[Excel Source Output].ExternalColumns[ProductLineID]"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Output].ExternalColumns[ProductLineID]"
                       length="255"
-                      lineageId="Package\Data Flow Task\Source_ProductLine.Outputs[Excel Source Output].Columns[ProductLineID]"
+                      lineageId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Output].Columns[ProductLineID]"
                       name="ProductLineID"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Source_ProductLine.Outputs[Excel Source Output].ExternalColumns[Product line]"
+                      refId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Output].ExternalColumns[Product line]"
                       dataType="wstr"
                       length="255"
                       name="Product line" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Source_ProductLine.Outputs[Excel Source Output].ExternalColumns[ProductLineID]"
+                      refId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Output].ExternalColumns[ProductLineID]"
                       dataType="wstr"
                       length="255"
                       name="ProductLineID" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Source_ProductLine.Outputs[Excel Source Error Output]"
+                  refId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Error Output]"
                   isErrorOut="true"
                   name="Excel Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_ProductLine.Outputs[Excel Source Error Output].Columns[Product line]"
+                      refId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Error Output].Columns[Product line]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Data Flow Task\Source_ProductLine.Outputs[Excel Source Error Output].Columns[Product line]"
+                      lineageId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Error Output].Columns[Product line]"
                       name="Product line" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_ProductLine.Outputs[Excel Source Error Output].Columns[ProductLineID]"
+                      refId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Error Output].Columns[ProductLineID]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Data Flow Task\Source_ProductLine.Outputs[Excel Source Error Output].Columns[ProductLineID]"
+                      lineageId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Error Output].Columns[ProductLineID]"
                       name="ProductLineID" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_ProductLine.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Source_ProductLine.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_ProductLine.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Source_ProductLine.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -524,7 +524,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Source_supermarket_sales"
+              refId="Package\Extract Data from Stage\Source_supermarket_sales"
               componentClassID="Microsoft.ExcelSource"
               contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Excel Source"
@@ -565,7 +565,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Source_supermarket_sales.Connections[OleDbConnection]"
+                  refId="Package\Extract Data from Stage\Source_supermarket_sales.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
                   connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
                   description="The OLE DB runtime connection used to access the database."
@@ -573,317 +573,317 @@
               </connections>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output]"
+                  refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output]"
                   name="Excel Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Invoice ID]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Invoice ID]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Invoice ID]"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Invoice ID]"
                       length="255"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Invoice ID]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Invoice ID]"
                       name="Invoice ID"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Branch]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Branch]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Branch]"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Branch]"
                       length="255"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Branch]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Branch]"
                       name="Branch"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Customer type]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Customer type]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Customer type]"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Customer type]"
                       length="255"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Customer type]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Customer type]"
                       name="Customer type"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Gender]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Gender]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Gender]"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Gender]"
                       length="255"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Gender]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Gender]"
                       name="Gender"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[ProductID]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[ProductID]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[ProductID]"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[ProductID]"
                       length="255"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[ProductID]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[ProductID]"
                       name="ProductID"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Quantity]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Quantity]"
                       dataType="r8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Quantity]"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Quantity]"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Quantity]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Quantity]"
                       name="Quantity"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Tax 5%]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Tax 5%]"
                       dataType="r8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Tax 5%]"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Tax 5%]"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Tax 5%]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Tax 5%]"
                       name="Tax 5%"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Total]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Total]"
                       dataType="r8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Total]"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Total]"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Total]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Total]"
                       name="Total"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Date]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Date]"
                       dataType="date"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Date]"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Date]"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Date]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Date]"
                       name="Date"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Time]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Time]"
                       dataType="date"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Time]"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Time]"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Time]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Time]"
                       name="Time"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Payment]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Payment]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Payment]"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Payment]"
                       length="255"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Payment]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Payment]"
                       name="Payment"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[cogs]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[cogs]"
                       dataType="r8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[cogs]"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[cogs]"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[cogs]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[cogs]"
                       name="cogs"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[gross margin percentage]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[gross margin percentage]"
                       dataType="r8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[gross margin percentage]"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[gross margin percentage]"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[gross margin percentage]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[gross margin percentage]"
                       name="gross margin percentage"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[gross income]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[gross income]"
                       dataType="r8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[gross income]"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[gross income]"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[gross income]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[gross income]"
                       name="gross income"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Rating]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Rating]"
                       dataType="r8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Rating]"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Rating]"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Rating]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Rating]"
                       name="Rating"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Invoice ID]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Invoice ID]"
                       dataType="wstr"
                       length="255"
                       name="Invoice ID" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Branch]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Branch]"
                       dataType="wstr"
                       length="255"
                       name="Branch" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Customer type]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Customer type]"
                       dataType="wstr"
                       length="255"
                       name="Customer type" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Gender]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Gender]"
                       dataType="wstr"
                       length="255"
                       name="Gender" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[ProductID]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[ProductID]"
                       dataType="wstr"
                       length="255"
                       name="ProductID" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Quantity]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Quantity]"
                       dataType="r8"
                       name="Quantity" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Tax 5%]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Tax 5%]"
                       dataType="r8"
                       name="Tax 5%" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Total]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Total]"
                       dataType="r8"
                       name="Total" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Date]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Date]"
                       dataType="date"
                       name="Date" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Time]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Time]"
                       dataType="date"
                       name="Time" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Payment]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Payment]"
                       dataType="wstr"
                       length="255"
                       name="Payment" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[cogs]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[cogs]"
                       dataType="r8"
                       name="cogs" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[gross margin percentage]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[gross margin percentage]"
                       dataType="r8"
                       name="gross margin percentage" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[gross income]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[gross income]"
                       dataType="r8"
                       name="gross income" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Rating]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Rating]"
                       dataType="r8"
                       name="Rating" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output]"
+                  refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output]"
                   isErrorOut="true"
                   name="Excel Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Invoice ID]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Invoice ID]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Invoice ID]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Invoice ID]"
                       name="Invoice ID" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Branch]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Branch]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Branch]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Branch]"
                       name="Branch" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Customer type]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Customer type]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Customer type]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Customer type]"
                       name="Customer type" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Gender]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Gender]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Gender]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Gender]"
                       name="Gender" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[ProductID]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[ProductID]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[ProductID]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[ProductID]"
                       name="ProductID" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Quantity]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Quantity]"
                       dataType="r8"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Quantity]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Quantity]"
                       name="Quantity" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Tax 5%]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Tax 5%]"
                       dataType="r8"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Tax 5%]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Tax 5%]"
                       name="Tax 5%" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Total]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Total]"
                       dataType="r8"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Total]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Total]"
                       name="Total" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Date]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Date]"
                       dataType="date"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Date]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Date]"
                       name="Date" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Time]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Time]"
                       dataType="date"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Time]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Time]"
                       name="Time" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Payment]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Payment]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Payment]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Payment]"
                       name="Payment" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[cogs]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[cogs]"
                       dataType="r8"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[cogs]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[cogs]"
                       name="cogs" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[gross margin percentage]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[gross margin percentage]"
                       dataType="r8"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[gross margin percentage]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[gross margin percentage]"
                       name="gross margin percentage" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[gross income]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[gross income]"
                       dataType="r8"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[gross income]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[gross income]"
                       name="gross income" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Rating]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Rating]"
                       dataType="r8"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Rating]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Rating]"
                       name="Rating" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -892,7 +892,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Stage_city"
+              refId="Package\Extract Data from Stage\Stage_city"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
@@ -949,7 +949,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Stage_city.Connections[OleDbConnection]"
+                  refId="Package\Extract Data from Stage\Stage_city.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[(local).BI_Stage]"
                   connectionManagerRefId="Package.ConnectionManagers[(local).BI_Stage]"
                   description="The OLE DB runtime connection used to access the database."
@@ -957,36 +957,36 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\Stage_city.Inputs[OLE DB Destination Input]"
+                  refId="Package\Extract Data from Stage\Stage_city.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Stage_city.Inputs[OLE DB Destination Input].Columns[Branch]"
+                      refId="Package\Extract Data from Stage\Stage_city.Inputs[OLE DB Destination Input].Columns[Branch]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="Branch"
-                      externalMetadataColumnId="Package\Data Flow Task\Stage_city.Inputs[OLE DB Destination Input].ExternalColumns[Branch]"
-                      lineageId="Package\Data Flow Task\Source_city.Outputs[Excel Source Output].Columns[Branch]" />
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_city.Inputs[OLE DB Destination Input].ExternalColumns[Branch]"
+                      lineageId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Output].Columns[Branch]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Stage_city.Inputs[OLE DB Destination Input].Columns[City]"
+                      refId="Package\Extract Data from Stage\Stage_city.Inputs[OLE DB Destination Input].Columns[City]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="City"
-                      externalMetadataColumnId="Package\Data Flow Task\Stage_city.Inputs[OLE DB Destination Input].ExternalColumns[City]"
-                      lineageId="Package\Data Flow Task\Source_city.Outputs[Excel Source Output].Columns[City]" />
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_city.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                      lineageId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Output].Columns[City]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Stage_city.Inputs[OLE DB Destination Input].ExternalColumns[Branch]"
+                      refId="Package\Extract Data from Stage\Stage_city.Inputs[OLE DB Destination Input].ExternalColumns[Branch]"
                       dataType="wstr"
                       length="255"
                       name="Branch" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Stage_city.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                      refId="Package\Extract Data from Stage\Stage_city.Inputs[OLE DB Destination Input].ExternalColumns[City]"
                       dataType="wstr"
                       length="255"
                       name="City" />
@@ -995,22 +995,22 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Stage_city.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Extract Data from Stage\Stage_city.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Data Flow Task\Stage_city.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Extract Data from Stage\Stage_city.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Stage_city.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Extract Data from Stage\Stage_city.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Stage_city.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Extract Data from Stage\Stage_city.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Stage_city.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Extract Data from Stage\Stage_city.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Stage_city.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Extract Data from Stage\Stage_city.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1019,7 +1019,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Stage_product"
+              refId="Package\Extract Data from Stage\Stage_product"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
@@ -1076,7 +1076,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Stage_product.Connections[OleDbConnection]"
+                  refId="Package\Extract Data from Stage\Stage_product.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[(local).BI_Stage]"
                   connectionManagerRefId="Package.ConnectionManagers[(local).BI_Stage]"
                   description="The OLE DB runtime connection used to access the database."
@@ -1084,46 +1084,46 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\Stage_product.Inputs[OLE DB Destination Input]"
+                  refId="Package\Extract Data from Stage\Stage_product.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Stage_product.Inputs[OLE DB Destination Input].Columns[ProductID]"
+                      refId="Package\Extract Data from Stage\Stage_product.Inputs[OLE DB Destination Input].Columns[ProductID]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="ProductID"
-                      externalMetadataColumnId="Package\Data Flow Task\Stage_product.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
-                      lineageId="Package\Data Flow Task\Source_product.Outputs[Excel Source Output].Columns[ProductID]" />
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_product.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                      lineageId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output].Columns[ProductID]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Stage_product.Inputs[OLE DB Destination Input].Columns[Unit price]"
+                      refId="Package\Extract Data from Stage\Stage_product.Inputs[OLE DB Destination Input].Columns[Unit price]"
                       cachedDataType="r8"
                       cachedName="Unit price"
-                      externalMetadataColumnId="Package\Data Flow Task\Stage_product.Inputs[OLE DB Destination Input].ExternalColumns[Unit price]"
-                      lineageId="Package\Data Flow Task\Source_product.Outputs[Excel Source Output].Columns[Unit price]" />
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_product.Inputs[OLE DB Destination Input].ExternalColumns[Unit price]"
+                      lineageId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output].Columns[Unit price]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Stage_product.Inputs[OLE DB Destination Input].Columns[ProductLine]"
+                      refId="Package\Extract Data from Stage\Stage_product.Inputs[OLE DB Destination Input].Columns[ProductLine]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="ProductLine"
-                      externalMetadataColumnId="Package\Data Flow Task\Stage_product.Inputs[OLE DB Destination Input].ExternalColumns[ProductLine]"
-                      lineageId="Package\Data Flow Task\Source_product.Outputs[Excel Source Output].Columns[ProductLine]" />
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_product.Inputs[OLE DB Destination Input].ExternalColumns[ProductLine]"
+                      lineageId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output].Columns[ProductLine]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Stage_product.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                      refId="Package\Extract Data from Stage\Stage_product.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
                       dataType="wstr"
                       length="255"
                       name="ProductID" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Stage_product.Inputs[OLE DB Destination Input].ExternalColumns[Unit price]"
+                      refId="Package\Extract Data from Stage\Stage_product.Inputs[OLE DB Destination Input].ExternalColumns[Unit price]"
                       dataType="r8"
                       name="Unit price" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Stage_product.Inputs[OLE DB Destination Input].ExternalColumns[ProductLine]"
+                      refId="Package\Extract Data from Stage\Stage_product.Inputs[OLE DB Destination Input].ExternalColumns[ProductLine]"
                       dataType="wstr"
                       length="255"
                       name="ProductLine" />
@@ -1132,22 +1132,22 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Stage_product.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Extract Data from Stage\Stage_product.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Data Flow Task\Stage_product.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Extract Data from Stage\Stage_product.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Stage_product.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Extract Data from Stage\Stage_product.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Stage_product.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Extract Data from Stage\Stage_product.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Stage_product.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Extract Data from Stage\Stage_product.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Stage_product.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Extract Data from Stage\Stage_product.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1156,7 +1156,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Stage_ProductLine"
+              refId="Package\Extract Data from Stage\Stage_ProductLine"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
@@ -1213,7 +1213,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Stage_ProductLine.Connections[OleDbConnection]"
+                  refId="Package\Extract Data from Stage\Stage_ProductLine.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[(local).BI_Stage]"
                   connectionManagerRefId="Package.ConnectionManagers[(local).BI_Stage]"
                   description="The OLE DB runtime connection used to access the database."
@@ -1221,70 +1221,60 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\Stage_ProductLine.Inputs[OLE DB Destination Input]"
+                  refId="Package\Extract Data from Stage\Stage_ProductLine.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Stage_ProductLine.Inputs[OLE DB Destination Input].Columns[Product line]"
+                      refId="Package\Extract Data from Stage\Stage_ProductLine.Inputs[OLE DB Destination Input].Columns[Product line]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="Product line"
-                      externalMetadataColumnId="Package\Data Flow Task\Stage_ProductLine.Inputs[OLE DB Destination Input].ExternalColumns[Product line]"
-                      lineageId="Package\Data Flow Task\Source_ProductLine.Outputs[Excel Source Output].Columns[Product line]" />
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_ProductLine.Inputs[OLE DB Destination Input].ExternalColumns[Product line]"
+                      lineageId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Output].Columns[Product line]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Stage_ProductLine.Inputs[OLE DB Destination Input].Columns[ProductLineID]"
+                      refId="Package\Extract Data from Stage\Stage_ProductLine.Inputs[OLE DB Destination Input].Columns[ProductLineID]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="ProductLineID"
-                      externalMetadataColumnId="Package\Data Flow Task\Stage_ProductLine.Inputs[OLE DB Destination Input].ExternalColumns[ProductLineID]"
-                      lineageId="Package\Data Flow Task\Source_ProductLine.Outputs[Excel Source Output].Columns[ProductLineID]" />
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_ProductLine.Inputs[OLE DB Destination Input].ExternalColumns[ProductLineID]"
+                      lineageId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Output].Columns[ProductLineID]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Stage_ProductLine.Inputs[OLE DB Destination Input].ExternalColumns[Product line]"
+                      refId="Package\Extract Data from Stage\Stage_ProductLine.Inputs[OLE DB Destination Input].ExternalColumns[Product line]"
                       dataType="wstr"
                       length="255"
                       name="Product line" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Stage_ProductLine.Inputs[OLE DB Destination Input].ExternalColumns[ProductLineID]"
+                      refId="Package\Extract Data from Stage\Stage_ProductLine.Inputs[OLE DB Destination Input].ExternalColumns[ProductLineID]"
                       dataType="wstr"
                       length="255"
                       name="ProductLineID" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\Stage_ProductLine.Inputs[OLE DB Destination Input].ExternalColumns[Branch]"
-                      dataType="wstr"
-                      length="255"
-                      name="Branch" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\Stage_ProductLine.Inputs[OLE DB Destination Input].ExternalColumns[City]"
-                      dataType="wstr"
-                      length="255"
-                      name="City" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Stage_ProductLine.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Extract Data from Stage\Stage_ProductLine.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Data Flow Task\Stage_ProductLine.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Extract Data from Stage\Stage_ProductLine.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Stage_ProductLine.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Extract Data from Stage\Stage_ProductLine.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Stage_ProductLine.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Extract Data from Stage\Stage_ProductLine.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Stage_ProductLine.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Extract Data from Stage\Stage_ProductLine.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Stage_ProductLine.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Extract Data from Stage\Stage_ProductLine.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1293,7 +1283,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Stage_supermarket_sales"
+              refId="Package\Extract Data from Stage\Stage_supermarket_sales"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
@@ -1350,7 +1340,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Stage_supermarket_sales.Connections[OleDbConnection]"
+                  refId="Package\Extract Data from Stage\Stage_supermarket_sales.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[(local).BI_Stage]"
                   connectionManagerRefId="Package.ConnectionManagers[(local).BI_Stage]"
                   description="The OLE DB runtime connection used to access the database."
@@ -1358,203 +1348,198 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input]"
+                  refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[Invoice ID]"
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[Invoice ID]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="Invoice ID"
-                      externalMetadataColumnId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Invoice ID]"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Invoice ID]" />
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Invoice ID]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Invoice ID]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[Branch]"
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[Branch]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="Branch"
-                      externalMetadataColumnId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Branch]"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Branch]" />
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Branch]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Branch]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[Customer type]"
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[Customer type]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="Customer type"
-                      externalMetadataColumnId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Customer type]"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Customer type]" />
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Customer type]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Customer type]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[Gender]"
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[Gender]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="Gender"
-                      externalMetadataColumnId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Gender]" />
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Gender]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[ProductID]"
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[ProductID]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="ProductID"
-                      externalMetadataColumnId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[ProductID]" />
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[ProductID]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[Quantity]"
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[Quantity]"
                       cachedDataType="r8"
                       cachedName="Quantity"
-                      externalMetadataColumnId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Quantity]" />
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Quantity]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[Tax 5%]"
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[Tax 5%]"
                       cachedDataType="r8"
                       cachedName="Tax 5%"
-                      externalMetadataColumnId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Tax 5%]"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Tax 5%]" />
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Tax 5%]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Tax 5%]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[Total]"
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[Total]"
                       cachedDataType="r8"
                       cachedName="Total"
-                      externalMetadataColumnId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Total]"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Total]" />
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Total]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Total]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[Date]"
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[Date]"
                       cachedDataType="date"
                       cachedName="Date"
-                      externalMetadataColumnId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Date]" />
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Date]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[Time]"
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[Time]"
                       cachedDataType="date"
                       cachedName="Time"
-                      externalMetadataColumnId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Time]"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Time]" />
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Time]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Time]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[Payment]"
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[Payment]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="Payment"
-                      externalMetadataColumnId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Payment]"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Payment]" />
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Payment]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Payment]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[cogs]"
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[cogs]"
                       cachedDataType="r8"
                       cachedName="cogs"
-                      externalMetadataColumnId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[cogs]"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[cogs]" />
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[cogs]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[cogs]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[gross margin percentage]"
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[gross margin percentage]"
                       cachedDataType="r8"
                       cachedName="gross margin percentage"
-                      externalMetadataColumnId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[gross margin percentage]"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[gross margin percentage]" />
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[gross margin percentage]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[gross margin percentage]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[gross income]"
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[gross income]"
                       cachedDataType="r8"
                       cachedName="gross income"
-                      externalMetadataColumnId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[gross income]"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[gross income]" />
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[gross income]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[gross income]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[Rating]"
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[Rating]"
                       cachedDataType="r8"
                       cachedName="Rating"
-                      externalMetadataColumnId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Rating]"
-                      lineageId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Rating]" />
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Rating]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Rating]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Invoice ID]"
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Invoice ID]"
                       dataType="wstr"
                       length="255"
                       name="Invoice ID" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Branch]"
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Branch]"
                       dataType="wstr"
                       length="255"
                       name="Branch" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Customer type]"
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Customer type]"
                       dataType="wstr"
                       length="255"
                       name="Customer type" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
                       dataType="wstr"
                       length="255"
                       name="Gender" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
                       dataType="wstr"
                       length="255"
                       name="ProductID" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
                       dataType="r8"
                       name="Quantity" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Tax 5%]"
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Tax 5%]"
                       dataType="r8"
                       name="Tax 5%" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Total]"
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Total]"
                       dataType="r8"
                       name="Total" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
                       dataType="dbTimeStamp"
                       name="Date" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Time]"
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Time]"
                       dataType="dbTimeStamp"
                       name="Time" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Payment]"
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Payment]"
                       dataType="wstr"
                       length="255"
                       name="Payment" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[cogs]"
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[cogs]"
                       dataType="r8"
                       name="cogs" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[gross margin percentage]"
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[gross margin percentage]"
                       dataType="r8"
                       name="gross margin percentage" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[gross income]"
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[gross income]"
                       dataType="r8"
                       name="gross income" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Rating]"
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Rating]"
                       dataType="r8"
                       name="Rating" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[City]"
-                      dataType="wstr"
-                      length="255"
-                      name="City" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Stage_supermarket_sales.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Extract Data from Stage\Stage_supermarket_sales.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Stage_supermarket_sales.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Stage_supermarket_sales.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Extract Data from Stage\Stage_supermarket_sales.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Stage_supermarket_sales.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Stage_supermarket_sales.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Extract Data from Stage\Stage_supermarket_sales.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1565,25 +1550,25 @@
           </components>
           <paths>
             <path
-              refId="Package\Data Flow Task.Paths[Excel Source Output]"
-              endId="Package\Data Flow Task\Stage_city.Inputs[OLE DB Destination Input]"
+              refId="Package\Extract Data from Stage.Paths[Excel Source Output]"
+              endId="Package\Extract Data from Stage\Stage_city.Inputs[OLE DB Destination Input]"
               name="Excel Source Output"
-              startId="Package\Data Flow Task\Source_city.Outputs[Excel Source Output]" />
+              startId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Excel Source Output1]"
-              endId="Package\Data Flow Task\Stage_product.Inputs[OLE DB Destination Input]"
+              refId="Package\Extract Data from Stage.Paths[Excel Source Output1]"
+              endId="Package\Extract Data from Stage\Stage_product.Inputs[OLE DB Destination Input]"
               name="Excel Source Output"
-              startId="Package\Data Flow Task\Source_product.Outputs[Excel Source Output]" />
+              startId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Excel Source Output2]"
-              endId="Package\Data Flow Task\Stage_ProductLine.Inputs[OLE DB Destination Input]"
+              refId="Package\Extract Data from Stage.Paths[Excel Source Output2]"
+              endId="Package\Extract Data from Stage\Stage_ProductLine.Inputs[OLE DB Destination Input]"
               name="Excel Source Output"
-              startId="Package\Data Flow Task\Source_ProductLine.Outputs[Excel Source Output]" />
+              startId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Excel Source Output3]"
-              endId="Package\Data Flow Task\Stage_supermarket_sales.Inputs[OLE DB Destination Input]"
+              refId="Package\Extract Data from Stage.Paths[Excel Source Output3]"
+              endId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input]"
               name="Excel Source Output"
-              startId="Package\Data Flow Task\Source_supermarket_sales.Outputs[Excel Source Output]" />
+              startId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -1644,6 +1629,30 @@
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\Set LSET"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{850ca0d6-b678-4762-b88a-e54ec4cf29ff}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Set LSET"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{9E60C883-B345-40A0-A28C-5E718B5DDA33}"
+          SQLTask:SqlStatementSource="DECLARE @TableName NVARCHAR(255) = ?;&#xA;&#xA;&#xA;UPDATE [AuditTableLog]&#xA;SET CET = GETDATE()&#xA;WHERE TableName = @TableName;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::TableName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\Truncate Stage Tables"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
@@ -1663,6 +1672,14 @@
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{E04DAA59-048C-4AA1-9289-8C404DCD5A20}"
+      DTS:From="Package\Extract Data from Stage"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Set LSET" />
+    <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
       DTS:CreationName=""
       DTS:DTSID="{49a74a78-ed46-4994-9d71-66f011a7ce7e}"
@@ -1677,7 +1694,7 @@
       DTS:From="Package\Get CET, LSET"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 6"
-      DTS:To="Package\Data Flow Task" />
+      DTS:To="Package\Extract Data from Stage" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
       DTS:CreationName=""
@@ -1698,11 +1715,11 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="151,42"
-          Id="Package\Data Flow Task"
-          TopLeft="493,326" />
+          Size="192,42"
+          Id="Package\Extract Data from Stage"
+          TopLeft="480,335" />
         <NodeLayout
           Size="182,42"
           Id="Package\Get CET, LSET"
@@ -1712,9 +1729,35 @@
           Id="Package\Set CET"
           TopLeft="509,188" />
         <NodeLayout
+          Size="121,42"
+          Id="Package\Set LSET"
+          TopLeft="510,403" />
+        <NodeLayout
           Size="184,42"
           Id="Package\Truncate Stage Tables"
           TopLeft="482,118" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="573.25,377">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,26"
+              Start="0,0"
+              End="0,18.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
           TopLeft="570,230">
@@ -1739,18 +1782,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="569.75,303">
+          TopLeft="573.5,303">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,23"
+              EndConnector="0,32"
               Start="0,0"
-              End="0,15.5">
+              End="0,24.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,15.5" />
+                    End="0,24.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1785,44 +1828,44 @@
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Data Flow Task">
+    design-time-name="Package\Extract Data from Stage">
     <LayoutInfo>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="167,42"
-          Id="Package\Data Flow Task\Stage_ProductLine"
+          Id="Package\Extract Data from Stage\Stage_ProductLine"
           TopLeft="614,164" />
         <NodeLayout
           Size="205,42"
-          Id="Package\Data Flow Task\Source_supermarket_sales"
+          Id="Package\Extract Data from Stage\Source_supermarket_sales"
           TopLeft="815,53" />
         <NodeLayout
           Size="172,42"
-          Id="Package\Data Flow Task\Source_ProductLine"
+          Id="Package\Extract Data from Stage\Source_ProductLine"
           TopLeft="611,50" />
         <NodeLayout
           Size="147,42"
-          Id="Package\Data Flow Task\Stage_product"
+          Id="Package\Extract Data from Stage\Stage_product"
           TopLeft="428,169" />
         <NodeLayout
           Size="153,42"
-          Id="Package\Data Flow Task\Source_product"
+          Id="Package\Extract Data from Stage\Source_product"
           TopLeft="429,51" />
         <NodeLayout
           Size="133,42"
-          Id="Package\Data Flow Task\Source_city"
+          Id="Package\Extract Data from Stage\Source_city"
           TopLeft="259,52" />
         <NodeLayout
           Size="128,42"
-          Id="Package\Data Flow Task\Stage_city"
+          Id="Package\Extract Data from Stage\Stage_city"
           TopLeft="259,171" />
         <NodeLayout
           Size="199,42"
-          Id="Package\Data Flow Task\Stage_supermarket_sales"
+          Id="Package\Extract Data from Stage\Stage_supermarket_sales"
           TopLeft="825,164" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Excel Source Output2]"
+          Id="Package\Extract Data from Stage.Paths[Excel Source Output2]"
           TopLeft="697.25,92">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1844,7 +1887,7 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Excel Source Output1]"
+          Id="Package\Extract Data from Stage.Paths[Excel Source Output1]"
           TopLeft="503.5,93">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1866,7 +1909,7 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Excel Source Output]"
+          Id="Package\Extract Data from Stage.Paths[Excel Source Output]"
           TopLeft="324.25,94">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1888,7 +1931,7 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Excel Source Output3]"
+          Id="Package\Extract Data from Stage.Paths[Excel Source Output3]"
           TopLeft="921,95">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1913,7 +1956,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Stage_ProductLine">
+    design-time-name="Package\Extract Data from Stage\Stage_ProductLine">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1926,7 +1969,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Source_supermarket_sales">
+    design-time-name="Package\Extract Data from Stage\Source_supermarket_sales">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1939,7 +1982,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Source_ProductLine">
+    design-time-name="Package\Extract Data from Stage\Source_ProductLine">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1952,7 +1995,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Stage_product">
+    design-time-name="Package\Extract Data from Stage\Stage_product">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1965,7 +2008,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Source_product">
+    design-time-name="Package\Extract Data from Stage\Source_product">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1978,7 +2021,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Source_city">
+    design-time-name="Package\Extract Data from Stage\Source_city">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1991,7 +2034,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Stage_city">
+    design-time-name="Package\Extract Data from Stage\Stage_city">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2004,7 +2047,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Stage_supermarket_sales">
+    design-time-name="Package\Extract Data from Stage\Stage_supermarket_sales">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

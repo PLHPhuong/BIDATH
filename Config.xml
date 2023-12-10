@@ -246,7 +246,7 @@
                             [City] [nvarchar](255) NULL,
                             [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                             [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
-                        )d
+                        )
                     </CreationQuery>
                 </Table>
                 <Table>

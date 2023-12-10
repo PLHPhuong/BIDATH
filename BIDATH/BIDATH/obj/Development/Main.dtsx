@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{1523607B-16FD-48CD-AB12-0ADCD267FAE8}">
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{E3C614A2-8662-4CF9-A5CE-ABFCF6864825}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -23,8 +23,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="ConfigFilePath">
       <DTS:VariableValue
-        DTS:DataType="8"
-        xml:space="preserve"></DTS:VariableValue>
+        DTS:DataType="8">D:\BI\DATH\BIDATH\Config.xml</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -54,19 +53,27 @@
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\PreCreation"
+      DTS:refId="Package\Set Up"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Set up Databases including create tables, triggers, ..."
       DTS:DTSID="{C23B48FD-E09B-4610-9661-C7F92AC344D8}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="PreCreation"
+      DTS:ObjectName="Set Up"
       DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
         <ExecutePackageTask>
           <UseProjectReference>True</UseProjectReference>
           <PackageName>SetUp.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>RedoSetUp</ParameterName>
+            <BindedVariableOrParameterName>User::RedoSetUp</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>ConfigFilePath</ParameterName>
+            <BindedVariableOrParameterName>User::ConfigFilePath</BindedVariableOrParameterName>
+          </ParameterAssignment>
         </ExecutePackageTask>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -81,7 +88,7 @@
       DTS:From="Package\Expression Task"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\PreCreation" />
+      DTS:To="Package\Set Up" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -100,12 +107,12 @@
           Id="Package\Expression Task"
           TopLeft="79,148" />
         <NodeLayout
-          Size="134,42"
-          Id="Package\PreCreation"
+          Size="110,42"
+          Id="Package\Set Up"
           TopLeft="95,238" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="159.25,190">
+          TopLeft="153.25,190">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
