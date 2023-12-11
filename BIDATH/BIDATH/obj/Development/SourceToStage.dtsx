@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="82"
-  DTS:VersionGUID="{98956D03-ECF6-4769-968F-DACA669167B5}">
+  DTS:VersionBuild="85"
+  DTS:VersionGUID="{F673885E-D307-4A38-8C2A-40F145E701E6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1731,7 +1731,7 @@
         <NodeLayout
           Size="121,42"
           Id="Package\Set LSET"
-          TopLeft="510,403" />
+          TopLeft="510,414" />
         <NodeLayout
           Size="184,42"
           Id="Package\Truncate Stage Tables"
@@ -1742,14 +1742,14 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,26"
+              EndConnector="0,37"
               Start="0,0"
-              End="0,18.5">
+              End="0,29.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.5" />
+                    End="0,29.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1824,6 +1824,13 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <AnnotationLayout
+          Text="CET,LSET and get not good yet&#xD;&#xA;"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="192,60"
+          Id="327c09e5-e0d5-4daf-85f4-f55b16b9901e"
+          TopLeft="236,226" />
       </GraphLayout>
     </LayoutInfo>
   </Package>

@@ -11,14 +11,16 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="7"
-  DTS:VersionGUID="{E3C614A2-8662-4CF9-A5CE-ABFCF6864825}">
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{62D1640E-21BF-4409-820F-DAE525D879A1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{E1070510-A068-41BD-B8E0-A4998062985C}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Project::ConfigFilePath]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="ConfigFilePath">

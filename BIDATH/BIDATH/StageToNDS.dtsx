@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package2"
   DTS:PackageType="5"
-  DTS:VersionBuild="60"
-  DTS:VersionGUID="{E3DD1110-19A6-4AB8-BAAC-E1AA679D11FB}">
+  DTS:VersionBuild="61"
+  DTS:VersionGUID="{9A17BBDF-7894-4CC9-9F58-DFDA6365169C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -62,6 +62,17 @@
       DTS:ObjectName="CET">
       <DTS:VariableValue
         DTS:DataType="7">12/4/2023 11:04:22 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9F747BC6-0388-4EDF-AB15-2B033A823D7A}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Project::ConfigFilePath]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ConfigFilePath">
+      <DTS:VariableValue
+        DTS:DataType="8">D:\BI\DATH\BIDATH\Config.xml</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -12118,72 +12129,77 @@ WHERE
               name="Lookup No Match Output"
               startId="Package\SupermarketSales\Lookup SupermarketSale.Outputs[Lookup No Match Output]" />
             <path
-              refId="Package\SupermarketSales.Paths[Merge Join Output3]"
+              refId="Package\SupermarketSales.Paths[Merge Join Output]"
               endId="Package\SupermarketSales\Derived Column.Inputs[Derived Column Input]"
               name="Merge Join Output"
               startId="Package\SupermarketSales\Merge Join 1.Outputs[Merge Join Output]" />
             <path
-              refId="Package\SupermarketSales.Paths[Merge Join Output4]"
+              refId="Package\SupermarketSales.Paths[Merge Join Output1]"
               endId="Package\SupermarketSales\Sort 8.Inputs[Sort Input]"
               name="Merge Join Output"
               startId="Package\SupermarketSales\Merge Join 2.Outputs[Merge Join Output]" />
             <path
-              refId="Package\SupermarketSales.Paths[Merge Join Output]"
+              refId="Package\SupermarketSales.Paths[Merge Join Output2]"
               endId="Package\SupermarketSales\Conditional Split.Inputs[Conditional Split Input]"
               name="Merge Join Output"
               startId="Package\SupermarketSales\Merge Join 4.Outputs[Merge Join Output]" />
             <path
-              refId="Package\SupermarketSales.Paths[Merge Join Output1]"
+              refId="Package\SupermarketSales.Paths[Merge Join Output3]"
               endId="Package\SupermarketSales\Sort 9.Inputs[Sort Input]"
               name="Merge Join Output"
               startId="Package\SupermarketSales\Merge Join 3.Outputs[Merge Join Output]" />
             <path
-              refId="Package\SupermarketSales.Paths[Merge Join Output2]"
+              refId="Package\SupermarketSales.Paths[Merge Join Output4]"
               endId="Package\SupermarketSales\Sort 5.Inputs[Sort Input]"
               name="Merge Join Output"
               startId="Package\SupermarketSales\Merge Join.Outputs[Merge Join Output]" />
-            <path
-              refId="Package\SupermarketSales.Paths[OLE DB Source Output]"
-              endId="Package\SupermarketSales\Sort.Inputs[Sort Input]"
-              name="OLE DB Source Output"
-              startId="Package\SupermarketSales\NDS Product.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\SupermarketSales.Paths[OLE DB Source Output1]"
-              endId="Package\SupermarketSales\Sort 2.Inputs[Sort Input]"
-              name="OLE DB Source Output"
-              startId="Package\SupermarketSales\NDS Payment.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\SupermarketSales.Paths[OLE DB Source Output2]"
-              endId="Package\SupermarketSales\Sort 1.Inputs[Sort Input]"
-              name="OLE DB Source Output"
-              startId="Package\SupermarketSales\NDS Productline.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\SupermarketSales.Paths[OLE DB Source Output3]"
-              endId="Package\SupermarketSales\Sort 3.Inputs[Sort Input]"
-              name="OLE DB Source Output"
-              startId="Package\SupermarketSales\NDS Customer.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\SupermarketSales.Paths[OLE DB Source Output4]"
-              endId="Package\SupermarketSales\Sort 6.Inputs[Sort Input]"
-              name="OLE DB Source Output"
-              startId="Package\SupermarketSales\Stage supermarket_sales.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\SupermarketSales.Paths[OLE DB Source Output5]"
               endId="Package\SupermarketSales\Sort 4.Inputs[Sort Input]"
               name="OLE DB Source Output"
               startId="Package\SupermarketSales\NDS City.Outputs[OLE DB Source Output]" />
             <path
+              refId="Package\SupermarketSales.Paths[OLE DB Source Output4]"
+              endId="Package\SupermarketSales\Sort 6.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\SupermarketSales\Stage supermarket_sales.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\SupermarketSales.Paths[OLE DB Source Output3]"
+              endId="Package\SupermarketSales\Sort 3.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\SupermarketSales\NDS Customer.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\SupermarketSales.Paths[OLE DB Source Output1]"
+              endId="Package\SupermarketSales\Sort 2.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\SupermarketSales\NDS Payment.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\SupermarketSales.Paths[OLE DB Source Output]"
+              endId="Package\SupermarketSales\Sort.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\SupermarketSales\NDS Product.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\SupermarketSales.Paths[OLE DB Source Output2]"
+              endId="Package\SupermarketSales\Sort 1.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\SupermarketSales\NDS Productline.Outputs[OLE DB Source Output]" />
+            <path
               refId="Package\SupermarketSales.Paths[Sort Output8]"
+              endId="Package\SupermarketSales\Merge Join.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\SupermarketSales\Sort 1.Outputs[Sort Output]" />
+            <path
+              refId="Package\SupermarketSales.Paths[Sort Output]"
               endId="Package\SupermarketSales\Merge Join 2.Inputs[Merge Join Left Input]"
               name="Sort Output"
               startId="Package\SupermarketSales\Sort 7.Outputs[Sort Output]" />
             <path
-              refId="Package\SupermarketSales.Paths[Sort Output7]"
+              refId="Package\SupermarketSales.Paths[Sort Output1]"
               endId="Package\SupermarketSales\Merge Join.Inputs[Merge Join Left Input]"
               name="Sort Output"
               startId="Package\SupermarketSales\Sort.Outputs[Sort Output]" />
             <path
-              refId="Package\SupermarketSales.Paths[Sort Output6]"
+              refId="Package\SupermarketSales.Paths[Sort Output2]"
               endId="Package\SupermarketSales\Merge Join 4.Inputs[Merge Join Right Input]"
               name="Sort Output"
               startId="Package\SupermarketSales\Sort 5.Outputs[Sort Output]" />
@@ -12198,27 +12214,22 @@ WHERE
               name="Sort Output"
               startId="Package\SupermarketSales\Sort 8.Outputs[Sort Output]" />
             <path
-              refId="Package\SupermarketSales.Paths[Sort Output2]"
+              refId="Package\SupermarketSales.Paths[Sort Output5]"
               endId="Package\SupermarketSales\Merge Join 1.Inputs[Merge Join Right Input]"
               name="Sort Output"
               startId="Package\SupermarketSales\Sort 4.Outputs[Sort Output]" />
             <path
-              refId="Package\SupermarketSales.Paths[Sort Output1]"
+              refId="Package\SupermarketSales.Paths[Sort Output6]"
               endId="Package\SupermarketSales\Merge Join 1.Inputs[Merge Join Left Input]"
               name="Sort Output"
               startId="Package\SupermarketSales\Sort 6.Outputs[Sort Output]" />
             <path
-              refId="Package\SupermarketSales.Paths[Sort Output9]"
+              refId="Package\SupermarketSales.Paths[Sort Output7]"
               endId="Package\SupermarketSales\Merge Join 2.Inputs[Merge Join Right Input]"
               name="Sort Output"
               startId="Package\SupermarketSales\Sort 3.Outputs[Sort Output]" />
             <path
-              refId="Package\SupermarketSales.Paths[Sort Output5]"
-              endId="Package\SupermarketSales\Merge Join.Inputs[Merge Join Right Input]"
-              name="Sort Output"
-              startId="Package\SupermarketSales\Sort 1.Outputs[Sort Output]" />
-            <path
-              refId="Package\SupermarketSales.Paths[Sort Output]"
+              refId="Package\SupermarketSales.Paths[Sort Output9]"
               endId="Package\SupermarketSales\Merge Join 4.Inputs[Merge Join Left Input]"
               name="Sort Output"
               startId="Package\SupermarketSales\Sort 9.Outputs[Sort Output]" />
@@ -12700,29 +12711,6 @@ WHERE
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Product\Lookup Stage_product in NDS_Productline">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Productline]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Product\Stage_product">
     <Properties>
       <Property>
@@ -12732,6 +12720,29 @@ WHERE
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Product\Lookup Stage_product in NDS_Productline">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Productline]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -13260,45 +13271,6 @@ WHERE
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Productline, Customer, City\NDS_Productline">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Productline, Customer, City\NDS_Payment">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Productline, Customer, City\NDS_Customer">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Productline, Customer, City\Stage_supermarket_sales">
     <Properties>
       <Property>
@@ -13335,7 +13307,7 @@ WHERE
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Productline, Customer, City\Stage_ProductLine">
+    design-time-name="Package\Productline, Customer, City\NDS_Customer">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -13349,6 +13321,19 @@ WHERE
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Productline, Customer, City\Stage_city">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Productline, Customer, City\NDS_Payment">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -13420,6 +13405,19 @@ WHERE
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\Productline, Customer, City\Stage_ProductLine">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Productline, Customer, City\Lookup Stage_ProductLine in NDS_Productline">
     <Properties>
       <Property>
@@ -13439,6 +13437,19 @@ WHERE
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Productline, Customer, City\NDS_Productline">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -13564,7 +13575,7 @@ WHERE
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Sort Output7]"
+          Id="Package\SupermarketSales.Paths[Sort Output1]"
           TopLeft="758,260">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13598,7 +13609,7 @@ WHERE
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Sort Output6]"
+          Id="Package\SupermarketSales.Paths[Sort Output2]"
           TopLeft="830.5,412">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13620,7 +13631,7 @@ WHERE
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Sort Output5]"
+          Id="Package\SupermarketSales.Paths[Sort Output8]"
           TopLeft="908.5,258">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13698,7 +13709,7 @@ WHERE
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Sort Output2]"
+          Id="Package\SupermarketSales.Paths[Sort Output5]"
           TopLeft="304.5,264">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13732,7 +13743,7 @@ WHERE
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Sort Output1]"
+          Id="Package\SupermarketSales.Paths[Sort Output6]"
           TopLeft="133.5,269">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13766,7 +13777,7 @@ WHERE
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Sort Output]"
+          Id="Package\SupermarketSales.Paths[Sort Output9]"
           TopLeft="679,554">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13920,7 +13931,7 @@ WHERE
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Merge Join Output2]"
+          Id="Package\SupermarketSales.Paths[Merge Join Output4]"
           TopLeft="828.25,344">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13942,7 +13953,7 @@ WHERE
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Merge Join Output1]"
+          Id="Package\SupermarketSales.Paths[Merge Join Output3]"
           TopLeft="622,498">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -13964,7 +13975,7 @@ WHERE
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Merge Join Output]"
+          Id="Package\SupermarketSales.Paths[Merge Join Output2]"
           TopLeft="830.5,573">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14081,7 +14092,7 @@ WHERE
           Id="Package\SupermarketSales\Derived Column"
           TopLeft="35,387" />
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Merge Join Output3]"
+          Id="Package\SupermarketSales.Paths[Merge Join Output]"
           TopLeft="210.5,357">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14145,7 +14156,7 @@ WHERE
           Id="Package\SupermarketSales\Merge Join 2"
           TopLeft="374,380" />
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Sort Output8]"
+          Id="Package\SupermarketSales.Paths[Sort Output]"
           TopLeft="335,404">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14167,7 +14178,7 @@ WHERE
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Sort Output9]"
+          Id="Package\SupermarketSales.Paths[Sort Output7]"
           TopLeft="446,264">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14189,7 +14200,7 @@ WHERE
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Merge Join Output4]"
+          Id="Package\SupermarketSales.Paths[Merge Join Output1]"
           TopLeft="446.5,422">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14214,7 +14225,59 @@ WHERE
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\SupermarketSales\NDS Payment">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SupermarketSales\NDS Product">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\SupermarketSales\SupermarketSale">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SupermarketSales\Stage supermarket_sales">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SupermarketSales\NDS City">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -14253,19 +14316,6 @@ WHERE
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\SupermarketSales\NDS Payment">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\SupermarketSales\Lookup SupermarketSale">
     <Properties>
       <Property>
@@ -14285,45 +14335,6 @@ WHERE
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\SupermarketSales\NDS Product">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\SupermarketSales\Stage supermarket_sales">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\SupermarketSales\NDS City">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

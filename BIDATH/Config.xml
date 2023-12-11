@@ -327,5 +327,190 @@
             <Triggers>
             </Triggers>
         </Database>
+        <Database>
+            <Name>BI_DDS</Name>
+            <MetaTables>
+                <Table>
+                    <Name>AuditTableLog</Name>
+                    <CreationQuery>
+                        CREATE TABLE AuditTableLog (
+                            AuditTableLogID INT PRIMARY KEY IDENTITY(1,1),
+                            TableName NVARCHAR(255) NOT NULL,
+                            CreatedTime DATETIME2 NOT NULL DEFAULT GETUTCDATE(),
+                            UpdatedTime DATETIME2 DEFAULT GETUTCDATE(),
+                            LSET DATETIME2 DEFAULT GETUTCDATE(),
+                            CET DATETIME2 DEFAULT GETUTCDATE(),
+                        );
+                    </CreationQuery>
+                </Table>
+            </MetaTables>
+            <TriggerOnDatabase>
+                <Trigger>
+                    <Name>tr_CreateTable</Name>
+                    <CreationQuery>
+                        CREATE TRIGGER tr_CreateTable
+                        ON DATABASE
+                        FOR CREATE_TABLE
+                        AS
+                        BEGIN
+                            BEGIN TRY
+                                PRINT('trigger create table');
+                                DECLARE @TableName NVARCHAR(255);
+                                SET @TableName = EVENTDATA().value('(/EVENT_INSTANCE/ObjectName)[1]', 'NVARCHAR(255)');
+                                PRINT(@TableName);
+
+                                -- Create a trigger for updates on the newly created table
+                                DECLARE @CreateTriggerSQL NVARCHAR(MAX);
+                                SET @CreateTriggerSQL = '
+                                    CREATE TRIGGER tr_' + @TableName + '_Updated
+                                    ON ' + @TableName + '
+                                    AFTER UPDATE,DELETE
+                                    AS
+                                    BEGIN
+                                        PRINT(''' + 'trigger after update,delete on ' + @TableName + ''')
+                                        DECLARE @TableNameToUpdate NVARCHAR(255);
+                                        SET @TableNameToUpdate = ''' + @TableName + ''';
+
+                                        UPDATE AuditTableLog
+                                        SET UpdatedTime = GETUTCDATE()
+                                        WHERE TableName = @TableNameToUpdate;
+                                    END;
+                                ';
+
+                                -- Execute dynamic SQL to create the trigger
+                                EXEC sp_executesql @CreateTriggerSQL;
+                                -- Insert a record into the audit log for table creation
+                                INSERT INTO AuditTableLog (TableName)
+                                VALUES (@TableName);
+                                PRINT(@TableName);
+                            END TRY
+                            BEGIN CATCH
+                                -- Handle errors (log or raise as needed)
+                                PRINT 'Error: ' + ERROR_MESSAGE();
+
+                                -- Rollback the transaction
+                                ROLLBACK;
+                            END CATCH;
+                        END;
+                    </CreationQuery>
+                </Trigger>
+                <Trigger>
+                    <Name>tr_DropTable</Name>
+                    <CreationQuery>
+                        CREATE TRIGGER tr_DropTable
+                        ON DATABASE
+                        FOR DROP_TABLE
+                        AS
+                        BEGIN
+                            PRINT('trigger drop table')
+                            DECLARE @TableName NVARCHAR(255);
+                            SET @TableName = EVENTDATA().value('(/EVENT_INSTANCE/ObjectName)[1]', 'NVARCHAR(255)');
+                        
+                            -- Delete records from AuditTableLog for the dropped table
+                            DELETE FROM AuditTableLog
+                            WHERE TableName = @TableName;
+                        END;
+                    </CreationQuery>
+                </Trigger>
+            </TriggerOnDatabase>
+            <Tables>
+                <Table>
+                    <Name>DimCity</Name>
+                    <CreationQuery>
+                        CREATE TABLE [City] (
+                            [CityID_SK] [int] PRIMARY KEY IDENTITY(1,1),
+                            [Branch] [nvarchar](255) NULL,
+                            [City] [nvarchar](255) NULL,
+                            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                        )
+                    </CreationQuery>
+                </Table>
+                <Table>
+                    <Name>DimCustomerInfo</Name>
+                    <CreationQuery>
+                        CREATE TABLE [Customer] (
+                            [CustomerID_SK] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
+                            [Customer type] [nvarchar](255) NULL,
+                            [Gender] [nvarchar](255) NULL,
+                            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                        )
+                    </CreationQuery>
+                </Table>
+                <Table>
+                    <Name>DimPayment</Name>
+                    <CreationQuery>
+                        CREATE TABLE [Payment](
+                            [PaymentID_SK] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
+                            [Payment] [nvarchar](255) NULL,
+                            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                        )
+                    </CreationQuery>
+                </Table>
+                <Table>
+                    <Name>DimProduct</Name>
+                    <CreationQuery>
+                        CREATE TABLE [Product] (
+                            [ProductID_SK] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
+                            [ProductID_NK] [nvarchar](255) NULL,
+                            [UnitPrice] [float] NULL,
+                            [ProductLineID_NK] [nvarchar](255) NULL,
+                            [ProductLine] [nvarchar](255) NULL,
+                            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                            FOREIGN KEY (ProductLineID_SK) REFERENCES Productline(ProductLineID_SK)
+                        )
+                    </CreationQuery>
+                </Table>
+                <Table>
+                    <Name>DimDate</Name>
+                    <CreationQuery>
+                        CREATE TABLE [Product] (
+                            [Date_SK] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
+                            [Date] DATETIME2,
+                            [Minute] int,
+                            [Hour] int,
+                            [Day] int,
+                            [Month] int,
+                            [Year] int,
+                            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                        )
+                    </CreationQuery>
+                </Table>
+                <Table>
+                    <Name>FactSupermarketSale</Name>
+                    <CreationQuery>
+                        CREATE TABLE [SupermarketSale] (
+                            [InvoiceID_sk] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
+                            [ProductID_SK] int,
+                            [CityID_SK] int,
+                            [CustomerID_SK] int,
+                            [PaymentID_SK] int,
+                            [Date_SK] int,
+                            [InvoiceID_nk] nvarchar(255),
+                            [NumberOfCustomer] int,
+                            [Quantity] float,
+                            [Rating] float,
+                            [Tax_5_percent] float,
+                            [Total] float,
+                            [cogs] float,
+                            [gross_margin_percentage] float,
+                            [gross_income] float,
+                            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                            FOREIGN KEY ([CityID_SK]) REFERENCES [City]([CityID_SK]),
+                            FOREIGN KEY ([CustomerID_SK]) REFERENCES [Customer]([CustomerID_SK]),
+                            FOREIGN KEY ([PaymentID_SK]) REFERENCES [Payment]([PaymentID_SK]),
+                            FOREIGN KEY ([ProductID_SK]) REFERENCES [Product]([ProductID_SK])
+                        );
+                    </CreationQuery>
+                </Table>
+            </Tables>
+            <Triggers>
+            </Triggers>
+        </Database>
     </Databases>
 </Root>
