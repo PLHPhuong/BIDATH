@@ -251,7 +251,7 @@
                     <CreationQuery>
                         CREATE TABLE [Customer] (
                             [CustomerID_SK] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
-                            [Customer type] [nvarchar](255) NULL,
+                            [CustomerType] [nvarchar](255) NULL,
                             [Gender] [nvarchar](255) NULL,
                             [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                             [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
@@ -417,7 +417,7 @@
                 <Table>
                     <Name>DimCity</Name>
                     <CreationQuery>
-                        CREATE TABLE [City] (
+                        CREATE TABLE [DimCity] (
                             [CityID_SK] [int] PRIMARY KEY IDENTITY(1,1),
                             [Branch] [nvarchar](255) NULL,
                             [City] [nvarchar](255) NULL,
@@ -427,11 +427,11 @@
                     </CreationQuery>
                 </Table>
                 <Table>
-                    <Name>DimCustomerInfo</Name>
+                    <Name>DimCustomer</Name>
                     <CreationQuery>
-                        CREATE TABLE [Customer] (
+                        CREATE TABLE [DimCustomer] (
                             [CustomerID_SK] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
-                            [Customer type] [nvarchar](255) NULL,
+                            [CustomerType] [nvarchar](255) NULL,
                             [Gender] [nvarchar](255) NULL,
                             [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                             [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
@@ -441,7 +441,7 @@
                 <Table>
                     <Name>DimPayment</Name>
                     <CreationQuery>
-                        CREATE TABLE [Payment](
+                        CREATE TABLE [DimPayment](
                             [PaymentID_SK] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
                             [Payment] [nvarchar](255) NULL,
                             [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
@@ -452,7 +452,7 @@
                 <Table>
                     <Name>DimProduct</Name>
                     <CreationQuery>
-                        CREATE TABLE [Product] (
+                        CREATE TABLE [DimProduct] (
                             [ProductID_SK] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
                             [ProductID_NK] [nvarchar](255) NULL,
                             [UnitPrice] [float] NULL,
@@ -460,14 +460,13 @@
                             [ProductLine] [nvarchar](255) NULL,
                             [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                             [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
-                            FOREIGN KEY (ProductLineID_SK) REFERENCES Productline(ProductLineID_SK)
                         )
                     </CreationQuery>
                 </Table>
                 <Table>
                     <Name>DimDate</Name>
                     <CreationQuery>
-                        CREATE TABLE [Product] (
+                        CREATE TABLE [DimDate] (
                             [Date_SK] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
                             [Date] DATETIME2,
                             [Minute] int,
@@ -483,7 +482,7 @@
                 <Table>
                     <Name>FactSupermarketSale</Name>
                     <CreationQuery>
-                        CREATE TABLE [SupermarketSale] (
+                        CREATE TABLE [FactSupermarketSale] (
                             [InvoiceID_sk] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
                             [ProductID_SK] int,
                             [CityID_SK] int,
@@ -501,10 +500,11 @@
                             [gross_income] float,
                             [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                             [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
-                            FOREIGN KEY ([CityID_SK]) REFERENCES [City]([CityID_SK]),
-                            FOREIGN KEY ([CustomerID_SK]) REFERENCES [Customer]([CustomerID_SK]),
-                            FOREIGN KEY ([PaymentID_SK]) REFERENCES [Payment]([PaymentID_SK]),
-                            FOREIGN KEY ([ProductID_SK]) REFERENCES [Product]([ProductID_SK])
+                            FOREIGN KEY ([CityID_SK]) REFERENCES [DimCity]([CityID_SK]),
+                            FOREIGN KEY ([CustomerID_SK]) REFERENCES [DimCustomer]([CustomerID_SK]),
+                            FOREIGN KEY ([PaymentID_SK]) REFERENCES [DimPayment]([PaymentID_SK]),
+                            FOREIGN KEY ([ProductID_SK]) REFERENCES [DimProduct]([ProductID_SK]),
+                            FOREIGN KEY ([Date_SK]) REFERENCES [DimDate]([Date_SK])
                         );
                     </CreationQuery>
                 </Table>

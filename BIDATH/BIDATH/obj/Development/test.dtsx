@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{E867D631-4F07-412B-8940-857B1005F194}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{093195F9-4246-4982-B64B-8946302B8128}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -30,32 +30,40 @@
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{3C1D7DB8-83FF-4EF2-A157-A1AD7876E845}"
-      DTS:IncludeInDebugDump="2345"
+      DTS:DTSID="{65283A80-ADA6-4EDC-9FCB-CD871C99CE61}"
+      DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
-      DTS:ObjectName="Variable">
+      DTS:ObjectName="Tables">
       <DTS:VariableValue
-        DTS:DataType="8"
-        xml:space="preserve"></DTS:VariableValue>
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\XML Task"
-      DTS:CreationName="Microsoft.XMLTask"
-      DTS:Description="XML Task"
-      DTS:DTSID="{568FBC55-7CE8-4D34-80AE-7D0E0BA1F6BA}"
-      DTS:ExecutableType="Microsoft.XMLTask"
+      DTS:refId="Package\Script Task"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:DTSID="{AFAFC73B-2F8C-4191-8118-4C8EF2655193}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="XML Task"
-      DTS:TaskContact="XML Task; Microsoft Corporation; SQL Server 2022; � 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ObjectName="Script Task"
       DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
-        <XMLTaskData
-          Source="Config.xml"
-          SecondOperandType="Variable"
-          SecondOperand="User::Variable" />
+        <ScriptProject
+          Name="ST_642763ecd4e34dd6982e03979e1680bb"
+          VSTAMajorVersion="16"
+          VSTAMinorVersion="0"
+          Language="CSharp" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -72,9 +80,9 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="124,42"
-          Id="Package\XML Task"
-          TopLeft="153,115" />
+          Size="131,42"
+          Id="Package\Script Task"
+          TopLeft="257,97" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
