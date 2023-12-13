@@ -11,21 +11,21 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="85"
-  DTS:VersionGUID="{F673885E-D307-4A38-8C2A-40F145E701E6}">
+  DTS:VersionBuild="90"
+  DTS:VersionGUID="{FE6CFF1D-D131-427B-920C-0F1F736CBF7E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[(local).BI_Stage]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{9E60C883-B345-40A0-A28C-5E718B5DDA33}"
+      DTS:DTSID="{897FF48B-EB50-4853-9A10-FE30EBEBC3CE}"
       DTS:ObjectName="(local).BI_Stage">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=(local);Initial Catalog=BI_Stage;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{9E60C883-B345-40A0-A28C-5E718B5DDA33}(local).BI_Stage;Auto Translate=False;" />
+          DTS:ConnectionString="Data Source=(local);Initial Catalog=BI_Stage;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{897FF48B-EB50-4853-9A10-FE30EBEBC3CE}(local).BI_Stage;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -1586,7 +1586,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{9E60C883-B345-40A0-A28C-5E718B5DDA33}"
+          SQLTask:Connection="{897FF48B-EB50-4853-9A10-FE30EBEBC3CE}"
           SQLTask:SqlStatementSource="DECLARE @TableName NVARCHAR(255) = ?;&#xA;&#xA;SELECT CET, LSET FROM [AuditTableLog] &#xA;WHERE TableName = @TableName;"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
@@ -1617,7 +1617,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{9E60C883-B345-40A0-A28C-5E718B5DDA33}"
+          SQLTask:Connection="{897FF48B-EB50-4853-9A10-FE30EBEBC3CE}"
           SQLTask:SqlStatementSource="DECLARE @TableName NVARCHAR(255) = ?;&#xA;&#xA;&#xA;UPDATE [AuditTableLog]&#xA;SET CET = GETDATE()&#xA;WHERE TableName = @TableName;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="0"
@@ -1641,7 +1641,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{9E60C883-B345-40A0-A28C-5E718B5DDA33}"
+          SQLTask:Connection="{897FF48B-EB50-4853-9A10-FE30EBEBC3CE}"
           SQLTask:SqlStatementSource="DECLARE @TableName NVARCHAR(255) = ?;&#xA;&#xA;&#xA;UPDATE [AuditTableLog]&#xA;SET CET = GETDATE()&#xA;WHERE TableName = @TableName;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="0"
@@ -1665,7 +1665,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{9E60C883-B345-40A0-A28C-5E718B5DDA33}"
+          SQLTask:Connection="{897FF48B-EB50-4853-9A10-FE30EBEBC3CE}"
           SQLTask:SqlStatementSource="TRUNCATE TABLE city ;&#xA;TRUNCATE TABLE product;&#xA;TRUNCATE TABLE ProductLine;&#xA;TRUNCATE TABLE supermarket_sales;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -1825,10 +1825,10 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <AnnotationLayout
-          Text="CET,LSET and get not good yet&#xD;&#xA;"
+          Text="CET,LSET and get not good yet&#xA;"
           ParentId="Package"
           FontInfo="{assembly:Null}"
-          Size="192,60"
+          Size="192,56"
           Id="327c09e5-e0d5-4daf-85f4-f55b16b9901e"
           TopLeft="236,226" />
       </GraphLayout>
@@ -1842,7 +1842,11 @@
         <NodeLayout
           Size="167,42"
           Id="Package\Extract Data from Stage\Stage_ProductLine"
-          TopLeft="614,164" />
+          TopLeft="614,163" />
+        <NodeLayout
+          Size="199,42"
+          Id="Package\Extract Data from Stage\Stage_supermarket_sales"
+          TopLeft="825,164" />
         <NodeLayout
           Size="205,42"
           Id="Package\Extract Data from Stage\Source_supermarket_sales"
@@ -1867,24 +1871,42 @@
           Size="128,42"
           Id="Package\Extract Data from Stage\Stage_city"
           TopLeft="259,171" />
-        <NodeLayout
-          Size="199,42"
-          Id="Package\Extract Data from Stage\Stage_supermarket_sales"
-          TopLeft="825,164" />
+        <EdgeLayout
+          Id="Package\Extract Data from Stage.Paths[Excel Source Output3]"
+          TopLeft="921,95">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,69"
+              Start="0,0"
+              End="0,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Extract Data from Stage.Paths[Excel Source Output2]"
           TopLeft="697.25,92">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,72"
+              EndConnector="0,71"
               Start="0,0"
-              End="0,64.5">
+              End="0,63.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,64.5" />
+                    End="0,63.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1937,33 +1959,24 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Extract Data from Stage.Paths[Excel Source Output3]"
-          TopLeft="921,95">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,69"
-              Start="0,0"
-              End="0,61.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,61.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Extract Data from Stage\Stage_ProductLine">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract Data from Stage\Stage_supermarket_sales">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2042,19 +2055,6 @@
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Extract Data from Stage\Stage_city">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Extract Data from Stage\Stage_supermarket_sales">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

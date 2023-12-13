@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{62D1640E-21BF-4409-820F-DAE525D879A1}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{9A39CCE1-0F43-4FD5-B128-7B478C0FBC1E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -34,7 +34,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="RedoSetUp">
       <DTS:VariableValue
-        DTS:DataType="11">-1</DTS:VariableValue>
+        DTS:DataType="11">0</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>

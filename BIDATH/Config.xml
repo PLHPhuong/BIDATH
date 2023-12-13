@@ -418,7 +418,7 @@
                     <Name>DimCity</Name>
                     <CreationQuery>
                         CREATE TABLE [DimCity] (
-                            [CityID_SK] [int] PRIMARY KEY IDENTITY(1,1),
+                            [CityID_SK] [int] PRIMARY KEY NOT NULL,
                             [Branch] [nvarchar](255) NULL,
                             [City] [nvarchar](255) NULL,
                             [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
@@ -430,7 +430,7 @@
                     <Name>DimCustomer</Name>
                     <CreationQuery>
                         CREATE TABLE [DimCustomer] (
-                            [CustomerID_SK] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
+                            [CustomerID_SK] [int] PRIMARY KEY NOT NULL,
                             [CustomerType] [nvarchar](255) NULL,
                             [Gender] [nvarchar](255) NULL,
                             [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
@@ -442,7 +442,7 @@
                     <Name>DimPayment</Name>
                     <CreationQuery>
                         CREATE TABLE [DimPayment](
-                            [PaymentID_SK] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
+                            [PaymentID_SK] [int] PRIMARY KEY NOT NULL,
                             [Payment] [nvarchar](255) NULL,
                             [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                             [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
@@ -453,7 +453,7 @@
                     <Name>DimProduct</Name>
                     <CreationQuery>
                         CREATE TABLE [DimProduct] (
-                            [ProductID_SK] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
+                            [ProductID_SK] [int] PRIMARY KEY NOT NULL,
                             [ProductID_NK] [nvarchar](255) NULL,
                             [UnitPrice] [float] NULL,
                             [ProductLineID_NK] [nvarchar](255) NULL,
@@ -483,14 +483,14 @@
                     <Name>FactSupermarketSale</Name>
                     <CreationQuery>
                         CREATE TABLE [FactSupermarketSale] (
-                            [InvoiceID_sk] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
+                            [InvoiceID_sk] [int] PRIMARY KEY NOT NULL,
                             [ProductID_SK] int,
                             [CityID_SK] int,
                             [CustomerID_SK] int,
                             [PaymentID_SK] int,
                             [Date_SK] int,
                             [InvoiceID_nk] nvarchar(255),
-                            [NumberOfCustomer] int,
+                            [NumberOfCustomer] int DEFAULT 1,
                             [Quantity] float,
                             [Rating] float,
                             [Tax_5_percent] float,
