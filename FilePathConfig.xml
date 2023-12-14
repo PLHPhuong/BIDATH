@@ -1,0 +1,18 @@
+<Root>
+  <SolutionDirectory>
+  </SolutionDirectory>
+  <DataSource>
+    <MainSource>D:\BI\DATH\supermarket_sales.xls</MainSource>
+    <OtherSources>
+      <Directory>D:\data</Directory>
+      <Sources>
+        <Source>D:\BI\DATH\data\product.csv</Source>
+        <Source>D:\BI\DATH\data\productline.csv</Source>
+        <Source>D:\BI\DATH\data\supermarket_sales.csv</Source>
+        <Source>D:\BI\DATH\data\supermarket_sales.xls</Source>
+      </Sources>
+    </OtherSources>
+  </DataSource>
+  <ELTProject>D:\BIDATH</ELTProject>
+  <DatabaseCongfigFile>D:\BIDATH\Config.xml</DatabaseCongfigFile>
+</Root>

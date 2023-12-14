@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="103"
-  DTS:VersionGUID="{C48985B9-05FD-4AEF-B5C0-0FB744A511AC}">
+  DTS:VersionBuild="105"
+  DTS:VersionGUID="{E9D969E6-30BE-4402-B595-DAE5762C606D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -98,6 +98,18 @@
           DTS:ConnectRetryCount="0"
           DTS:ConnectRetryInterval="0"
           DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=D:\BI\DATH\supermarket_sales.xls;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Main]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{0BE99CAE-43B2-481D-B70C-E4EB571B72A2}"
+      DTS:ObjectName="Main">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=D:\BI\DATH\supermarket_sales.xls;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -1693,7 +1705,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Get CET, LSET city"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1768,7 +1780,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Get CET, LSET supermarket_sales"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1793,7 +1805,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET city"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1844,7 +1856,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET supermarket_sales"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1861,12 +1873,12 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Set LSET city"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{60AFAEE3-458D-4A98-9DC9-3041D54FFED2}"
-          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET CET = GETDATE()&#xA;WHERE TableName = 'city';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET LSET = GETDATE()&#xA;WHERE TableName = 'city';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1883,7 +1895,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{60AFAEE3-458D-4A98-9DC9-3041D54FFED2}"
-          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET CET = GETDATE()&#xA;WHERE TableName = 'product';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET LSET = GETDATE()&#xA;WHERE TableName = 'product';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1900,7 +1912,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{60AFAEE3-458D-4A98-9DC9-3041D54FFED2}"
-          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET CET = GETDATE()&#xA;WHERE TableName = 'ProductLine';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET LSET = GETDATE()&#xA;WHERE TableName = 'ProductLine';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1912,12 +1924,12 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Set LSET supermarket_sales"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{60AFAEE3-458D-4A98-9DC9-3041D54FFED2}"
-          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET CET = GETDATE()&#xA;WHERE TableName = 'supermarket_sales';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET LSET = GETDATE()&#xA;WHERE TableName = 'supermarket_sales';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable

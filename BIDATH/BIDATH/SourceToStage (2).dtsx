@@ -1,0 +1,2070 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/20/2023 11:23:12 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-I0N0R4UT"
+  DTS:CreatorName="LAPTOP-I0N0R4UT\Lenovo"
+  DTS:DTSID="{49A2F8B7-5467-4D91-B227-1D25721ED852}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5270.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="93"
+  DTS:VersionGUID="{C102468E-F26D-42CF-A872-FB51D46476C7}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[(local).BI_Stage]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{9B8E4308-1CEA-458C-A556-5736B8355E92}"
+      DTS:ObjectName="(local).BI_Stage">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=(local);Initial Catalog=BI_Stage;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{9B8E4308-1CEA-458C-A556-5736B8355E92}(local).BI_Stage;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[(local).DoAnTHBI]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{7CEABE22-E17A-4CA6-B3D2-B6091F67990C}"
+      DTS:ObjectName="(local).DoAnTHBI">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=(local);Initial Catalog=DoAnTHBI;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{7CEABE22-E17A-4CA6-B3D2-B6091F67990C}(local).DoAnTHBI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[(local).master]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{8AC43ECB-4950-482F-A11B-FAEFE19DB809}"
+      DTS:ObjectName="(local).master">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=(local);Initial Catalog=master;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{8AC43ECB-4950-482F-A11B-FAEFE19DB809}(local).master;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{89B37B74-035A-42BE-8DB6-21B842AFFC67}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=D:\BI\DATH\supermarket_sales.xls;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 1]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{2A692860-DD51-4CF0-85B6-E89FBD26992A}"
+      DTS:ObjectName="Excel Connection Manager 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=D:\BI\DATH\supermarket_sales.xls;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{45829D26-E99E-40A8-9F18-13EC41678D62}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="CET">
+      <DTS:VariableValue
+        DTS:DataType="7">12/6/2023 7:50:32 AM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E1729DD6-4B62-47F5-B1D5-81AF49CD1C05}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="DatabaseExists">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{309FDD72-9E45-4A56-BA49-B09877E91FB8}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="DatabaseName">
+      <DTS:VariableValue
+        DTS:DataType="8">BI_Stage</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{34A0FB36-C193-4A1E-B2D7-AC18B6D188A3}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="LSET">
+      <DTS:VariableValue
+        DTS:DataType="7">12/6/2023 7:50:37 AM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{48D17152-8545-45A9-9FE5-4D24BF38B02E}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TableName">
+      <DTS:VariableValue
+        DTS:DataType="8">City</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Extract Data from Stage"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{BEA9B96D-6762-4977-BD27-94506B254AFA}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Extract Data from Stage"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Extract Data from Stage\Source_city"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Source_city"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">city$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract Data from Stage\Source_city.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Output].Columns[Branch]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Output].ExternalColumns[Branch]"
+                      length="255"
+                      lineageId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Output].Columns[Branch]"
+                      name="Branch"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Output].Columns[City]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Output].ExternalColumns[City]"
+                      length="255"
+                      lineageId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Output].Columns[City]"
+                      name="City"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Output].ExternalColumns[Branch]"
+                      dataType="wstr"
+                      length="255"
+                      name="Branch" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Output].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="255"
+                      name="City" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Error Output].Columns[Branch]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Error Output].Columns[Branch]"
+                      name="Branch" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Error Output].Columns[City]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Error Output].Columns[City]"
+                      name="City" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract Data from Stage\Source_product"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Source_product"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">product$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract Data from Stage\Source_product.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output].Columns[ProductID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output].ExternalColumns[ProductID]"
+                      length="255"
+                      lineageId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output].Columns[ProductID]"
+                      name="ProductID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output].Columns[Unit price]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output].ExternalColumns[Unit price]"
+                      lineageId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output].Columns[Unit price]"
+                      name="Unit price"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output].Columns[ProductLine]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output].ExternalColumns[ProductLine]"
+                      length="255"
+                      lineageId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output].Columns[ProductLine]"
+                      name="ProductLine"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output].ExternalColumns[ProductID]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output].ExternalColumns[Unit price]"
+                      dataType="r8"
+                      name="Unit price" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output].ExternalColumns[ProductLine]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProductLine" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Error Output].Columns[ProductID]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Error Output].Columns[ProductID]"
+                      name="ProductID" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Error Output].Columns[Unit price]"
+                      dataType="r8"
+                      lineageId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Error Output].Columns[Unit price]"
+                      name="Unit price" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Error Output].Columns[ProductLine]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Error Output].Columns[ProductLine]"
+                      name="ProductLine" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract Data from Stage\Source_ProductLine"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Source_ProductLine"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">ProductLine$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract Data from Stage\Source_ProductLine.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Output].Columns[Product line]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Output].ExternalColumns[Product line]"
+                      length="255"
+                      lineageId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Output].Columns[Product line]"
+                      name="Product line"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Output].Columns[ProductLineID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Output].ExternalColumns[ProductLineID]"
+                      length="255"
+                      lineageId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Output].Columns[ProductLineID]"
+                      name="ProductLineID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Output].ExternalColumns[Product line]"
+                      dataType="wstr"
+                      length="255"
+                      name="Product line" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Output].ExternalColumns[ProductLineID]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProductLineID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Error Output].Columns[Product line]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Error Output].Columns[Product line]"
+                      name="Product line" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Error Output].Columns[ProductLineID]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Error Output].Columns[ProductLineID]"
+                      name="ProductLineID" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract Data from Stage\Source_supermarket_sales"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Source_supermarket_sales"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">supermarket_sales$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract Data from Stage\Source_supermarket_sales.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Invoice ID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Invoice ID]"
+                      length="255"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Invoice ID]"
+                      name="Invoice ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Branch]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Branch]"
+                      length="255"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Branch]"
+                      name="Branch"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Customer type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Customer type]"
+                      length="255"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Customer type]"
+                      name="Customer type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Gender]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Gender]"
+                      length="255"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Gender]"
+                      name="Gender"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[ProductID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[ProductID]"
+                      length="255"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[ProductID]"
+                      name="ProductID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Quantity]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Quantity]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Quantity]"
+                      name="Quantity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Tax 5%]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Tax 5%]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Tax 5%]"
+                      name="Tax 5%"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Total]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Total]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Total]"
+                      name="Total"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Date]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Date]"
+                      name="Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Time]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Time]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Time]"
+                      name="Time"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Payment]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Payment]"
+                      length="255"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Payment]"
+                      name="Payment"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[cogs]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[cogs]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[cogs]"
+                      name="cogs"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[gross margin percentage]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[gross margin percentage]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[gross margin percentage]"
+                      name="gross margin percentage"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[gross income]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[gross income]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[gross income]"
+                      name="gross income"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Rating]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Rating]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Rating]"
+                      name="Rating"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Invoice ID]"
+                      dataType="wstr"
+                      length="255"
+                      name="Invoice ID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Branch]"
+                      dataType="wstr"
+                      length="255"
+                      name="Branch" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Customer type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Customer type" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Gender]"
+                      dataType="wstr"
+                      length="255"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[ProductID]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Quantity]"
+                      dataType="r8"
+                      name="Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Tax 5%]"
+                      dataType="r8"
+                      name="Tax 5%" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Total]"
+                      dataType="r8"
+                      name="Total" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Date]"
+                      dataType="date"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Time]"
+                      dataType="date"
+                      name="Time" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Payment]"
+                      dataType="wstr"
+                      length="255"
+                      name="Payment" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[cogs]"
+                      dataType="r8"
+                      name="cogs" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[gross margin percentage]"
+                      dataType="r8"
+                      name="gross margin percentage" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[gross income]"
+                      dataType="r8"
+                      name="gross income" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].ExternalColumns[Rating]"
+                      dataType="r8"
+                      name="Rating" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Invoice ID]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Invoice ID]"
+                      name="Invoice ID" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Branch]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Branch]"
+                      name="Branch" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Customer type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Customer type]"
+                      name="Customer type" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Gender]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Gender]"
+                      name="Gender" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[ProductID]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[ProductID]"
+                      name="ProductID" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Quantity]"
+                      dataType="r8"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Quantity]"
+                      name="Quantity" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Tax 5%]"
+                      dataType="r8"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Tax 5%]"
+                      name="Tax 5%" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Total]"
+                      dataType="r8"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Total]"
+                      name="Total" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Date]"
+                      dataType="date"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Date]"
+                      name="Date" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Time]"
+                      dataType="date"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Time]"
+                      name="Time" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Payment]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Payment]"
+                      name="Payment" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[cogs]"
+                      dataType="r8"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[cogs]"
+                      name="cogs" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[gross margin percentage]"
+                      dataType="r8"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[gross margin percentage]"
+                      name="gross margin percentage" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[gross income]"
+                      dataType="r8"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[gross income]"
+                      name="gross income" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Rating]"
+                      dataType="r8"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[Rating]"
+                      name="Rating" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract Data from Stage\Stage_city"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Stage_city"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[city]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract Data from Stage\Stage_city.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(local).BI_Stage]"
+                  connectionManagerRefId="Package.ConnectionManagers[(local).BI_Stage]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extract Data from Stage\Stage_city.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract Data from Stage\Stage_city.Inputs[OLE DB Destination Input].Columns[Branch]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Branch"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_city.Inputs[OLE DB Destination Input].ExternalColumns[Branch]"
+                      lineageId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Output].Columns[Branch]" />
+                    <inputColumn
+                      refId="Package\Extract Data from Stage\Stage_city.Inputs[OLE DB Destination Input].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="City"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_city.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                      lineageId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Output].Columns[City]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Stage_city.Inputs[OLE DB Destination Input].ExternalColumns[Branch]"
+                      dataType="wstr"
+                      length="255"
+                      name="Branch" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Stage_city.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="255"
+                      name="City" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract Data from Stage\Stage_city.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Extract Data from Stage\Stage_city.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Stage_city.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract Data from Stage\Stage_city.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Stage_city.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract Data from Stage\Stage_city.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract Data from Stage\Stage_product"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Stage_product"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[product]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract Data from Stage\Stage_product.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(local).BI_Stage]"
+                  connectionManagerRefId="Package.ConnectionManagers[(local).BI_Stage]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extract Data from Stage\Stage_product.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract Data from Stage\Stage_product.Inputs[OLE DB Destination Input].Columns[ProductID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ProductID"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_product.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                      lineageId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output].Columns[ProductID]" />
+                    <inputColumn
+                      refId="Package\Extract Data from Stage\Stage_product.Inputs[OLE DB Destination Input].Columns[Unit price]"
+                      cachedDataType="r8"
+                      cachedName="Unit price"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_product.Inputs[OLE DB Destination Input].ExternalColumns[Unit price]"
+                      lineageId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output].Columns[Unit price]" />
+                    <inputColumn
+                      refId="Package\Extract Data from Stage\Stage_product.Inputs[OLE DB Destination Input].Columns[ProductLine]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ProductLine"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_product.Inputs[OLE DB Destination Input].ExternalColumns[ProductLine]"
+                      lineageId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output].Columns[ProductLine]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Stage_product.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Stage_product.Inputs[OLE DB Destination Input].ExternalColumns[Unit price]"
+                      dataType="r8"
+                      name="Unit price" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Stage_product.Inputs[OLE DB Destination Input].ExternalColumns[ProductLine]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProductLine" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract Data from Stage\Stage_product.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Extract Data from Stage\Stage_product.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Stage_product.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract Data from Stage\Stage_product.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Stage_product.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract Data from Stage\Stage_product.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract Data from Stage\Stage_ProductLine"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Stage_ProductLine"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[ProductLine]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract Data from Stage\Stage_ProductLine.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(local).BI_Stage]"
+                  connectionManagerRefId="Package.ConnectionManagers[(local).BI_Stage]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extract Data from Stage\Stage_ProductLine.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract Data from Stage\Stage_ProductLine.Inputs[OLE DB Destination Input].Columns[Product line]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Product line"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_ProductLine.Inputs[OLE DB Destination Input].ExternalColumns[Product line]"
+                      lineageId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Output].Columns[Product line]" />
+                    <inputColumn
+                      refId="Package\Extract Data from Stage\Stage_ProductLine.Inputs[OLE DB Destination Input].Columns[ProductLineID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ProductLineID"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_ProductLine.Inputs[OLE DB Destination Input].ExternalColumns[ProductLineID]"
+                      lineageId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Output].Columns[ProductLineID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Stage_ProductLine.Inputs[OLE DB Destination Input].ExternalColumns[Product line]"
+                      dataType="wstr"
+                      length="255"
+                      name="Product line" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Stage_ProductLine.Inputs[OLE DB Destination Input].ExternalColumns[ProductLineID]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProductLineID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract Data from Stage\Stage_ProductLine.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Extract Data from Stage\Stage_ProductLine.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Stage_ProductLine.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract Data from Stage\Stage_ProductLine.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Stage_ProductLine.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract Data from Stage\Stage_ProductLine.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract Data from Stage\Stage_supermarket_sales"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Stage_supermarket_sales"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[supermarket_sales]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract Data from Stage\Stage_supermarket_sales.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[(local).BI_Stage]"
+                  connectionManagerRefId="Package.ConnectionManagers[(local).BI_Stage]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[Invoice ID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Invoice ID"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Invoice ID]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Invoice ID]" />
+                    <inputColumn
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[Branch]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Branch"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Branch]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Branch]" />
+                    <inputColumn
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[Customer type]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Customer type"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Customer type]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Customer type]" />
+                    <inputColumn
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[Gender]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Gender"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Gender]" />
+                    <inputColumn
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[ProductID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ProductID"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[ProductID]" />
+                    <inputColumn
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[Quantity]"
+                      cachedDataType="r8"
+                      cachedName="Quantity"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Quantity]" />
+                    <inputColumn
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[Tax 5%]"
+                      cachedDataType="r8"
+                      cachedName="Tax 5%"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Tax 5%]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Tax 5%]" />
+                    <inputColumn
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[Total]"
+                      cachedDataType="r8"
+                      cachedName="Total"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Total]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Total]" />
+                    <inputColumn
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[Date]"
+                      cachedDataType="date"
+                      cachedName="Date"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Date]" />
+                    <inputColumn
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[Time]"
+                      cachedDataType="date"
+                      cachedName="Time"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Time]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Time]" />
+                    <inputColumn
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[Payment]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Payment"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Payment]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Payment]" />
+                    <inputColumn
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[cogs]"
+                      cachedDataType="r8"
+                      cachedName="cogs"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[cogs]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[cogs]" />
+                    <inputColumn
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[gross margin percentage]"
+                      cachedDataType="r8"
+                      cachedName="gross margin percentage"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[gross margin percentage]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[gross margin percentage]" />
+                    <inputColumn
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[gross income]"
+                      cachedDataType="r8"
+                      cachedName="gross income"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[gross income]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[gross income]" />
+                    <inputColumn
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].Columns[Rating]"
+                      cachedDataType="r8"
+                      cachedName="Rating"
+                      externalMetadataColumnId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Rating]"
+                      lineageId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output].Columns[Rating]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Invoice ID]"
+                      dataType="wstr"
+                      length="255"
+                      name="Invoice ID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Branch]"
+                      dataType="wstr"
+                      length="255"
+                      name="Branch" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Customer type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Customer type" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                      dataType="wstr"
+                      length="255"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
+                      dataType="r8"
+                      name="Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Tax 5%]"
+                      dataType="r8"
+                      name="Tax 5%" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Total]"
+                      dataType="r8"
+                      name="Total" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      dataType="dbTimeStamp"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Time]"
+                      dataType="dbTimeStamp"
+                      name="Time" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Payment]"
+                      dataType="wstr"
+                      length="255"
+                      name="Payment" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[cogs]"
+                      dataType="r8"
+                      name="cogs" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[gross margin percentage]"
+                      dataType="r8"
+                      name="gross margin percentage" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[gross income]"
+                      dataType="r8"
+                      name="gross income" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input].ExternalColumns[Rating]"
+                      dataType="r8"
+                      name="Rating" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract Data from Stage\Stage_supermarket_sales.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract Data from Stage\Stage_supermarket_sales.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract Data from Stage\Stage_supermarket_sales.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract Data from Stage\Stage_supermarket_sales.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Extract Data from Stage.Paths[Excel Source Output]"
+              endId="Package\Extract Data from Stage\Stage_city.Inputs[OLE DB Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Extract Data from Stage\Source_city.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Extract Data from Stage.Paths[Excel Source Output1]"
+              endId="Package\Extract Data from Stage\Stage_product.Inputs[OLE DB Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Extract Data from Stage\Source_product.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Extract Data from Stage.Paths[Excel Source Output2]"
+              endId="Package\Extract Data from Stage\Stage_ProductLine.Inputs[OLE DB Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Extract Data from Stage\Source_ProductLine.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Extract Data from Stage.Paths[Excel Source Output3]"
+              endId="Package\Extract Data from Stage\Stage_supermarket_sales.Inputs[OLE DB Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Extract Data from Stage\Source_supermarket_sales.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Get CET, LSET"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{9D474300-5BB1-45F5-A35A-AEE1D2804C5C}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get CET, LSET"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{9B8E4308-1CEA-458C-A556-5736B8355E92}"
+          SQLTask:SqlStatementSource="DECLARE @TableName NVARCHAR(255) = ?;&#xA;&#xA;SELECT CET, LSET FROM [AuditTableLog] &#xA;WHERE TableName = @TableName;"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="CET"
+            SQLTask:DtsVariableName="User::CET" />
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="LSET"
+            SQLTask:DtsVariableName="User::LSET" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::TableName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Set CET"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{A739004A-8F2F-40D5-A027-F4198E89FAD0}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Set CET"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{9B8E4308-1CEA-458C-A556-5736B8355E92}"
+          SQLTask:SqlStatementSource="DECLARE @TableName NVARCHAR(255) = ?;&#xA;&#xA;&#xA;UPDATE [AuditTableLog]&#xA;SET CET = GETDATE()&#xA;WHERE TableName = @TableName;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::TableName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Set LSET"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{EAB0885C-5C33-45D9-8421-687368B205CD}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Set LSET"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{9B8E4308-1CEA-458C-A556-5736B8355E92}"
+          SQLTask:SqlStatementSource="DECLARE @TableName NVARCHAR(255) = ?;&#xA;&#xA;&#xA;UPDATE [AuditTableLog]&#xA;SET CET = GETDATE()&#xA;WHERE TableName = @TableName;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::TableName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate Stage Tables"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{42E3CBE9-E2B6-4080-BF06-AA2CEBE4D4B1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate Stage Tables"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{9B8E4308-1CEA-458C-A556-5736B8355E92}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE city ;&#xA;TRUNCATE TABLE product;&#xA;TRUNCATE TABLE ProductLine;&#xA;TRUNCATE TABLE supermarket_sales;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{60962448-C386-456B-9AD5-E2A44AEFD4C5}"
+      DTS:From="Package\Extract Data from Stage"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Set LSET" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{AABC8450-D1DD-43FE-A1D6-BEBA78588552}"
+      DTS:From="Package\Set CET"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\Get CET, LSET" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{A9D60EC9-02B9-45CF-AA57-107BE7DDC4E2}"
+      DTS:From="Package\Get CET, LSET"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 6"
+      DTS:To="Package\Extract Data from Stage" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
+      DTS:CreationName=""
+      DTS:DTSID="{5B88214E-2B7B-4F14-8F4B-938202C0E4A3}"
+      DTS:From="Package\Truncate Stage Tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 7"
+      DTS:To="Package\Set CET" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="192,42"
+          Id="Package\Extract Data from Stage"
+          TopLeft="480,335" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Get CET, LSET"
+          TopLeft="480,261" />
+        <NodeLayout
+          Size="120,42"
+          Id="Package\Set CET"
+          TopLeft="509,188" />
+        <NodeLayout
+          Size="121,42"
+          Id="Package\Set LSET"
+          TopLeft="510,414" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Truncate Stage Tables"
+          TopLeft="482,118" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="573.25,377">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37"
+              Start="0,0"
+              End="0,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="570,230">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31"
+              Start="0,0"
+              End="0,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="573.5,303">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32"
+              Start="0,0"
+              End="0,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="571.5,160">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28"
+              Start="0,0"
+              End="0,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="CET,LSET and get not good yet&#xA;"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="192,56"
+          Id="327c09e5-e0d5-4daf-85f4-f55b16b9901e"
+          TopLeft="236,226" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Extract Data from Stage">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="167,42"
+          Id="Package\Extract Data from Stage\Stage_ProductLine"
+          TopLeft="614,163" />
+        <NodeLayout
+          Size="199,42"
+          Id="Package\Extract Data from Stage\Stage_supermarket_sales"
+          TopLeft="825,164" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\Extract Data from Stage\Source_supermarket_sales"
+          TopLeft="815,53" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Extract Data from Stage\Source_ProductLine"
+          TopLeft="611,50" />
+        <NodeLayout
+          Size="147,42"
+          Id="Package\Extract Data from Stage\Stage_product"
+          TopLeft="428,169" />
+        <NodeLayout
+          Size="153,42"
+          Id="Package\Extract Data from Stage\Source_product"
+          TopLeft="429,51" />
+        <NodeLayout
+          Size="133,42"
+          Id="Package\Extract Data from Stage\Source_city"
+          TopLeft="259,52" />
+        <NodeLayout
+          Size="128,42"
+          Id="Package\Extract Data from Stage\Stage_city"
+          TopLeft="259,171" />
+        <EdgeLayout
+          Id="Package\Extract Data from Stage.Paths[Excel Source Output3]"
+          TopLeft="921,95">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,69"
+              Start="0,0"
+              End="0,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract Data from Stage.Paths[Excel Source Output2]"
+          TopLeft="697.25,92">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,71"
+              Start="0,0"
+              End="0,63.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract Data from Stage.Paths[Excel Source Output1]"
+          TopLeft="503.5,93">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,76"
+              Start="0,0"
+              End="0,68.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,68.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract Data from Stage.Paths[Excel Source Output]"
+          TopLeft="324.25,94">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,77"
+              Start="0,0"
+              End="0,69.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,69.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract Data from Stage\Stage_ProductLine">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract Data from Stage\Stage_supermarket_sales">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract Data from Stage\Source_supermarket_sales">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract Data from Stage\Source_ProductLine">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract Data from Stage\Stage_product">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract Data from Stage\Source_product">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract Data from Stage\Source_city">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract Data from Stage\Stage_city">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package2"
   DTS:PackageType="5"
-  DTS:VersionBuild="81"
-  DTS:VersionGUID="{8C24DE35-0885-469C-88AB-9EA8C9D0E4CB}">
+  DTS:VersionBuild="88"
+  DTS:VersionGUID="{A3B484A1-BC5D-409B-A7DC-7EB9143AC1BA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -107,12 +107,30 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
+      DTS:DTSID="{BE73E3EB-96A2-4115-A891-C1AB9DED2D31}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="CET_Product">
+      <DTS:VariableValue
+        DTS:DataType="7">12/13/2023 5:42:13 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
       DTS:DTSID="{13088EC3-38CA-4257-B1D5-402D9B2A27F0}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="CET_Productline">
       <DTS:VariableValue
         DTS:DataType="7">12/13/2023 3:13:48 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A60D7ED4-9AB3-48CB-9F79-2D2E5E8E3B08}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="CET_SupermarketSales">
+      <DTS:VariableValue
+        DTS:DataType="7">12/13/2023 5:46:48 PM</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -143,12 +161,30 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
+      DTS:DTSID="{197E1C1D-DD7F-4B73-97F3-623F6177297B}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="LSET_Product">
+      <DTS:VariableValue
+        DTS:DataType="7">12/13/2023 5:42:30 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
       DTS:DTSID="{37B509F8-40BE-466F-BD81-B4C173438E64}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="LSET_Productline">
       <DTS:VariableValue
         DTS:DataType="7">12/13/2023 3:13:53 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D5F5F550-392D-43FB-B9CE-40029E56A755}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="LSET_SupermarketSales">
+      <DTS:VariableValue
+        DTS:DataType="7">12/13/2023 5:46:50 PM</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -2057,6 +2093,106 @@ where [refTable].[CustomerType] = ? and [refTable].[Gender] = ?</property>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\Get CET, LSET City"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{c2a0ac80-1ce2-474c-86fd-7bb7711c15eb}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get CET, LSET City"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="3">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5E5688B3-64F2-4932-95F6-79458D6E6770}"
+          SQLTask:SqlStatementSource="DECLARE @TableName NVARCHAR(255) = 'City';&#xA;&#xA;SELECT CET, LSET FROM [AuditTableLog] &#xA;WHERE TableName = @TableName;"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="CET"
+            SQLTask:DtsVariableName="User::CET_City" />
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="LSET"
+            SQLTask:DtsVariableName="User::LSET_City" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Get CET, LSET Customer"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{cbf418eb-cab3-4767-b406-a0b7831e6c23}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get CET, LSET Customer"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5E5688B3-64F2-4932-95F6-79458D6E6770}"
+          SQLTask:SqlStatementSource="SELECT CET, LSET FROM [AuditTableLog] &#xA;WHERE TableName = 'Customer';"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="CET"
+            SQLTask:DtsVariableName="User::CET_Customer" />
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="LSET"
+            SQLTask:DtsVariableName="User::LSET_Customer" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Get CET, LSET Payment"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{2c36b94b-95b7-4891-984e-7453ecc87955}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get CET, LSET Payment"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="2">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5E5688B3-64F2-4932-95F6-79458D6E6770}"
+          SQLTask:SqlStatementSource="SELECT CET, LSET FROM [AuditTableLog] &#xA;WHERE TableName = 'Payment';"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="CET"
+            SQLTask:DtsVariableName="User::CET_Payment" />
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="LSET"
+            SQLTask:DtsVariableName="User::LSET_Paymnet" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Get CET, LSET Product"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{ab4b00a7-7a05-46b5-84c6-f0d8163b40c5}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get CET, LSET Product"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5E5688B3-64F2-4932-95F6-79458D6E6770}"
+          SQLTask:SqlStatementSource="SELECT CET, LSET FROM [AuditTableLog] &#xA;WHERE TableName = 'Productline';"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="CET"
+            SQLTask:DtsVariableName="User::CET_Product" />
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="LSET"
+            SQLTask:DtsVariableName="User::LSET_Product" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\Get CET, LSET Productline"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
@@ -2065,7 +2201,7 @@ where [refTable].[CustomerType] = ? and [refTable].[Gender] = ?</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Get CET, LSET Productline"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="7">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -2082,74 +2218,27 @@ where [refTable].[CustomerType] = ? and [refTable].[Gender] = ?</property>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Get CET, LSET Productline 1"
+      DTS:refId="Package\Get CET, LSET SupermarketSale"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{c2a0ac80-1ce2-474c-86fd-7bb7711c15eb}"
+      DTS:DTSID="{5a549cbd-3ff8-4173-a083-b7072370c50c}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Get CET, LSET Productline 1"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="4">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{5E5688B3-64F2-4932-95F6-79458D6E6770}"
-          SQLTask:SqlStatementSource="DECLARE @TableName NVARCHAR(255) = 'City';&#xA;&#xA;SELECT CET, LSET FROM [AuditTableLog] &#xA;WHERE TableName = @TableName;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-          <SQLTask:ParameterBinding
-            SQLTask:ParameterName="0"
-            SQLTask:DtsVariableName="User::TableName"
-            SQLTask:ParameterDirection="Input"
-            SQLTask:DataType="129"
-            SQLTask:ParameterSize="-1" />
-        </SQLTask:SqlTaskData>
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Get CET, LSET Productline 2"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
-      DTS:DTSID="{cbf418eb-cab3-4767-b406-a0b7831e6c23}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Get CET, LSET Productline 2"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="6">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{5E5688B3-64F2-4932-95F6-79458D6E6770}"
-          SQLTask:SqlStatementSource="DECLARE @TableName NVARCHAR(255) = 'City';&#xA;&#xA;SELECT CET, LSET FROM [AuditTableLog] &#xA;WHERE TableName = @TableName;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-          <SQLTask:ParameterBinding
-            SQLTask:ParameterName="0"
-            SQLTask:DtsVariableName="User::TableName"
-            SQLTask:ParameterDirection="Input"
-            SQLTask:DataType="129"
-            SQLTask:ParameterSize="-1" />
-        </SQLTask:SqlTaskData>
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Get CET, LSET Productline 3"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
-      DTS:DTSID="{2c36b94b-95b7-4891-984e-7453ecc87955}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Get CET, LSET Productline 3"
+      DTS:ObjectName="Get CET, LSET SupermarketSale"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{5E5688B3-64F2-4932-95F6-79458D6E6770}"
-          SQLTask:SqlStatementSource="DECLARE @TableName NVARCHAR(255) = 'City';&#xA;&#xA;SELECT CET, LSET FROM [AuditTableLog] &#xA;WHERE TableName = @TableName;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-          <SQLTask:ParameterBinding
-            SQLTask:ParameterName="0"
-            SQLTask:DtsVariableName="User::TableName"
-            SQLTask:ParameterDirection="Input"
-            SQLTask:DataType="129"
-            SQLTask:ParameterSize="-1" />
+          SQLTask:SqlStatementSource="SELECT CET, LSET FROM [AuditTableLog] &#xA;WHERE TableName = 'SupermarketSale';"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="CET"
+            SQLTask:DtsVariableName="User::CET_SupermarketSales" />
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="LSET"
+            SQLTask:DtsVariableName="User::LSET_SupermarketSales" />
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -5640,7 +5729,7 @@ WHERE ProductLineID_NK = ?
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET Customer"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -5657,12 +5746,29 @@ WHERE ProductLineID_NK = ?
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET Payment"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{5711F913-BBBB-4428-998C-9B9A9D85A6E7}"
           SQLTask:SqlStatementSource="UPDATE [AuditTableLog] &#xA;SET CET = GETDATE() &#xA;WHERE TableName = 'Payment'; " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Set CET Product"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{76adb9e1-25ac-4aca-aba1-3db2d939e308}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Set CET Product"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5711F913-BBBB-4428-998C-9B9A9D85A6E7}"
+          SQLTask:SqlStatementSource="UPDATE [AuditTableLog] &#xA;SET CET = GETDATE() &#xA;WHERE TableName = 'Product'; " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -5674,12 +5780,131 @@ WHERE ProductLineID_NK = ?
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET Productline"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="5">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{5711F913-BBBB-4428-998C-9B9A9D85A6E7}"
           SQLTask:SqlStatementSource="UPDATE [AuditTableLog] &#xA;SET CET = GETDATE() &#xA;WHERE TableName = 'Productline'; " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Set CET SupermarketSales"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{0f1321db-b352-448d-a620-ca37b2836951}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Set CET SupermarketSales"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5711F913-BBBB-4428-998C-9B9A9D85A6E7}"
+          SQLTask:SqlStatementSource="UPDATE [AuditTableLog] &#xA;SET CET = GETDATE() &#xA;WHERE TableName = 'SupermarketSale'; " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Set LSET City"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{b8c2bfaa-7d60-4fe3-bad0-dc1e08013489}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Set LSET City"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="3">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5E5688B3-64F2-4932-95F6-79458D6E6770}"
+          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET LSET = GETDATE()&#xA;WHERE TableName = 'City';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Set LSET Customer"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{6e4fe9f7-b0d3-484a-9b57-c16c635a7e9b}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Set LSET Customer"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5E5688B3-64F2-4932-95F6-79458D6E6770}"
+          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET LSET = GETDATE()&#xA;WHERE TableName = 'Customer';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Set LSET Payment"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{82309d6b-7200-4986-b579-2cec10d88bad}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Set LSET Payment"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="2">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5E5688B3-64F2-4932-95F6-79458D6E6770}"
+          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET LSET = GETDATE()&#xA;WHERE TableName = 'Payment';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Set LSET Product"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{fee3eb53-c825-4e69-acdc-ffa32df06061}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Set LSET Product"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5E5688B3-64F2-4932-95F6-79458D6E6770}"
+          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET LSET = GETDATE()&#xA;WHERE TableName = 'Product';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Set LSET Productline"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{606d086e-0ef4-45ea-9e00-cb3b545a5454}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Set LSET Productline"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5E5688B3-64F2-4932-95F6-79458D6E6770}"
+          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET LSET = GETDATE()&#xA;WHERE TableName = 'Productline';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Set LSET SupermarketSale"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{af28eba2-e12d-4da5-ba71-3bd394005b7d}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Set LSET SupermarketSale"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5E5688B3-64F2-4932-95F6-79458D6E6770}"
+          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET LSET = GETDATE()&#xA;WHERE TableName = 'SupermarketSale';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -12760,79 +12985,79 @@ WHERE
               startId="Package\SupermarketSales\Merge Join 4.Outputs[Merge Join Output]" />
             <path
               refId="Package\SupermarketSales.Paths[OLE DB Source Output5]"
-              endId="Package\SupermarketSales\Sort 6.Inputs[Sort Input]"
-              name="OLE DB Source Output"
-              startId="Package\SupermarketSales\Stage supermarket_sales.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\SupermarketSales.Paths[OLE DB Source Output4]"
-              endId="Package\SupermarketSales\Sort 3.Inputs[Sort Input]"
-              name="OLE DB Source Output"
-              startId="Package\SupermarketSales\NDS Customer.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\SupermarketSales.Paths[OLE DB Source Output3]"
-              endId="Package\SupermarketSales\Sort 4.Inputs[Sort Input]"
-              name="OLE DB Source Output"
-              startId="Package\SupermarketSales\NDS City.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\SupermarketSales.Paths[OLE DB Source Output1]"
-              endId="Package\SupermarketSales\Sort 1.Inputs[Sort Input]"
-              name="OLE DB Source Output"
-              startId="Package\SupermarketSales\NDS Productline.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\SupermarketSales.Paths[OLE DB Source Output]"
-              endId="Package\SupermarketSales\Sort.Inputs[Sort Input]"
-              name="OLE DB Source Output"
-              startId="Package\SupermarketSales\NDS Product.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\SupermarketSales.Paths[OLE DB Source Output2]"
               endId="Package\SupermarketSales\Sort 2.Inputs[Sort Input]"
               name="OLE DB Source Output"
               startId="Package\SupermarketSales\NDS Payment.Outputs[OLE DB Source Output]" />
             <path
+              refId="Package\SupermarketSales.Paths[OLE DB Source Output4]"
+              endId="Package\SupermarketSales\Sort.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\SupermarketSales\NDS Product.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\SupermarketSales.Paths[OLE DB Source Output3]"
+              endId="Package\SupermarketSales\Sort 1.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\SupermarketSales\NDS Productline.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\SupermarketSales.Paths[OLE DB Source Output1]"
+              endId="Package\SupermarketSales\Sort 3.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\SupermarketSales\NDS Customer.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\SupermarketSales.Paths[OLE DB Source Output]"
+              endId="Package\SupermarketSales\Sort 6.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\SupermarketSales\Stage supermarket_sales.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\SupermarketSales.Paths[OLE DB Source Output2]"
+              endId="Package\SupermarketSales\Sort 4.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\SupermarketSales\NDS City.Outputs[OLE DB Source Output]" />
+            <path
               refId="Package\SupermarketSales.Paths[Sort Output8]"
+              endId="Package\SupermarketSales\Merge Join 1.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\SupermarketSales\Sort 4.Outputs[Sort Output]" />
+            <path
+              refId="Package\SupermarketSales.Paths[Sort Output]"
               endId="Package\SupermarketSales\Merge Join 1.Inputs[Merge Join Left Input]"
               name="Sort Output"
               startId="Package\SupermarketSales\Sort 6.Outputs[Sort Output]" />
             <path
-              refId="Package\SupermarketSales.Paths[Sort Output]"
+              refId="Package\SupermarketSales.Paths[Sort Output1]"
               endId="Package\SupermarketSales\Merge Join 4.Inputs[Merge Join Left Input]"
               name="Sort Output"
               startId="Package\SupermarketSales\Sort 9.Outputs[Sort Output]" />
             <path
-              refId="Package\SupermarketSales.Paths[Sort Output1]"
+              refId="Package\SupermarketSales.Paths[Sort Output2]"
               endId="Package\SupermarketSales\Merge Join 2.Inputs[Merge Join Left Input]"
               name="Sort Output"
               startId="Package\SupermarketSales\Sort 7.Outputs[Sort Output]" />
             <path
-              refId="Package\SupermarketSales.Paths[Sort Output2]"
+              refId="Package\SupermarketSales.Paths[Sort Output3]"
               endId="Package\SupermarketSales\Merge Join 2.Inputs[Merge Join Right Input]"
               name="Sort Output"
               startId="Package\SupermarketSales\Sort 3.Outputs[Sort Output]" />
             <path
-              refId="Package\SupermarketSales.Paths[Sort Output3]"
+              refId="Package\SupermarketSales.Paths[Sort Output4]"
               endId="Package\SupermarketSales\Merge Join.Inputs[Merge Join Right Input]"
               name="Sort Output"
               startId="Package\SupermarketSales\Sort 1.Outputs[Sort Output]" />
             <path
-              refId="Package\SupermarketSales.Paths[Sort Output4]"
+              refId="Package\SupermarketSales.Paths[Sort Output5]"
               endId="Package\SupermarketSales\Merge Join 4.Inputs[Merge Join Right Input]"
               name="Sort Output"
               startId="Package\SupermarketSales\Sort 5.Outputs[Sort Output]" />
             <path
-              refId="Package\SupermarketSales.Paths[Sort Output5]"
+              refId="Package\SupermarketSales.Paths[Sort Output6]"
               endId="Package\SupermarketSales\Merge Join 3.Inputs[Merge Join Right Input]"
               name="Sort Output"
               startId="Package\SupermarketSales\Sort 2.Outputs[Sort Output]" />
             <path
-              refId="Package\SupermarketSales.Paths[Sort Output6]"
+              refId="Package\SupermarketSales.Paths[Sort Output7]"
               endId="Package\SupermarketSales\Merge Join 3.Inputs[Merge Join Left Input]"
               name="Sort Output"
               startId="Package\SupermarketSales\Sort 8.Outputs[Sort Output]" />
-            <path
-              refId="Package\SupermarketSales.Paths[Sort Output7]"
-              endId="Package\SupermarketSales\Merge Join 1.Inputs[Merge Join Right Input]"
-              name="Sort Output"
-              startId="Package\SupermarketSales\Sort 4.Outputs[Sort Output]" />
             <path
               refId="Package\SupermarketSales.Paths[Sort Output9]"
               endId="Package\SupermarketSales\Merge Join.Inputs[Merge Join Left Input]"
@@ -12847,11 +13072,187 @@ WHERE
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{CAD93213-C3A9-472E-8E3C-82EB250E8AA4}"
-      DTS:From="Package\Product"
+      DTS:DTSID="{EBD3EBE0-31CB-4CBF-8314-DE9C8AC51A30}"
+      DTS:From="Package\Get CET, LSET Product"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
+      DTS:To="Package\Product" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{74D73366-DD5E-42FF-BECD-0D83BB67B4F1}"
+      DTS:From="Package\Set CET Productline"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Get CET, LSET Productline" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 10]"
+      DTS:CreationName=""
+      DTS:DTSID="{216FA2C4-7DCB-4B41-9914-47569DAC704C}"
+      DTS:From="Package\Productline"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 10"
+      DTS:To="Package\Set LSET Productline" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 11]"
+      DTS:CreationName=""
+      DTS:DTSID="{48623800-81BF-4945-8476-3706D9143B5B}"
+      DTS:From="Package\Customer"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 11"
+      DTS:To="Package\Set LSET Customer" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 12]"
+      DTS:CreationName=""
+      DTS:DTSID="{3E74B236-E6A8-420C-91D3-11E067D0FEF0}"
+      DTS:From="Package\Payment"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 12"
+      DTS:To="Package\Set LSET Payment" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 13]"
+      DTS:CreationName=""
+      DTS:DTSID="{80B6AB7B-11C4-4274-8C0C-C4F2C5D0ACB9}"
+      DTS:From="Package\Set LSET Productline"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 13"
+      DTS:To="Package\Set CET Product" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 14]"
+      DTS:CreationName=""
+      DTS:DTSID="{0F322772-5000-4DA9-804D-FAE99FE0EAB7}"
+      DTS:From="Package\Set CET Product"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 14"
+      DTS:To="Package\Get CET, LSET Product" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 15]"
+      DTS:CreationName=""
+      DTS:DTSID="{D263D8FF-1D08-4152-8A2E-7F22DF7B21A7}"
+      DTS:From="Package\Product"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 15"
+      DTS:To="Package\Set LSET Product" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 16]"
+      DTS:CreationName=""
+      DTS:DTSID="{85641EC0-BF14-4C0E-90C5-0E6940A644E0}"
+      DTS:From="Package\Set LSET Product"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 16"
+      DTS:To="Package\Set CET SupermarketSales" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 17]"
+      DTS:CreationName=""
+      DTS:DTSID="{406A1E57-08F4-42D0-A683-FE867CD0E782}"
+      DTS:From="Package\Set LSET City"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 17"
+      DTS:To="Package\Set CET SupermarketSales" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 18]"
+      DTS:CreationName=""
+      DTS:DTSID="{02F77F7C-CE30-4C98-88CC-CCC5F13DBC43}"
+      DTS:From="Package\Set LSET Customer"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 18"
+      DTS:To="Package\Set CET SupermarketSales" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 19]"
+      DTS:CreationName=""
+      DTS:DTSID="{3CBEF8D5-8E10-45C0-B7CA-140ADDB2648E}"
+      DTS:From="Package\Set LSET Payment"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 19"
+      DTS:To="Package\Set CET SupermarketSales" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{57B7D860-19FF-4D69-ADFF-9BCA99C425C6}"
+      DTS:From="Package\Set CET City"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Get CET, LSET City" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 20]"
+      DTS:CreationName=""
+      DTS:DTSID="{095F15B4-0433-4495-A5F0-601ACA0A9B64}"
+      DTS:From="Package\Set CET SupermarketSales"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 20"
+      DTS:To="Package\Get CET, LSET SupermarketSale" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 21]"
+      DTS:CreationName=""
+      DTS:DTSID="{2816D219-829D-40CB-9ADC-5B8A71644942}"
+      DTS:From="Package\Get CET, LSET SupermarketSale"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 21"
       DTS:To="Package\SupermarketSales" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 22]"
+      DTS:CreationName=""
+      DTS:DTSID="{1593B38D-7394-45E7-B085-10417CAA0E58}"
+      DTS:From="Package\SupermarketSales"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 22"
+      DTS:To="Package\Set LSET SupermarketSale" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{26879B84-21ED-4807-B451-C284C6870F8E}"
+      DTS:From="Package\Set CET Customer"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Get CET, LSET Customer" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{6C731D41-ED1C-45FC-B93B-ADE2C2E93850}"
+      DTS:From="Package\Set CET Payment"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Get CET, LSET Payment" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{C9EA6FD0-FC6E-413A-8FEA-47F6DBE9B7AA}"
+      DTS:From="Package\Get CET, LSET Productline"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\Productline" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{E2C5EDFC-2632-4DC2-84DB-2634A12F98EC}"
+      DTS:From="Package\Get CET, LSET City"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 6"
+      DTS:To="Package\City" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
+      DTS:CreationName=""
+      DTS:DTSID="{EAF58513-EDC0-487C-8545-0132D6B83BFC}"
+      DTS:From="Package\Get CET, LSET Customer"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 7"
+      DTS:To="Package\Customer" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 8]"
+      DTS:CreationName=""
+      DTS:DTSID="{F2FCEA3C-0BC2-4488-8F1E-54F46B206015}"
+      DTS:From="Package\Get CET, LSET Payment"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 8"
+      DTS:To="Package\Payment" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 9]"
+      DTS:CreationName=""
+      DTS:DTSID="{CADCCD22-FBE0-4178-858D-010AD3539F9D}"
+      DTS:From="Package\City"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 9"
+      DTS:To="Package\Set LSET City" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -12864,34 +13265,260 @@ WHERE
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="97,42"
           Id="Package\City"
-          TopLeft="284,172" />
+          TopLeft="292,202" />
         <NodeLayout
           Size="124,42"
           Id="Package\Customer"
-          TopLeft="457,168" />
+          TopLeft="465,205" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Get CET, LSET City"
+          TopLeft="258,126" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Get CET, LSET Customer"
+          TopLeft="445,125" />
+        <NodeLayout
+          Size="146,42"
+          Id="Package\Get CET, LSET Payment"
+          TopLeft="637,120" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Get CET, LSET Product"
+          TopLeft="83,442" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Get CET, LSET Productline"
+          TopLeft="75,127" />
+        <NodeLayout
+          Size="230,42"
+          Id="Package\Get CET, LSET SupermarketSale"
+          TopLeft="448,596" />
         <NodeLayout
           Size="120,42"
           Id="Package\Payment"
-          TopLeft="654,172" />
+          TopLeft="657,207" />
         <NodeLayout
           Size="115,42"
           Id="Package\Product"
-          TopLeft="491,214" />
+          TopLeft="109,516" />
         <NodeLayout
           Size="131,42"
           Id="Package\Productline"
-          TopLeft="87,186" />
+          TopLeft="84,203" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Set CET City"
+          TopLeft="268,41" />
+        <NodeLayout
+          Size="132,42"
+          Id="Package\Set CET Customer"
+          TopLeft="451,45" />
+        <NodeLayout
+          Size="131,42"
+          Id="Package\Set CET Payment"
+          TopLeft="649,45" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Set CET Product"
+          TopLeft="82,367" />
+        <NodeLayout
+          Size="143,42"
+          Id="Package\Set CET Productline"
+          TopLeft="83,40" />
+        <NodeLayout
+          Size="204,42"
+          Id="Package\Set CET SupermarketSales"
+          TopLeft="437,498" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Set LSET City"
+          TopLeft="276,274" />
+        <NodeLayout
+          Size="132,42"
+          Id="Package\Set LSET Customer"
+          TopLeft="468,277" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Set LSET Payment"
+          TopLeft="656,279" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Set LSET Product"
+          TopLeft="101,586" />
+        <NodeLayout
+          Size="140,42"
+          Id="Package\Set LSET Productline"
+          TopLeft="83,281" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Set LSET SupermarketSale"
+          TopLeft="482,757" />
         <NodeLayout
           Size="163,42"
           Id="Package\SupermarketSales"
-          TopLeft="467,284" />
+          TopLeft="482,678" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="548.5,256">
+          TopLeft="163.75,484">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32"
+              Start="0,0"
+              End="0,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="153.75,82">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45"
+              Start="0,0"
+              End="0,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 10]"
+          TopLeft="151.25,245">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36"
+              Start="0,0"
+              End="0,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 11]"
+          TopLeft="530.5,247">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30"
+              Start="0,0"
+              End="0,22.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 12]"
+          TopLeft="719,249">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30"
+              Start="0,0"
+              End="0,22.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 13]"
+          TopLeft="156.25,323">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 14]"
+          TopLeft="160.25,409">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33"
+              Start="0,0"
+              End="0,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 15]"
+          TopLeft="166.25,558">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -12911,38 +13538,372 @@ WHERE
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="143,42"
-          Id="Package\Set CET Productline"
-          TopLeft="84,14" />
-        <NodeLayout
-          Size="130,42"
-          Id="Package\Set CET City"
-          TopLeft="269,15" />
-        <NodeLayout
-          Size="132,42"
-          Id="Package\Set CET Customer"
-          TopLeft="452,19" />
-        <NodeLayout
-          Size="131,42"
-          Id="Package\Set CET Payment"
-          TopLeft="650,19" />
-        <NodeLayout
-          Size="156,42"
-          Id="Package\Get CET, LSET Productline"
-          TopLeft="76,101" />
-        <NodeLayout
-          Size="156,42"
-          Id="Package\Get CET, LSET Productline 1"
-          TopLeft="259,91" />
-        <NodeLayout
-          Size="156,42"
-          Id="Package\Get CET, LSET Productline 2"
-          TopLeft="443,92" />
-        <NodeLayout
-          Size="156,42"
-          Id="Package\Get CET, LSET Productline 3"
-          TopLeft="638,94" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 16]"
+          TopLeft="186.333333333333,586">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="320,-46"
+              Start="0,0"
+              End="320,-38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-19.1252022951302" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-19.1252022951302"
+                    Point2="0,-23.1252022951302"
+                    Point3="4,-23.1252022951302" />
+                  <mssgle:LineSegment
+                    End="316,-23.1252022951302" />
+                  <mssgle:CubicBezierSegment
+                    Point1="316,-23.1252022951302"
+                    Point2="320,-23.1252022951302"
+                    Point3="320,-27.1252022951302" />
+                  <mssgle:LineSegment
+                    End="320,-38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 17]"
+          TopLeft="341,316">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="149,182"
+              Start="0,0"
+              End="149,174.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,115.767741935484" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,115.767741935484"
+                    Point2="0,119.767741935484"
+                    Point3="4,119.767741935484" />
+                  <mssgle:LineSegment
+                    End="145,119.767741935484" />
+                  <mssgle:CubicBezierSegment
+                    Point1="145,119.767741935484"
+                    Point2="149,119.767741935484"
+                    Point3="149,123.767741935484" />
+                  <mssgle:LineSegment
+                    End="149,174.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 18]"
+          TopLeft="536.5,319">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,179"
+              Start="0,0"
+              End="0,171.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,171.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 19]"
+          TopLeft="721,321">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-133,177"
+              Start="0,0"
+              End="-133,169.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,112.477419354839" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,112.477419354839"
+                    Point2="0,116.477419354839"
+                    Point3="-4,116.477419354839" />
+                  <mssgle:LineSegment
+                    End="-129,116.477419354839" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-129,116.477419354839"
+                    Point2="-133,116.477419354839"
+                    Point3="-133,120.477419354839" />
+                  <mssgle:LineSegment
+                    End="-133,169.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="334.5,83">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43"
+              Start="0,0"
+              End="0,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 20]"
+          TopLeft="568.583333333333,540">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56"
+              Start="0,0"
+              End="0,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 21]"
+          TopLeft="564.5,638">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40"
+              Start="0,0"
+              End="0,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 22]"
+          TopLeft="566.75,720">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37"
+              Start="0,0"
+              End="0,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="520,87">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38"
+              Start="0,0"
+              End="0,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="712.25,87">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33"
+              Start="0,0"
+              End="0,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="151.25,169">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34"
+              Start="0,0"
+              End="0,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="338.25,168">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34"
+              Start="0,0"
+              End="0,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="525,167">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38"
+              Start="0,0"
+              End="0,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 8]"
+          TopLeft="713.5,162">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45"
+              Start="0,0"
+              End="0,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 9]"
+          TopLeft="340.75,244">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30"
+              Start="0,0"
+              End="0,22.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -12967,28 +13928,6 @@ WHERE
           Size="123,42"
           Id="Package\City\NDS_City"
           TopLeft="380,238" />
-        <EdgeLayout
-          Id="Package\City.Paths[OLE DB Source Output]"
-          TopLeft="330.5,103">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,32"
-              Start="0,0"
-              End="0,24.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,24.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\City.Paths[Lookup No Match Output]"
           TopLeft="367,177">
@@ -13061,6 +14000,28 @@ WHERE
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\City.Paths[OLE DB Source Output]"
+          TopLeft="330.5,103">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32"
+              Start="0,0"
+              End="0,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -13070,45 +14031,47 @@ WHERE
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="199,42"
-          Id="Package\Customer\Stage_supermarket_sales"
-          TopLeft="450,84" />
-        <NodeLayout
           Size="200,55"
           Id="Package\Customer\Lookup Stage_supermarket_sales in NDS_Customer"
           TopLeft="458,300" />
         <NodeLayout
-          Size="150,42"
-          Id="Package\Customer\NDS_Customer"
-          TopLeft="480,392" />
+          Size="199,42"
+          Id="Package\Customer\Stage_supermarket_sales"
+          TopLeft="450,84" />
         <NodeLayout
           Size="154,42"
           Id="Package\Customer\Derived Column"
           TopLeft="476,155" />
         <NodeLayout
+          Size="150,42"
+          Id="Package\Customer\NDS_Customer"
+          TopLeft="480,392" />
+        <NodeLayout
           Size="124,42"
           Id="Package\Customer\Customer"
           TopLeft="491.428571428571,225" />
         <EdgeLayout
-          Id="Package\Customer.Paths[Sort Output]"
-          TopLeft="555.714285714286,267">
+          Id="Package\Customer.Paths[OLE DB Source Output]"
+          TopLeft="551.25,126">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,33"
+              EndConnector="0,29"
               Start="0,0"
-              End="0,25.5">
+              End="0,21.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,25.5" />
+                    End="0,21.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -13154,29 +14117,33 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Customer.Paths[OLE DB Source Output]"
-          TopLeft="551.25,126">
+          Id="Package\Customer.Paths[Sort Output]"
+          TopLeft="555.714285714286,267">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,29"
+              EndConnector="0,33"
               Start="0,0"
-              End="0,21.5">
+              End="0,25.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21.5" />
+                    End="0,25.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -13188,17 +14155,17 @@ WHERE
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="244,42"
-          Id="Package\Payment\Multicast Stage_supermarket_sales"
-          TopLeft="436,141" />
+          Size="146,42"
+          Id="Package\Payment\NDS_Payment"
+          TopLeft="475,372" />
         <NodeLayout
           Size="199,42"
           Id="Package\Payment\Stage_supermarket_sales"
           TopLeft="464,68" />
         <NodeLayout
-          Size="146,42"
-          Id="Package\Payment\NDS_Payment"
-          TopLeft="475,372" />
+          Size="244,42"
+          Id="Package\Payment\Multicast Stage_supermarket_sales"
+          TopLeft="436,141" />
         <NodeLayout
           Size="202,54"
           Id="Package\Payment\Lookup Stage_supermarket_sales in NDS_Payment"
@@ -13226,7 +14193,9 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -13248,7 +14217,9 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -13270,7 +14241,9 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -13364,7 +14337,9 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -13392,7 +14367,9 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -13420,7 +14397,9 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -13442,7 +14421,9 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -13464,7 +14445,9 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -13486,7 +14469,9 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -13589,14 +14574,14 @@ WHERE
           Text="TODO: If Stage_product doesn't existed in NDS_Product -&gt; log to error log to handle later&#xA;"
           ParentId="Package\Product"
           FontInfo="{assembly:Null}"
-          Size="130,136"
+          Size="130,NaN"
           Id="f0d35027-79c1-4a1a-898a-15d11c6bb80e"
           TopLeft="445,23" />
         <AnnotationLayout
           Text="Currently remove duplicate but need to handle it&#xA;"
           ParentId="Package\Product"
           FontInfo="{assembly:Null}"
-          Size="287,56"
+          Size="287,NaN"
           Id="b86e1c21-d312-45e4-a134-d1754ee8f9bc"
           TopLeft="389,409" />
       </GraphLayout>
@@ -13941,51 +14926,7 @@ WHERE
           Id="Package\SupermarketSales\Conditional Split"
           TopLeft="377,635" />
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Sort Output5]"
-          TopLeft="615,262">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,194"
-              Start="0,0"
-              End="0,186.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,186.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\SupermarketSales.Paths[Sort Output4]"
-          TopLeft="830.5,412">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,119"
-              Start="0,0"
-              End="0,111.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,111.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Sort Output3]"
           TopLeft="908.5,258">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14015,11 +14956,13 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Sort Output2]"
+          Id="Package\SupermarketSales.Paths[Sort Output3]"
           TopLeft="448.5,264">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14049,11 +14992,13 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Sort Output1]"
+          Id="Package\SupermarketSales.Paths[Sort Output2]"
           TopLeft="335,405.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14071,55 +15016,73 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[OLE DB Source Output]"
-          TopLeft="755,183">
+          Id="Package\SupermarketSales.Paths[Sort Output1]"
+          TopLeft="679,554">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,35"
+              EndConnector="82,0"
               Start="0,0"
-              End="0,27.5">
+              End="74.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27.5" />
+                    End="74.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[OLE DB Source Output1]"
-          TopLeft="909.5,184">
+          Id="Package\SupermarketSales.Paths[Sort Output]"
+          TopLeft="133.5,269">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,32"
+              EndConnector="55.1666666666667,46"
               Start="0,0"
-              End="0,24.5">
+              End="55.1666666666667,38.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,24.5" />
+                    End="0,23.2859174964438" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.2859174964438"
+                    Point2="0,27.2859174964438"
+                    Point3="4,27.2859174964438" />
+                  <mssgle:LineSegment
+                    End="51.1666666666667,27.2859174964438" />
+                  <mssgle:CubicBezierSegment
+                    Point1="51.1666666666667,27.2859174964438"
+                    Point2="55.1666666666667,27.2859174964438"
+                    Point3="55.1666666666667,31.2859174964438" />
+                  <mssgle:LineSegment
+                    End="55.1666666666667,38.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[OLE DB Source Output2]"
+          Id="Package\SupermarketSales.Paths[OLE DB Source Output5]"
           TopLeft="607.75,183">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14137,33 +15100,61 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[OLE DB Source Output5]"
-          TopLeft="133.5,184">
+          Id="Package\SupermarketSales.Paths[OLE DB Source Output4]"
+          TopLeft="755,183">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,43"
+              EndConnector="0,35"
               Start="0,0"
-              End="0,35.5">
+              End="0,27.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,35.5" />
+                    End="0,27.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SupermarketSales.Paths[OLE DB Source Output3]"
+          TopLeft="909.5,184">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32"
+              Start="0,0"
+              End="0,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SupermarketSales.Paths[OLE DB Source Output2]"
           TopLeft="305.25,183">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14181,11 +15172,13 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[OLE DB Source Output4]"
+          Id="Package\SupermarketSales.Paths[OLE DB Source Output1]"
           TopLeft="448.75,184">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14203,7 +15196,33 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SupermarketSales.Paths[OLE DB Source Output]"
+          TopLeft="133.5,184">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43"
+              Start="0,0"
+              End="0,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -14237,7 +15256,9 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -14271,7 +15292,9 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -14293,7 +15316,9 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -14315,7 +15340,9 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -14337,7 +15364,9 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -14455,7 +15484,9 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -14489,67 +15520,13 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Sort Output]"
-          TopLeft="679,554">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="82,0"
-              Start="0,0"
-              End="74.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="74.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SupermarketSales.Paths[Sort Output8]"
-          TopLeft="133.5,269">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="55.1666666666667,46"
-              Start="0,0"
-              End="55.1666666666667,38.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,23.2859174964438" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,23.2859174964438"
-                    Point2="0,27.2859174964438"
-                    Point3="4,27.2859174964438" />
-                  <mssgle:LineSegment
-                    End="51.1666666666667,27.2859174964438" />
-                  <mssgle:CubicBezierSegment
-                    Point1="51.1666666666667,27.2859174964438"
-                    Point2="55.1666666666667,27.2859174964438"
-                    Point3="55.1666666666667,31.2859174964438" />
-                  <mssgle:LineSegment
-                    End="55.1666666666667,38.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Sort Output7]"
           TopLeft="304.5,264">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14579,11 +15556,13 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Sort Output6]"
+          Id="Package\SupermarketSales.Paths[Sort Output7]"
           TopLeft="495,478">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14601,14 +15580,64 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SupermarketSales.Paths[Sort Output6]"
+          TopLeft="615,262">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,194"
+              Start="0,0"
+              End="0,186.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,186.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SupermarketSales.Paths[Sort Output5]"
+          TopLeft="830.5,412">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,119"
+              Start="0,0"
+              End="0,111.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,111.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <AnnotationLayout
           Text="Handle Not Found"
           ParentId="Package\SupermarketSales"
           FontInfo="{assembly:Null}"
-          Size="127,40"
+          Size="127,NaN"
           Id="213127ae-cda2-48c3-8caf-e25007f50107"
           TopLeft="216,629" />
       </GraphLayout>

@@ -1,0 +1,17 @@
+<Root> 
+  <SolutionDirectory></SolutionDirectory>
+  <DataSource>
+      <MainSource>supermarket_sales.xls</MainSource>
+      <OtherSources>
+          <Directory>\data</Directory>
+          <Sources>
+              <Source>data\product.csv</Source>
+              <Source>data\productline.csv</Source>
+              <Source>data\supermarket_sales.csv</Source>
+              <Source>data\supermarket_sales.xls</Source>
+          </Sources>
+      </OtherSources>
+  </DataSource>
+  <ELTProject>\BIDATH</ELTProject>
+  <DatabaseCongfigFile>\BIDATH\Config.xml</DatabaseCongfigFile>
+</Root>

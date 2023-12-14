@@ -8,7 +8,7 @@
         <UseWinAuth>false</UseWinAuth>
         <WinAuthUserName />
         <WinAuthDomain />
-        <StartObjectID>NDSToDDS.dtsx</StartObjectID>
+        <StartObjectID>test.dtsx</StartObjectID>
         <UserIDs />
         <UserPasswords />
         <OfflineMode>false</OfflineMode>
