@@ -1,0 +1,7 @@
+D:\BI\DATH\BIDATH\FunctionalApplication\bin\Debug\FunctionalApplication.exe.config
+D:\BI\DATH\BIDATH\FunctionalApplication\bin\Debug\FunctionalApplication.exe
+D:\BI\DATH\BIDATH\FunctionalApplication\bin\Debug\FunctionalApplication.pdb
+D:\BI\DATH\BIDATH\FunctionalApplication\obj\Debug\FunctionalApplication.csproj.AssemblyReference.cache
+D:\BI\DATH\BIDATH\FunctionalApplication\obj\Debug\FunctionalApplication.csproj.CoreCompileInputs.cache
+D:\BI\DATH\BIDATH\FunctionalApplication\obj\Debug\FunctionalApplication.exe
+D:\BI\DATH\BIDATH\FunctionalApplication\obj\Debug\FunctionalApplication.pdb

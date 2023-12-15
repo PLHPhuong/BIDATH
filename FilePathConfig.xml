@@ -1,10 +1,9 @@
 <Root>
-  <SolutionDirectory>
-  </SolutionDirectory>
+  <SolutionDirectory>D:\BI\DATH</SolutionDirectory>
   <DataSource>
     <MainSource>D:\BI\DATH\supermarket_sales.xls</MainSource>
     <OtherSources>
-      <Directory>D:\data</Directory>
+      <Directory>D:\BI\DATH\data</Directory>
       <Sources>
         <Source>D:\BI\DATH\data\product.csv</Source>
         <Source>D:\BI\DATH\data\productline.csv</Source>
@@ -13,6 +12,6 @@
       </Sources>
     </OtherSources>
   </DataSource>
-  <ELTProject>D:\BIDATH</ELTProject>
-  <DatabaseCongfigFile>D:\BIDATH\Config.xml</DatabaseCongfigFile>
+  <ELTProject>D:\BI\DATH\BIDATH</ELTProject>
+  <DatabaseCongfigFile>D:\BI\DATH\BIDATH\Config.xml</DatabaseCongfigFile>
 </Root>

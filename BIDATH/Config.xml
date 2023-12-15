@@ -6,7 +6,7 @@
         <Trigger>Delete</Trigger>
     </HandleExistedMethod>
     <Databases>
-        <Database>
+        <Database Name='BI_Stage' Type='stage'>
             <Name>BI_Stage</Name>
             <MetaTables>
                 <Table>
@@ -147,7 +147,7 @@
             <Triggers>
             </Triggers>
         </Database>
-        <Database>
+        <Database Name='BI_NDS' Type='nds'>
             <Name>BI_NDS</Name>
             <MetaTables>
                 <Table>
@@ -327,7 +327,7 @@
             <Triggers>
             </Triggers>
         </Database>
-        <Database>
+        <Database Name='BI_DDS' Type='dds'>
             <Name>BI_DDS</Name>
             <MetaTables>
                 <Table>

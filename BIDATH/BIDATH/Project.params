@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0"?>
 <SSIS:Parameters xmlns:SSIS="www.microsoft.com/SqlServer/SSIS">
   <SSIS:Parameter
-    SSIS:Name="ConfigFilePath">
+    SSIS:Name="FilePathConfig">
     <SSIS:Properties>
       <SSIS:Property
         SSIS:Name="ID">{7cf07a71-b618-4231-923d-515a3c0c3de0}</SSIS:Property>
@@ -16,7 +16,7 @@
       <SSIS:Property
         SSIS:Name="Sensitive">0</SSIS:Property>
       <SSIS:Property
-        SSIS:Name="Value">D:\BI\DATH\BIDATH\Config.xml</SSIS:Property>
+        SSIS:Name="Value">D:\BI\DATH\FilePathConfig.xml</SSIS:Property>
       <SSIS:Property
         SSIS:Name="DataType">18</SSIS:Property>
     </SSIS:Properties>
