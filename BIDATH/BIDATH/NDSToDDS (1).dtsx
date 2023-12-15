@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="52"
-  DTS:VersionGUID="{AFB7E33D-F23F-4E69-AAF3-35EE88B70321}">
+  DTS:VersionBuild="55"
+  DTS:VersionGUID="{F925C160-351D-4DAF-96CE-AA38A01BF2CB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -215,7 +215,6 @@
       DTS:refId="Package\DimCity"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:Disabled="True"
       DTS:DTSID="{A95506D3-1A70-4D0A-82DD-A84C09072E93}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -869,7 +868,6 @@ WHERE
       DTS:refId="Package\DimCustomer"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:Disabled="True"
       DTS:DTSID="{60AF3E1F-5D36-49BD-ABC7-2DE66CC24A33}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -1523,7 +1521,6 @@ WHERE
       DTS:refId="Package\DimDate"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:Disabled="True"
       DTS:DTSID="{5808A643-A9DE-477A-9232-EE89FE6253AC}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -1710,179 +1707,6 @@ WHERE
                       refId="Package\DimDate\DDS DimDate.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\DimDate\DDS DimDate.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DimDate\Derived Column"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Derived Column"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\DimDate\Derived Column.Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\DimDate\Derived Column.Inputs[Derived Column Input].Columns[Date]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="Date"
-                      lineageId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Date]" />
-                    <inputColumn
-                      refId="Package\DimDate\Derived Column.Inputs[Derived Column Input].Columns[Time]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="Time"
-                      lineageId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Time]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DimDate\Derived Column.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\DimDate\Derived Column.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DimDate\Derived Column.Outputs[Derived Column Output].Columns[Minute]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\DimDate\Derived Column.Outputs[Derived Column Output].Columns[Minute]"
-                      name="Minute"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[DATEPART]("mi",#{Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Time]})</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">DATEPART("mi",Time)</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\DimDate\Derived Column.Outputs[Derived Column Output].Columns[Hour]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\DimDate\Derived Column.Outputs[Derived Column Output].Columns[Hour]"
-                      name="Hour"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[DATEPART]("hh",#{Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Time]})</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">DATEPART("hh",Time)</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\DimDate\Derived Column.Outputs[Derived Column Output].Columns[Day]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\DimDate\Derived Column.Outputs[Derived Column Output].Columns[Day]"
-                      name="Day"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[DAY](#{Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Date]})</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">DAY(Date)</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\DimDate\Derived Column.Outputs[Derived Column Output].Columns[Month]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\DimDate\Derived Column.Outputs[Derived Column Output].Columns[Month]"
-                      name="Month"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[MONTH](#{Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Date]})</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">MONTH(Date)</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\DimDate\Derived Column.Outputs[Derived Column Output].Columns[Year]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\DimDate\Derived Column.Outputs[Derived Column Output].Columns[Year]"
-                      name="Year"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[YEAR](#{Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Date]})</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">YEAR(Date)</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\DimDate\Derived Column.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\DimDate\Derived Column.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DimDate\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DimDate\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DimDate\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DimDate\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -2317,6 +2141,51 @@ where [refTable].[Minute] = ? and [refTable].[Hour] = ? and [refTable].[Day] = ?
                       name="UpdatedDate"
                       scale="7"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Minute]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Minute]"
+                      lineageId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Minute]"
+                      name="Minute"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Hour]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Hour]"
+                      lineageId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Hour]"
+                      name="Hour"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Day]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Day]"
+                      lineageId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Day]"
+                      name="Day"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Month]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Month]"
+                      lineageId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Month]"
+                      name="Month"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Year]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Year]"
+                      lineageId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Year]"
+                      name="Year"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2391,6 +2260,26 @@ where [refTable].[Minute] = ? and [refTable].[Hour] = ? and [refTable].[Day] = ?
                       dataType="dbTimeStamp2"
                       name="UpdatedDate"
                       scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Minute]"
+                      dataType="i4"
+                      name="Minute" />
+                    <externalMetadataColumn
+                      refId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Hour]"
+                      dataType="i4"
+                      name="Hour" />
+                    <externalMetadataColumn
+                      refId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Day]"
+                      dataType="i4"
+                      name="Day" />
+                    <externalMetadataColumn
+                      refId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Month]"
+                      dataType="i4"
+                      name="Month" />
+                    <externalMetadataColumn
+                      refId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Year]"
+                      dataType="i4"
+                      name="Year" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -2429,6 +2318,31 @@ where [refTable].[Minute] = ? and [refTable].[Hour] = ? and [refTable].[Day] = ?
                       dataType="dbTimeStamp"
                       lineageId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Date]"
                       name="Date" />
+                    <outputColumn
+                      refId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Minute]"
+                      dataType="i4"
+                      lineageId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Minute]"
+                      name="Minute" />
+                    <outputColumn
+                      refId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Hour]"
+                      dataType="i4"
+                      lineageId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Hour]"
+                      name="Hour" />
+                    <outputColumn
+                      refId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Day]"
+                      dataType="i4"
+                      lineageId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Day]"
+                      name="Day" />
+                    <outputColumn
+                      refId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Month]"
+                      dataType="i4"
+                      lineageId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Month]"
+                      name="Month" />
+                    <outputColumn
+                      refId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Year]"
+                      dataType="i4"
+                      lineageId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Year]"
+                      name="Year" />
                     <outputColumn
                       refId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Time]"
                       dataType="dbTimeStamp"
@@ -2546,7 +2460,7 @@ where [refTable].[Minute] = ? and [refTable].[Hour] = ? and [refTable].[Day] = ?
                       refId="Package\DimDate\SupermarketSale.Inputs[Sort Input].Columns[Minute]"
                       cachedDataType="i4"
                       cachedName="Minute"
-                      lineageId="Package\DimDate\Derived Column.Outputs[Derived Column Output].Columns[Minute]">
+                      lineageId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Minute]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -2562,7 +2476,7 @@ where [refTable].[Minute] = ? and [refTable].[Hour] = ? and [refTable].[Day] = ?
                       refId="Package\DimDate\SupermarketSale.Inputs[Sort Input].Columns[Hour]"
                       cachedDataType="i4"
                       cachedName="Hour"
-                      lineageId="Package\DimDate\Derived Column.Outputs[Derived Column Output].Columns[Hour]">
+                      lineageId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Hour]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -2578,7 +2492,7 @@ where [refTable].[Minute] = ? and [refTable].[Hour] = ? and [refTable].[Day] = ?
                       refId="Package\DimDate\SupermarketSale.Inputs[Sort Input].Columns[Day]"
                       cachedDataType="i4"
                       cachedName="Day"
-                      lineageId="Package\DimDate\Derived Column.Outputs[Derived Column Output].Columns[Day]">
+                      lineageId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Day]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -2594,7 +2508,7 @@ where [refTable].[Minute] = ? and [refTable].[Hour] = ? and [refTable].[Day] = ?
                       refId="Package\DimDate\SupermarketSale.Inputs[Sort Input].Columns[Month]"
                       cachedDataType="i4"
                       cachedName="Month"
-                      lineageId="Package\DimDate\Derived Column.Outputs[Derived Column Output].Columns[Month]">
+                      lineageId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Month]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -2610,7 +2524,7 @@ where [refTable].[Minute] = ? and [refTable].[Hour] = ? and [refTable].[Day] = ?
                       refId="Package\DimDate\SupermarketSale.Inputs[Sort Input].Columns[Year]"
                       cachedDataType="i4"
                       cachedName="Year"
-                      lineageId="Package\DimDate\Derived Column.Outputs[Derived Column Output].Columns[Year]">
+                      lineageId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Year]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -2656,7 +2570,7 @@ where [refTable].[Minute] = ? and [refTable].[Hour] = ? and [refTable].[Day] = ?
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DimDate\Derived Column.Outputs[Derived Column Output].Columns[Minute]}</property>
+                          name="SortColumnId">#{Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Minute]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -2670,7 +2584,7 @@ where [refTable].[Minute] = ? and [refTable].[Hour] = ? and [refTable].[Day] = ?
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DimDate\Derived Column.Outputs[Derived Column Output].Columns[Hour]}</property>
+                          name="SortColumnId">#{Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Hour]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -2684,7 +2598,7 @@ where [refTable].[Minute] = ? and [refTable].[Hour] = ? and [refTable].[Day] = ?
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DimDate\Derived Column.Outputs[Derived Column Output].Columns[Day]}</property>
+                          name="SortColumnId">#{Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Day]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -2698,7 +2612,7 @@ where [refTable].[Minute] = ? and [refTable].[Hour] = ? and [refTable].[Day] = ?
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DimDate\Derived Column.Outputs[Derived Column Output].Columns[Month]}</property>
+                          name="SortColumnId">#{Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Month]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -2712,7 +2626,7 @@ where [refTable].[Minute] = ? and [refTable].[Hour] = ? and [refTable].[Day] = ?
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DimDate\Derived Column.Outputs[Derived Column Output].Columns[Year]}</property>
+                          name="SortColumnId">#{Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Year]}</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -2723,18 +2637,13 @@ where [refTable].[Minute] = ? and [refTable].[Hour] = ? and [refTable].[Day] = ?
           </components>
           <paths>
             <path
-              refId="Package\DimDate.Paths[Derived Column Output]"
-              endId="Package\DimDate\SupermarketSale.Inputs[Sort Input]"
-              name="Derived Column Output"
-              startId="Package\DimDate\Derived Column.Outputs[Derived Column Output]" />
-            <path
               refId="Package\DimDate.Paths[Lookup No Match Output]"
               endId="Package\DimDate\DDS DimDate.Inputs[OLE DB Destination Input]"
               name="Lookup No Match Output"
               startId="Package\DimDate\Lookup Date.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\DimDate.Paths[OLE DB Source Output]"
-              endId="Package\DimDate\Derived Column.Inputs[Derived Column Input]"
+              endId="Package\DimDate\SupermarketSale.Inputs[Sort Input]"
               name="OLE DB Source Output"
               startId="Package\DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output]" />
             <path
@@ -2750,7 +2659,6 @@ where [refTable].[Minute] = ? and [refTable].[Hour] = ? and [refTable].[Day] = ?
       DTS:refId="Package\DimPayment"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:Disabled="True"
       DTS:DTSID="{81F2F382-63C0-4A56-9FBF-40C641D1085D}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -3351,7 +3259,6 @@ WHERE
       DTS:refId="Package\DimProduct"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:Disabled="True"
       DTS:DTSID="{9fd1f49b-a7cc-42a7-bab3-bb365293785b}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -4958,7 +4865,6 @@ WHERE
       DTS:refId="Package\FactSupermarketSale"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:Disabled="True"
       DTS:DTSID="{A19A96E8-7F9F-462A-8DA9-F5AF8C5AD708}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -5012,7 +4918,7 @@ WHERE
                       refId="Package\FactSupermarketSale\Date (1).Inputs[Sort Input].Columns[Minute]"
                       cachedDataType="i4"
                       cachedName="Minute"
-                      lineageId="Package\FactSupermarketSale\Derived Column.Outputs[Derived Column Output].Columns[Minute]">
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Minute]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -5028,7 +4934,7 @@ WHERE
                       refId="Package\FactSupermarketSale\Date (1).Inputs[Sort Input].Columns[Hour]"
                       cachedDataType="i4"
                       cachedName="Hour"
-                      lineageId="Package\FactSupermarketSale\Derived Column.Outputs[Derived Column Output].Columns[Hour]">
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Hour]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -5044,7 +4950,7 @@ WHERE
                       refId="Package\FactSupermarketSale\Date (1).Inputs[Sort Input].Columns[Day]"
                       cachedDataType="i4"
                       cachedName="Day"
-                      lineageId="Package\FactSupermarketSale\Derived Column.Outputs[Derived Column Output].Columns[Day]">
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Day]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -5060,7 +4966,7 @@ WHERE
                       refId="Package\FactSupermarketSale\Date (1).Inputs[Sort Input].Columns[Month]"
                       cachedDataType="i4"
                       cachedName="Month"
-                      lineageId="Package\FactSupermarketSale\Derived Column.Outputs[Derived Column Output].Columns[Month]">
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Month]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -5076,7 +4982,7 @@ WHERE
                       refId="Package\FactSupermarketSale\Date (1).Inputs[Sort Input].Columns[Year]"
                       cachedDataType="i4"
                       cachedName="Year"
-                      lineageId="Package\FactSupermarketSale\Derived Column.Outputs[Derived Column Output].Columns[Year]">
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Year]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -5381,7 +5287,7 @@ WHERE
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\FactSupermarketSale\Derived Column.Outputs[Derived Column Output].Columns[Minute]}</property>
+                          name="SortColumnId">#{Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Minute]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -5395,7 +5301,7 @@ WHERE
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\FactSupermarketSale\Derived Column.Outputs[Derived Column Output].Columns[Hour]}</property>
+                          name="SortColumnId">#{Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Hour]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -5409,7 +5315,7 @@ WHERE
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\FactSupermarketSale\Derived Column.Outputs[Derived Column Output].Columns[Day]}</property>
+                          name="SortColumnId">#{Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Day]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -5423,7 +5329,7 @@ WHERE
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\FactSupermarketSale\Derived Column.Outputs[Derived Column Output].Columns[Month]}</property>
+                          name="SortColumnId">#{Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Month]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -5437,7 +5343,7 @@ WHERE
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\FactSupermarketSale\Derived Column.Outputs[Derived Column Output].Columns[Year]}</property>
+                          name="SortColumnId">#{Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Year]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -6226,179 +6132,6 @@ WHERE
               </outputs>
             </component>
             <component
-              refId="Package\FactSupermarketSale\Derived Column"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Derived Column"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\FactSupermarketSale\Derived Column.Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\FactSupermarketSale\Derived Column.Inputs[Derived Column Input].Columns[Date]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="Date"
-                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Date]" />
-                    <inputColumn
-                      refId="Package\FactSupermarketSale\Derived Column.Inputs[Derived Column Input].Columns[Time]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="Time"
-                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Time]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\FactSupermarketSale\Derived Column.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\FactSupermarketSale\Derived Column.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\FactSupermarketSale\Derived Column.Outputs[Derived Column Output].Columns[Minute]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\FactSupermarketSale\Derived Column.Outputs[Derived Column Output].Columns[Minute]"
-                      name="Minute"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[DATEPART]("mi",#{Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Time]})</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">DATEPART("mi",Time)</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\FactSupermarketSale\Derived Column.Outputs[Derived Column Output].Columns[Hour]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\FactSupermarketSale\Derived Column.Outputs[Derived Column Output].Columns[Hour]"
-                      name="Hour"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[DATEPART]("hh",#{Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Time]})</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">DATEPART("hh",Time)</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\FactSupermarketSale\Derived Column.Outputs[Derived Column Output].Columns[Day]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\FactSupermarketSale\Derived Column.Outputs[Derived Column Output].Columns[Day]"
-                      name="Day"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[DAY](#{Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Date]})</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">DAY(Date)</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\FactSupermarketSale\Derived Column.Outputs[Derived Column Output].Columns[Month]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\FactSupermarketSale\Derived Column.Outputs[Derived Column Output].Columns[Month]"
-                      name="Month"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[MONTH](#{Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Date]})</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">MONTH(Date)</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\FactSupermarketSale\Derived Column.Outputs[Derived Column Output].Columns[Year]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\FactSupermarketSale\Derived Column.Outputs[Derived Column Output].Columns[Year]"
-                      name="Year"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[YEAR](#{Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Date]})</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">YEAR(Date)</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\FactSupermarketSale\Derived Column.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\FactSupermarketSale\Derived Column.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\FactSupermarketSale\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\FactSupermarketSale\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\FactSupermarketSale\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\FactSupermarketSale\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
               refId="Package\FactSupermarketSale\FactSupermarketSale"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
@@ -6555,20 +6288,6 @@ WHERE
                       cachedName="Date_SK"
                       externalMetadataColumnId="Package\FactSupermarketSale\FactSupermarketSale.Inputs[OLE DB Destination Input].ExternalColumns[Date_SK]"
                       lineageId="Package\FactSupermarketSale\Merge Join.Outputs[Merge Join Output].Columns[Date_SK]" />
-                    <inputColumn
-                      refId="Package\FactSupermarketSale\FactSupermarketSale.Inputs[OLE DB Destination Input].Columns[CreatedDate]"
-                      cachedDataType="dbTimeStamp2"
-                      cachedName="CreatedDate"
-                      cachedScale="7"
-                      externalMetadataColumnId="Package\FactSupermarketSale\FactSupermarketSale.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
-                      lineageId="Package\FactSupermarketSale\Merge Join.Outputs[Merge Join Output].Columns[CreatedDate]" />
-                    <inputColumn
-                      refId="Package\FactSupermarketSale\FactSupermarketSale.Inputs[OLE DB Destination Input].Columns[UpdatedDate]"
-                      cachedDataType="dbTimeStamp2"
-                      cachedName="UpdatedDate"
-                      cachedScale="7"
-                      externalMetadataColumnId="Package\FactSupermarketSale\FactSupermarketSale.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
-                      lineageId="Package\FactSupermarketSale\Merge Join.Outputs[Merge Join Output].Columns[UpdatedDate]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -7455,6 +7174,51 @@ where [refTable].[InvoiceID_sk] = ?</property>
                       name="UpdatedDate"
                       scale="7"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Minute]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Minute]"
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Minute]"
+                      name="Minute"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Hour]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Hour]"
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Hour]"
+                      name="Hour"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Day]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Day]"
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Day]"
+                      name="Day"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Month]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Month]"
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Month]"
+                      name="Month"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Year]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Year]"
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Year]"
+                      name="Year"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -7529,6 +7293,26 @@ where [refTable].[InvoiceID_sk] = ?</property>
                       dataType="dbTimeStamp2"
                       name="UpdatedDate"
                       scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Minute]"
+                      dataType="i4"
+                      name="Minute" />
+                    <externalMetadataColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Hour]"
+                      dataType="i4"
+                      name="Hour" />
+                    <externalMetadataColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Day]"
+                      dataType="i4"
+                      name="Day" />
+                    <externalMetadataColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Month]"
+                      dataType="i4"
+                      name="Month" />
+                    <externalMetadataColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Year]"
+                      dataType="i4"
+                      name="Year" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -7567,6 +7351,31 @@ where [refTable].[InvoiceID_sk] = ?</property>
                       dataType="dbTimeStamp"
                       lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Date]"
                       name="Date" />
+                    <outputColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Minute]"
+                      dataType="i4"
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Minute]"
+                      name="Minute" />
+                    <outputColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Hour]"
+                      dataType="i4"
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Hour]"
+                      name="Hour" />
+                    <outputColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Day]"
+                      dataType="i4"
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Day]"
+                      name="Day" />
+                    <outputColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Month]"
+                      dataType="i4"
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Month]"
+                      name="Month" />
+                    <outputColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Year]"
+                      dataType="i4"
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Year]"
+                      name="Year" />
                     <outputColumn
                       refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Time]"
                       dataType="dbTimeStamp"
@@ -7980,11 +7789,6 @@ WHERE
           </components>
           <paths>
             <path
-              refId="Package\FactSupermarketSale.Paths[Derived Column Output]"
-              endId="Package\FactSupermarketSale\Date (1).Inputs[Sort Input]"
-              name="Derived Column Output"
-              startId="Package\FactSupermarketSale\Derived Column.Outputs[Derived Column Output]" />
-            <path
               refId="Package\FactSupermarketSale.Paths[Lookup Match Output]"
               endId="Package\FactSupermarketSale\Update FactSupermarketSale.Inputs[OLE DB Command Input]"
               name="Lookup Match Output"
@@ -8001,14 +7805,14 @@ WHERE
               startId="Package\FactSupermarketSale\Merge Join.Outputs[Merge Join Output]" />
             <path
               refId="Package\FactSupermarketSale.Paths[OLE DB Source Output]"
-              endId="Package\FactSupermarketSale\Derived Column.Inputs[Derived Column Input]"
-              name="OLE DB Source Output"
-              startId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\FactSupermarketSale.Paths[OLE DB Source Output1]"
               endId="Package\FactSupermarketSale\Date (2).Inputs[Sort Input]"
               name="OLE DB Source Output"
               startId="Package\FactSupermarketSale\DDS DimDate.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\FactSupermarketSale.Paths[OLE DB Source Output1]"
+              endId="Package\FactSupermarketSale\Date (1).Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\FactSupermarketSale.Paths[Sort Output]"
               endId="Package\FactSupermarketSale\Merge Join.Inputs[Merge Join Right Input]"
@@ -8027,13 +7831,12 @@ WHERE
       DTS:refId="Package\Get CET, LSET DimCity"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{4985a745-82f7-476e-b8e0-68df8e9c5350}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Get CET, LSET DimCity"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="4">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -8053,13 +7856,12 @@ WHERE
       DTS:refId="Package\Get CET, LSET DimCustomer"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{deb891ab-7b50-4d4d-a28b-78ae6088b756}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Get CET, LSET DimCustomer"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -8079,13 +7881,12 @@ WHERE
       DTS:refId="Package\Get CET, LSET DimDate"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{001a0fbd-2e01-4c01-95d9-5de34dc4d45a}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Get CET, LSET DimDate"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="3">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -8105,13 +7906,12 @@ WHERE
       DTS:refId="Package\Get CET, LSET DimPayment"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{cf584f38-efab-4458-aaba-b1fb890d7a41}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Get CET, LSET DimPayment"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="5">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -8131,13 +7931,12 @@ WHERE
       DTS:refId="Package\Get CET, LSET DimProduct"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{e052893f-7387-404c-9fcc-cfbdf85d7194}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Get CET, LSET DimProduct"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="4">
+      DTS:ThreadHint="3">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -8157,13 +7956,12 @@ WHERE
       DTS:refId="Package\Get CET, LSET FactSupermarketSale"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{68268b5a-8979-4380-b3f9-174ebbd901f0}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Get CET, LSET FactSupermarketSale"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -8183,13 +7981,12 @@ WHERE
       DTS:refId="Package\Set CET DimCity"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{adf834db-df39-4072-b832-92d7c4a352f2}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET DimCity"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="4">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -8201,13 +7998,12 @@ WHERE
       DTS:refId="Package\Set CET DimCustomer"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{c41a4089-5ac9-4ead-a8c7-383452dd2697}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET DimCustomer"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -8219,13 +8015,12 @@ WHERE
       DTS:refId="Package\Set CET DimDate"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{672ffc79-06f8-4100-9220-84dc4a66ae4c}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET DimDate"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="3">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -8237,13 +8032,12 @@ WHERE
       DTS:refId="Package\Set CET DimPayment"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{e94d57cf-f9c0-42c5-9252-70e405f6aedc}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET DimPayment"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="5">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -8255,13 +8049,12 @@ WHERE
       DTS:refId="Package\Set CET DimProduct"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{442e7cb5-02fa-43e4-840a-db0c8719f04f}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET DimProduct"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="4">
+      DTS:ThreadHint="3">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -8273,13 +8066,12 @@ WHERE
       DTS:refId="Package\Set CET FactSupermarketSale"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{03ca7c76-cbb9-4ad0-9197-5df8bc0073d3}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET FactSupermarketSale"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -8291,13 +8083,12 @@ WHERE
       DTS:refId="Package\Set LSET DimCity"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{3b22a690-8bb1-4eff-9266-b7c354bdacf2}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Set LSET DimCity"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="4">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -8309,13 +8100,12 @@ WHERE
       DTS:refId="Package\Set LSET DimCustomer"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{fcff7d31-977c-49e5-9964-4970ab2994e5}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Set LSET DimCustomer"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -8327,13 +8117,12 @@ WHERE
       DTS:refId="Package\Set LSET DimDate"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{87ac182b-edfd-4fe0-928b-383621cedda2}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Set LSET DimDate"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="3">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -8345,13 +8134,12 @@ WHERE
       DTS:refId="Package\Set LSET DimPayment"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{66012bd3-8627-4863-86ab-143f680ae4f4}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Set LSET DimPayment"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="5">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -8363,13 +8151,12 @@ WHERE
       DTS:refId="Package\Set LSET DimProduct"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{ad071bfc-4085-458e-9373-ccd8b56b724c}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Set LSET DimProduct"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="4">
+      DTS:ThreadHint="3">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -8381,13 +8168,12 @@ WHERE
       DTS:refId="Package\Set LSET FactSupermarketSale"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{137917c3-4702-416d-9aad-4e3a247d15c0}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Set LSET FactSupermarketSale"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -8399,12 +8185,11 @@ WHERE
       DTS:refId="Package\Test check variables and params"
       DTS:CreationName="Microsoft.ScriptTask"
       DTS:Description="Script Task"
-      DTS:Disabled="True"
       DTS:DTSID="{edbd7fea-0714-4695-bbe9-fabf4cea5391}"
       DTS:ExecutableType="Microsoft.ScriptTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Test check variables and params"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="5">
       <DTS:Variables />
       <DTS:ObjectData>
         <ScriptProject
@@ -8414,14 +8199,35 @@ WHERE
           Language="CSharp"
           ReadOnlyVariables="$Package::ConfigFilePath,$Package::OLED_DestinationDatabaseName,$Package::OLED_DestinationServerName,$Package::OLED_SourceDatabaseName,$Package::OLED_SourceServerName">
           <ProjectItem
-            Name="Properties\Settings.settings"
-            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_c6eef40b273547c5bf97ae1ed81b2944")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_c6eef40b273547c5bf97ae1ed81b2944")]
+[assembly: AssemblyCopyright("Copyright @  2023")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.resx"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -8724,35 +8530,14 @@ namespace ST_c6eef40b273547c5bf97ae1ed81b2944.Properties {
     }
 }]]></ProjectItem>
           <ProjectItem
-            Name="Properties\AssemblyInfo.cs"
-            Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
-
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("ST_c6eef40b273547c5bf97ae1ed81b2944")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ST_c6eef40b273547c5bf97ae1ed81b2944")]
-[assembly: AssemblyCopyright("Copyright @  2023")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.Designer.cs"
             Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -9237,6 +9022,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           Size="186,42"
           Id="Package\Set LSET FactSupermarketSale"
           TopLeft="445.25,702.75" />
+        <NodeLayout
+          Size="233,42"
+          Id="Package\Test check variables and params"
+          TopLeft="425,2" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="190.25,105">
@@ -9791,10 +9580,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="233,42"
-          Id="Package\Test check variables and params"
-          TopLeft="425,2" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -9948,7 +9733,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -9958,7 +9743,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -10115,7 +9900,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -10125,7 +9910,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -10136,7 +9921,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
     design-time-name="Package\DimDate">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="182,42"
           Id="Package\DimDate\NDS SupermarketSale"
@@ -10144,44 +9929,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         <NodeLayout
           Size="138,42"
           Id="Package\DimDate\Lookup Date"
-          TopLeft="396.333333333334,318.555555555556" />
+          TopLeft="392.333333333334,248.555555555556" />
         <NodeLayout
           Size="159,42"
           Id="Package\DimDate\SupermarketSale"
-          TopLeft="380.777777777778,247.444444444445" />
+          TopLeft="376.777777777778,177.444444444445" />
         <NodeLayout
           Size="143,42"
           Id="Package\DimDate\DDS DimDate"
-          TopLeft="395.222222222223,404.111111111111" />
-        <NodeLayout
-          Size="154,42"
-          Id="Package\DimDate\Derived Column"
-          TopLeft="381.888888888889,173" />
-        <EdgeLayout
-          Id="Package\DimDate.Paths[OLE DB Source Output]"
-          TopLeft="459.444444444445,145">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,28.0000000000001"
-              Start="0,0"
-              End="0,20.5000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.5000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="391.222222222223,334.111111111111" />
         <EdgeLayout
           Id="Package\DimDate.Paths[Lookup No Match Output]"
-          TopLeft="466.027777777779,360.555555555556">
+          TopLeft="462.027777777779,290.555555555556">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -10204,30 +9963,8 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DimDate.Paths[Derived Column Output]"
-          TopLeft="459.583333333334,215">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,32.4444444444443"
-              Start="0,0"
-              End="0,24.9444444444443">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,24.9444444444443" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\DimDate.Paths[Sort Output]"
-          TopLeft="462.805555555556,289.444444444445">
+          TopLeft="458.805555555556,219.444444444445">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -10239,6 +9976,28 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,21.6111111111113" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DimDate.Paths[OLE DB Source Output]"
+          TopLeft="458.138888888889,145">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32.444444444445"
+              Start="0,0"
+              End="0,24.944444444445">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.944444444445" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -10436,7 +10195,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -10446,7 +10205,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -10757,7 +10516,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -10767,7 +10526,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -10778,7 +10537,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
     design-time-name="Package\FactSupermarketSale">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="118,42"
           Id="Package\FactSupermarketSale\Date (2)"
@@ -10790,79 +10549,53 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         <NodeLayout
           Size="178,42"
           Id="Package\FactSupermarketSale\FactSupermarketSale"
-          TopLeft="315,464" />
+          TopLeft="307,416" />
         <NodeLayout
           Size="130,42"
           Id="Package\FactSupermarketSale\Merge Join"
-          TopLeft="220,303" />
+          TopLeft="217,242" />
         <NodeLayout
           Size="215,42"
           Id="Package\FactSupermarketSale\Update FactSupermarketSale"
-          TopLeft="74,465" />
+          TopLeft="65,414" />
         <NodeLayout
           Size="135,42"
           Id="Package\FactSupermarketSale\NDS in DDS"
-          TopLeft="221,374" />
-        <NodeLayout
-          Size="154,42"
-          Id="Package\FactSupermarketSale\Derived Column"
-          TopLeft="108.888888888889,149" />
+          TopLeft="212,319" />
         <NodeLayout
           Size="118,42"
           Id="Package\FactSupermarketSale\Date (1)"
-          TopLeft="130.777777777778,220.444444444444" />
+          TopLeft="121.777777777778,155.444444444444" />
         <NodeLayout
           Size="182,42"
           Id="Package\FactSupermarketSale\NDS SupermarketSale"
           TopLeft="96,79" />
         <EdgeLayout
-          Id="Package\FactSupermarketSale.Paths[Derived Column Output]"
-          TopLeft="187.833333333333,191">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,29.4444444444439"
-              Start="0,0"
-              End="0,21.9444444444439">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,21.9444444444439" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\FactSupermarketSale.Paths[Sort Output1]"
-          TopLeft="189.777777777778,262.444444444444">
+          TopLeft="180.777777777778,197.444444444444">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="74.8888888888887,40.555555555556"
+              EndConnector="80.8888888888887,44.555555555556"
               Start="0,0"
-              End="74.8888888888887,33.055555555556">
+              End="80.8888888888887,37.055555555556">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.0374873353599" />
+                    End="0,22.4083080040529" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.0374873353599"
-                    Point2="0,24.0374873353599"
-                    Point3="4,24.0374873353599" />
+                    Point1="0,22.4083080040529"
+                    Point2="0,26.4083080040529"
+                    Point3="4,26.4083080040529" />
                   <mssgle:LineSegment
-                    End="70.8888888888887,24.0374873353599" />
+                    End="76.8888888888887,26.4083080040529" />
                   <mssgle:CubicBezierSegment
-                    Point1="70.8888888888887,24.0374873353599"
-                    Point2="74.8888888888887,24.0374873353599"
-                    Point3="74.8888888888887,28.0374873353599" />
+                    Point1="76.8888888888887,26.4083080040529"
+                    Point2="80.8888888888887,26.4083080040529"
+                    Point3="80.8888888888887,30.4083080040529" />
                   <mssgle:LineSegment
-                    End="74.8888888888887,33.055555555556" />
+                    End="80.8888888888887,37.055555555556" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -10877,26 +10610,26 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-79.6666666666667,110"
+              EndConnector="-82.6666666666667,49"
               Start="0,0"
-              End="-79.6666666666667,102.5">
+              End="-82.6666666666667,41.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,61.1975683890577" />
+                    End="0,25.0425531914894" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,61.1975683890577"
-                    Point2="0,65.1975683890577"
-                    Point3="-4,65.1975683890577" />
+                    Point1="0,25.0425531914894"
+                    Point2="0,29.0425531914894"
+                    Point3="-4,29.0425531914894" />
                   <mssgle:LineSegment
-                    End="-75.6666666666667,65.1975683890577" />
+                    End="-78.6666666666667,29.0425531914894" />
                   <mssgle:CubicBezierSegment
-                    Point1="-75.6666666666667,65.1975683890577"
-                    Point2="-79.6666666666667,65.1975683890577"
-                    Point3="-79.6666666666667,69.1975683890577" />
+                    Point1="-78.6666666666667,29.0425531914894"
+                    Point2="-82.6666666666667,29.0425531914894"
+                    Point3="-82.6666666666667,33.0425531914894" />
                   <mssgle:LineSegment
-                    End="-79.6666666666667,102.5" />
+                    End="-82.6666666666667,41.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -10906,7 +10639,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\FactSupermarketSale.Paths[OLE DB Source Output1]"
+          Id="Package\FactSupermarketSale.Paths[OLE DB Source Output]"
           TopLeft="381.25,120">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -10928,41 +10661,19 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\FactSupermarketSale.Paths[OLE DB Source Output]"
-          TopLeft="186.444444444444,121">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,28.0000000000001"
-              Start="0,0"
-              End="0,20.5000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.5000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\FactSupermarketSale.Paths[Merge Join Output]"
-          TopLeft="286.75,345">
+          TopLeft="280.75,284">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,29"
+              EndConnector="0,35"
               Start="0,0"
-              End="0,21.5">
+              End="0,27.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21.5" />
+                    End="0,27.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -10973,74 +10684,96 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\FactSupermarketSale.Paths[Lookup No Match Output]"
-          TopLeft="309.666666666667,416">
+          TopLeft="300.666666666667,361">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="94.3333333333334,48"
+              EndConnector="95.3333333333334,55"
               Start="0,0"
-              End="94.3333333333334,40.5">
+              End="95.3333333333334,47.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,15.5373352855051" />
+                    End="0,18.3865300146413" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,15.5373352855051"
-                    Point2="0,19.5373352855051"
-                    Point3="4,19.5373352855051" />
+                    Point1="0,18.3865300146413"
+                    Point2="0,22.3865300146413"
+                    Point3="4,22.3865300146413" />
                   <mssgle:LineSegment
-                    End="90.3333333333334,19.5373352855051" />
+                    End="91.3333333333334,22.3865300146413" />
                   <mssgle:CubicBezierSegment
-                    Point1="90.3333333333334,19.5373352855051"
-                    Point2="94.3333333333334,19.5373352855051"
-                    Point3="94.3333333333334,23.5373352855051" />
+                    Point1="91.3333333333334,22.3865300146413"
+                    Point2="95.3333333333334,22.3865300146413"
+                    Point3="95.3333333333334,26.3865300146413" />
                   <mssgle:LineSegment
-                    End="94.3333333333334,40.5" />
+                    End="95.3333333333334,47.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-8.6397200520833,24.5373352855051,111.6127734375,11.609375"
+              BoundingBox="-8.13972005208331,27.3865300146413,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\FactSupermarketSale.Paths[Lookup Match Output]"
-          TopLeft="267.333333333333,416">
+          TopLeft="258.333333333333,361">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-85.8333333333333,49"
+              EndConnector="-85.8333333333333,53"
               Start="0,0"
-              End="-85.8333333333333,41.5">
+              End="-85.8333333333333,45.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,15.9443631039531" />
+                    End="0,17.5724743777452" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,15.9443631039531"
-                    Point2="0,19.9443631039531"
-                    Point3="-4,19.9443631039531" />
+                    Point1="0,17.5724743777452"
+                    Point2="0,21.5724743777452"
+                    Point3="-4,21.5724743777452" />
                   <mssgle:LineSegment
-                    End="-81.8333333333333,19.9443631039531" />
+                    End="-81.8333333333333,21.5724743777452" />
                   <mssgle:CubicBezierSegment
-                    Point1="-81.8333333333333,19.9443631039531"
-                    Point2="-85.8333333333333,19.9443631039531"
-                    Point3="-85.8333333333333,23.9443631039531" />
+                    Point1="-81.8333333333333,21.5724743777452"
+                    Point2="-85.8333333333333,21.5724743777452"
+                    Point3="-85.8333333333333,25.5724743777452" />
                   <mssgle:LineSegment
-                    End="-85.8333333333333,41.5" />
+                    End="-85.8333333333333,45.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-91.1080533854167,24.9443631039531,96.3827734375,11.609375"
+              BoundingBox="-91.1080533854167,26.5724743777452,96.3827734375,11.609375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\FactSupermarketSale.Paths[OLE DB Source Output1]"
+          TopLeft="183.888888888889,121">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34.444444444444"
+              Start="0,0"
+              End="0,26.944444444444">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.944444444444" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -11078,7 +10811,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -11088,7 +10821,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

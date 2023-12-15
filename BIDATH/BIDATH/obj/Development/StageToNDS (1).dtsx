@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package2"
   DTS:PackageType="5"
-  DTS:VersionBuild="110"
-  DTS:VersionGUID="{B12ACC15-4363-42CF-8830-AC4A7B3CD8DD}">
+  DTS:VersionBuild="116"
+  DTS:VersionGUID="{6A0B5045-69A7-46D1-A97B-B0D0F7CEDE8B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1483,10 +1483,11 @@ where [refTable].[CustomerType] = ? and [refTable].[Gender] = ?</property>
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Customer\Stage_supermarket_sales.Outputs[OLE DB Source Output].Columns[Date]"
-                      dataType="dbTimeStamp"
+                      dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Customer\Stage_supermarket_sales.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      length="255"
                       lineageId="Package\Customer\Stage_supermarket_sales.Outputs[OLE DB Source Output].Columns[Date]"
                       name="Date"
                       truncationRowDisposition="FailComponent" />
@@ -1587,7 +1588,8 @@ where [refTable].[CustomerType] = ? and [refTable].[Gender] = ?</property>
                       name="Total" />
                     <externalMetadataColumn
                       refId="Package\Customer\Stage_supermarket_sales.Outputs[OLE DB Source Output].ExternalColumns[Date]"
-                      dataType="dbTimeStamp"
+                      dataType="wstr"
+                      length="255"
                       name="Date" />
                     <externalMetadataColumn
                       refId="Package\Customer\Stage_supermarket_sales.Outputs[OLE DB Source Output].ExternalColumns[Time]"
@@ -1668,7 +1670,8 @@ where [refTable].[CustomerType] = ? and [refTable].[Gender] = ?</property>
                       name="Total" />
                     <outputColumn
                       refId="Package\Customer\Stage_supermarket_sales.Outputs[OLE DB Source Error Output].Columns[Date]"
-                      dataType="dbTimeStamp"
+                      dataType="wstr"
+                      length="255"
                       lineageId="Package\Customer\Stage_supermarket_sales.Outputs[OLE DB Source Error Output].Columns[Date]"
                       name="Date" />
                     <outputColumn
@@ -1754,7 +1757,7 @@ where [refTable].[CustomerType] = ? and [refTable].[Gender] = ?</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Get CET, LSET City"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="3">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1779,7 +1782,7 @@ where [refTable].[CustomerType] = ? and [refTable].[Gender] = ?</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Get CET, LSET Customer"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="3">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1804,7 +1807,7 @@ where [refTable].[CustomerType] = ? and [refTable].[Gender] = ?</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Get CET, LSET Payment"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1829,7 +1832,7 @@ where [refTable].[CustomerType] = ? and [refTable].[Gender] = ?</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Get CET, LSET Product"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="4">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1854,7 +1857,7 @@ where [refTable].[CustomerType] = ? and [refTable].[Gender] = ?</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Get CET, LSET Productline"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="4">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1879,7 +1882,7 @@ where [refTable].[CustomerType] = ? and [refTable].[Gender] = ?</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="Get CET, LSET SupermarketSale"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -2392,10 +2395,11 @@ where [refTable].[Payment] = ?</property>
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Payment\Stage_supermarket_sales.Outputs[OLE DB Source Output].Columns[Date]"
-                      dataType="dbTimeStamp"
+                      dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Payment\Stage_supermarket_sales.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                      length="255"
                       lineageId="Package\Payment\Stage_supermarket_sales.Outputs[OLE DB Source Output].Columns[Date]"
                       name="Date"
                       truncationRowDisposition="FailComponent" />
@@ -2496,7 +2500,8 @@ where [refTable].[Payment] = ?</property>
                       name="Total" />
                     <externalMetadataColumn
                       refId="Package\Payment\Stage_supermarket_sales.Outputs[OLE DB Source Output].ExternalColumns[Date]"
-                      dataType="dbTimeStamp"
+                      dataType="wstr"
+                      length="255"
                       name="Date" />
                     <externalMetadataColumn
                       refId="Package\Payment\Stage_supermarket_sales.Outputs[OLE DB Source Output].ExternalColumns[Time]"
@@ -2577,7 +2582,8 @@ where [refTable].[Payment] = ?</property>
                       name="Total" />
                     <outputColumn
                       refId="Package\Payment\Stage_supermarket_sales.Outputs[OLE DB Source Error Output].Columns[Date]"
-                      dataType="dbTimeStamp"
+                      dataType="wstr"
+                      length="255"
                       lineageId="Package\Payment\Stage_supermarket_sales.Outputs[OLE DB Source Error Output].Columns[Date]"
                       name="Date" />
                     <outputColumn
@@ -4913,7 +4919,7 @@ WHERE ProductLineID_NK = ?
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET City"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="3">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -4930,7 +4936,7 @@ WHERE ProductLineID_NK = ?
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET Customer"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="3">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -4947,7 +4953,7 @@ WHERE ProductLineID_NK = ?
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET Payment"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -4964,7 +4970,7 @@ WHERE ProductLineID_NK = ?
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET Product"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="4">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -4981,7 +4987,7 @@ WHERE ProductLineID_NK = ?
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET Productline"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="4">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -4998,7 +5004,7 @@ WHERE ProductLineID_NK = ?
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET SupermarketSales"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -5015,7 +5021,7 @@ WHERE ProductLineID_NK = ?
       DTS:LocaleID="-1"
       DTS:ObjectName="Set LSET City"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="3">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -5032,7 +5038,7 @@ WHERE ProductLineID_NK = ?
       DTS:LocaleID="-1"
       DTS:ObjectName="Set LSET Customer"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="3">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -5049,7 +5055,7 @@ WHERE ProductLineID_NK = ?
       DTS:LocaleID="-1"
       DTS:ObjectName="Set LSET Payment"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -5066,7 +5072,7 @@ WHERE ProductLineID_NK = ?
       DTS:LocaleID="-1"
       DTS:ObjectName="Set LSET Product"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="4">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -5083,7 +5089,7 @@ WHERE ProductLineID_NK = ?
       DTS:LocaleID="-1"
       DTS:ObjectName="Set LSET Productline"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="4">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -5100,7 +5106,7 @@ WHERE ProductLineID_NK = ?
       DTS:LocaleID="-1"
       DTS:ObjectName="Set LSET SupermarketSale"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -5352,11 +5358,15 @@ WHERE ProductLineID_NK = ?
                   name="Derived Column Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\SupermarketSales\Derived Column.Inputs[Derived Column Input].Columns[Gender]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="Gender"
-                      lineageId="Package\SupermarketSales\Merge Join 1.Outputs[Merge Join Output].Columns[Gender]" />
+                      refId="Package\SupermarketSales\Derived Column.Inputs[Derived Column Input].Columns[Time]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Time"
+                      lineageId="Package\SupermarketSales\Merge Join 4.Outputs[Merge Join Output].Columns[Time]" />
+                    <inputColumn
+                      refId="Package\SupermarketSales\Derived Column.Inputs[Derived Column Input].Columns[Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Date"
+                      lineageId="Package\SupermarketSales\Merge Join 4.Outputs[Merge Join Output].Columns[Date]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -5370,26 +5380,113 @@ WHERE ProductLineID_NK = ?
                   synchronousInputId="Package\SupermarketSales\Derived Column.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\SupermarketSales\Derived Column.Outputs[Derived Column Output].Columns[Gender_first_letter]"
-                      dataType="wstr"
+                      refId="Package\SupermarketSales\Derived Column.Outputs[Derived Column Output].Columns[Minute]"
+                      dataType="i4"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      length="1"
-                      lineageId="Package\SupermarketSales\Derived Column.Outputs[Derived Column Output].Columns[Gender_first_letter]"
-                      name="Gender_first_letter"
+                      lineageId="Package\SupermarketSales\Derived Column.Outputs[Derived Column Output].Columns[Minute]"
+                      name="Minute"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[SUBSTRING](#{Package\SupermarketSales\Merge Join 1.Outputs[Merge Join Output].Columns[Gender]},1,1)</property>
+                          name="Expression">[DATEPART]("mi",#{Package\SupermarketSales\Merge Join 4.Outputs[Merge Join Output].Columns[Time]})</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">SUBSTRING(Gender,1,1)</property>
+                          name="FriendlyExpression">DATEPART("mi",Time)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\SupermarketSales\Derived Column.Outputs[Derived Column Output].Columns[Hour]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\SupermarketSales\Derived Column.Outputs[Derived Column Output].Columns[Hour]"
+                      name="Hour"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[DATEPART]("hh",#{Package\SupermarketSales\Merge Join 4.Outputs[Merge Join Output].Columns[Time]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">DATEPART("hh",Time)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\SupermarketSales\Derived Column.Outputs[Derived Column Output].Columns[Day]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\SupermarketSales\Derived Column.Outputs[Derived Column Output].Columns[Day]"
+                      name="Day"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[DAY](#{Package\SupermarketSales\Merge Join 4.Outputs[Merge Join Output].Columns[Date]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">DAY(Date)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\SupermarketSales\Derived Column.Outputs[Derived Column Output].Columns[Month]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\SupermarketSales\Derived Column.Outputs[Derived Column Output].Columns[Month]"
+                      name="Month"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[MONTH](#{Package\SupermarketSales\Merge Join 4.Outputs[Merge Join Output].Columns[Date]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">MONTH(Date)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\SupermarketSales\Derived Column.Outputs[Derived Column Output].Columns[Year]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\SupermarketSales\Derived Column.Outputs[Derived Column Output].Columns[Year]"
+                      name="Year"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[YEAR](#{Package\SupermarketSales\Merge Join 4.Outputs[Merge Join Output].Columns[Date]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">YEAR(Date)</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -5413,6 +5510,88 @@ WHERE ProductLineID_NK = ?
                       refId="Package\SupermarketSales\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\SupermarketSales\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\SupermarketSales\Derived Column 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\SupermarketSales\Derived Column 1.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\SupermarketSales\Derived Column 1.Inputs[Derived Column Input].Columns[Gender]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Gender"
+                      lineageId="Package\SupermarketSales\Merge Join 1.Outputs[Merge Join Output].Columns[Gender]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\SupermarketSales\Derived Column 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\SupermarketSales\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SupermarketSales\Derived Column 1.Outputs[Derived Column Output].Columns[Gender_first_letter]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="1"
+                      lineageId="Package\SupermarketSales\Derived Column 1.Outputs[Derived Column Output].Columns[Gender_first_letter]"
+                      name="Gender_first_letter"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[SUBSTRING](#{Package\SupermarketSales\Merge Join 1.Outputs[Merge Join Output].Columns[Gender]},1,1)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">SUBSTRING(Gender,1,1)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\SupermarketSales\Derived Column 1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\SupermarketSales\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SupermarketSales\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\SupermarketSales\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\SupermarketSales\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\SupermarketSales\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -10024,7 +10203,7 @@ where [refTable].[InvoiceID_nk] = ?</property>
                       cachedDataType="wstr"
                       cachedLength="1"
                       cachedName="Gender_first_letter"
-                      lineageId="Package\SupermarketSales\Derived Column.Outputs[Derived Column Output].Columns[Gender_first_letter]">
+                      lineageId="Package\SupermarketSales\Derived Column 1.Outputs[Derived Column Output].Columns[Gender_first_letter]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -10259,7 +10438,7 @@ where [refTable].[InvoiceID_nk] = ?</property>
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\SupermarketSales\Derived Column.Outputs[Derived Column Output].Columns[Gender_first_letter]}</property>
+                          name="SortColumnId">#{Package\SupermarketSales\Derived Column 1.Outputs[Derived Column Output].Columns[Gender_first_letter]}</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -11628,12 +11807,6 @@ where [refTable].[InvoiceID_nk] = ?</property>
                       externalMetadataColumnId="Package\SupermarketSales\SupermarketSale.Inputs[OLE DB Destination Input].ExternalColumns[Total]"
                       lineageId="Package\SupermarketSales\Merge Join 4.Outputs[Merge Join Output].Columns[Total]" />
                     <inputColumn
-                      refId="Package\SupermarketSales\SupermarketSale.Inputs[OLE DB Destination Input].Columns[Date]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="Date"
-                      externalMetadataColumnId="Package\SupermarketSales\SupermarketSale.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
-                      lineageId="Package\SupermarketSales\Merge Join 4.Outputs[Merge Join Output].Columns[Date]" />
-                    <inputColumn
                       refId="Package\SupermarketSales\SupermarketSale.Inputs[OLE DB Destination Input].Columns[Time]"
                       cachedDataType="dbTimeStamp"
                       cachedName="Time"
@@ -11700,6 +11873,42 @@ where [refTable].[InvoiceID_nk] = ?</property>
                       cachedName="Tax 5%"
                       externalMetadataColumnId="Package\SupermarketSales\SupermarketSale.Inputs[OLE DB Destination Input].ExternalColumns[Tax_5_percent]"
                       lineageId="Package\SupermarketSales\Merge Join 4.Outputs[Merge Join Output].Columns[Tax 5%]" />
+                    <inputColumn
+                      refId="Package\SupermarketSales\SupermarketSale.Inputs[OLE DB Destination Input].Columns[Minute]"
+                      cachedDataType="i4"
+                      cachedName="Minute"
+                      externalMetadataColumnId="Package\SupermarketSales\SupermarketSale.Inputs[OLE DB Destination Input].ExternalColumns[Minute]"
+                      lineageId="Package\SupermarketSales\Derived Column.Outputs[Derived Column Output].Columns[Minute]" />
+                    <inputColumn
+                      refId="Package\SupermarketSales\SupermarketSale.Inputs[OLE DB Destination Input].Columns[Hour]"
+                      cachedDataType="i4"
+                      cachedName="Hour"
+                      externalMetadataColumnId="Package\SupermarketSales\SupermarketSale.Inputs[OLE DB Destination Input].ExternalColumns[Hour]"
+                      lineageId="Package\SupermarketSales\Derived Column.Outputs[Derived Column Output].Columns[Hour]" />
+                    <inputColumn
+                      refId="Package\SupermarketSales\SupermarketSale.Inputs[OLE DB Destination Input].Columns[Day]"
+                      cachedDataType="i4"
+                      cachedName="Day"
+                      externalMetadataColumnId="Package\SupermarketSales\SupermarketSale.Inputs[OLE DB Destination Input].ExternalColumns[Day]"
+                      lineageId="Package\SupermarketSales\Derived Column.Outputs[Derived Column Output].Columns[Day]" />
+                    <inputColumn
+                      refId="Package\SupermarketSales\SupermarketSale.Inputs[OLE DB Destination Input].Columns[Month]"
+                      cachedDataType="i4"
+                      cachedName="Month"
+                      externalMetadataColumnId="Package\SupermarketSales\SupermarketSale.Inputs[OLE DB Destination Input].ExternalColumns[Month]"
+                      lineageId="Package\SupermarketSales\Derived Column.Outputs[Derived Column Output].Columns[Month]" />
+                    <inputColumn
+                      refId="Package\SupermarketSales\SupermarketSale.Inputs[OLE DB Destination Input].Columns[Year]"
+                      cachedDataType="i4"
+                      cachedName="Year"
+                      externalMetadataColumnId="Package\SupermarketSales\SupermarketSale.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                      lineageId="Package\SupermarketSales\Derived Column.Outputs[Derived Column Output].Columns[Year]" />
+                    <inputColumn
+                      refId="Package\SupermarketSales\SupermarketSale.Inputs[OLE DB Destination Input].Columns[Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Date"
+                      externalMetadataColumnId="Package\SupermarketSales\SupermarketSale.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      lineageId="Package\SupermarketSales\Merge Join 4.Outputs[Merge Join Output].Columns[Date]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -11774,6 +11983,26 @@ where [refTable].[InvoiceID_nk] = ?</property>
                       dataType="dbTimeStamp2"
                       name="UpdatedDate"
                       scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\SupermarketSales\SupermarketSale.Inputs[OLE DB Destination Input].ExternalColumns[Minute]"
+                      dataType="i4"
+                      name="Minute" />
+                    <externalMetadataColumn
+                      refId="Package\SupermarketSales\SupermarketSale.Inputs[OLE DB Destination Input].ExternalColumns[Hour]"
+                      dataType="i4"
+                      name="Hour" />
+                    <externalMetadataColumn
+                      refId="Package\SupermarketSales\SupermarketSale.Inputs[OLE DB Destination Input].ExternalColumns[Day]"
+                      dataType="i4"
+                      name="Day" />
+                    <externalMetadataColumn
+                      refId="Package\SupermarketSales\SupermarketSale.Inputs[OLE DB Destination Input].ExternalColumns[Month]"
+                      dataType="i4"
+                      name="Month" />
+                    <externalMetadataColumn
+                      refId="Package\SupermarketSales\SupermarketSale.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                      dataType="i4"
+                      name="Year" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -11835,7 +12064,12 @@ SET
     [CustomerID_SK] = ?, 
     [PaymentID_SK] = ?, 
     [ProductID_SK] = ?, 
-    [UpdatedDate] = GETUTCDATE()
+    [UpdatedDate] = GETUTCDATE(),
+    [Minute] = ?,
+    [Hour] = ?,
+    [Day] = ?,
+    [Month] = ?,
+    [Year] =?
 WHERE
     [InvoiceID_nk] = ?;</property>
                 <property
@@ -11877,12 +12111,6 @@ WHERE
                       cachedName="Total"
                       externalMetadataColumnId="Package\SupermarketSales\Update SupermarketSale.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
                       lineageId="Package\SupermarketSales\Merge Join 4.Outputs[Merge Join Output].Columns[Total]" />
-                    <inputColumn
-                      refId="Package\SupermarketSales\Update SupermarketSale.Inputs[OLE DB Command Input].Columns[Date]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="Date"
-                      externalMetadataColumnId="Package\SupermarketSales\Update SupermarketSale.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
-                      lineageId="Package\SupermarketSales\Merge Join 4.Outputs[Merge Join Output].Columns[Date]" />
                     <inputColumn
                       refId="Package\SupermarketSales\Update SupermarketSale.Inputs[OLE DB Command Input].Columns[Time]"
                       cachedDataType="dbTimeStamp"
@@ -11938,12 +12166,48 @@ WHERE
                       externalMetadataColumnId="Package\SupermarketSales\Update SupermarketSale.Inputs[OLE DB Command Input].ExternalColumns[Param_12]"
                       lineageId="Package\SupermarketSales\Merge Join 4.Outputs[Merge Join Output].Columns[ProductID_SK]" />
                     <inputColumn
+                      refId="Package\SupermarketSales\Update SupermarketSale.Inputs[OLE DB Command Input].Columns[Minute]"
+                      cachedDataType="i4"
+                      cachedName="Minute"
+                      externalMetadataColumnId="Package\SupermarketSales\Update SupermarketSale.Inputs[OLE DB Command Input].ExternalColumns[Param_13]"
+                      lineageId="Package\SupermarketSales\Derived Column.Outputs[Derived Column Output].Columns[Minute]" />
+                    <inputColumn
+                      refId="Package\SupermarketSales\Update SupermarketSale.Inputs[OLE DB Command Input].Columns[Hour]"
+                      cachedDataType="i4"
+                      cachedName="Hour"
+                      externalMetadataColumnId="Package\SupermarketSales\Update SupermarketSale.Inputs[OLE DB Command Input].ExternalColumns[Param_14]"
+                      lineageId="Package\SupermarketSales\Derived Column.Outputs[Derived Column Output].Columns[Hour]" />
+                    <inputColumn
+                      refId="Package\SupermarketSales\Update SupermarketSale.Inputs[OLE DB Command Input].Columns[Day]"
+                      cachedDataType="i4"
+                      cachedName="Day"
+                      externalMetadataColumnId="Package\SupermarketSales\Update SupermarketSale.Inputs[OLE DB Command Input].ExternalColumns[Param_15]"
+                      lineageId="Package\SupermarketSales\Derived Column.Outputs[Derived Column Output].Columns[Day]" />
+                    <inputColumn
+                      refId="Package\SupermarketSales\Update SupermarketSale.Inputs[OLE DB Command Input].Columns[Month]"
+                      cachedDataType="i4"
+                      cachedName="Month"
+                      externalMetadataColumnId="Package\SupermarketSales\Update SupermarketSale.Inputs[OLE DB Command Input].ExternalColumns[Param_16]"
+                      lineageId="Package\SupermarketSales\Derived Column.Outputs[Derived Column Output].Columns[Month]" />
+                    <inputColumn
+                      refId="Package\SupermarketSales\Update SupermarketSale.Inputs[OLE DB Command Input].Columns[Year]"
+                      cachedDataType="i4"
+                      cachedName="Year"
+                      externalMetadataColumnId="Package\SupermarketSales\Update SupermarketSale.Inputs[OLE DB Command Input].ExternalColumns[Param_17]"
+                      lineageId="Package\SupermarketSales\Derived Column.Outputs[Derived Column Output].Columns[Year]" />
+                    <inputColumn
                       refId="Package\SupermarketSales\Update SupermarketSale.Inputs[OLE DB Command Input].Columns[Invoice ID]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="Invoice ID"
-                      externalMetadataColumnId="Package\SupermarketSales\Update SupermarketSale.Inputs[OLE DB Command Input].ExternalColumns[Param_13]"
+                      externalMetadataColumnId="Package\SupermarketSales\Update SupermarketSale.Inputs[OLE DB Command Input].ExternalColumns[Param_18]"
                       lineageId="Package\SupermarketSales\Merge Join 4.Outputs[Merge Join Output].Columns[Invoice ID]" />
+                    <inputColumn
+                      refId="Package\SupermarketSales\Update SupermarketSale.Inputs[OLE DB Command Input].Columns[Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Date"
+                      externalMetadataColumnId="Package\SupermarketSales\Update SupermarketSale.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\SupermarketSales\Merge Join 4.Outputs[Merge Join Output].Columns[Date]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -12092,14 +12356,69 @@ WHERE
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\SupermarketSales\Update SupermarketSale.Inputs[OLE DB Command Input].ExternalColumns[Param_13]"
-                      dataType="wstr"
-                      length="255"
+                      dataType="i4"
                       name="Param_13">
                       <properties>
                         <property
                           dataType="System.Int32"
                           description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
                           name="DBParamInfoFlags">1073741889</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\SupermarketSales\Update SupermarketSale.Inputs[OLE DB Command Input].ExternalColumns[Param_14]"
+                      dataType="i4"
+                      name="Param_14">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\SupermarketSales\Update SupermarketSale.Inputs[OLE DB Command Input].ExternalColumns[Param_15]"
+                      dataType="i4"
+                      name="Param_15">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\SupermarketSales\Update SupermarketSale.Inputs[OLE DB Command Input].ExternalColumns[Param_16]"
+                      dataType="i4"
+                      name="Param_16">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\SupermarketSales\Update SupermarketSale.Inputs[OLE DB Command Input].ExternalColumns[Param_17]"
+                      dataType="i4"
+                      name="Param_17">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\SupermarketSales\Update SupermarketSale.Inputs[OLE DB Command Input].ExternalColumns[Param_18]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_18">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
                       </properties>
                     </externalMetadataColumn>
                   </externalMetadataColumns>
@@ -12141,12 +12460,17 @@ WHERE
           <paths>
             <path
               refId="Package\SupermarketSales.Paths[Derived Column Output]"
-              endId="Package\SupermarketSales\Sort 7.Inputs[Sort Input]"
+              endId="Package\SupermarketSales\Lookup SupermarketSale.Inputs[Lookup Input]"
               name="Derived Column Output"
               startId="Package\SupermarketSales\Derived Column.Outputs[Derived Column Output]" />
             <path
+              refId="Package\SupermarketSales.Paths[Derived Column Output1]"
+              endId="Package\SupermarketSales\Sort 7.Inputs[Sort Input]"
+              name="Derived Column Output"
+              startId="Package\SupermarketSales\Derived Column 1.Outputs[Derived Column Output]" />
+            <path
               refId="Package\SupermarketSales.Paths[Don't have null foreign key]"
-              endId="Package\SupermarketSales\Lookup SupermarketSale.Inputs[Lookup Input]"
+              endId="Package\SupermarketSales\Derived Column.Inputs[Derived Column Input]"
               name="Don't have null foreign key"
               startId="Package\SupermarketSales\Conditional Split.Outputs[Don't have null foreign key]" />
             <path
@@ -12171,59 +12495,54 @@ WHERE
               startId="Package\SupermarketSales\Merge Join 3.Outputs[Merge Join Output]" />
             <path
               refId="Package\SupermarketSales.Paths[Merge Join Output2]"
-              endId="Package\SupermarketSales\Sort 8.Inputs[Sort Input]"
-              name="Merge Join Output"
-              startId="Package\SupermarketSales\Merge Join 2.Outputs[Merge Join Output]" />
-            <path
-              refId="Package\SupermarketSales.Paths[Merge Join Output3]"
-              endId="Package\SupermarketSales\Derived Column.Inputs[Derived Column Input]"
-              name="Merge Join Output"
-              startId="Package\SupermarketSales\Merge Join 1.Outputs[Merge Join Output]" />
-            <path
-              refId="Package\SupermarketSales.Paths[Merge Join Output4]"
               endId="Package\SupermarketSales\Conditional Split.Inputs[Conditional Split Input]"
               name="Merge Join Output"
               startId="Package\SupermarketSales\Merge Join 4.Outputs[Merge Join Output]" />
             <path
+              refId="Package\SupermarketSales.Paths[Merge Join Output3]"
+              endId="Package\SupermarketSales\Sort 8.Inputs[Sort Input]"
+              name="Merge Join Output"
+              startId="Package\SupermarketSales\Merge Join 2.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\SupermarketSales.Paths[Merge Join Output4]"
+              endId="Package\SupermarketSales\Derived Column 1.Inputs[Derived Column Input]"
+              name="Merge Join Output"
+              startId="Package\SupermarketSales\Merge Join 1.Outputs[Merge Join Output]" />
+            <path
               refId="Package\SupermarketSales.Paths[OLE DB Source Output5]"
-              endId="Package\SupermarketSales\Sort 3.Inputs[Sort Input]"
-              name="OLE DB Source Output"
-              startId="Package\SupermarketSales\NDS Customer.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\SupermarketSales.Paths[OLE DB Source Output4]"
-              endId="Package\SupermarketSales\Sort 4.Inputs[Sort Input]"
-              name="OLE DB Source Output"
-              startId="Package\SupermarketSales\NDS City.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\SupermarketSales.Paths[OLE DB Source Output3]"
               endId="Package\SupermarketSales\Sort 6.Inputs[Sort Input]"
               name="OLE DB Source Output"
               startId="Package\SupermarketSales\Stage supermarket_sales.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\SupermarketSales.Paths[OLE DB Source Output1]"
-              endId="Package\SupermarketSales\Sort 2.Inputs[Sort Input]"
+              refId="Package\SupermarketSales.Paths[OLE DB Source Output4]"
+              endId="Package\SupermarketSales\Sort 3.Inputs[Sort Input]"
               name="OLE DB Source Output"
-              startId="Package\SupermarketSales\NDS Payment.Outputs[OLE DB Source Output]" />
+              startId="Package\SupermarketSales\NDS Customer.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\SupermarketSales.Paths[OLE DB Source Output]"
-              endId="Package\SupermarketSales\Sort 1.Inputs[Sort Input]"
+              refId="Package\SupermarketSales.Paths[OLE DB Source Output3]"
+              endId="Package\SupermarketSales\Sort 4.Inputs[Sort Input]"
               name="OLE DB Source Output"
-              startId="Package\SupermarketSales\NDS Productline.Outputs[OLE DB Source Output]" />
+              startId="Package\SupermarketSales\NDS City.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\SupermarketSales.Paths[OLE DB Source Output2]"
               endId="Package\SupermarketSales\Sort.Inputs[Sort Input]"
               name="OLE DB Source Output"
               startId="Package\SupermarketSales\NDS Product.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\SupermarketSales.Paths[Sort Output8]"
-              endId="Package\SupermarketSales\Merge Join 4.Inputs[Merge Join Right Input]"
-              name="Sort Output"
-              startId="Package\SupermarketSales\Sort 5.Outputs[Sort Output]" />
+              refId="Package\SupermarketSales.Paths[OLE DB Source Output1]"
+              endId="Package\SupermarketSales\Sort 1.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\SupermarketSales\NDS Productline.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\SupermarketSales.Paths[OLE DB Source Output]"
+              endId="Package\SupermarketSales\Sort 2.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\SupermarketSales\NDS Payment.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\SupermarketSales.Paths[Sort Output]"
-              endId="Package\SupermarketSales\Merge Join 3.Inputs[Merge Join Right Input]"
+              endId="Package\SupermarketSales\Merge Join 4.Inputs[Merge Join Left Input]"
               name="Sort Output"
-              startId="Package\SupermarketSales\Sort 2.Outputs[Sort Output]" />
+              startId="Package\SupermarketSales\Sort 9.Outputs[Sort Output]" />
             <path
               refId="Package\SupermarketSales.Paths[Sort Output1]"
               endId="Package\SupermarketSales\Merge Join 3.Inputs[Merge Join Left Input]"
@@ -12231,39 +12550,44 @@ WHERE
               startId="Package\SupermarketSales\Sort 8.Outputs[Sort Output]" />
             <path
               refId="Package\SupermarketSales.Paths[Sort Output2]"
-              endId="Package\SupermarketSales\Merge Join 1.Inputs[Merge Join Right Input]"
-              name="Sort Output"
-              startId="Package\SupermarketSales\Sort 4.Outputs[Sort Output]" />
-            <path
-              refId="Package\SupermarketSales.Paths[Sort Output3]"
-              endId="Package\SupermarketSales\Merge Join 1.Inputs[Merge Join Left Input]"
-              name="Sort Output"
-              startId="Package\SupermarketSales\Sort 6.Outputs[Sort Output]" />
-            <path
-              refId="Package\SupermarketSales.Paths[Sort Output4]"
-              endId="Package\SupermarketSales\Merge Join 4.Inputs[Merge Join Left Input]"
-              name="Sort Output"
-              startId="Package\SupermarketSales\Sort 9.Outputs[Sort Output]" />
-            <path
-              refId="Package\SupermarketSales.Paths[Sort Output5]"
               endId="Package\SupermarketSales\Merge Join 2.Inputs[Merge Join Left Input]"
               name="Sort Output"
               startId="Package\SupermarketSales\Sort 7.Outputs[Sort Output]" />
             <path
-              refId="Package\SupermarketSales.Paths[Sort Output6]"
-              endId="Package\SupermarketSales\Merge Join 2.Inputs[Merge Join Right Input]"
+              refId="Package\SupermarketSales.Paths[Sort Output3]"
+              endId="Package\SupermarketSales\Merge Join 4.Inputs[Merge Join Right Input]"
               name="Sort Output"
-              startId="Package\SupermarketSales\Sort 3.Outputs[Sort Output]" />
+              startId="Package\SupermarketSales\Sort 5.Outputs[Sort Output]" />
             <path
-              refId="Package\SupermarketSales.Paths[Sort Output7]"
+              refId="Package\SupermarketSales.Paths[Sort Output4]"
+              endId="Package\SupermarketSales\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\SupermarketSales\Sort.Outputs[Sort Output]" />
+            <path
+              refId="Package\SupermarketSales.Paths[Sort Output5]"
+              endId="Package\SupermarketSales\Merge Join 1.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\SupermarketSales\Sort 4.Outputs[Sort Output]" />
+            <path
+              refId="Package\SupermarketSales.Paths[Sort Output6]"
               endId="Package\SupermarketSales\Merge Join.Inputs[Merge Join Right Input]"
               name="Sort Output"
               startId="Package\SupermarketSales\Sort 1.Outputs[Sort Output]" />
             <path
-              refId="Package\SupermarketSales.Paths[Sort Output9]"
-              endId="Package\SupermarketSales\Merge Join.Inputs[Merge Join Left Input]"
+              refId="Package\SupermarketSales.Paths[Sort Output7]"
+              endId="Package\SupermarketSales\Merge Join 2.Inputs[Merge Join Right Input]"
               name="Sort Output"
-              startId="Package\SupermarketSales\Sort.Outputs[Sort Output]" />
+              startId="Package\SupermarketSales\Sort 3.Outputs[Sort Output]" />
+            <path
+              refId="Package\SupermarketSales.Paths[Sort Output8]"
+              endId="Package\SupermarketSales\Merge Join 1.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\SupermarketSales\Sort 6.Outputs[Sort Output]" />
+            <path
+              refId="Package\SupermarketSales.Paths[Sort Output9]"
+              endId="Package\SupermarketSales\Merge Join 3.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\SupermarketSales\Sort 2.Outputs[Sort Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -12277,7 +12601,7 @@ WHERE
       DTS:ExecutableType="Microsoft.ScriptTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Test check variables and params"
-      DTS:ThreadHint="4">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <ScriptProject
@@ -12287,14 +12611,35 @@ WHERE
           Language="CSharp"
           ReadWriteVariables="User::OLED_DestinationDatabaseName,User::OLED_DestinationServerName,User::OLED_SourceDatabaseName,User::OLED_SourceServerName">
           <ProjectItem
-            Name="Properties\Settings.settings"
-            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_c6eef40b273547c5bf97ae1ed81b2944")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_c6eef40b273547c5bf97ae1ed81b2944")]
+[assembly: AssemblyCopyright("Copyright @  2023")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.resx"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -12414,35 +12759,6 @@ WHERE
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
 </root>]]></ProjectItem>
-          <ProjectItem
-            Name="Properties\Settings.Designer.cs"
-            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
-// <auto-generated>
-//     This code was generated by a tool.
-//
-//     Changes to this file may cause incorrect behavior and will be lost if
-//     the code is regenerated.
-// </auto-generated>
-//------------------------------------------------------------------------------
-
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_c6eef40b273547c5bf97ae1ed81b2944.Properties.Settings.get_Default():ST_c6eef40b273547c5bf97ae1ed81b2944.Properties.Sett" +
-    "ings")]
-
-namespace ST_c6eef40b273547c5bf97ae1ed81b2944.Properties {
-    
-    
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
-        
-        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-        private static Settings defaultInstance = new Settings();
-        
-        public static Settings Default {
-            get {
-                return defaultInstance;
-            }
-        }
-    }
-}]]></ProjectItem>
           <ProjectItem
             Name="ScriptMain.cs"
             Encoding="UTF8"><![CDATA[#region Help:  Introduction to the script task
@@ -12574,6 +12890,9 @@ namespace ST_c6eef40b273547c5bf97ae1ed81b2944
 	}
 }]]></ProjectItem>
           <ProjectItem
+            Name="ST_0eb41cfda5a048dbb25b91645dcc65fe.csproj"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?><Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><PropertyGroup><ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids><Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration><Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform><ProductVersion>8.0.30703</ProductVersion><SchemaVersion>2.0</SchemaVersion><ProjectGuid>{E2618C15-5795-4E68-A9F8-75116FF87E4A}</ProjectGuid><OutputType>Library</OutputType><AppDesignerFolder>Properties</AppDesignerFolder><RootNamespace>ST_c6eef40b273547c5bf97ae1ed81b2944</RootNamespace><AssemblyName>ST_0eb41cfda5a048dbb25b91645dcc65fe</AssemblyName><TargetFrameworkVersion>v4.7</TargetFrameworkVersion><FileAlignment>512</FileAlignment><ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch><TargetFrameworkProfile></TargetFrameworkProfile></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Debug' "><DebugSymbols>true</DebugSymbols><DebugType>full</DebugType><Optimize>false</Optimize><OutputPath>.\bin\Debug\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>DEBUG;TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Release' "><DebugSymbols>false</DebugSymbols><Optimize>true</Optimize><OutputPath>.\bin\Release\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><ItemGroup><Reference Include="System" /><Reference Include="System.Data" /><Reference Include="System.Windows.Forms" /><Reference Include="System.Xml" /><Reference Include="Microsoft.SqlServer.ManagedDTS, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.ScriptTask, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /></ItemGroup><ItemGroup><AppDesigner Include="Properties\" /><Compile Include="Properties\AssemblyInfo.cs"><SubType>Code</SubType></Compile><EmbeddedResource Include="Properties\Resources.resx"><Generator>ResXFileCodeGenerator</Generator><LastGenOutput>Resources.Designer.cs</LastGenOutput></EmbeddedResource><Compile Include="Properties\Resources.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Resources.resx</DependentUpon></Compile><None Include="Properties\Settings.settings"><Generator>SettingsSingleFileGenerator</Generator><LastGenOutput>Settings.Designer.cs</LastGenOutput></None><Compile Include="Properties\Settings.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Settings.settings</DependentUpon></Compile><Compile Include="ScriptMain.cs"><SubType>Code</SubType></Compile></ItemGroup><!-- Include the build rules for a C# project.--><Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" /><ProjectExtensions><VisualStudio><FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}"><ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" /><Host Name="ScriptTask" /><ProjectClient><HostIdentifier>SSIS_ST160</HostIdentifier></ProjectClient></FlavorProperties></VisualStudio></ProjectExtensions></Project>]]></ProjectItem>
+          <ProjectItem
             Name="Project"
             Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
 <c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
@@ -12594,38 +12913,43 @@ namespace ST_c6eef40b273547c5bf97ae1ed81b2944
   </msb:ItemGroup>
 </c:Project>]]></ProjectItem>
           <ProjectItem
-            Name="Properties\AssemblyInfo.cs"
-            Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
 
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("ST_c6eef40b273547c5bf97ae1ed81b2944")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ST_c6eef40b273547c5bf97ae1ed81b2944")]
-[assembly: AssemblyCopyright("Copyright @  2023")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_c6eef40b273547c5bf97ae1ed81b2944.Properties.Settings.get_Default():ST_c6eef40b273547c5bf97ae1ed81b2944.Properties.Sett" +
+    "ings")]
 
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+namespace ST_c6eef40b273547c5bf97ae1ed81b2944.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
           <ProjectItem
-            Name="ST_0eb41cfda5a048dbb25b91645dcc65fe.csproj"
-            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?><Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><PropertyGroup><ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids><Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration><Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform><ProductVersion>8.0.30703</ProductVersion><SchemaVersion>2.0</SchemaVersion><ProjectGuid>{E2618C15-5795-4E68-A9F8-75116FF87E4A}</ProjectGuid><OutputType>Library</OutputType><AppDesignerFolder>Properties</AppDesignerFolder><RootNamespace>ST_c6eef40b273547c5bf97ae1ed81b2944</RootNamespace><AssemblyName>ST_0eb41cfda5a048dbb25b91645dcc65fe</AssemblyName><TargetFrameworkVersion>v4.7</TargetFrameworkVersion><FileAlignment>512</FileAlignment><ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch><TargetFrameworkProfile></TargetFrameworkProfile></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Debug' "><DebugSymbols>true</DebugSymbols><DebugType>full</DebugType><Optimize>false</Optimize><OutputPath>.\bin\Debug\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>DEBUG;TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Release' "><DebugSymbols>false</DebugSymbols><Optimize>true</Optimize><OutputPath>.\bin\Release\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><ItemGroup><Reference Include="System" /><Reference Include="System.Data" /><Reference Include="System.Windows.Forms" /><Reference Include="System.Xml" /><Reference Include="Microsoft.SqlServer.ManagedDTS, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.ScriptTask, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /></ItemGroup><ItemGroup><AppDesigner Include="Properties\" /><Compile Include="Properties\AssemblyInfo.cs"><SubType>Code</SubType></Compile><EmbeddedResource Include="Properties\Resources.resx"><Generator>ResXFileCodeGenerator</Generator><LastGenOutput>Resources.Designer.cs</LastGenOutput></EmbeddedResource><Compile Include="Properties\Resources.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Resources.resx</DependentUpon></Compile><None Include="Properties\Settings.settings"><Generator>SettingsSingleFileGenerator</Generator><LastGenOutput>Settings.Designer.cs</LastGenOutput></None><Compile Include="Properties\Settings.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Settings.settings</DependentUpon></Compile><Compile Include="ScriptMain.cs"><SubType>Code</SubType></Compile></ItemGroup><!-- Include the build rules for a C# project.--><Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" /><ProjectExtensions><VisualStudio><FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}"><ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" /><Host Name="ScriptTask" /><ProjectClient><HostIdentifier>SSIS_ST160</HostIdentifier></ProjectClient></FlavorProperties></VisualStudio></ProjectExtensions></Project>]]></ProjectItem>
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.Designer.cs"
             Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -13110,6 +13434,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           Size="163,42"
           Id="Package\SupermarketSales"
           TopLeft="673,681" />
+        <NodeLayout
+          Size="233,42"
+          Id="Package\Test check variables and params"
+          TopLeft="26,44" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="354.75,487">
@@ -13652,10 +13980,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="233,42"
-          Id="Package\Test check variables and params"
-          TopLeft="26,44" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -13771,7 +14095,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -13796,7 +14122,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -13806,7 +14132,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -13832,6 +14158,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="150,42"
+          Id="Package\Customer\NDS_Customer"
+          TopLeft="480,392" />
+        <NodeLayout
           Size="200,55"
           Id="Package\Customer\Lookup Stage_supermarket_sales in NDS_Customer"
           TopLeft="458,300" />
@@ -13840,17 +14170,13 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           Id="Package\Customer\Stage_supermarket_sales"
           TopLeft="450,84" />
         <NodeLayout
-          Size="154,42"
-          Id="Package\Customer\Derived Column"
-          TopLeft="476,155" />
-        <NodeLayout
-          Size="150,42"
-          Id="Package\Customer\NDS_Customer"
-          TopLeft="480,392" />
-        <NodeLayout
           Size="124,42"
           Id="Package\Customer\Customer"
           TopLeft="491.428571428571,225" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Customer\Derived Column"
+          TopLeft="476,155" />
         <EdgeLayout
           Id="Package\Customer.Paths[OLE DB Source Output]"
           TopLeft="551.25,126">
@@ -13870,7 +14196,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -13916,7 +14244,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -13938,7 +14268,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -13950,7 +14282,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -13960,7 +14292,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -13999,41 +14331,43 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="120,42"
+          Id="Package\Payment\Payment"
+          TopLeft="506,144" />
+        <NodeLayout
           Size="146,42"
           Id="Package\Payment\NDS_Payment"
           TopLeft="488,307" />
-        <NodeLayout
-          Size="199,42"
-          Id="Package\Payment\Stage_supermarket_sales"
-          TopLeft="464,68" />
         <NodeLayout
           Size="202,54"
           Id="Package\Payment\Lookup Stage_supermarket_sales in NDS_Payment"
           TopLeft="461,215" />
         <NodeLayout
-          Size="120,42"
-          Id="Package\Payment\Payment"
-          TopLeft="506,144" />
+          Size="199,42"
+          Id="Package\Payment\Stage_supermarket_sales"
+          TopLeft="464,68" />
         <EdgeLayout
-          Id="Package\Payment.Paths[Sort Output]"
-          TopLeft="564,186">
+          Id="Package\Payment.Paths[OLE DB Source Output]"
+          TopLeft="564.75,110">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,29"
+              EndConnector="0,34"
               Start="0,0"
-              End="0,21.5">
+              End="0,26.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21.5" />
+                    End="0,26.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -14061,32 +14395,34 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Payment.Paths[OLE DB Source Output]"
-          TopLeft="564.75,110">
+          Id="Package\Payment.Paths[Sort Output]"
+          TopLeft="564,186">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,34"
+              EndConnector="0,29"
               Start="0,0"
-              End="0,26.5">
+              End="0,21.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.5" />
+                    End="0,21.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Payment\Stage_supermarket_sales">
+    design-time-name="Package\Payment\NDS_Payment">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -14104,7 +14440,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -14114,7 +14450,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -14122,7 +14458,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Payment\NDS_Payment">
+    design-time-name="Package\Payment\Stage_supermarket_sales">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -14198,7 +14534,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -14226,7 +14564,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -14254,7 +14594,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -14276,7 +14618,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -14298,7 +14642,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -14320,7 +14666,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -14423,14 +14771,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           Text="TODO: If Stage_product doesn't existed in NDS_Product -&gt; log to error log to handle later&#xA;or handle it in Productline"
           ParentId="Package\Product"
           FontInfo="{assembly:Null}"
-          Size="504,56"
+          Size="504,NaN"
           Id="f0d35027-79c1-4a1a-898a-15d11c6bb80e"
           TopLeft="445,23" />
         <AnnotationLayout
           Text="Currently remove duplicate but need to handle it&#xA;"
           ParentId="Package\Product"
           FontInfo="{assembly:Null}"
-          Size="287,56"
+          Size="287,NaN"
           Id="b86e1c21-d312-45e4-a134-d1754ee8f9bc"
           TopLeft="389,417" />
       </GraphLayout>
@@ -14468,7 +14816,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -14478,7 +14826,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -14504,7 +14852,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -14514,7 +14862,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -14565,7 +14913,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -14587,7 +14937,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -14684,7 +15036,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -14694,7 +15046,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -14720,9 +15072,85 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <GraphLayout
         Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="107,42"
+          Id="Package\SupermarketSales\Sort 1"
+          TopLeft="855,216" />
+        <NodeLayout
+          Size="107,42"
+          Id="Package\SupermarketSales\Sort 4"
+          TopLeft="251,222" />
+        <NodeLayout
+          Size="120,42"
+          Id="Package\SupermarketSales\NDS City"
+          TopLeft="246,141" />
+        <NodeLayout
+          Size="196,42"
+          Id="Package\SupermarketSales\Lookup SupermarketSale"
+          TopLeft="365,856" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\SupermarketSales\Derived Column 1"
+          TopLeft="35,393" />
+        <NodeLayout
+          Size="196,42"
+          Id="Package\SupermarketSales\Update SupermarketSale"
+          TopLeft="271,952" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\SupermarketSales\Merge Join 3"
+          TopLeft="549,461" />
+        <NodeLayout
+          Size="107,42"
+          Id="Package\SupermarketSales\Sort 6"
+          TopLeft="80,227" />
+        <NodeLayout
+          Size="138,42"
+          Id="Package\SupermarketSales\NDS Product"
+          TopLeft="683,141" />
+        <NodeLayout
+          Size="107,42"
+          Id="Package\SupermarketSales\Sort 7"
+          TopLeft="228,386" />
+        <NodeLayout
           Size="139,42"
           Id="Package\SupermarketSales\Merge Join 4"
           TopLeft="761,531" />
+        <NodeLayout
+          Size="107,42"
+          Id="Package\SupermarketSales\Sort 3"
+          TopLeft="395,222" />
+        <NodeLayout
+          Size="98,42"
+          Id="Package\SupermarketSales\Sort"
+          TopLeft="709,218" />
+        <NodeLayout
+          Size="107,42"
+          Id="Package\SupermarketSales\Sort 8"
+          TopLeft="384,466" />
+        <NodeLayout
+          Size="159,42"
+          Id="Package\SupermarketSales\SupermarketSale"
+          TopLeft="512,951" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\SupermarketSales\Derived Column"
+          TopLeft="386,784" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\SupermarketSales\Merge Join 1"
+          TopLeft="141,315" />
+        <NodeLayout
+          Size="107,42"
+          Id="Package\SupermarketSales\Sort 9"
+          TopLeft="571,538" />
+        <NodeLayout
+          Size="144,42"
+          Id="Package\SupermarketSales\NDS Payment"
+          TopLeft="532,141" />
+        <NodeLayout
+          Size="107,42"
+          Id="Package\SupermarketSales\Sort 2"
+          TopLeft="558,220" />
         <NodeLayout
           Size="107,42"
           Id="Package\SupermarketSales\Sort 5"
@@ -14740,14 +15168,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           Id="Package\SupermarketSales\NDS Customer"
           TopLeft="375,142" />
         <NodeLayout
-          Size="107,42"
-          Id="Package\SupermarketSales\Sort 9"
-          TopLeft="572,535" />
-        <NodeLayout
-          Size="107,42"
-          Id="Package\SupermarketSales\Sort 2"
-          TopLeft="558,220" />
-        <NodeLayout
           Size="130,42"
           Id="Package\SupermarketSales\Merge Join"
           TopLeft="761,302" />
@@ -14756,87 +15176,23 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           Id="Package\SupermarketSales\Merge Join 2"
           TopLeft="370,383" />
         <NodeLayout
-          Size="107,42"
-          Id="Package\SupermarketSales\Sort 1"
-          TopLeft="855,216" />
-        <NodeLayout
-          Size="107,42"
-          Id="Package\SupermarketSales\Sort 4"
-          TopLeft="251,222" />
-        <NodeLayout
-          Size="120,42"
-          Id="Package\SupermarketSales\NDS City"
-          TopLeft="246,141" />
-        <NodeLayout
-          Size="196,42"
-          Id="Package\SupermarketSales\Lookup SupermarketSale"
-          TopLeft="361,718" />
-        <NodeLayout
-          Size="138,42"
-          Id="Package\SupermarketSales\NDS Product"
-          TopLeft="683,141" />
-        <NodeLayout
-          Size="154,42"
-          Id="Package\SupermarketSales\Derived Column"
-          TopLeft="35,387" />
-        <NodeLayout
-          Size="139,42"
-          Id="Package\SupermarketSales\Merge Join 3"
-          TopLeft="549,456" />
-        <NodeLayout
-          Size="107,42"
-          Id="Package\SupermarketSales\Sort 6"
-          TopLeft="80,227" />
-        <NodeLayout
-          Size="139,42"
-          Id="Package\SupermarketSales\Merge Join 1"
-          TopLeft="141,315" />
-        <NodeLayout
-          Size="159,42"
-          Id="Package\SupermarketSales\SupermarketSale"
-          TopLeft="506,814" />
-        <NodeLayout
-          Size="107,42"
-          Id="Package\SupermarketSales\Sort 7"
-          TopLeft="228,386" />
-        <NodeLayout
-          Size="107,42"
-          Id="Package\SupermarketSales\Sort 3"
-          TopLeft="395,222" />
-        <NodeLayout
-          Size="98,42"
-          Id="Package\SupermarketSales\Sort"
-          TopLeft="709,218" />
-        <NodeLayout
-          Size="107,42"
-          Id="Package\SupermarketSales\Sort 8"
-          TopLeft="388,458" />
-        <NodeLayout
-          Size="144,42"
-          Id="Package\SupermarketSales\NDS Payment"
-          TopLeft="532,141" />
-        <NodeLayout
-          Size="196,42"
-          Id="Package\SupermarketSales\Update SupermarketSale"
-          TopLeft="267,814" />
-        <NodeLayout
           Size="155,42"
           Id="Package\SupermarketSales\Conditional Split"
           TopLeft="377,635" />
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Sort Output5]"
-          TopLeft="335,405.5">
+          Id="Package\SupermarketSales.Paths[Sort Output3]"
+          TopLeft="830.5,412">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="35,0"
+              EndConnector="0,119"
               Start="0,0"
-              End="27.5,0">
+              End="0,111.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="27.5,0" />
+                    End="0,111.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -14847,18 +15203,30 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SupermarketSales.Paths[Sort Output4]"
-          TopLeft="679,554">
+          TopLeft="758,260">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="82,0"
+              EndConnector="68,42"
               Start="0,0"
-              End="74.5,0">
+              End="68,34.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="74.5,0" />
+                    End="0,17" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17"
+                    Point2="0,21"
+                    Point3="4,21" />
+                  <mssgle:LineSegment
+                    End="64,21" />
+                  <mssgle:CubicBezierSegment
+                    Point1="64,21"
+                    Point2="68,21"
+                    Point3="68,25" />
+                  <mssgle:LineSegment
+                    End="68,34.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -14868,31 +15236,19 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Sort Output3]"
-          TopLeft="133.5,269">
+          Id="Package\SupermarketSales.Paths[Sort Output9]"
+          TopLeft="615,262">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="55.1666666666667,46"
+              EndConnector="0,199"
               Start="0,0"
-              End="55.1666666666667,38.5">
+              End="0,191.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,23.2859174964438" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,23.2859174964438"
-                    Point2="0,27.2859174964438"
-                    Point3="4,27.2859174964438" />
-                  <mssgle:LineSegment
-                    End="51.1666666666667,27.2859174964438" />
-                  <mssgle:CubicBezierSegment
-                    Point1="51.1666666666667,27.2859174964438"
-                    Point2="55.1666666666667,27.2859174964438"
-                    Point3="55.1666666666667,31.2859174964438" />
-                  <mssgle:LineSegment
-                    End="55.1666666666667,38.5" />
+                    End="0,191.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -14902,7 +15258,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Sort Output2]"
+          Id="Package\SupermarketSales.Paths[Sort Output5]"
           TopLeft="304.5,264">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -14936,19 +15292,31 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Sort Output1]"
-          TopLeft="495,478">
+          Id="Package\SupermarketSales.Paths[Sort Output6]"
+          TopLeft="908.5,258">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="54,0"
+              EndConnector="-62.1666666666666,44"
               Start="0,0"
-              End="46.5,0">
+              End="-62.1666666666666,36.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="46.5,0" />
+                    End="0,22.0790273556231" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.0790273556231"
+                    Point2="0,26.0790273556231"
+                    Point3="-4,26.0790273556231" />
+                  <mssgle:LineSegment
+                    End="-58.1666666666666,26.0790273556231" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-58.1666666666666,26.0790273556231"
+                    Point2="-62.1666666666666,26.0790273556231"
+                    Point3="-62.1666666666666,30.0790273556231" />
+                  <mssgle:LineSegment
+                    End="-62.1666666666666,36.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -14958,19 +15326,31 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[OLE DB Source Output]"
-          TopLeft="909.5,184">
+          Id="Package\SupermarketSales.Paths[Sort Output7]"
+          TopLeft="448.5,264">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,32"
+              EndConnector="-9,119"
               Start="0,0"
-              End="0,24.5">
+              End="-9,111.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,24.5" />
+                    End="0,55.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,55.5"
+                    Point2="0,59.5"
+                    Point3="-4,59.5" />
+                  <mssgle:LineSegment
+                    End="-5,59.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5,59.5"
+                    Point2="-9,59.5"
+                    Point3="-9,63.5" />
+                  <mssgle:LineSegment
+                    End="-9,111.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -14980,19 +15360,41 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[OLE DB Source Output1]"
-          TopLeft="607.75,183">
+          Id="Package\SupermarketSales.Paths[OLE DB Source Output4]"
+          TopLeft="448.75,184">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,37"
+              EndConnector="0,38"
               Start="0,0"
-              End="0,29.5">
+              End="0,30.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,29.5" />
+                    End="0,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SupermarketSales.Paths[OLE DB Source Output3]"
+          TopLeft="305.25,183">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39"
+              Start="0,0"
+              End="0,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -15024,19 +15426,19 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[OLE DB Source Output5]"
-          TopLeft="448.75,184">
+          Id="Package\SupermarketSales.Paths[OLE DB Source Output1]"
+          TopLeft="909.5,184">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,38"
+              EndConnector="0,32"
               Start="0,0"
-              End="0,30.5">
+              End="0,24.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.5" />
+                    End="0,24.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -15046,142 +15448,8 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[OLE DB Source Output3]"
-          TopLeft="133.5,184">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,43"
-              Start="0,0"
-              End="0,35.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,35.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SupermarketSales.Paths[OLE DB Source Output4]"
-          TopLeft="305.25,183">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,39"
-              Start="0,0"
-              End="0,31.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Merge Join Output4]"
-          TopLeft="830.5,573">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-376,62"
-              Start="0,0"
-              End="-376,54.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,27" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,27"
-                    Point2="0,31"
-                    Point3="-4,31" />
-                  <mssgle:LineSegment
-                    End="-372,31" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-372,31"
-                    Point2="-376,31"
-                    Point3="-376,35" />
-                  <mssgle:LineSegment
-                    End="-376,54.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Merge Join Output3]"
-          TopLeft="210.5,357">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-98.5,30"
-              Start="0,0"
-              End="-98.5,22.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,11" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,11"
-                    Point2="0,15"
-                    Point3="-4,15" />
-                  <mssgle:LineSegment
-                    End="-94.5,15" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-94.5,15"
-                    Point2="-98.5,15"
-                    Point3="-98.5,19" />
-                  <mssgle:LineSegment
-                    End="-98.5,22.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Merge Join Output2]"
-          TopLeft="440.5,425">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,33"
-              Start="0,0"
-              End="0,25.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Merge Join Output1]"
-          TopLeft="622,498">
+          Id="Package\SupermarketSales.Paths[OLE DB Source Output]"
+          TopLeft="607.75,183">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -15225,43 +15493,43 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SupermarketSales.Paths[Lookup No Match Output]"
-          TopLeft="490.333333333333,760">
+          TopLeft="494.333333333333,898">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="95.1666666666667,54"
+              EndConnector="97.1666666666667,53"
               Start="0,0"
-              End="95.1666666666667,46.5">
+              End="97.1666666666667,45.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17.8623481781377" />
+                    End="0,17.4574898785425" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,17.8623481781377"
-                    Point2="0,21.8623481781377"
-                    Point3="4,21.8623481781377" />
+                    Point1="0,17.4574898785425"
+                    Point2="0,21.4574898785425"
+                    Point3="4,21.4574898785425" />
                   <mssgle:LineSegment
-                    End="91.1666666666667,21.8623481781377" />
+                    End="93.1666666666667,21.4574898785425" />
                   <mssgle:CubicBezierSegment
-                    Point1="91.1666666666667,21.8623481781377"
-                    Point2="95.1666666666667,21.8623481781377"
-                    Point3="95.1666666666667,25.8623481781377" />
+                    Point1="93.1666666666667,21.4574898785425"
+                    Point2="97.1666666666667,21.4574898785425"
+                    Point3="97.1666666666667,25.4574898785425" />
                   <mssgle:LineSegment
-                    End="95.1666666666667,46.5" />
+                    End="97.1666666666667,45.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-8.22305338541665,26.8623481781377,111.6127734375,11.609375"
+              BoundingBox="-7.22305338541665,26.4574898785425,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SupermarketSales.Paths[Lookup Match Output]"
-          TopLeft="427.666666666667,760">
+          TopLeft="431.666666666667,898">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -15272,17 +15540,17 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17.8623481781377" />
+                    End="0,17.8623481781376" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,17.8623481781377"
-                    Point2="0,21.8623481781377"
-                    Point3="-4,21.8623481781377" />
+                    Point1="0,17.8623481781376"
+                    Point2="0,21.8623481781376"
+                    Point3="-4,21.8623481781376" />
                   <mssgle:LineSegment
-                    End="-58.6666666666667,21.8623481781377" />
+                    End="-58.6666666666667,21.8623481781376" />
                   <mssgle:CubicBezierSegment
-                    Point1="-58.6666666666667,21.8623481781377"
-                    Point2="-62.6666666666667,21.8623481781377"
-                    Point3="-62.6666666666667,25.8623481781377" />
+                    Point1="-58.6666666666667,21.8623481781376"
+                    Point2="-62.6666666666667,21.8623481781376"
+                    Point3="-62.6666666666667,25.8623481781376" />
                   <mssgle:LineSegment
                     End="-62.6666666666667,46.5" />
                 </mssgle:SegmentCollection>
@@ -15291,13 +15559,176 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-79.5247200520834,26.8623481781377,96.3827734375,11.609375"
+              BoundingBox="-79.5247200520834,26.8623481781376,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Don't have null foreign key]"
-          TopLeft="456.75,677">
+          Id="Package\SupermarketSales.Paths[Derived Column Output]"
+          TopLeft="463,826">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30"
+              Start="0,0"
+              End="0,22.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Handle Not Found"
+          ParentId="Package\SupermarketSales"
+          FontInfo="{assembly:Null}"
+          Size="127,40"
+          Id="213127ae-cda2-48c3-8caf-e25007f50107"
+          TopLeft="216,629" />
+        <EdgeLayout
+          Id="Package\SupermarketSales.Paths[OLE DB Source Output5]"
+          TopLeft="133.5,184">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43"
+              Start="0,0"
+              End="0,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SupermarketSales.Paths[Sort Output8]"
+          TopLeft="133.5,269">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="55.1666666666667,46"
+              Start="0,0"
+              End="55.1666666666667,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.2859174964438" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.2859174964438"
+                    Point2="0,27.2859174964438"
+                    Point3="4,27.2859174964438" />
+                  <mssgle:LineSegment
+                    End="51.1666666666667,27.2859174964438" />
+                  <mssgle:CubicBezierSegment
+                    Point1="51.1666666666667,27.2859174964438"
+                    Point2="55.1666666666667,27.2859174964438"
+                    Point3="55.1666666666667,31.2859174964438" />
+                  <mssgle:LineSegment
+                    End="55.1666666666667,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SupermarketSales.Paths[Merge Join Output4]"
+          TopLeft="210.5,357">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-94,36"
+              Start="0,0"
+              End="-94,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14"
+                    Point2="0,18"
+                    Point3="-4,18" />
+                  <mssgle:LineSegment
+                    End="-90,18" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-90,18"
+                    Point2="-94,18"
+                    Point3="-94,22" />
+                  <mssgle:LineSegment
+                    End="-94,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SupermarketSales.Paths[Derived Column Output1]"
+          TopLeft="198,410.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="30,0"
+              Start="0,0"
+              End="22.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="22.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SupermarketSales.Paths[Sort Output2]"
+          TopLeft="335,405.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="35,0"
+              Start="0,0"
+              End="27.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="27.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SupermarketSales.Paths[Merge Join Output3]"
+          TopLeft="438.5,425">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -15314,25 +15745,23 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-59.94693359375,10.89404296875,119.8938671875,11.7119140625"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Derived Column Output]"
-          TopLeft="189,407.5">
+          Id="Package\SupermarketSales.Paths[Sort Output1]"
+          TopLeft="491,484.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="39,0"
+              EndConnector="58,0"
               Start="0,0"
-              End="31.5,0">
+              End="50.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="31.5,0" />
+                    End="50.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -15342,31 +15771,19 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Sort Output9]"
-          TopLeft="758,260">
+          Id="Package\SupermarketSales.Paths[Merge Join Output1]"
+          TopLeft="621.5,503">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="68,42"
+              EndConnector="0,35"
               Start="0,0"
-              End="68,34.5">
+              End="0,27.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,17"
-                    Point2="0,21"
-                    Point3="4,21" />
-                  <mssgle:LineSegment
-                    End="64,21" />
-                  <mssgle:CubicBezierSegment
-                    Point1="64,21"
-                    Point2="68,21"
-                    Point3="68,25" />
-                  <mssgle:LineSegment
-                    End="68,34.5" />
+                    End="0,27.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -15377,18 +15794,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SupermarketSales.Paths[Sort Output]"
-          TopLeft="615,262">
+          TopLeft="678,555.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,194"
+              EndConnector="83,0"
               Start="0,0"
-              End="0,186.5">
+              End="75.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,186.5" />
+                    End="75.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -15398,19 +15815,31 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Sort Output8]"
-          TopLeft="830.5,412">
+          Id="Package\SupermarketSales.Paths[Merge Join Output2]"
+          TopLeft="830.5,573">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,119"
+              EndConnector="-376,62"
               Start="0,0"
-              End="0,111.5">
+              End="-376,54.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,111.5" />
+                    End="0,27" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27"
+                    Point2="0,31"
+                    Point3="-4,31" />
+                  <mssgle:LineSegment
+                    End="-372,31" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-372,31"
+                    Point2="-376,31"
+                    Point3="-376,35" />
+                  <mssgle:LineSegment
+                    End="-376,54.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -15420,83 +15849,80 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Sort Output7]"
-          TopLeft="908.5,258">
+          Id="Package\SupermarketSales.Paths[Don't have null foreign key]"
+          TopLeft="454.5,677">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-62.1666666666666,44"
+              EndConnector="8.5,107"
               Start="0,0"
-              End="-62.1666666666666,36.5">
+              End="8.5,99.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,22.0790273556231" />
+                    End="0,49.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,22.0790273556231"
-                    Point2="0,26.0790273556231"
-                    Point3="-4,26.0790273556231" />
+                    Point1="0,49.5"
+                    Point2="0,53.5"
+                    Point3="4,53.5" />
                   <mssgle:LineSegment
-                    End="-58.1666666666666,26.0790273556231" />
+                    End="4.5,53.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="-58.1666666666666,26.0790273556231"
-                    Point2="-62.1666666666666,26.0790273556231"
-                    Point3="-62.1666666666666,30.0790273556231" />
+                    Point1="4.5,53.5"
+                    Point2="8.5,53.5"
+                    Point3="8.5,57.5" />
                   <mssgle:LineSegment
-                    End="-62.1666666666666,36.5" />
+                    End="8.5,99.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-55.69693359375,58.5,119.8938671875,11.7119140625"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SupermarketSales.Paths[Sort Output6]"
-          TopLeft="448.5,264">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-9,119"
-              Start="0,0"
-              End="-9,111.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,55.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,55.5"
-                    Point2="0,59.5"
-                    Point3="-4,59.5" />
-                  <mssgle:LineSegment
-                    End="-5,59.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-5,59.5"
-                    Point2="-9,59.5"
-                    Point3="-9,63.5" />
-                  <mssgle:LineSegment
-                    End="-9,111.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <AnnotationLayout
-          Text="Handle Not Found"
-          ParentId="Package\SupermarketSales"
-          FontInfo="{assembly:Null}"
-          Size="127,40"
-          Id="213127ae-cda2-48c3-8caf-e25007f50107"
-          TopLeft="216,629" />
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\SupermarketSales\NDS City">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SupermarketSales\Lookup SupermarketSale">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[SupermarketSale]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\SupermarketSales\NDS Product">
     <Properties>
@@ -15537,6 +15963,19 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\SupermarketSales\Stage supermarket_sales">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\SupermarketSales\NDS Productline">
     <Properties>
       <Property>
@@ -15550,56 +15989,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\SupermarketSales\NDS City">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\SupermarketSales\NDS Customer">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\SupermarketSales\Lookup SupermarketSale">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[SupermarketSale]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\SupermarketSales\Stage supermarket_sales">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

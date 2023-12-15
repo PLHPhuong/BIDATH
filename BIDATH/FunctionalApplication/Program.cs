@@ -399,7 +399,7 @@ namespace FunctionalApplication
     }
     class ApplicationFunction
     {
-        public static void CreatenecessaryDatabase()
+        public static void CreateNecessaryDatabase()
         {
             XmlDocument xmlDoc = new XmlDocument();
 
@@ -491,6 +491,101 @@ namespace FunctionalApplication
                 }
             }
         }
+        public static void CreateNecessaryDatabase(List<string> typesNames = null, List<string> databasesNames = null)
+        {
+            if (typesNames == null && databasesNames == null) { CreateNecessaryDatabase(); return; }
+            XmlDocument xmlDoc = new XmlDocument();
+
+            // > Specified variables:
+            // > Script:
+
+            // >> Load Condfig
+            XmlDocument tempXmlDoc = new XmlDocument();
+            string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string solutionDirectory = UnityFunction.fFindTargetFile(currentDirectory, "FilePathConfig.xml");
+            if (solutionDirectory == null) throw new Exception("Cannot file config");
+            tempXmlDoc.Load(solutionDirectory);
+            string configFilePath = tempXmlDoc.SelectSingleNode("/Root/DatabaseCongfigFile").InnerText;
+
+
+
+            xmlDoc.Load(configFilePath);
+            string connectionString = xmlDoc.SelectSingleNode("/Root/SQLServerConnnectionString").InnerText;
+            XmlNodeList databaseNodes = xmlDoc.SelectNodes("/Root/Databases/Database");
+
+
+            HandleExistence DatabaseExistenceHandleMethod = UnityFunction.fFormatExistedHandler(xmlDoc.SelectSingleNode("/Root/HandleExistedMethod/Database").InnerText);
+            HandleExistence DatabaseTableExistenceHandleMethod = UnityFunction.fFormatExistedHandler(xmlDoc.SelectSingleNode("/Root/HandleExistedMethod/Table").InnerText);
+            HandleExistence DatabaseTriggerExistenceHandleMethod = UnityFunction.fFormatExistedHandler(xmlDoc.SelectSingleNode("/Root/HandleExistedMethod/Trigger").InnerText);
+
+            // >> Handle:
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            //UnityFunction.fDeleteTableFunc(ref connection, "AdventureWorks2012", "product", " ", HandleExistence.Delete);
+
+            foreach (XmlNode databaseNode in databaseNodes)
+            {
+                if (!databasesNames.Contains(databaseNode.Attributes["Name"].Value) && !typesNames.Contains(databaseNode.Attributes["Type"].Value)) continue;
+                string databaseName = databaseNode.SelectSingleNode("Name").InnerText;
+                
+                connection.Open();
+                // ---- CREATE DATABASE ----:
+                // CREATE DATABASE - step 1: check db existence
+                bool databaseExisted = UnityFunction.fDatabaseExisted(ref connection, databaseName);
+
+                // CREATE DATABASE - step 2: handle existence and create db
+                if (databaseExisted && DatabaseExistenceHandleMethod == HandleExistence.Delete)
+                {
+                    // CREATE DATABASE - step 2.1: drop db
+                    string queryDBExistenceHandle = $"DROP DATABASE {databaseName}";
+                    using (SqlCommand command = new SqlCommand(queryDBExistenceHandle, connection)) { command.ExecuteScalar(); }
+                    databaseExisted = false;
+                }
+                // CREATE DATABASE - step 2.2: create db
+                if (!databaseExisted)
+                {
+                    string queryDBCreation = $"CREATE DATABASE {databaseName}";
+                    using (SqlCommand command = new SqlCommand(queryDBCreation, connection)) { command.ExecuteScalar(); }
+                    databaseExisted = true;
+                }
+
+                // ---- CREATE METATABLE FOR DB ----:
+                XmlNodeList MetaTables = databaseNode.SelectNodes("MetaTables/Table");
+                if (MetaTables != null)
+                {
+                    foreach (XmlNode table in MetaTables)
+                    {
+                        string tableName = table.SelectSingleNode("Name").InnerText;
+                        string createTableQuery = table.SelectSingleNode("CreationQuery").InnerText;
+                        UnityFunction.fCreateTableInDatabase(ref connection, databaseName, tableName, createTableQuery, DatabaseTableExistenceHandleMethod, true, false, true, HandleSqlConnection.OpenAndKeep);
+                    }
+                }
+                // ---- CREATE TRIGGER FOR DB ----:
+                XmlNodeList Triggers = databaseNode.SelectNodes("TriggerOnDatabase/Trigger");
+                if (Triggers != null)
+                {
+                    foreach (XmlNode trigger in Triggers)
+                    {
+                        string tableName = trigger.SelectSingleNode("Name").InnerText;
+                        string createTriggerQuery = trigger.SelectSingleNode("CreationQuery").InnerText;
+                        UnityFunction.fCreateTriggerInDatabase(ref connection, databaseName, tableName, createTriggerQuery, DatabaseTriggerExistenceHandleMethod, true, false, true, HandleSqlConnection.OpenAndKeep);
+                    }
+                }
+                // ---- CREATE TABLE FOR DB ----:
+                XmlNodeList Tables = databaseNode.SelectNodes("Tables/Table");
+                if (Tables != null)
+                {
+                    foreach (XmlNode table in Tables)
+                    {
+                        string tableName = table.SelectSingleNode("Name").InnerText;
+                        string createTableQuery = table.SelectSingleNode("CreationQuery").InnerText;
+                        UnityFunction.fCreateTableInDatabase(ref connection, databaseName, tableName, createTableQuery, DatabaseTableExistenceHandleMethod, true, false, true, HandleSqlConnection.OpenAndKeep);
+                    }
+                    connection.Close();
+                }
+            }
+
+        }
         public static void SettingUpDirectory()
         {
             try
@@ -542,7 +637,7 @@ namespace FunctionalApplication
             List<(string,Action, bool)> ConsoleFunctions = new List<(string, Action, bool)>
             {
                 ("SettingUpDirectory",ApplicationFunction.SettingUpDirectory,true),
-                ("CreatenecessaryDatabase",ApplicationFunction.CreatenecessaryDatabase,true),
+                ("CreatenecessaryDatabase",ApplicationFunction.CreateNecessaryDatabase,true),
             };
            foreach (var (name,func,enable) in ConsoleFunctions)
             {
