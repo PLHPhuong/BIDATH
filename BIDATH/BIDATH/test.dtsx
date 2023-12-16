@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="25"
-  DTS:VersionGUID="{B217BA44-EBA4-4EE2-8288-F6DD1144303C}">
+  DTS:VersionBuild="30"
+  DTS:VersionGUID="{6D5BDB24-F928-48C6-A56F-AC52F3E471D3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -48,6 +48,38 @@
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectionString="D:\BI\DATH\Config.xml" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[NDS]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3D254A2D-45E3-453A-B329-5A364360193D}"
+      DTS:ObjectName="NDS">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[$Package::OLED_DestinationDatabaseName]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[$Package::OLED_DestinationServerName]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=(local);Initial Catalog=BI_NDS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package2-{3D254A2D-45E3-453A-B329-5A364360193D}(local).BI_NDS;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Stage]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{0F13AECD-6419-4A1F-980C-A7FDDA2E730B}"
+      DTS:ObjectName="Stage">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[$Package::OLED_SourceDatabaseName]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[$Package::OLED_SourceServerName]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=(local);Initial Catalog=BI_Stage;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package2-{0F13AECD-6419-4A1F-980C-A7FDDA2E730B}(local).BI_Stage;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -2029,6 +2061,2235 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{8CDFDF98-24E4-4C26-8EFC-9DE617BEDA80}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Add SourceId"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Add SourceId"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Add SourceId.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Add SourceId.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task 1\Add SourceId.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Add SourceId.Outputs[Derived Column Output].Columns[SourceId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task 1\Add SourceId.Outputs[Derived Column Output].Columns[SourceId]"
+                      name="SourceId"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">1</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Add SourceId.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Add SourceId.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Add SourceId.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Add SourceId.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Add SourceId.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Add SourceId.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Productline (v2)"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{2232e30c-bf3a-4d15-a988-3a8848466c6b}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Productline (v2)"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Productline (v2)\Add SourceId, Identifer"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Add SourceId, Identifer"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Productline (v2)\Add SourceId, Identifer.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Productline (v2)\Add SourceId, Identifer.Inputs[Derived Column Input].Columns[ProductLineID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ProductLineID"
+                      cachedSortKeyPosition="-1"
+                      lineageId="Package\Productline (v2)\Merge Join.Outputs[Merge Join Output].Columns[ProductLineID]" />
+                    <inputColumn
+                      refId="Package\Productline (v2)\Add SourceId, Identifer.Inputs[Derived Column Input].Columns[ProductLine(product)]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ProductLine(product)"
+                      lineageId="Package\Productline (v2)\Merge Join.Outputs[Merge Join Output].Columns[ProductLine(product)]" />
+                    <inputColumn
+                      refId="Package\Productline (v2)\Add SourceId, Identifer.Inputs[Derived Column Input].Columns[Product line]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Product line"
+                      lineageId="Package\Productline (v2)\Merge Join.Outputs[Merge Join Output].Columns[Product line]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Productline (v2)\Add SourceId, Identifer.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Productline (v2)\Add SourceId, Identifer.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Productline (v2)\Add SourceId, Identifer.Outputs[Derived Column Output].Columns[SourceId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Productline (v2)\Add SourceId, Identifer.Outputs[Derived Column Output].Columns[SourceId]"
+                      name="SourceId"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">1</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Productline (v2)\Add SourceId, Identifer.Outputs[Derived Column Output].Columns[identifier]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Productline (v2)\Add SourceId, Identifer.Outputs[Derived Column Output].Columns[identifier]"
+                      name="identifier"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\Productline (v2)\Merge Join.Outputs[Merge Join Output].Columns[ProductLineID]}) ? #{Package\Productline (v2)\Merge Join.Outputs[Merge Join Output].Columns[ProductLine(product)]} : #{Package\Productline (v2)\Merge Join.Outputs[Merge Join Output].Columns[ProductLineID]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(ProductLineID) ? [ProductLine(product)] : ProductLineID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Productline (v2)\Add SourceId, Identifer.Outputs[Derived Column Output].Columns[status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="7"
+                      lineageId="Package\Productline (v2)\Add SourceId, Identifer.Outputs[Derived Column Output].Columns[status]"
+                      name="status"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\Productline (v2)\Merge Join.Outputs[Merge Join Output].Columns[Product line]}) ? "pending" : "active"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL([Product line]) ? "pending" : "active"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Productline (v2)\Add SourceId, Identifer.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Productline (v2)\Add SourceId, Identifer.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Productline (v2)\Add SourceId, Identifer.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Productline (v2)\Add SourceId, Identifer.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Productline (v2)\Add SourceId, Identifer.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Productline (v2)\Add SourceId, Identifer.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Productline (v2)\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Productline (v2)\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Productline (v2)\Data Conversion.Inputs[Data Conversion Input].Columns[New Product line]"
+                      cachedDataType="wstr"
+                      cachedLength="512"
+                      cachedName="New Product line"
+                      lineageId="Package\Productline (v2)\Replace null.Outputs[Derived Column Output].Columns[New Product line]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Productline (v2)\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Productline (v2)\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Productline (v2)\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of New Product line]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Productline (v2)\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of New Product line]"
+                      name="Copy of New Product line"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Productline (v2)\Replace null.Outputs[Derived Column Output].Columns[New Product line]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Productline (v2)\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Productline (v2)\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Productline (v2)\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Productline (v2)\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Productline (v2)\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Productline (v2)\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Productline (v2)\Lookup Stage_ProductLine in NDS_Productline"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup Stage_ProductLine in NDS_Productline"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Productline]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Productline]) [refTable]
+where [refTable].[ProductLineID_NK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ProductLineID_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ProductLineID_NK" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ProductLine" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SourceId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Status" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CreatedDate" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="UpdatedDate" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Productline (v2)\Merge Join.Outputs[Merge Join Output].Columns[ProductLineID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Productline (v2)\Lookup Stage_ProductLine in NDS_Productline.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[NDS]"
+                  connectionManagerRefId="Package.ConnectionManagers[NDS]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Productline (v2)\Lookup Stage_ProductLine in NDS_Productline.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Productline (v2)\Lookup Stage_ProductLine in NDS_Productline.Inputs[Lookup Input].Columns[ProductLineID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ProductLineID"
+                      cachedSortKeyPosition="-1"
+                      lineageId="Package\Productline (v2)\Merge Join.Outputs[Merge Join Output].Columns[ProductLineID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">ProductLineID_NK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Productline (v2)\Lookup Stage_ProductLine in NDS_Productline.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Productline (v2)\Lookup Stage_ProductLine in NDS_Productline.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Productline (v2)\Lookup Stage_ProductLine in NDS_Productline.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Productline (v2)\Lookup Stage_ProductLine in NDS_Productline.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Productline (v2)\Lookup Stage_ProductLine in NDS_Productline.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Productline (v2)\Lookup Stage_ProductLine in NDS_Productline.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Productline (v2)\Lookup Stage_ProductLine in NDS_Productline.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Productline (v2)\Lookup Stage_ProductLine in NDS_Productline.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Productline (v2)\Lookup Stage_ProductLine in NDS_Productline.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Productline (v2)\Lookup Stage_ProductLine in NDS_Productline.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Productline (v2)\Merge Join"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Productline (v2)\Merge Join.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Productline (v2)\Merge Join.Inputs[Merge Join Left Input].Columns[ProductLineID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ProductLineID"
+                      cachedSortKeyPosition="-1"
+                      lineageId="Package\Productline (v2)\Productline (1).Outputs[Sort Output].Columns[ProductLineID]" />
+                    <inputColumn
+                      refId="Package\Productline (v2)\Merge Join.Inputs[Merge Join Left Input].Columns[Product line]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Product line"
+                      lineageId="Package\Productline (v2)\Productline (1).Outputs[Sort Output].Columns[Product line]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Productline (v2)\Merge Join.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Productline (v2)\Merge Join.Inputs[Merge Join Right Input].Columns[ProductLine]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ProductLine"
+                      cachedSortKeyPosition="-1"
+                      lineageId="Package\Productline (v2)\Productline (2).Outputs[Sort Output].Columns[ProductLine]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Productline (v2)\Merge Join.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Productline (v2)\Merge Join.Outputs[Merge Join Output].Columns[Product line]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Productline (v2)\Merge Join.Outputs[Merge Join Output].Columns[Product line]"
+                      name="Product line">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Productline (v2)\Merge Join.Inputs[Merge Join Left Input].Columns[Product line]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Productline (v2)\Merge Join.Outputs[Merge Join Output].Columns[ProductLineID]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Productline (v2)\Merge Join.Outputs[Merge Join Output].Columns[ProductLineID]"
+                      name="ProductLineID"
+                      sortKeyPosition="-1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Productline (v2)\Merge Join.Inputs[Merge Join Left Input].Columns[ProductLineID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Productline (v2)\Merge Join.Outputs[Merge Join Output].Columns[ProductLine(product)]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Productline (v2)\Merge Join.Outputs[Merge Join Output].Columns[ProductLine(product)]"
+                      name="ProductLine(product)">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Productline (v2)\Merge Join.Inputs[Merge Join Right Input].Columns[ProductLine]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Productline (v2)\NDS_Productline"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="NDS_Productline"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Productline]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Productline (v2)\NDS_Productline.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[NDS]"
+                  connectionManagerRefId="Package.ConnectionManagers[NDS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Productline (v2)\NDS_Productline.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Productline (v2)\NDS_Productline.Inputs[OLE DB Destination Input].Columns[SourceId]"
+                      cachedDataType="i4"
+                      cachedName="SourceId"
+                      externalMetadataColumnId="Package\Productline (v2)\NDS_Productline.Inputs[OLE DB Destination Input].ExternalColumns[SourceId]"
+                      lineageId="Package\Productline (v2)\Add SourceId, Identifer.Outputs[Derived Column Output].Columns[SourceId]" />
+                    <inputColumn
+                      refId="Package\Productline (v2)\NDS_Productline.Inputs[OLE DB Destination Input].Columns[status]"
+                      cachedDataType="wstr"
+                      cachedLength="7"
+                      cachedName="status"
+                      externalMetadataColumnId="Package\Productline (v2)\NDS_Productline.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
+                      lineageId="Package\Productline (v2)\Add SourceId, Identifer.Outputs[Derived Column Output].Columns[status]" />
+                    <inputColumn
+                      refId="Package\Productline (v2)\NDS_Productline.Inputs[OLE DB Destination Input].Columns[Copy of New Product line]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Copy of New Product line"
+                      externalMetadataColumnId="Package\Productline (v2)\NDS_Productline.Inputs[OLE DB Destination Input].ExternalColumns[ProductLine]"
+                      lineageId="Package\Productline (v2)\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of New Product line]" />
+                    <inputColumn
+                      refId="Package\Productline (v2)\NDS_Productline.Inputs[OLE DB Destination Input].Columns[identifier]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="identifier"
+                      externalMetadataColumnId="Package\Productline (v2)\NDS_Productline.Inputs[OLE DB Destination Input].ExternalColumns[ProductLineID_NK]"
+                      lineageId="Package\Productline (v2)\Add SourceId, Identifer.Outputs[Derived Column Output].Columns[identifier]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Productline (v2)\NDS_Productline.Inputs[OLE DB Destination Input].ExternalColumns[ProductLineID_SK]"
+                      dataType="i4"
+                      name="ProductLineID_SK" />
+                    <externalMetadataColumn
+                      refId="Package\Productline (v2)\NDS_Productline.Inputs[OLE DB Destination Input].ExternalColumns[ProductLineID_NK]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProductLineID_NK" />
+                    <externalMetadataColumn
+                      refId="Package\Productline (v2)\NDS_Productline.Inputs[OLE DB Destination Input].ExternalColumns[ProductLine]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProductLine" />
+                    <externalMetadataColumn
+                      refId="Package\Productline (v2)\NDS_Productline.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp2"
+                      name="CreatedDate"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Productline (v2)\NDS_Productline.Inputs[OLE DB Destination Input].ExternalColumns[UpdatedDate]"
+                      dataType="dbTimeStamp2"
+                      name="UpdatedDate"
+                      scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\Productline (v2)\NDS_Productline.Inputs[OLE DB Destination Input].ExternalColumns[SourceId]"
+                      dataType="i4"
+                      name="SourceId" />
+                    <externalMetadataColumn
+                      refId="Package\Productline (v2)\NDS_Productline.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
+                      dataType="wstr"
+                      length="255"
+                      name="Status" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Productline (v2)\NDS_Productline.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Productline (v2)\NDS_Productline.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Productline (v2)\NDS_Productline.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Productline (v2)\NDS_Productline.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Productline (v2)\NDS_Productline.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Productline (v2)\NDS_Productline.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Productline (v2)\Productline (1)"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Productline (1)"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Productline (v2)\Productline (1).Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Productline (v2)\Productline (1).Inputs[Sort Input].Columns[Product line]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Product line"
+                      lineageId="Package\Productline (v2)\Stage_ProductLine.Outputs[OLE DB Source Output].Columns[Product line]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Productline (v2)\Productline (1).Inputs[Sort Input].Columns[ProductLineID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ProductLineID"
+                      lineageId="Package\Productline (v2)\Stage_ProductLine.Outputs[OLE DB Source Output].Columns[ProductLineID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">-1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Productline (v2)\Productline (1).Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Productline (v2)\Productline (1).Outputs[Sort Output].Columns[Product line]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Productline (v2)\Productline (1).Outputs[Sort Output].Columns[Product line]"
+                      name="Product line">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Productline (v2)\Stage_ProductLine.Outputs[OLE DB Source Output].Columns[Product line]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Productline (v2)\Productline (1).Outputs[Sort Output].Columns[ProductLineID]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Productline (v2)\Productline (1).Outputs[Sort Output].Columns[ProductLineID]"
+                      name="ProductLineID"
+                      sortKeyPosition="-1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Productline (v2)\Stage_ProductLine.Outputs[OLE DB Source Output].Columns[ProductLineID]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Productline (v2)\Productline (2)"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Productline (2)"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Productline (v2)\Productline (2).Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Productline (v2)\Productline (2).Inputs[Sort Input].Columns[ProductLine]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ProductLine"
+                      lineageId="Package\Productline (v2)\Stage_product.Outputs[OLE DB Source Output].Columns[ProductLine]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">-1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Productline (v2)\Productline (2).Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Productline (v2)\Productline (2).Outputs[Sort Output].Columns[ProductLine]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Productline (v2)\Productline (2).Outputs[Sort Output].Columns[ProductLine]"
+                      name="ProductLine"
+                      sortKeyPosition="-1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Productline (v2)\Stage_product.Outputs[OLE DB Source Output].Columns[ProductLine]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Productline (v2)\Replace null"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Replace null"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Productline (v2)\Replace null.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Productline (v2)\Replace null.Inputs[Derived Column Input].Columns[Product line]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Product line"
+                      lineageId="Package\Productline (v2)\Merge Join.Outputs[Merge Join Output].Columns[Product line]" />
+                    <inputColumn
+                      refId="Package\Productline (v2)\Replace null.Inputs[Derived Column Input].Columns[identifier]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="identifier"
+                      lineageId="Package\Productline (v2)\Add SourceId, Identifer.Outputs[Derived Column Output].Columns[identifier]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Productline (v2)\Replace null.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Productline (v2)\Replace null.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Productline (v2)\Replace null.Outputs[Derived Column Output].Columns[New Product line]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="512"
+                      lineageId="Package\Productline (v2)\Replace null.Outputs[Derived Column Output].Columns[New Product line]"
+                      name="New Product line"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACENULL](#{Package\Productline (v2)\Merge Join.Outputs[Merge Join Output].Columns[Product line]},"pending " + (DT_WSTR,255)#{Package\Productline (v2)\Add SourceId, Identifer.Outputs[Derived Column Output].Columns[identifier]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACENULL([Product line],"pending " + (DT_WSTR,255)identifier)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Productline (v2)\Replace null.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Productline (v2)\Replace null.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Productline (v2)\Replace null.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Productline (v2)\Replace null.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Productline (v2)\Replace null.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Productline (v2)\Replace null.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Productline (v2)\Stage_product"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Stage_product"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[product]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Productline (v2)\Stage_product.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Stage]"
+                  connectionManagerRefId="Package.ConnectionManagers[Stage]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Productline (v2)\Stage_product.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Productline (v2)\Stage_product.Outputs[OLE DB Source Output].Columns[ProductLine]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Productline (v2)\Stage_product.Outputs[OLE DB Source Output].ExternalColumns[ProductLine]"
+                      length="255"
+                      lineageId="Package\Productline (v2)\Stage_product.Outputs[OLE DB Source Output].Columns[ProductLine]"
+                      name="ProductLine"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Productline (v2)\Stage_product.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\Productline (v2)\Stage_product.Outputs[OLE DB Source Output].ExternalColumns[Unit price]"
+                      dataType="r8"
+                      name="Unit price" />
+                    <externalMetadataColumn
+                      refId="Package\Productline (v2)\Stage_product.Outputs[OLE DB Source Output].ExternalColumns[ProductLine]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProductLine" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Productline (v2)\Stage_product.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Productline (v2)\Stage_product.Outputs[OLE DB Source Error Output].Columns[ProductLine]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Productline (v2)\Stage_product.Outputs[OLE DB Source Error Output].Columns[ProductLine]"
+                      name="ProductLine" />
+                    <outputColumn
+                      refId="Package\Productline (v2)\Stage_product.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Productline (v2)\Stage_product.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Productline (v2)\Stage_product.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Productline (v2)\Stage_product.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Productline (v2)\Stage_ProductLine"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Stage_ProductLine"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[ProductLine]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Productline (v2)\Stage_ProductLine.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Stage]"
+                  connectionManagerRefId="Package.ConnectionManagers[Stage]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Productline (v2)\Stage_ProductLine.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Productline (v2)\Stage_ProductLine.Outputs[OLE DB Source Output].Columns[Product line]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Productline (v2)\Stage_ProductLine.Outputs[OLE DB Source Output].ExternalColumns[Product line]"
+                      length="255"
+                      lineageId="Package\Productline (v2)\Stage_ProductLine.Outputs[OLE DB Source Output].Columns[Product line]"
+                      name="Product line"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Productline (v2)\Stage_ProductLine.Outputs[OLE DB Source Output].Columns[ProductLineID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Productline (v2)\Stage_ProductLine.Outputs[OLE DB Source Output].ExternalColumns[ProductLineID]"
+                      length="255"
+                      lineageId="Package\Productline (v2)\Stage_ProductLine.Outputs[OLE DB Source Output].Columns[ProductLineID]"
+                      name="ProductLineID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Productline (v2)\Stage_ProductLine.Outputs[OLE DB Source Output].ExternalColumns[Product line]"
+                      dataType="wstr"
+                      length="255"
+                      name="Product line" />
+                    <externalMetadataColumn
+                      refId="Package\Productline (v2)\Stage_ProductLine.Outputs[OLE DB Source Output].ExternalColumns[ProductLineID]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProductLineID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Productline (v2)\Stage_ProductLine.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Productline (v2)\Stage_ProductLine.Outputs[OLE DB Source Error Output].Columns[Product line]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Productline (v2)\Stage_ProductLine.Outputs[OLE DB Source Error Output].Columns[Product line]"
+                      name="Product line" />
+                    <outputColumn
+                      refId="Package\Productline (v2)\Stage_ProductLine.Outputs[OLE DB Source Error Output].Columns[ProductLineID]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Productline (v2)\Stage_ProductLine.Outputs[OLE DB Source Error Output].Columns[ProductLineID]"
+                      name="ProductLineID" />
+                    <outputColumn
+                      refId="Package\Productline (v2)\Stage_ProductLine.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Productline (v2)\Stage_ProductLine.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Productline (v2)\Stage_ProductLine.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Productline (v2)\Stage_ProductLine.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Productline (v2)\Update Stage_Productline"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="Update Stage_Productline"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [BI_NDS].[dbo].[Productline]
+SET 
+     ProductLine = ?,
+     SourceId = ?,
+     UpdatedDate = GETUTCDATE(),
+     Status = ?
+WHERE ProductLineID_NK = ?
+</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Productline (v2)\Update Stage_Productline.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[NDS]"
+                  connectionManagerRefId="Package.ConnectionManagers[NDS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Productline (v2)\Update Stage_Productline.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Productline (v2)\Update Stage_Productline.Inputs[OLE DB Command Input].Columns[SourceId]"
+                      cachedDataType="i4"
+                      cachedName="SourceId"
+                      externalMetadataColumnId="Package\Productline (v2)\Update Stage_Productline.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Productline (v2)\Add SourceId, Identifer.Outputs[Derived Column Output].Columns[SourceId]" />
+                    <inputColumn
+                      refId="Package\Productline (v2)\Update Stage_Productline.Inputs[OLE DB Command Input].Columns[status]"
+                      cachedDataType="wstr"
+                      cachedLength="7"
+                      cachedName="status"
+                      externalMetadataColumnId="Package\Productline (v2)\Update Stage_Productline.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\Productline (v2)\Add SourceId, Identifer.Outputs[Derived Column Output].Columns[status]" />
+                    <inputColumn
+                      refId="Package\Productline (v2)\Update Stage_Productline.Inputs[OLE DB Command Input].Columns[identifier]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="identifier"
+                      externalMetadataColumnId="Package\Productline (v2)\Update Stage_Productline.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\Productline (v2)\Add SourceId, Identifer.Outputs[Derived Column Output].Columns[identifier]" />
+                    <inputColumn
+                      refId="Package\Productline (v2)\Update Stage_Productline.Inputs[OLE DB Command Input].Columns[New Product line]"
+                      cachedDataType="wstr"
+                      cachedLength="512"
+                      cachedName="New Product line"
+                      externalMetadataColumnId="Package\Productline (v2)\Update Stage_Productline.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Productline (v2)\Replace null.Outputs[Derived Column Output].Columns[New Product line]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Productline (v2)\Update Stage_Productline.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Productline (v2)\Update Stage_Productline.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="i4"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Productline (v2)\Update Stage_Productline.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Productline (v2)\Update Stage_Productline.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Productline (v2)\Update Stage_Productline.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Productline (v2)\Update Stage_Productline.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Productline (v2)\Update Stage_Productline.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Productline (v2)\Update Stage_Productline.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Productline (v2)\Update Stage_Productline.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Productline (v2)\Update Stage_Productline.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Productline (v2)\Update Stage_Productline.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Productline (v2)\Update Stage_Productline.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Productline (v2).Paths[Data Conversion Output]"
+              endId="Package\Productline (v2)\Lookup Stage_ProductLine in NDS_Productline.Inputs[Lookup Input]"
+              name="Data Conversion Output"
+              startId="Package\Productline (v2)\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Productline (v2).Paths[Derived Column Output]"
+              endId="Package\Productline (v2)\Replace null.Inputs[Derived Column Input]"
+              name="Derived Column Output"
+              startId="Package\Productline (v2)\Add SourceId, Identifer.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Productline (v2).Paths[Derived Column Output1]"
+              endId="Package\Productline (v2)\Data Conversion.Inputs[Data Conversion Input]"
+              name="Derived Column Output"
+              startId="Package\Productline (v2)\Replace null.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Productline (v2).Paths[Lookup Match Output]"
+              endId="Package\Productline (v2)\Update Stage_Productline.Inputs[OLE DB Command Input]"
+              name="Lookup Match Output"
+              startId="Package\Productline (v2)\Lookup Stage_ProductLine in NDS_Productline.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Productline (v2).Paths[Lookup No Match Output]"
+              endId="Package\Productline (v2)\NDS_Productline.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\Productline (v2)\Lookup Stage_ProductLine in NDS_Productline.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Productline (v2).Paths[Merge Join Output]"
+              endId="Package\Productline (v2)\Add SourceId, Identifer.Inputs[Derived Column Input]"
+              name="Merge Join Output"
+              startId="Package\Productline (v2)\Merge Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Productline (v2).Paths[OLE DB Source Output]"
+              endId="Package\Productline (v2)\Productline (2).Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Productline (v2)\Stage_product.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Productline (v2).Paths[OLE DB Source Output1]"
+              endId="Package\Productline (v2)\Productline (1).Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Productline (v2)\Stage_ProductLine.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Productline (v2).Paths[Sort Output]"
+              endId="Package\Productline (v2)\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Productline (v2)\Productline (1).Outputs[Sort Output]" />
+            <path
+              refId="Package\Productline (v2).Paths[Sort Output1]"
+              endId="Package\Productline (v2)\Merge Join.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Productline (v2)\Productline (2).Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Productline (v2) test stage to nds"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{58b49aa5-6f98-422b-ad34-cd7464c114a7}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Productline (v2) test stage to nds"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Productline (v2) test stage to nds\Add SourceId"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Add SourceId"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Productline (v2) test stage to nds\Add SourceId.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Productline (v2) test stage to nds\Add SourceId.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Productline (v2) test stage to nds\Add SourceId.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Productline (v2) test stage to nds\Add SourceId.Outputs[Derived Column Output].Columns[SourceId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Productline (v2) test stage to nds\Add SourceId.Outputs[Derived Column Output].Columns[SourceId]"
+                      name="SourceId"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">1</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Productline (v2) test stage to nds\Add SourceId.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Productline (v2) test stage to nds\Add SourceId.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Productline (v2) test stage to nds\Add SourceId.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Productline (v2) test stage to nds\Add SourceId.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Productline (v2) test stage to nds\Add SourceId.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Productline (v2) test stage to nds\Add SourceId.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Productline (v2) test stage to nds\Merge Join"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Productline (v2) test stage to nds\Merge Join.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Productline (v2) test stage to nds\Merge Join.Inputs[Merge Join Left Input].Columns[ProductLineID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ProductLineID"
+                      cachedSortKeyPosition="-1"
+                      lineageId="Package\Productline (v2) test stage to nds\Productline (1).Outputs[Sort Output].Columns[ProductLineID]" />
+                    <inputColumn
+                      refId="Package\Productline (v2) test stage to nds\Merge Join.Inputs[Merge Join Left Input].Columns[Product line]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Product line"
+                      lineageId="Package\Productline (v2) test stage to nds\Productline (1).Outputs[Sort Output].Columns[Product line]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Productline (v2) test stage to nds\Merge Join.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Productline (v2) test stage to nds\Merge Join.Inputs[Merge Join Right Input].Columns[ProductLine]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ProductLine"
+                      cachedSortKeyPosition="-1"
+                      lineageId="Package\Productline (v2) test stage to nds\Productline (2).Outputs[Sort Output].Columns[ProductLine]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Productline (v2) test stage to nds\Merge Join.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Productline (v2) test stage to nds\Merge Join.Outputs[Merge Join Output].Columns[Product line]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Productline (v2) test stage to nds\Merge Join.Outputs[Merge Join Output].Columns[Product line]"
+                      name="Product line">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Productline (v2) test stage to nds\Merge Join.Inputs[Merge Join Left Input].Columns[Product line]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Productline (v2) test stage to nds\Merge Join.Outputs[Merge Join Output].Columns[ProductLineID]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Productline (v2) test stage to nds\Merge Join.Outputs[Merge Join Output].Columns[ProductLineID]"
+                      name="ProductLineID"
+                      sortKeyPosition="-1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Productline (v2) test stage to nds\Merge Join.Inputs[Merge Join Left Input].Columns[ProductLineID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Productline (v2) test stage to nds\Merge Join.Outputs[Merge Join Output].Columns[ProductLine]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Productline (v2) test stage to nds\Merge Join.Outputs[Merge Join Output].Columns[ProductLine]"
+                      name="ProductLine">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Productline (v2) test stage to nds\Merge Join.Inputs[Merge Join Right Input].Columns[ProductLine]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Productline (v2) test stage to nds\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Productline (v2) test stage to nds\OLE DB Command.Connections[OleDbConnection]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Productline (v2) test stage to nds\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <externalMetadataColumns
+                    isUsed="True" />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Productline (v2) test stage to nds\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Productline (v2) test stage to nds\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Productline (v2) test stage to nds\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Productline (v2) test stage to nds\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Productline (v2) test stage to nds\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Productline (v2) test stage to nds\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Productline (v2) test stage to nds\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Productline (v2) test stage to nds\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Productline (v2) test stage to nds\Productline (1)"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Productline (1)"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Productline (v2) test stage to nds\Productline (1).Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Productline (v2) test stage to nds\Productline (1).Inputs[Sort Input].Columns[Product line]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Product line"
+                      lineageId="Package\Productline (v2) test stage to nds\Stage_ProductLine.Outputs[OLE DB Source Output].Columns[Product line]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Productline (v2) test stage to nds\Productline (1).Inputs[Sort Input].Columns[ProductLineID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ProductLineID"
+                      lineageId="Package\Productline (v2) test stage to nds\Stage_ProductLine.Outputs[OLE DB Source Output].Columns[ProductLineID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">-1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Productline (v2) test stage to nds\Productline (1).Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Productline (v2) test stage to nds\Productline (1).Outputs[Sort Output].Columns[Product line]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Productline (v2) test stage to nds\Productline (1).Outputs[Sort Output].Columns[Product line]"
+                      name="Product line">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Productline (v2) test stage to nds\Stage_ProductLine.Outputs[OLE DB Source Output].Columns[Product line]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Productline (v2) test stage to nds\Productline (1).Outputs[Sort Output].Columns[ProductLineID]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Productline (v2) test stage to nds\Productline (1).Outputs[Sort Output].Columns[ProductLineID]"
+                      name="ProductLineID"
+                      sortKeyPosition="-1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Productline (v2) test stage to nds\Stage_ProductLine.Outputs[OLE DB Source Output].Columns[ProductLineID]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Productline (v2) test stage to nds\Productline (2)"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Productline (2)"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Productline (v2) test stage to nds\Productline (2).Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Productline (v2) test stage to nds\Productline (2).Inputs[Sort Input].Columns[ProductLine]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ProductLine"
+                      lineageId="Package\Productline (v2) test stage to nds\Stage_product.Outputs[OLE DB Source Output].Columns[ProductLine]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">-1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Productline (v2) test stage to nds\Productline (2).Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Productline (v2) test stage to nds\Productline (2).Outputs[Sort Output].Columns[ProductLine]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Productline (v2) test stage to nds\Productline (2).Outputs[Sort Output].Columns[ProductLine]"
+                      name="ProductLine"
+                      sortKeyPosition="-1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Productline (v2) test stage to nds\Stage_product.Outputs[OLE DB Source Output].Columns[ProductLine]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Productline (v2) test stage to nds\Stage_product"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Stage_product"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[product]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Productline (v2) test stage to nds\Stage_product.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Stage]"
+                  connectionManagerRefId="Package.ConnectionManagers[Stage]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Productline (v2) test stage to nds\Stage_product.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Productline (v2) test stage to nds\Stage_product.Outputs[OLE DB Source Output].Columns[ProductID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Productline (v2) test stage to nds\Stage_product.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                      length="255"
+                      lineageId="Package\Productline (v2) test stage to nds\Stage_product.Outputs[OLE DB Source Output].Columns[ProductID]"
+                      name="ProductID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Productline (v2) test stage to nds\Stage_product.Outputs[OLE DB Source Output].Columns[Unit price]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Productline (v2) test stage to nds\Stage_product.Outputs[OLE DB Source Output].ExternalColumns[Unit price]"
+                      lineageId="Package\Productline (v2) test stage to nds\Stage_product.Outputs[OLE DB Source Output].Columns[Unit price]"
+                      name="Unit price"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Productline (v2) test stage to nds\Stage_product.Outputs[OLE DB Source Output].Columns[ProductLine]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Productline (v2) test stage to nds\Stage_product.Outputs[OLE DB Source Output].ExternalColumns[ProductLine]"
+                      length="255"
+                      lineageId="Package\Productline (v2) test stage to nds\Stage_product.Outputs[OLE DB Source Output].Columns[ProductLine]"
+                      name="ProductLine"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Productline (v2) test stage to nds\Stage_product.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\Productline (v2) test stage to nds\Stage_product.Outputs[OLE DB Source Output].ExternalColumns[Unit price]"
+                      dataType="r8"
+                      name="Unit price" />
+                    <externalMetadataColumn
+                      refId="Package\Productline (v2) test stage to nds\Stage_product.Outputs[OLE DB Source Output].ExternalColumns[ProductLine]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProductLine" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Productline (v2) test stage to nds\Stage_product.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Productline (v2) test stage to nds\Stage_product.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Productline (v2) test stage to nds\Stage_product.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                      name="ProductID" />
+                    <outputColumn
+                      refId="Package\Productline (v2) test stage to nds\Stage_product.Outputs[OLE DB Source Error Output].Columns[Unit price]"
+                      dataType="r8"
+                      lineageId="Package\Productline (v2) test stage to nds\Stage_product.Outputs[OLE DB Source Error Output].Columns[Unit price]"
+                      name="Unit price" />
+                    <outputColumn
+                      refId="Package\Productline (v2) test stage to nds\Stage_product.Outputs[OLE DB Source Error Output].Columns[ProductLine]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Productline (v2) test stage to nds\Stage_product.Outputs[OLE DB Source Error Output].Columns[ProductLine]"
+                      name="ProductLine" />
+                    <outputColumn
+                      refId="Package\Productline (v2) test stage to nds\Stage_product.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Productline (v2) test stage to nds\Stage_product.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Productline (v2) test stage to nds\Stage_product.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Productline (v2) test stage to nds\Stage_product.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Productline (v2) test stage to nds\Stage_ProductLine"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Stage_ProductLine"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[ProductLine]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Productline (v2) test stage to nds\Stage_ProductLine.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Stage]"
+                  connectionManagerRefId="Package.ConnectionManagers[Stage]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Productline (v2) test stage to nds\Stage_ProductLine.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Productline (v2) test stage to nds\Stage_ProductLine.Outputs[OLE DB Source Output].Columns[Product line]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Productline (v2) test stage to nds\Stage_ProductLine.Outputs[OLE DB Source Output].ExternalColumns[Product line]"
+                      length="255"
+                      lineageId="Package\Productline (v2) test stage to nds\Stage_ProductLine.Outputs[OLE DB Source Output].Columns[Product line]"
+                      name="Product line"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Productline (v2) test stage to nds\Stage_ProductLine.Outputs[OLE DB Source Output].Columns[ProductLineID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Productline (v2) test stage to nds\Stage_ProductLine.Outputs[OLE DB Source Output].ExternalColumns[ProductLineID]"
+                      length="255"
+                      lineageId="Package\Productline (v2) test stage to nds\Stage_ProductLine.Outputs[OLE DB Source Output].Columns[ProductLineID]"
+                      name="ProductLineID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Productline (v2) test stage to nds\Stage_ProductLine.Outputs[OLE DB Source Output].ExternalColumns[Product line]"
+                      dataType="wstr"
+                      length="255"
+                      name="Product line" />
+                    <externalMetadataColumn
+                      refId="Package\Productline (v2) test stage to nds\Stage_ProductLine.Outputs[OLE DB Source Output].ExternalColumns[ProductLineID]"
+                      dataType="wstr"
+                      length="255"
+                      name="ProductLineID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Productline (v2) test stage to nds\Stage_ProductLine.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Productline (v2) test stage to nds\Stage_ProductLine.Outputs[OLE DB Source Error Output].Columns[Product line]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Productline (v2) test stage to nds\Stage_ProductLine.Outputs[OLE DB Source Error Output].Columns[Product line]"
+                      name="Product line" />
+                    <outputColumn
+                      refId="Package\Productline (v2) test stage to nds\Stage_ProductLine.Outputs[OLE DB Source Error Output].Columns[ProductLineID]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Productline (v2) test stage to nds\Stage_ProductLine.Outputs[OLE DB Source Error Output].Columns[ProductLineID]"
+                      name="ProductLineID" />
+                    <outputColumn
+                      refId="Package\Productline (v2) test stage to nds\Stage_ProductLine.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Productline (v2) test stage to nds\Stage_ProductLine.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Productline (v2) test stage to nds\Stage_ProductLine.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Productline (v2) test stage to nds\Stage_ProductLine.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Productline (v2) test stage to nds.Paths[Merge Join Output]"
+              endId="Package\Productline (v2) test stage to nds\Add SourceId.Inputs[Derived Column Input]"
+              name="Merge Join Output"
+              startId="Package\Productline (v2) test stage to nds\Merge Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Productline (v2) test stage to nds.Paths[OLE DB Source Output]"
+              endId="Package\Productline (v2) test stage to nds\Productline (1).Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Productline (v2) test stage to nds\Stage_ProductLine.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Productline (v2) test stage to nds.Paths[OLE DB Source Output1]"
+              endId="Package\Productline (v2) test stage to nds\Productline (2).Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Productline (v2) test stage to nds\Stage_product.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Productline (v2) test stage to nds.Paths[Sort Output]"
+              endId="Package\Productline (v2) test stage to nds\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Productline (v2) test stage to nds\Productline (1).Outputs[Sort Output]" />
+            <path
+              refId="Package\Productline (v2) test stage to nds.Paths[Sort Output1]"
+              endId="Package\Productline (v2) test stage to nds\Merge Join.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Productline (v2) test stage to nds\Productline (2).Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\Test check variables and params"
       DTS:CreationName="Microsoft.ScriptTask"
       DTS:Description="Script Task"
@@ -2047,35 +4308,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
           Language="CSharp"
           ReadOnlyVariables="$Package::ConfigFilePath,$Package::DestinationDatabaseName,$Package::SourceFilePath">
           <ProjectItem
-            Name="Properties\AssemblyInfo.cs"
-            Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
-
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("ST_c6eef40b273547c5bf97ae1ed81b2944")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ST_c6eef40b273547c5bf97ae1ed81b2944")]
-[assembly: AssemblyCopyright("Copyright @  2023")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.resx"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -2378,14 +4618,35 @@ namespace ST_c6eef40b273547c5bf97ae1ed81b2944.Properties {
     }
 }]]></ProjectItem>
           <ProjectItem
-            Name="Properties\Settings.settings"
-            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_c6eef40b273547c5bf97ae1ed81b2944")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_c6eef40b273547c5bf97ae1ed81b2944")]
+[assembly: AssemblyCopyright("Copyright @  2023")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.Designer.cs"
             Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -2587,15 +4848,27 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
           Size="151,42"
           Id="Package\Data Flow Task"
           TopLeft="385,60" />
         <NodeLayout
+          Size="160,42"
+          Id="Package\Data Flow Task 1"
+          TopLeft="293,31" />
+        <NodeLayout
           Size="233,42"
           Id="Package\Test check variables and params"
           TopLeft="379,137" />
+        <NodeLayout
+          Size="236,42"
+          Id="Package\Productline (v2) test stage to nds"
+          TopLeft="293,239" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Productline (v2)"
+          TopLeft="561,223" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -2605,37 +4878,47 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="163,44"
+          Id="Package\Data Flow Task\Script Component"
+          TopLeft="336,202" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Data Flow Task\Derived Column 2"
+          TopLeft="329,287" />
+        <NodeLayout
           Size="150,42"
           Id="Package\Data Flow Task\OLE DB Source"
           TopLeft="347,64" />
         <NodeLayout
-          Size="163,44"
-          Id="Package\Data Flow Task\Script Component"
-          TopLeft="336,202" />
+          Size="171,42"
+          Id="Package\Data Flow Task\OLE DB Destination"
+          TopLeft="321,368" />
         <NodeLayout
           Size="154,42"
           Id="Package\Data Flow Task\Derived Column"
           TopLeft="341,134" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="420,106">
+          Id="Package\Data Flow Task.Paths[Derived Column Output1]"
+          TopLeft="408.5,329">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,28"
+              EndConnector="0,39"
               Start="0,0"
-              End="0,20.5">
+              End="0,31.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.5" />
+                    End="0,31.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2657,13 +4940,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Data Flow Task\Derived Column 2"
-          TopLeft="329,287" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Output 0]"
           TopLeft="414,246">
@@ -2688,30 +4969,28 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Data Flow Task\OLE DB Destination"
-          TopLeft="321,368" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output1]"
-          TopLeft="408.5,329">
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="420,106">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,39"
+              EndConnector="0,28"
               Start="0,0"
-              End="0,31.5">
+              End="0,20.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.5" />
+                    End="0,20.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2743,5 +5022,511 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Data Flow Task 1">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Data Flow Task 1\Add SourceId"
+          TopLeft="380,73" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Productline (v2) test stage to nds">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Productline (v2) test stage to nds\Productline (1)"
+          TopLeft="246,82.75" />
+        <NodeLayout
+          Size="167,42"
+          Id="Package\Productline (v2) test stage to nds\Stage_ProductLine"
+          TopLeft="240,10" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Productline (v2) test stage to nds\Productline (2)"
+          TopLeft="473,88" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Productline (v2) test stage to nds\OLE DB Command"
+          TopLeft="719,50" />
+        <NodeLayout
+          Size="147,42"
+          Id="Package\Productline (v2) test stage to nds\Stage_product"
+          TopLeft="479,8" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Productline (v2) test stage to nds\Merge Join"
+          TopLeft="384,191" />
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Productline (v2) test stage to nds\Add SourceId"
+          TopLeft="380,279" />
+        <EdgeLayout
+          Id="Package\Productline (v2) test stage to nds.Paths[Merge Join Output]"
+          TopLeft="450,233">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46"
+              Start="0,0"
+              End="0,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Productline (v2) test stage to nds.Paths[OLE DB Source Output]"
+          TopLeft="322,52">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30.75"
+              Start="0,0"
+              End="0,23.25">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.25" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Productline (v2) test stage to nds.Paths[Sort Output1]"
+          TopLeft="547.5,130">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-78.1666666666667,61"
+              Start="0,0"
+              End="-78.1666666666667,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.1550151975684" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.1550151975684"
+                    Point2="0,36.1550151975684"
+                    Point3="-4,36.1550151975684" />
+                  <mssgle:LineSegment
+                    End="-74.1666666666667,36.1550151975684" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-74.1666666666667,36.1550151975684"
+                    Point2="-78.1666666666667,36.1550151975684"
+                    Point3="-78.1666666666667,40.1550151975684" />
+                  <mssgle:LineSegment
+                    End="-78.1666666666667,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Productline (v2) test stage to nds.Paths[OLE DB Source Output1]"
+          TopLeft="550,50">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38"
+              Start="0,0"
+              End="0,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Productline (v2) test stage to nds.Paths[Sort Output]"
+          TopLeft="320.5,124.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="108.166666666667,66.25"
+              Start="0,0"
+              End="108.166666666667,58.75">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.266717325228" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35.266717325228"
+                    Point2="0,39.266717325228"
+                    Point3="4,39.266717325228" />
+                  <mssgle:LineSegment
+                    End="104.166666666667,39.266717325228" />
+                  <mssgle:CubicBezierSegment
+                    Point1="104.166666666667,39.266717325228"
+                    Point2="108.166666666667,39.266717325228"
+                    Point3="108.166666666667,43.266717325228" />
+                  <mssgle:LineSegment
+                    End="108.166666666667,58.75" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Productline (v2)">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Productline (v2)\Productline (1)"
+          TopLeft="246,84.75" />
+        <NodeLayout
+          Size="201,42"
+          Id="Package\Productline (v2)\Update Stage_Productline"
+          TopLeft="237.5,614.5" />
+        <NodeLayout
+          Size="167,42"
+          Id="Package\Productline (v2)\Stage_ProductLine"
+          TopLeft="240,12" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Productline (v2)\Productline (2)"
+          TopLeft="473,86.25" />
+        <NodeLayout
+          Size="189,42"
+          Id="Package\Productline (v2)\Add SourceId, Identifer"
+          TopLeft="345,268.75" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Productline (v2)\NDS_Productline"
+          TopLeft="470.5,613.5" />
+        <NodeLayout
+          Size="297,42"
+          Id="Package\Productline (v2)\Lookup Stage_ProductLine in NDS_Productline"
+          TopLeft="287.5,502.5" />
+        <NodeLayout
+          Size="147,42"
+          Id="Package\Productline (v2)\Stage_product"
+          TopLeft="479,10" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Productline (v2)\Merge Join"
+          TopLeft="371.75,180.25" />
+        <NodeLayout
+          Size="136,42"
+          Id="Package\Productline (v2)\Replace null"
+          TopLeft="367.5,351.25" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Productline (v2)\Data Conversion"
+          TopLeft="358.75,422.5" />
+        <EdgeLayout
+          Id="Package\Productline (v2).Paths[Lookup No Match Output]"
+          TopLeft="484.166666666667,544.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="64.8333333333334,69"
+              Start="0,0"
+              End="64.8333333333334,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.8218352310785" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.8218352310785"
+                    Point2="0,27.8218352310785"
+                    Point3="4,27.8218352310785" />
+                  <mssgle:LineSegment
+                    End="60.8333333333334,27.8218352310785" />
+                  <mssgle:CubicBezierSegment
+                    Point1="60.8333333333334,27.8218352310785"
+                    Point2="64.8333333333334,27.8218352310785"
+                    Point3="64.8333333333334,31.8218352310785" />
+                  <mssgle:LineSegment
+                    End="64.8333333333334,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-23.3897200520833,32.8218352310785,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Productline (v2).Paths[Sort Output1]"
+          TopLeft="547.5,128.25">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-90.4166666666667,52"
+              Start="0,0"
+              End="-90.4166666666667,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.8206686930091" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.8206686930091"
+                    Point2="0,30.8206686930091"
+                    Point3="-4,30.8206686930091" />
+                  <mssgle:LineSegment
+                    End="-86.4166666666667,30.8206686930091" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-86.4166666666667,30.8206686930091"
+                    Point2="-90.4166666666667,30.8206686930091"
+                    Point3="-90.4166666666667,34.8206686930091" />
+                  <mssgle:LineSegment
+                    End="-90.4166666666667,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Productline (v2).Paths[Sort Output]"
+          TopLeft="320.5,126.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="95.9166666666667,53.5"
+              Start="0,0"
+              End="95.9166666666667,46">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.709726443769" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.709726443769"
+                    Point2="0,31.709726443769"
+                    Point3="4,31.709726443769" />
+                  <mssgle:LineSegment
+                    End="91.9166666666667,31.709726443769" />
+                  <mssgle:CubicBezierSegment
+                    Point1="91.9166666666667,31.709726443769"
+                    Point2="95.9166666666667,31.709726443769"
+                    Point3="95.9166666666667,35.709726443769" />
+                  <mssgle:LineSegment
+                    End="95.9166666666667,46" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Productline (v2).Paths[Lookup Match Output]"
+          TopLeft="387.833333333333,544.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-49.8333333333333,70"
+              Start="0,0"
+              End="-49.8333333333333,62.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.2250502344273" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.2250502344273"
+                    Point2="0,28.2250502344273"
+                    Point3="-4,28.2250502344273" />
+                  <mssgle:LineSegment
+                    End="-45.8333333333333,28.2250502344273" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-45.8333333333333,28.2250502344273"
+                    Point2="-49.8333333333333,28.2250502344273"
+                    Point3="-49.8333333333333,32.2250502344273" />
+                  <mssgle:LineSegment
+                    End="-49.8333333333333,62.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-73.1080533854166,33.2250502344273,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Productline (v2).Paths[Derived Column Output]"
+          TopLeft="437.5,310.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.5"
+              Start="0,0"
+              End="0,33">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Productline (v2).Paths[Merge Join Output]"
+          TopLeft="438.125,222.25">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.5"
+              Start="0,0"
+              End="0,39">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Productline (v2).Paths[Derived Column Output1]"
+          TopLeft="436.125,393.25">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29.25"
+              Start="0,0"
+              End="0,21.75">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.75" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Productline (v2).Paths[Data Conversion Output]"
+          TopLeft="436.375,464.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38"
+              Start="0,0"
+              End="0,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Productline (v2).Paths[OLE DB Source Output1]"
+          TopLeft="322,54">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30.75"
+              Start="0,0"
+              End="0,23.25">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.25" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Productline (v2).Paths[OLE DB Source Output]"
+          TopLeft="550,52">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34.25"
+              Start="0,0"
+              End="0,26.75">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.75" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

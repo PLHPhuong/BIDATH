@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="22"
-  DTS:VersionGUID="{7BC67DBB-5712-43AE-AD58-0271ABC36543}">
+  DTS:VersionBuild="23"
+  DTS:VersionGUID="{1023F6E5-ED7B-4AD7-AFFA-0CC0526A55F4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -3048,25 +3048,6 @@ where [refTable].[ProductID_SK] = ?</property>
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[InvoiceID_sk]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[InvoiceID_sk]"
-                      lineageId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[InvoiceID_sk]"
-                      name="InvoiceID_sk"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[InvoiceID_nk]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[InvoiceID_nk]"
-                      length="255"
-                      lineageId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[InvoiceID_nk]"
-                      name="InvoiceID_nk"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Quantity]"
                       dataType="r8"
                       errorOrTruncationOperation="Conversion"
@@ -3203,18 +3184,92 @@ where [refTable].[ProductID_SK] = ?</property>
                       name="UpdatedDate"
                       scale="7"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[InvoiceID_SK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[InvoiceID_SK]"
+                      lineageId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[InvoiceID_SK]"
+                      name="InvoiceID_SK"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[InvoiceID_NK]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[InvoiceID_NK]"
+                      length="255"
+                      lineageId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[InvoiceID_NK]"
+                      name="InvoiceID_NK"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Minute]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Minute]"
+                      lineageId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Minute]"
+                      name="Minute"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Hour]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Hour]"
+                      lineageId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Hour]"
+                      name="Hour"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Day]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Day]"
+                      lineageId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Day]"
+                      name="Day"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Month]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Month]"
+                      lineageId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Month]"
+                      name="Month"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Year]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Year]"
+                      lineageId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Year]"
+                      name="Year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[SourceId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[SourceId]"
+                      lineageId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[SourceId]"
+                      name="SourceId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                      length="255"
+                      lineageId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Status]"
+                      name="Status"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[InvoiceID_sk]"
-                      dataType="i4"
-                      name="InvoiceID_sk" />
-                    <externalMetadataColumn
-                      refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[InvoiceID_nk]"
-                      dataType="wstr"
-                      length="255"
-                      name="InvoiceID_nk" />
                     <externalMetadataColumn
                       refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
                       dataType="r8"
@@ -3277,6 +3332,44 @@ where [refTable].[ProductID_SK] = ?</property>
                       dataType="dbTimeStamp2"
                       name="UpdatedDate"
                       scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[InvoiceID_SK]"
+                      dataType="i4"
+                      name="InvoiceID_SK" />
+                    <externalMetadataColumn
+                      refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[InvoiceID_NK]"
+                      dataType="wstr"
+                      length="255"
+                      name="InvoiceID_NK" />
+                    <externalMetadataColumn
+                      refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Minute]"
+                      dataType="i4"
+                      name="Minute" />
+                    <externalMetadataColumn
+                      refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Hour]"
+                      dataType="i4"
+                      name="Hour" />
+                    <externalMetadataColumn
+                      refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Day]"
+                      dataType="i4"
+                      name="Day" />
+                    <externalMetadataColumn
+                      refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Month]"
+                      dataType="i4"
+                      name="Month" />
+                    <externalMetadataColumn
+                      refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Year]"
+                      dataType="i4"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[SourceId]"
+                      dataType="i4"
+                      name="SourceId" />
+                    <externalMetadataColumn
+                      refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                      dataType="wstr"
+                      length="255"
+                      name="Status" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -3285,16 +3378,16 @@ where [refTable].[ProductID_SK] = ?</property>
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[InvoiceID_sk]"
+                      refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[InvoiceID_SK]"
                       dataType="i4"
-                      lineageId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[InvoiceID_sk]"
-                      name="InvoiceID_sk" />
+                      lineageId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[InvoiceID_SK]"
+                      name="InvoiceID_SK" />
                     <outputColumn
-                      refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[InvoiceID_nk]"
+                      refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[InvoiceID_NK]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[InvoiceID_nk]"
-                      name="InvoiceID_nk" />
+                      lineageId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[InvoiceID_NK]"
+                      name="InvoiceID_NK" />
                     <outputColumn
                       refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Quantity]"
                       dataType="r8"
@@ -3315,6 +3408,31 @@ where [refTable].[ProductID_SK] = ?</property>
                       dataType="dbTimeStamp"
                       lineageId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Date]"
                       name="Date" />
+                    <outputColumn
+                      refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Minute]"
+                      dataType="i4"
+                      lineageId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Minute]"
+                      name="Minute" />
+                    <outputColumn
+                      refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Hour]"
+                      dataType="i4"
+                      lineageId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Hour]"
+                      name="Hour" />
+                    <outputColumn
+                      refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Day]"
+                      dataType="i4"
+                      lineageId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Day]"
+                      name="Day" />
+                    <outputColumn
+                      refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Month]"
+                      dataType="i4"
+                      lineageId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Month]"
+                      name="Month" />
+                    <outputColumn
+                      refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Year]"
+                      dataType="i4"
+                      lineageId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Year]"
+                      name="Year" />
                     <outputColumn
                       refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Time]"
                       dataType="dbTimeStamp"
@@ -3360,6 +3478,17 @@ where [refTable].[ProductID_SK] = ?</property>
                       dataType="i4"
                       lineageId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[ProductID_SK]"
                       name="ProductID_SK" />
+                    <outputColumn
+                      refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[SourceId]"
+                      dataType="i4"
+                      lineageId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[SourceId]"
+                      name="SourceId" />
+                    <outputColumn
+                      refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Status]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Status]"
+                      name="Status" />
                     <outputColumn
                       refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
                       dataType="dbTimeStamp2"
@@ -4624,29 +4753,29 @@ WHERE
               startId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS in DDS (1).Outputs[Lookup Match Output]" />
             <path
               refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate.Paths[Lookup No Match Output3]"
-              endId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\DDS DimDate.Inputs[OLE DB Destination Input]"
-              name="Lookup No Match Output"
-              startId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\Lookup Date.Outputs[Lookup No Match Output]" />
-            <path
-              refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate.Paths[Lookup No Match Output2]"
-              endId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\DDS DimCustomer.Inputs[OLE DB Destination Input]"
-              name="Lookup No Match Output"
-              startId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS in DDS (2).Outputs[Lookup No Match Output]" />
-            <path
-              refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate.Paths[Lookup No Match Output4]"
-              endId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\DDS DimPayment.Inputs[OLE DB Destination Input]"
-              name="Lookup No Match Output"
-              startId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS in DDS (1).Outputs[Lookup No Match Output]" />
-            <path
-              refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate.Paths[Lookup No Match Output]"
               endId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\DDS DimProduct.Inputs[OLE DB Destination Input]"
               name="Lookup No Match Output"
               startId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS in DDS (4).Outputs[Lookup No Match Output]" />
             <path
-              refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate.Paths[Lookup No Match Output1]"
+              refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate.Paths[Lookup No Match Output2]"
+              endId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\DDS DimPayment.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS in DDS (1).Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate.Paths[Lookup No Match Output4]"
               endId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\DimCity.Inputs[OLE DB Destination Input]"
               name="Lookup No Match Output"
               startId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS in DDS (3).Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate.Paths[Lookup No Match Output]"
+              endId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\DDS DimDate.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\Lookup Date.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate.Paths[Lookup No Match Output1]"
+              endId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\DDS DimCustomer.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS in DDS (2).Outputs[Lookup No Match Output]" />
             <path
               refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate.Paths[Merge Join Output]"
               endId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS in DDS (4).Inputs[Lookup Input]"
@@ -4684,14 +4813,14 @@ WHERE
               startId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\NDS Product.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate.Paths[Sort Output1]"
-              endId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\Merge Join.Inputs[Merge Join Right Input]"
-              name="Sort Output"
-              startId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\ProductlineID_SK (2).Outputs[Sort Output]" />
-            <path
-              refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate.Paths[Sort Output]"
               endId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\Lookup Date.Inputs[Lookup Input]"
               name="Sort Output"
               startId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\SupermarketSale.Outputs[Sort Output]" />
+            <path
+              refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate.Paths[Sort Output]"
+              endId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\Merge Join.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\ProductlineID_SK (2).Outputs[Sort Output]" />
             <path
               refId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate.Paths[Sort Output2]"
               endId="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate\Merge Join.Inputs[Merge Join Left Input]"
@@ -4835,10 +4964,10 @@ WHERE
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\FactSupermarketSale\Date (1).Inputs[Sort Input].Columns[InvoiceID_sk]"
+                      refId="Package\FactSupermarketSale\Date (1).Inputs[Sort Input].Columns[InvoiceID_SK]"
                       cachedDataType="i4"
-                      cachedName="InvoiceID_sk"
-                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[InvoiceID_sk]">
+                      cachedName="InvoiceID_SK"
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[InvoiceID_SK]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -4851,11 +4980,11 @@ WHERE
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\FactSupermarketSale\Date (1).Inputs[Sort Input].Columns[InvoiceID_nk]"
+                      refId="Package\FactSupermarketSale\Date (1).Inputs[Sort Input].Columns[InvoiceID_NK]"
                       cachedDataType="wstr"
                       cachedLength="255"
-                      cachedName="InvoiceID_nk"
-                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[InvoiceID_nk]">
+                      cachedName="InvoiceID_NK"
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[InvoiceID_NK]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -5196,7 +5325,7 @@ WHERE
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[InvoiceID_sk]}</property>
+                          name="SortColumnId">#{Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[InvoiceID_SK]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -5210,7 +5339,7 @@ WHERE
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[InvoiceID_nk]}</property>
+                          name="SortColumnId">#{Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[InvoiceID_NK]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -7046,25 +7175,6 @@ where [refTable].[InvoiceID_sk] = ?</property>
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[InvoiceID_sk]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[InvoiceID_sk]"
-                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[InvoiceID_sk]"
-                      name="InvoiceID_sk"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[InvoiceID_nk]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[InvoiceID_nk]"
-                      length="255"
-                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[InvoiceID_nk]"
-                      name="InvoiceID_nk"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Quantity]"
                       dataType="r8"
                       errorOrTruncationOperation="Conversion"
@@ -7201,18 +7311,92 @@ where [refTable].[InvoiceID_sk] = ?</property>
                       name="UpdatedDate"
                       scale="7"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[InvoiceID_SK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[InvoiceID_SK]"
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[InvoiceID_SK]"
+                      name="InvoiceID_SK"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[InvoiceID_NK]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[InvoiceID_NK]"
+                      length="255"
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[InvoiceID_NK]"
+                      name="InvoiceID_NK"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Minute]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Minute]"
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Minute]"
+                      name="Minute"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Hour]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Hour]"
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Hour]"
+                      name="Hour"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Day]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Day]"
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Day]"
+                      name="Day"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Month]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Month]"
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Month]"
+                      name="Month"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Year]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Year]"
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Year]"
+                      name="Year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[SourceId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[SourceId]"
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[SourceId]"
+                      name="SourceId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                      length="255"
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].Columns[Status]"
+                      name="Status"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[InvoiceID_sk]"
-                      dataType="i4"
-                      name="InvoiceID_sk" />
-                    <externalMetadataColumn
-                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[InvoiceID_nk]"
-                      dataType="wstr"
-                      length="255"
-                      name="InvoiceID_nk" />
                     <externalMetadataColumn
                       refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
                       dataType="r8"
@@ -7275,6 +7459,44 @@ where [refTable].[InvoiceID_sk] = ?</property>
                       dataType="dbTimeStamp2"
                       name="UpdatedDate"
                       scale="7" />
+                    <externalMetadataColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[InvoiceID_SK]"
+                      dataType="i4"
+                      name="InvoiceID_SK" />
+                    <externalMetadataColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[InvoiceID_NK]"
+                      dataType="wstr"
+                      length="255"
+                      name="InvoiceID_NK" />
+                    <externalMetadataColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Minute]"
+                      dataType="i4"
+                      name="Minute" />
+                    <externalMetadataColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Hour]"
+                      dataType="i4"
+                      name="Hour" />
+                    <externalMetadataColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Day]"
+                      dataType="i4"
+                      name="Day" />
+                    <externalMetadataColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Month]"
+                      dataType="i4"
+                      name="Month" />
+                    <externalMetadataColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Year]"
+                      dataType="i4"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[SourceId]"
+                      dataType="i4"
+                      name="SourceId" />
+                    <externalMetadataColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                      dataType="wstr"
+                      length="255"
+                      name="Status" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -7283,16 +7505,16 @@ where [refTable].[InvoiceID_sk] = ?</property>
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[InvoiceID_sk]"
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[InvoiceID_SK]"
                       dataType="i4"
-                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[InvoiceID_sk]"
-                      name="InvoiceID_sk" />
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[InvoiceID_SK]"
+                      name="InvoiceID_SK" />
                     <outputColumn
-                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[InvoiceID_nk]"
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[InvoiceID_NK]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[InvoiceID_nk]"
-                      name="InvoiceID_nk" />
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[InvoiceID_NK]"
+                      name="InvoiceID_NK" />
                     <outputColumn
                       refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Quantity]"
                       dataType="r8"
@@ -7313,6 +7535,31 @@ where [refTable].[InvoiceID_sk] = ?</property>
                       dataType="dbTimeStamp"
                       lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Date]"
                       name="Date" />
+                    <outputColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Minute]"
+                      dataType="i4"
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Minute]"
+                      name="Minute" />
+                    <outputColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Hour]"
+                      dataType="i4"
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Hour]"
+                      name="Hour" />
+                    <outputColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Day]"
+                      dataType="i4"
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Day]"
+                      name="Day" />
+                    <outputColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Month]"
+                      dataType="i4"
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Month]"
+                      name="Month" />
+                    <outputColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Year]"
+                      dataType="i4"
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Year]"
+                      name="Year" />
                     <outputColumn
                       refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Time]"
                       dataType="dbTimeStamp"
@@ -7358,6 +7605,17 @@ where [refTable].[InvoiceID_sk] = ?</property>
                       dataType="i4"
                       lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[ProductID_SK]"
                       name="ProductID_SK" />
+                    <outputColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[SourceId]"
+                      dataType="i4"
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[SourceId]"
+                      name="SourceId" />
+                    <outputColumn
+                      refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Status]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[Status]"
+                      name="Status" />
                     <outputColumn
                       refId="Package\FactSupermarketSale\NDS SupermarketSale.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
                       dataType="dbTimeStamp2"
@@ -7966,6 +8224,28 @@ WHERE
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate.Paths[Sort Output1]"
+          TopLeft="613.138888888889,588.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29.1111111111113"
+              Start="0,0"
+              End="0,21.6111111111113">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.6111111111113" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate.Paths[Sort Output]"
           TopLeft="337.333333333333,526.444444444444">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -7990,28 +8270,6 @@ WHERE
                     Point3="-82.6666666666665,31.8571428571429" />
                   <mssgle:LineSegment
                     End="-82.6666666666665,39.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate.Paths[Sort Output]"
-          TopLeft="613.138888888889,588.666666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,29.1111111111113"
-              Start="0,0"
-              End="0,21.6111111111113">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,21.6111111111113" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -8176,102 +8434,6 @@ WHERE
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate.Paths[Lookup No Match Output4]"
-          TopLeft="244,247">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="64,77"
-              Start="0,0"
-              End="64,69.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,27.28125" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,27.28125"
-                    Point2="0,31.28125"
-                    Point3="4,31.28125" />
-                  <mssgle:LineSegment
-                    End="60,31.28125" />
-                  <mssgle:CubicBezierSegment
-                    Point1="60,31.28125"
-                    Point2="64,31.28125"
-                    Point3="64,35.28125" />
-                  <mssgle:LineSegment
-                    End="64,69.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-23.80638671875,36.28125,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate.Paths[Lookup No Match Output3]"
-          TopLeft="616.361111111112,659.777777777778">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,43.555555555555"
-              Start="0,0"
-              End="0,36.055555555555">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,36.055555555555" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-55.80638671875,12.2230902777775,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate.Paths[Lookup No Match Output2]"
-          TopLeft="586,252">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="86,74"
-              Start="0,0"
-              End="86,66.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.0625" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26.0625"
-                    Point2="0,30.0625"
-                    Point3="4,30.0625" />
-                  <mssgle:LineSegment
-                    End="82,30.0625" />
-                  <mssgle:CubicBezierSegment
-                    Point1="82,30.0625"
-                    Point2="86,30.0625"
-                    Point3="86,34.0625" />
-                  <mssgle:LineSegment
-                    End="86,66.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-12.80638671875,35.0625,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate.Paths[Lookup No Match Output1]"
           TopLeft="930,251">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -8307,7 +8469,7 @@ WHERE
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate.Paths[Lookup No Match Output]"
+          Id="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate.Paths[Lookup No Match Output3]"
           TopLeft="264.444444444444,689.777777777778">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -8339,6 +8501,102 @@ WHERE
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-23.2230533854166,24.9513888888889,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate.Paths[Lookup No Match Output2]"
+          TopLeft="244,247">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="64,77"
+              Start="0,0"
+              End="64,69.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.28125" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.28125"
+                    Point2="0,31.28125"
+                    Point3="4,31.28125" />
+                  <mssgle:LineSegment
+                    End="60,31.28125" />
+                  <mssgle:CubicBezierSegment
+                    Point1="60,31.28125"
+                    Point2="64,31.28125"
+                    Point3="64,35.28125" />
+                  <mssgle:LineSegment
+                    End="64,69.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-23.80638671875,36.28125,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate.Paths[Lookup No Match Output1]"
+          TopLeft="586,252">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="86,74"
+              Start="0,0"
+              End="86,66.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.0625" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.0625"
+                    Point2="0,30.0625"
+                    Point3="4,30.0625" />
+                  <mssgle:LineSegment
+                    End="82,30.0625" />
+                  <mssgle:CubicBezierSegment
+                    Point1="82,30.0625"
+                    Point2="86,30.0625"
+                    Point3="86,34.0625" />
+                  <mssgle:LineSegment
+                    End="86,66.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-12.80638671875,35.0625,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DimCity, DimCustomer, DimPayment, DimProduct, DimDate.Paths[Lookup No Match Output]"
+          TopLeft="616.361111111112,659.777777777778">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.555555555555"
+              Start="0,0"
+              End="0,36.055555555555">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.055555555555" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,12.2230902777775,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>

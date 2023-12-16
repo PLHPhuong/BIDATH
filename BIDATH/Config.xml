@@ -98,7 +98,7 @@
                     <CreationQuery>
                         CREATE TABLE [city] (
                             [Branch] nvarchar(255),
-                            [City] nvarchar(255)
+                            [City] nvarchar(255),
                         )
                     </CreationQuery>
                 </Table>
@@ -108,7 +108,7 @@
                         CREATE TABLE [product] (
                             [ProductID] nvarchar(255),
                             [Unit price] float,
-                            [ProductLine] nvarchar(255)
+                            [ProductLine] nvarchar(255),
                         )
                     </CreationQuery>
                 </Table>
@@ -241,6 +241,8 @@
                             [CityID_SK] [int] PRIMARY KEY IDENTITY(1,1),
                             [Branch] [nvarchar](255) NULL,
                             [City] [nvarchar](255) NULL,
+                            [SourceId] int,
+                            [Status] [nvarchar](255) DEFAULT 'active',
                             [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                             [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                         )
@@ -253,6 +255,8 @@
                             [CustomerID_SK] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
                             [CustomerType] [nvarchar](255) NULL,
                             [Gender] [nvarchar](255) NULL,
+                            [SourceId] int,
+                            [Status] [nvarchar](255) DEFAULT 'active',
                             [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                             [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                         )
@@ -264,6 +268,8 @@
                         CREATE TABLE [Payment](
                             [PaymentID_SK] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
                             [Payment] [nvarchar](255) NULL,
+                            [SourceId] int,
+                            [Status] [nvarchar](255) DEFAULT 'active',
                             [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                             [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                         )
@@ -276,6 +282,8 @@
                             [ProductLineID_SK] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
                             [ProductLineID_NK] [nvarchar](255) NULL,
                             [ProductLine] [nvarchar](255) NULL,
+                            [SourceId] int,
+                            [Status] [nvarchar](255) DEFAULT 'active',
                             [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                             [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                         )
@@ -289,6 +297,8 @@
                             [ProductID_NK] [nvarchar](255) NULL,
                             [UnitPrice] [float] NULL,
                             [ProductLineID_SK] [int] NULL,
+                            [SourceId] int,
+                            [Status] [nvarchar](255) DEFAULT 'active',
                             [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                             [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                             FOREIGN KEY (ProductLineID_SK) REFERENCES Productline(ProductLineID_SK)
@@ -299,8 +309,8 @@
                     <Name>SupermarketSale</Name>
                     <CreationQuery>
                         CREATE TABLE [SupermarketSale] (
-                            [InvoiceID_sk] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
-                            [InvoiceID_nk] nvarchar(255),
+                            [InvoiceID_SK] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
+                            [InvoiceID_NK] nvarchar(255),
                             [Quantity] float,
                             [Tax_5_percent] float,
                             [Total] float,
@@ -319,6 +329,8 @@
                             [CustomerID_SK] int,
                             [PaymentID_SK] int,
                             [ProductID_SK] int,
+                            [SourceId] int,
+                            [Status] [nvarchar](255) DEFAULT 'active',
                             [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                             [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                             FOREIGN KEY ([CityID_SK]) REFERENCES [City]([CityID_SK]),
@@ -426,6 +438,8 @@
                             [CityID_SK] [int] PRIMARY KEY NOT NULL,
                             [Branch] [nvarchar](255) NULL,
                             [City] [nvarchar](255) NULL,
+                            [SourceId] int,
+                            [Status] [nvarchar](255) DEFAULT 'active',
                             [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                             [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                         )
@@ -438,6 +452,8 @@
                             [CustomerID_SK] [int] PRIMARY KEY NOT NULL,
                             [CustomerType] [nvarchar](255) NULL,
                             [Gender] [nvarchar](255) NULL,
+                            [SourceId] int,
+                            [Status] [nvarchar](255) DEFAULT 'active',
                             [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                             [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                         )
@@ -449,6 +465,8 @@
                         CREATE TABLE [DimPayment](
                             [PaymentID_SK] [int] PRIMARY KEY NOT NULL,
                             [Payment] [nvarchar](255) NULL,
+                            [SourceId] int,
+                            [Status] [nvarchar](255) DEFAULT 'active',
                             [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                             [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                         )
@@ -463,6 +481,10 @@
                             [UnitPrice] [float] NULL,
                             [ProductLineID_NK] [nvarchar](255) NULL,
                             [ProductLine] [nvarchar](255) NULL,
+                            [Product_SourceId] int,
+                            [Productline_SourceId] int,
+                            [Product_Status] [nvarchar](255) DEFAULT 'active',
+                            [Productline_Status] [nvarchar](255) DEFAULT 'active',
                             [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                             [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                         )
@@ -479,6 +501,8 @@
                             [Day] int,
                             [Month] int,
                             [Year] int,
+                            [SourceId] int,
+                            [Status] [nvarchar](255) DEFAULT 'active',
                             [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                             [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                         )
@@ -497,12 +521,15 @@
                             [InvoiceID_nk] nvarchar(255),
                             [NumberOfCustomer] int DEFAULT 1,
                             [Quantity] float,
+                            [UnitPrice] [float] NULL,
                             [Rating] float,
                             [Tax_5_percent] float,
                             [Total] float,
                             [cogs] float,
                             [gross_margin_percentage] float,
                             [gross_income] float,
+                            [SourceId] int,
+                            [Status] [nvarchar](255) DEFAULT 'active',
                             [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                             [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                             FOREIGN KEY ([CityID_SK]) REFERENCES [DimCity]([CityID_SK]),
