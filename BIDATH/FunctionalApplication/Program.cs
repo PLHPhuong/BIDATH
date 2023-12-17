@@ -612,8 +612,28 @@ namespace FunctionalApplication
                     xmlDoc.Save(filePath);
 
 
-                    // Save the updated XML document to the output file
-                    xmlDoc.Save(filePath);
+                    // Change some path in config.xml
+                    XmlDocument xmlConfigDB = new XmlDocument();
+                    string configXmlPath = xmlDoc.SelectSingleNode("/Root/DatabaseCongfigFile").InnerText;
+                    xmlConfigDB.Load(configXmlPath);
+
+                    XmlNodeList targetTriggers = xmlConfigDB.SelectNodes($"//Trigger[@Name='tr_CreateTable']");
+                    // Iterate through the selected Trigger elements
+                    foreach (XmlNode trigger in targetTriggers)
+                    {
+                        // Get the inner text of CreationQuery
+                        XmlNode creationQueryNode = trigger.SelectSingleNode("CreationQuery");
+                        string creationQueryInnerText = creationQueryNode.InnerText;
+
+                        // Find and replace a substring in CreationQuery
+                        string substringToReplace = "DECLARE @XmlFilePath NVARCHAR(255) = 'D:\\BI\\DATH\\BIDATH\\Config.xml';";
+                        string replacementSubstring = $"DECLARE @XmlFilePath NVARCHAR(255) = '{configXmlPath}';";
+                        string modifiedCreationQuery = creationQueryInnerText.Replace(substringToReplace, replacementSubstring);
+
+                        // Update the inner text of CreationQuery
+                        creationQueryNode.InnerText = modifiedCreationQuery;
+                    }
+                    xmlConfigDB.Save(configXmlPath);
 
                     Console.WriteLine($"File '{filePath}' created with absolute paths.");
                 }
@@ -629,6 +649,7 @@ namespace FunctionalApplication
 
         }
     }
+    
 
     class Program
     {

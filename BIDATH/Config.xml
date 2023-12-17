@@ -6,25 +6,30 @@
         <Trigger>Delete</Trigger>
     </HandleExistedMethod>
     <Databases>
-        <Database Name='BI_Stage' Type='stage'>
-            <Name>BI_Stage</Name>
-            <MetaTables>
-                <Table>
+        <Database Name="BI_MetadataDB" Type="metadata">
+            <Name>BI_MetadataDB</Name>
+            <Tables>
+                <Table Name="AuditTableLog">
                     <Name>AuditTableLog</Name>
                     <CreationQuery>
                         CREATE TABLE AuditTableLog (
-                            AuditTableLogID INT PRIMARY KEY IDENTITY(1,1),
-                            TableName NVARCHAR(255) NOT NULL,
-                            CreatedTime DATETIME2 NOT NULL DEFAULT GETUTCDATE(),
-                            UpdatedTime DATETIME2 DEFAULT GETUTCDATE(),
-                            LSET DATETIME2 DEFAULT GETUTCDATE(),
-                            CET DATETIME2 DEFAULT GETUTCDATE(),
+                        AuditTableLogID INT PRIMARY KEY IDENTITY(1,1),
+                        TableName NVARCHAR(255) NOT NULL,
+                        TableType NVARCHAR(255) NULL,
+                        SoucreData NVARCHAR(MAX) NULL,
+                        LSET DATETIME2 DEFAULT GETUTCDATE(),
+                        CET DATETIME2 DEFAULT GETUTCDATE(),
+                        CreatedTime DATETIME2 NOT NULL DEFAULT GETUTCDATE(),
+                        UpdatedTime DATETIME2 DEFAULT GETUTCDATE(),
                         );
                     </CreationQuery>
                 </Table>
-            </MetaTables>
+            </Tables>
+        </Database>
+        <Database Name="BI_Stage" Type="stage">
+            <Name>BI_Stage</Name>
             <TriggerOnDatabase>
-                <Trigger>
+                <Trigger Name="tr_CreateTable">
                     <Name>tr_CreateTable</Name>
                     <CreationQuery>
                         CREATE TRIGGER tr_CreateTable
@@ -32,48 +37,73 @@
                         FOR CREATE_TABLE
                         AS
                         BEGIN
-                            BEGIN TRY
-                                PRINT('trigger create table');
-                                DECLARE @TableName NVARCHAR(255);
-                                SET @TableName = EVENTDATA().value('(/EVENT_INSTANCE/ObjectName)[1]', 'NVARCHAR(255)');
-                                PRINT(@TableName);
+                        BEGIN TRY
+                        PRINT('trigger create table');
+                        DECLARE @TableName NVARCHAR(255);
+                        DECLARE @TableType NVARCHAR(255) = 'stage';
 
-                                -- Create a trigger for updates on the newly created table
-                                DECLARE @CreateTriggerSQL NVARCHAR(MAX);
-                                SET @CreateTriggerSQL = '
-                                    CREATE TRIGGER tr_' + @TableName + '_Updated
-                                    ON ' + @TableName + '
-                                    AFTER UPDATE,DELETE
-                                    AS
-                                    BEGIN
-                                        PRINT(''' + 'trigger after update,delete on ' + @TableName + ''')
-                                        DECLARE @TableNameToUpdate NVARCHAR(255);
-                                        SET @TableNameToUpdate = ''' + @TableName + ''';
+                        SET @TableName =
+                        EVENTDATA().value('(/EVENT_INSTANCE/ObjectName)[1]','NVARCHAR(255)');
+                        PRINT(@TableName);
 
-                                        UPDATE AuditTableLog
-                                        SET UpdatedTime = GETUTCDATE()
-                                        WHERE TableName = @TableNameToUpdate;
-                                    END;
-                                ';
+                        -- Create a trigger for updates on the newly created table
+                        DECLARE @CreateTriggerSQL NVARCHAR(MAX);
+                        SET @CreateTriggerSQL = '
+                        CREATE TRIGGER tr_' + @TableName + '_Updated
+                        ON ' + @TableName + '
+                        AFTER UPDATE,DELETE
+                        AS
+                        BEGIN
+                        PRINT(''' + 'trigger after update,delete on ' + @TableName + ''')
+                        DECLARE @TableNameToUpdate NVARCHAR(255);
+                        SET @TableNameToUpdate = ''' + @TableName + ''';
 
-                                -- Execute dynamic SQL to create the trigger
-                                EXEC sp_executesql @CreateTriggerSQL;
-                                -- Insert a record into the audit log for table creation
-                                INSERT INTO AuditTableLog (TableName)
-                                VALUES (@TableName);
-                                PRINT(@TableName);
-                            END TRY
-                            BEGIN CATCH
-                                -- Handle errors (log or raise as needed)
-                                PRINT 'Error: ' + ERROR_MESSAGE();
+                        UPDATE [BI_MetadataDB].[dbo].[AuditTableLog]
+                        SET UpdatedTime = GETUTCDATE()
+                        WHERE TableName = @TableNameToUpdate;
+                        END;
+                        ';
 
-                                -- Rollback the transaction
-                                ROLLBACK;
-                            END CATCH;
+                        -- Execute dynamic SQL to create the trigger
+                        EXEC sp_executesql @CreateTriggerSQL;
+                        -- Get data source info (if there are)
+                        DECLARE @XmlFilePath NVARCHAR(255) = 'D:\BI\DATH\BIDATH\Config.xml';
+                        DECLARE @xmlData XML;
+                        -- Load the XML data from a file.
+                        DECLARE @Sql NVARCHAR(MAX);
+                        SET @Sql = '
+                        SELECT @XmlData = BulkColumn
+                        FROM OPENROWSET(BULK ''' + @XmlFilePath + ''', SINGLE_BLOB) AS x;
+                        ';
+                        -- Execute dynamic SQL
+                        EXEC sp_executesql @Sql, N'@XmlData XML OUTPUT', @XmlData OUTPUT;
+                        DECLARE @SourceData NVARCHAR(MAX);
+
+                        -- Use XPath to extract data for the specified table
+                        SELECT @SourceData =
+                        TableNode.value('(SourceInfo/SourcesAsString/text())[1]', 'NVARCHAR(MAX)')
+                        FROM @XmlData.nodes('/Root/Databases/Database/Tables/Table') AS
+                        Tbl(TableNode)
+                        WHERE TableNode.value('(Name/text())[1]', 'NVARCHAR(255)') COLLATE
+                        Latin1_General_CS_AS = @TableName COLLATE Latin1_General_CS_AS;
+
+                        -- Insert a record into the audit log for table creation
+                        INSERT INTO [BI_MetadataDB].[dbo].[AuditTableLog]
+                        (TableName,TableType,SoucreData)
+                        VALUES (@TableName,@TableType,@SourceData);
+                        PRINT(@TableName);
+                        END TRY
+                        BEGIN CATCH
+                        -- Handle errors (log or raise as needed)
+                        PRINT 'Error: ' + ERROR_MESSAGE();
+
+                        -- Rollback the transaction
+                        ROLLBACK;
+                        END CATCH;
                         END;
                     </CreationQuery>
                 </Trigger>
-                <Trigger>
+                <Trigger Name="tr_DropTable">
                     <Name>tr_DropTable</Name>
                     <CreationQuery>
                         CREATE TRIGGER tr_DropTable
@@ -81,91 +111,101 @@
                         FOR DROP_TABLE
                         AS
                         BEGIN
-                            PRINT('trigger drop table')
-                            DECLARE @TableName NVARCHAR(255);
-                            SET @TableName = EVENTDATA().value('(/EVENT_INSTANCE/ObjectName)[1]', 'NVARCHAR(255)');
-                        
-                            -- Delete records from AuditTableLog for the dropped table
-                            DELETE FROM AuditTableLog
-                            WHERE TableName = @TableName;
+                        PRINT('trigger drop table')
+                        DECLARE @TableName NVARCHAR(255);
+                        SET @TableName = EVENTDATA().value('(/EVENT_INSTANCE/ObjectName)[1]',
+                        'NVARCHAR(255)');
+
+                        -- Delete records from AuditTableLog for the dropped table
+                        DELETE FROM [BI_MetadataDB].[dbo].[AuditTableLog]
+                        WHERE TableName = @TableName;
                         END;
                     </CreationQuery>
                 </Trigger>
             </TriggerOnDatabase>
             <Tables>
-                <Table>
+                <Table Name="city">
                     <Name>city</Name>
                     <CreationQuery>
                         CREATE TABLE [city] (
-                            [Branch] nvarchar(255),
-                            [City] nvarchar(255),
+                        [Branch] nvarchar(255),
+                        [City] nvarchar(255),
                         )
                     </CreationQuery>
+                    <SourceInfo>
+                        <SourcesAsString>supermarket_sales.xls(city sheets)</SourcesAsString>
+                        <Sources>
+                            <Source>supermarket_sales.xls(city sheets)</Source>
+                        </Sources>
+                    </SourceInfo>
                 </Table>
                 <Table>
                     <Name>product</Name>
                     <CreationQuery>
                         CREATE TABLE [product] (
-                            [ProductID] nvarchar(255),
-                            [Unit price] float,
-                            [ProductLine] nvarchar(255),
+                        [ProductID] nvarchar(255),
+                        [Unit price] float,
+                        [ProductLine] nvarchar(255),
                         )
                     </CreationQuery>
+                    <SourceInfo>
+                        <SourcesAsString>supermarket_sales.xls(product sheets)</SourcesAsString>
+                        <Sources>
+                            <Source>supermarket_sales.xls(product sheets)</Source>
+                        </Sources>
+                    </SourceInfo>
                 </Table>
                 <Table>
                     <Name>ProductLine</Name>
                     <CreationQuery>
                         CREATE TABLE [ProductLine] (
-                            [Product line] nvarchar(255),
-                            [ProductLineID] nvarchar(255),
+                        [Product line] nvarchar(255),
+                        [ProductLineID] nvarchar(255),
                         )
                     </CreationQuery>
+                    <SourceInfo>
+                        <SourcesAsString>supermarket_sales.xls(ProductLine sheets)</SourcesAsString>
+                        <Sources>
+                            <Source>supermarket_sales.xls(ProductLine sheets)</Source>
+                        </Sources>
+                    </SourceInfo>
                 </Table>
                 <Table>
                     <Name>supermarket_sales</Name>
                     <CreationQuery>
                         CREATE TABLE [supermarket_sales] (
-                            [Invoice ID] nvarchar(255),
-                            [Branch] nvarchar(255),
-                            [Customer type] nvarchar(255),
-                            [Gender] nvarchar(255),
-                            [ProductID] nvarchar(255),
-                            [Quantity] float,
-                            [Tax 5%] float,
-                            [Total] float,
-                            [Date] datetime,
-                            [Time] datetime,
-                            [Payment] nvarchar(255),
-                            [cogs] float,
-                            [gross margin percentage] float,
-                            [gross income] float,
-                            [Rating] float,
+                        [Invoice ID] nvarchar(255),
+                        [Branch] nvarchar(255),
+                        [Customer type] nvarchar(255),
+                        [Gender] nvarchar(255),
+                        [ProductID] nvarchar(255),
+                        [Quantity] float,
+                        [Tax 5%] float,
+                        [Total] float,
+                        [Date] datetime,
+                        [Time] datetime,
+                        [Payment] nvarchar(255),
+                        [cogs] float,
+                        [gross margin percentage] float,
+                        [gross income] float,
+                        [Rating] float,
                         )
                     </CreationQuery>
+                    <SourceInfo>
+                        <SourcesAsString>supermarket_sales.xls(supermarket_sales sheets)</SourcesAsString>
+                        <Sources>
+                            <Source>supermarket_sales.xls(supermarket_sales sheets)</Source>
+                        </Sources>
+                    </SourceInfo>
                 </Table>
             </Tables>
             <Triggers>
             </Triggers>
         </Database>
-        <Database Name='BI_NDS' Type='nds'>
+        <Database Name="BI_NDS" Type="nds">
             <Name>BI_NDS</Name>
-            <MetaTables>
-                <Table>
-                    <Name>AuditTableLog</Name>
-                    <CreationQuery>
-                        CREATE TABLE AuditTableLog (
-                            AuditTableLogID INT PRIMARY KEY IDENTITY(1,1),
-                            TableName NVARCHAR(255) NOT NULL,
-                            CreatedTime DATETIME2 NOT NULL DEFAULT GETUTCDATE(),
-                            UpdatedTime DATETIME2 DEFAULT GETUTCDATE(),
-                            LSET DATETIME2 DEFAULT GETUTCDATE(),
-                            CET DATETIME2 DEFAULT GETUTCDATE(),
-                        );
-                    </CreationQuery>
-                </Table>
-            </MetaTables>
             <TriggerOnDatabase>
-                <Trigger>
+                <Trigger Name="tr_CreateTable">
                     <Name>tr_CreateTable</Name>
                     <CreationQuery>
                         CREATE TRIGGER tr_CreateTable
@@ -173,48 +213,73 @@
                         FOR CREATE_TABLE
                         AS
                         BEGIN
-                            BEGIN TRY
-                                PRINT('trigger create table');
-                                DECLARE @TableName NVARCHAR(255);
-                                SET @TableName = EVENTDATA().value('(/EVENT_INSTANCE/ObjectName)[1]', 'NVARCHAR(255)');
-                                PRINT(@TableName);
+                        BEGIN TRY
+                        PRINT('trigger create table');
+                        DECLARE @TableName NVARCHAR(255);
+                        DECLARE @TableType NVARCHAR(255) = 'nds';
 
-                                -- Create a trigger for updates on the newly created table
-                                DECLARE @CreateTriggerSQL NVARCHAR(MAX);
-                                SET @CreateTriggerSQL = '
-                                    CREATE TRIGGER tr_' + @TableName + '_Updated
-                                    ON ' + @TableName + '
-                                    AFTER UPDATE,DELETE
-                                    AS
-                                    BEGIN
-                                        PRINT(''' + 'trigger after update,delete on ' + @TableName + ''')
-                                        DECLARE @TableNameToUpdate NVARCHAR(255);
-                                        SET @TableNameToUpdate = ''' + @TableName + ''';
+                        SET @TableName =
+                        EVENTDATA().value('(/EVENT_INSTANCE/ObjectName)[1]','NVARCHAR(255)');
+                        PRINT(@TableName);
 
-                                        UPDATE AuditTableLog
-                                        SET UpdatedTime = GETUTCDATE()
-                                        WHERE TableName = @TableNameToUpdate;
-                                    END;
-                                ';
+                        -- Create a trigger for updates on the newly created table
+                        DECLARE @CreateTriggerSQL NVARCHAR(MAX);
+                        SET @CreateTriggerSQL = '
+                        CREATE TRIGGER tr_' + @TableName + '_Updated
+                        ON ' + @TableName + '
+                        AFTER UPDATE,DELETE
+                        AS
+                        BEGIN
+                        PRINT(''' + 'trigger after update,delete on ' + @TableName + ''')
+                        DECLARE @TableNameToUpdate NVARCHAR(255);
+                        SET @TableNameToUpdate = ''' + @TableName + ''';
 
-                                -- Execute dynamic SQL to create the trigger
-                                EXEC sp_executesql @CreateTriggerSQL;
-                                -- Insert a record into the audit log for table creation
-                                INSERT INTO AuditTableLog (TableName)
-                                VALUES (@TableName);
-                                PRINT(@TableName);
-                            END TRY
-                            BEGIN CATCH
-                                -- Handle errors (log or raise as needed)
-                                PRINT 'Error: ' + ERROR_MESSAGE();
+                        UPDATE [BI_MetadataDB].[dbo].[AuditTableLog]
+                        SET UpdatedTime = GETUTCDATE()
+                        WHERE TableName = @TableNameToUpdate;
+                        END;
+                        ';
 
-                                -- Rollback the transaction
-                                ROLLBACK;
-                            END CATCH;
+                        -- Execute dynamic SQL to create the trigger
+                        EXEC sp_executesql @CreateTriggerSQL;
+                        -- Get data source info (if there are)
+                        DECLARE @XmlFilePath NVARCHAR(255) = 'D:\BI\DATH\BIDATH\Config.xml';
+                        DECLARE @xmlData XML;
+                        -- Load the XML data from a file.
+                        DECLARE @Sql NVARCHAR(MAX);
+                        SET @Sql = '
+                        SELECT @XmlData = BulkColumn
+                        FROM OPENROWSET(BULK ''' + @XmlFilePath + ''', SINGLE_BLOB) AS x;
+                        ';
+                        -- Execute dynamic SQL
+                        EXEC sp_executesql @Sql, N'@XmlData XML OUTPUT', @XmlData OUTPUT;
+                        DECLARE @SourceData NVARCHAR(MAX);
+
+                        -- Use XPath to extract data for the specified table
+                        SELECT @SourceData =
+                        TableNode.value('(SourceInfo/SourcesAsString/text())[1]', 'NVARCHAR(MAX)')
+                        FROM @XmlData.nodes('/Root/Databases/Database/Tables/Table') AS
+                        Tbl(TableNode)
+                        WHERE TableNode.value('(Name/text())[1]', 'NVARCHAR(255)') COLLATE
+                        Latin1_General_CS_AS = @TableName COLLATE Latin1_General_CS_AS;
+
+                        -- Insert a record into the audit log for table creation
+                        INSERT INTO [BI_MetadataDB].[dbo].[AuditTableLog]
+                        (TableName,TableType,SoucreData)
+                        VALUES (@TableName,@TableType,@SourceData);
+                        PRINT(@TableName);
+                        END TRY
+                        BEGIN CATCH
+                        -- Handle errors (log or raise as needed)
+                        PRINT 'Error: ' + ERROR_MESSAGE();
+
+                        -- Rollback the transaction
+                        ROLLBACK;
+                        END CATCH;
                         END;
                     </CreationQuery>
                 </Trigger>
-                <Trigger>
+                <Trigger Name="tr_DropTable">
                     <Name>tr_DropTable</Name>
                     <CreationQuery>
                         CREATE TRIGGER tr_DropTable
@@ -222,13 +287,14 @@
                         FOR DROP_TABLE
                         AS
                         BEGIN
-                            PRINT('trigger drop table')
-                            DECLARE @TableName NVARCHAR(255);
-                            SET @TableName = EVENTDATA().value('(/EVENT_INSTANCE/ObjectName)[1]', 'NVARCHAR(255)');
-                        
-                            -- Delete records from AuditTableLog for the dropped table
-                            DELETE FROM AuditTableLog
-                            WHERE TableName = @TableName;
+                        PRINT('trigger drop table')
+                        DECLARE @TableName NVARCHAR(255);
+                        SET @TableName = EVENTDATA().value('(/EVENT_INSTANCE/ObjectName)[1]',
+                        'NVARCHAR(255)');
+
+                        -- Delete records from AuditTableLog for the dropped table
+                        DELETE FROM [BI_MetadataDB].[dbo].[AuditTableLog]
+                        WHERE TableName = @TableName;
                         END;
                     </CreationQuery>
                 </Trigger>
@@ -238,131 +304,163 @@
                     <Name>City</Name>
                     <CreationQuery>
                         CREATE TABLE [City] (
-                            [CityID_SK] [int] PRIMARY KEY IDENTITY(1,1),
-                            [Branch] [nvarchar](255) NULL,
-                            [City] [nvarchar](255) NULL,
-                            [SourceId] int,
-                            [Status] [nvarchar](255) DEFAULT 'active',
-                            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
-                            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                        [CityID_SK] [int] PRIMARY KEY IDENTITY(1,1),
+                        [Branch] [nvarchar](255) NULL,
+                        [City] [nvarchar](255) NULL,
+                        [SourceId] int,
+                        [Status] [nvarchar](255) DEFAULT 'active',
+                        [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                        [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                         )
                     </CreationQuery>
+                    <SourceInfo>
+                        <SourcesAsString>[BI_Stage].[dbo].[city],
+                            [BI_Stage].[dbo].[supermarket_sales]</SourcesAsString>
+                        <Sources>
+                            <Source>[BI_Stage].[dbo].[city]</Source>
+                            <Source>[BI_Stage].[dbo].[supermarket_sales]</Source>
+                        </Sources>
+                    </SourceInfo>
                 </Table>
                 <Table>
                     <Name>Customer</Name>
                     <CreationQuery>
                         CREATE TABLE [Customer] (
-                            [CustomerID_SK] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
-                            [CustomerType] [nvarchar](255) NULL,
-                            [Gender] [nvarchar](255) NULL,
-                            [SourceId] int,
-                            [Status] [nvarchar](255) DEFAULT 'active',
-                            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
-                            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                        [CustomerID_SK] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
+                        [CustomerType] [nvarchar](255) NULL,
+                        [Gender] [nvarchar](255) NULL,
+                        [SourceId] int,
+                        [Status] [nvarchar](255) DEFAULT 'active',
+                        [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                        [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                         )
                     </CreationQuery>
+                    <SourceInfo>
+                        <SourcesAsString>[BI_Stage].[dbo].[supermarket_sales]</SourcesAsString>
+                        <Sources>
+                            <Source>[BI_Stage].[dbo].[supermarket_sales]</Source>
+                        </Sources>
+                    </SourceInfo>
                 </Table>
                 <Table>
                     <Name>Payment</Name>
                     <CreationQuery>
                         CREATE TABLE [Payment](
-                            [PaymentID_SK] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
-                            [Payment] [nvarchar](255) NULL,
-                            [SourceId] int,
-                            [Status] [nvarchar](255) DEFAULT 'active',
-                            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
-                            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                        [PaymentID_SK] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
+                        [Payment] [nvarchar](255) NULL,
+                        [SourceId] int,
+                        [Status] [nvarchar](255) DEFAULT 'active',
+                        [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                        [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                         )
                     </CreationQuery>
+                    <SourceInfo>
+                        <SourcesAsString>[BI_Stage].[dbo].[supermarket_sales]</SourcesAsString>
+                        <Sources>
+                            <Source>[BI_Stage].[dbo].[supermarket_sales]</Source>
+                        </Sources>
+                    </SourceInfo>
                 </Table>
                 <Table>
                     <Name>Productline</Name>
                     <CreationQuery>
                         CREATE TABLE [Productline] (
-                            [ProductLineID_SK] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
-                            [ProductLineID_NK] [nvarchar](255) NULL,
-                            [ProductLine] [nvarchar](255) NULL,
-                            [SourceId] int,
-                            [Status] [nvarchar](255) DEFAULT 'active',
-                            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
-                            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                        [ProductLineID_SK] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
+                        [ProductLineID_NK] [nvarchar](255) NULL,
+                        [ProductLine] [nvarchar](255) NULL,
+                        [SourceId] int,
+                        [Status] [nvarchar](255) DEFAULT 'active',
+                        [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                        [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                         )
                     </CreationQuery>
+                    <SourceInfo>
+                        <SourcesAsString>[BI_Stage].[dbo].[ProductLine], [BI_Stage].[dbo].[product]</SourcesAsString>
+                        <Sources>
+                            <Source>[BI_Stage].[dbo].[ProductLine]</Source>
+                            <Source>[BI_Stage].[dbo].[product]</Source>
+                        </Sources>
+                    </SourceInfo>
                 </Table>
                 <Table>
                     <Name>Product</Name>
                     <CreationQuery>
                         CREATE TABLE [Product] (
-                            [ProductID_SK] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
-                            [ProductID_NK] [nvarchar](255) NULL,
-                            [UnitPrice] [float] NULL,
-                            [ProductLineID_SK] [int] NULL,
-                            [SourceId] int,
-                            [Status] [nvarchar](255) DEFAULT 'active',
-                            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
-                            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
-                            FOREIGN KEY (ProductLineID_SK) REFERENCES Productline(ProductLineID_SK)
+                        [ProductID_SK] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
+                        [ProductID_NK] [nvarchar](255) NULL,
+                        [UnitPrice] [float] NULL,
+                        [ProductLineID_SK] [int] NULL,
+                        [SourceId] int,
+                        [Status] [nvarchar](255) DEFAULT 'active',
+                        [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                        [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                        FOREIGN KEY (ProductLineID_SK) REFERENCES Productline(ProductLineID_SK)
                         )
                     </CreationQuery>
+                    <SourceInfo>
+                        <SourcesAsString>[BI_Stage].[dbo].[product],
+                            [BI_Stage].[dbo].[supermarket_sales]</SourcesAsString>
+                        <Sources>
+                            <Source>[BI_Stage].[dbo].[product]</Source>
+                            <Source>[BI_Stage].[dbo].[supermarket_sales]</Source>
+                        </Sources>
+                    </SourceInfo>
                 </Table>
                 <Table>
                     <Name>SupermarketSale</Name>
                     <CreationQuery>
                         CREATE TABLE [SupermarketSale] (
-                            [InvoiceID_SK] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
-                            [InvoiceID_NK] nvarchar(255),
-                            [Quantity] float,
-                            [Tax_5_percent] float,
-                            [Total] float,
-                            [Date] datetime,
-                            [Minute] int,
-                            [Hour] int,
-                            [Day] int,
-                            [Month] int,
-                            [Year] int,
-                            [Time] datetime,
-                            [cogs] float,
-                            [gross_margin_percentage] float,
-                            [gross_income] float,
-                            [Rating] float,
-                            [CityID_SK] int,
-                            [CustomerID_SK] int,
-                            [PaymentID_SK] int,
-                            [ProductID_SK] int,
-                            [SourceId] int,
-                            [Status] [nvarchar](255) DEFAULT 'active',
-                            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
-                            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
-                            FOREIGN KEY ([CityID_SK]) REFERENCES [City]([CityID_SK]),
-                            FOREIGN KEY ([CustomerID_SK]) REFERENCES [Customer]([CustomerID_SK]),
-                            FOREIGN KEY ([PaymentID_SK]) REFERENCES [Payment]([PaymentID_SK]),
-                            FOREIGN KEY ([ProductID_SK]) REFERENCES [Product]([ProductID_SK])
+                        [InvoiceID_SK] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
+                        [InvoiceID_NK] nvarchar(255),
+                        [Quantity] float,
+                        [Tax_5_percent] float,
+                        [Total] float,
+                        [Date] datetime,
+                        [Minute] int,
+                        [Hour] int,
+                        [Day] int,
+                        [Month] int,
+                        [Year] int,
+                        [Time] datetime,
+                        [cogs] float,
+                        [gross_margin_percentage] float,
+                        [gross_income] float,
+                        [Rating] float,
+                        [CityID_SK] int,
+                        [CustomerID_SK] int,
+                        [PaymentID_SK] int,
+                        [ProductID_SK] int,
+                        [SourceId] int,
+                        [Status] [nvarchar](255) DEFAULT 'active',
+                        [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                        [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                        FOREIGN KEY ([CityID_SK]) REFERENCES [City]([CityID_SK]),
+                        FOREIGN KEY ([CustomerID_SK]) REFERENCES [Customer]([CustomerID_SK]),
+                        FOREIGN KEY ([PaymentID_SK]) REFERENCES [Payment]([PaymentID_SK]),
+                        FOREIGN KEY ([ProductID_SK]) REFERENCES [Product]([ProductID_SK])
                         );
                     </CreationQuery>
+                    <SourceInfo>
+                        <SourcesAsString>[BI_Stage].[dbo].[supermarket_sales],
+                            [BI_NDS].[dbo].[City], [BI_NDS].[dbo].[Customer],
+                            [BI_NDS].[dbo].[Payment], [BI_NDS].[dbo].[Product]</SourcesAsString>
+                        <Sources>
+                            <Source>[BI_Stage].[dbo].[supermarket_sales]</Source>
+                            <Source>[BI_NDS].[dbo].[City]</Source>
+                            <Source>[BI_NDS].[dbo].[Customer]</Source>
+                            <Source>[BI_NDS].[dbo].[Payment]</Source>
+                            <Source>[BI_NDS].[dbo].[Product]</Source>
+                        </Sources>
+                    </SourceInfo>
                 </Table>
             </Tables>
             <Triggers>
             </Triggers>
         </Database>
-        <Database Name='BI_DDS' Type='dds'>
+        <Database Name="BI_DDS" Type="dds">
             <Name>BI_DDS</Name>
-            <MetaTables>
-                <Table>
-                    <Name>AuditTableLog</Name>
-                    <CreationQuery>
-                        CREATE TABLE AuditTableLog (
-                            AuditTableLogID INT PRIMARY KEY IDENTITY(1,1),
-                            TableName NVARCHAR(255) NOT NULL,
-                            CreatedTime DATETIME2 NOT NULL DEFAULT GETUTCDATE(),
-                            UpdatedTime DATETIME2 DEFAULT GETUTCDATE(),
-                            LSET DATETIME2 DEFAULT GETUTCDATE(),
-                            CET DATETIME2 DEFAULT GETUTCDATE(),
-                        );
-                    </CreationQuery>
-                </Table>
-            </MetaTables>
             <TriggerOnDatabase>
-                <Trigger>
+                <Trigger Name="tr_CreateTable">
                     <Name>tr_CreateTable</Name>
                     <CreationQuery>
                         CREATE TRIGGER tr_CreateTable
@@ -370,48 +468,73 @@
                         FOR CREATE_TABLE
                         AS
                         BEGIN
-                            BEGIN TRY
-                                PRINT('trigger create table');
-                                DECLARE @TableName NVARCHAR(255);
-                                SET @TableName = EVENTDATA().value('(/EVENT_INSTANCE/ObjectName)[1]', 'NVARCHAR(255)');
-                                PRINT(@TableName);
+                        BEGIN TRY
+                        PRINT('trigger create table');
+                        DECLARE @TableName NVARCHAR(255);
+                        DECLARE @TableType NVARCHAR(255) = 'dds';
 
-                                -- Create a trigger for updates on the newly created table
-                                DECLARE @CreateTriggerSQL NVARCHAR(MAX);
-                                SET @CreateTriggerSQL = '
-                                    CREATE TRIGGER tr_' + @TableName + '_Updated
-                                    ON ' + @TableName + '
-                                    AFTER UPDATE,DELETE
-                                    AS
-                                    BEGIN
-                                        PRINT(''' + 'trigger after update,delete on ' + @TableName + ''')
-                                        DECLARE @TableNameToUpdate NVARCHAR(255);
-                                        SET @TableNameToUpdate = ''' + @TableName + ''';
+                        SET @TableName =
+                        EVENTDATA().value('(/EVENT_INSTANCE/ObjectName)[1]','NVARCHAR(255)');
+                        PRINT(@TableName);
 
-                                        UPDATE AuditTableLog
-                                        SET UpdatedTime = GETUTCDATE()
-                                        WHERE TableName = @TableNameToUpdate;
-                                    END;
-                                ';
+                        -- Create a trigger for updates on the newly created table
+                        DECLARE @CreateTriggerSQL NVARCHAR(MAX);
+                        SET @CreateTriggerSQL = '
+                        CREATE TRIGGER tr_' + @TableName + '_Updated
+                        ON ' + @TableName + '
+                        AFTER UPDATE,DELETE
+                        AS
+                        BEGIN
+                        PRINT(''' + 'trigger after update,delete on ' + @TableName + ''')
+                        DECLARE @TableNameToUpdate NVARCHAR(255);
+                        SET @TableNameToUpdate = ''' + @TableName + ''';
 
-                                -- Execute dynamic SQL to create the trigger
-                                EXEC sp_executesql @CreateTriggerSQL;
-                                -- Insert a record into the audit log for table creation
-                                INSERT INTO AuditTableLog (TableName)
-                                VALUES (@TableName);
-                                PRINT(@TableName);
-                            END TRY
-                            BEGIN CATCH
-                                -- Handle errors (log or raise as needed)
-                                PRINT 'Error: ' + ERROR_MESSAGE();
+                        UPDATE [BI_MetadataDB].[dbo].[AuditTableLog]
+                        SET UpdatedTime = GETUTCDATE()
+                        WHERE TableName = @TableNameToUpdate;
+                        END;
+                        ';
 
-                                -- Rollback the transaction
-                                ROLLBACK;
-                            END CATCH;
+                        -- Execute dynamic SQL to create the trigger
+                        EXEC sp_executesql @CreateTriggerSQL;
+                        -- Get data source info (if there are)
+                        DECLARE @XmlFilePath NVARCHAR(255) = 'D:\BI\DATH\BIDATH\Config.xml';
+                        DECLARE @xmlData XML;
+                        -- Load the XML data from a file.
+                        DECLARE @Sql NVARCHAR(MAX);
+                        SET @Sql = '
+                        SELECT @XmlData = BulkColumn
+                        FROM OPENROWSET(BULK ''' + @XmlFilePath + ''', SINGLE_BLOB) AS x;
+                        ';
+                        -- Execute dynamic SQL
+                        EXEC sp_executesql @Sql, N'@XmlData XML OUTPUT', @XmlData OUTPUT;
+                        DECLARE @SourceData NVARCHAR(MAX);
+
+                        -- Use XPath to extract data for the specified table
+                        SELECT @SourceData =
+                        TableNode.value('(SourceInfo/SourcesAsString/text())[1]', 'NVARCHAR(MAX)')
+                        FROM @XmlData.nodes('/Root/Databases/Database/Tables/Table') AS
+                        Tbl(TableNode)
+                        WHERE TableNode.value('(Name/text())[1]', 'NVARCHAR(255)') COLLATE
+                        Latin1_General_CS_AS = @TableName COLLATE Latin1_General_CS_AS;
+
+                        -- Insert a record into the audit log for table creation
+                        INSERT INTO [BI_MetadataDB].[dbo].[AuditTableLog]
+                        (TableName,TableType,SoucreData)
+                        VALUES (@TableName,@TableType,@SourceData);
+                        PRINT(@TableName);
+                        END TRY
+                        BEGIN CATCH
+                        -- Handle errors (log or raise as needed)
+                        PRINT 'Error: ' + ERROR_MESSAGE();
+
+                        -- Rollback the transaction
+                        ROLLBACK;
+                        END CATCH;
                         END;
                     </CreationQuery>
                 </Trigger>
-                <Trigger>
+                <Trigger Name="tr_DropTable">
                     <Name>tr_DropTable</Name>
                     <CreationQuery>
                         CREATE TRIGGER tr_DropTable
@@ -419,13 +542,14 @@
                         FOR DROP_TABLE
                         AS
                         BEGIN
-                            PRINT('trigger drop table')
-                            DECLARE @TableName NVARCHAR(255);
-                            SET @TableName = EVENTDATA().value('(/EVENT_INSTANCE/ObjectName)[1]', 'NVARCHAR(255)');
-                        
-                            -- Delete records from AuditTableLog for the dropped table
-                            DELETE FROM AuditTableLog
-                            WHERE TableName = @TableName;
+                        PRINT('trigger drop table')
+                        DECLARE @TableName NVARCHAR(255);
+                        SET @TableName = EVENTDATA().value('(/EVENT_INSTANCE/ObjectName)[1]',
+                        'NVARCHAR(255)');
+
+                        -- Delete records from AuditTableLog for the dropped table
+                        DELETE FROM [BI_MetadataDB].[dbo].[AuditTableLog]
+                        WHERE TableName = @TableName;
                         END;
                     </CreationQuery>
                 </Trigger>
@@ -435,110 +559,148 @@
                     <Name>DimCity</Name>
                     <CreationQuery>
                         CREATE TABLE [DimCity] (
-                            [CityID_SK] [int] PRIMARY KEY NOT NULL,
-                            [Branch] [nvarchar](255) NULL,
-                            [City] [nvarchar](255) NULL,
-                            [SourceId] int,
-                            [Status] [nvarchar](255) DEFAULT 'active',
-                            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
-                            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                        [CityID_SK] [int] PRIMARY KEY NOT NULL,
+                        [Branch] [nvarchar](255) NULL,
+                        [City] [nvarchar](255) NULL,
+                        [SourceId] int,
+                        [Status] [nvarchar](255) DEFAULT 'active',
+                        [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                        [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                         )
                     </CreationQuery>
+                    <SourceInfo>
+                        <SourcesAsString>[BI_NDS].[dbo].[City]</SourcesAsString>
+                        <Sources>
+                            <Source>[BI_NDS].[dbo].[City]</Source>
+                        </Sources>
+                    </SourceInfo>
                 </Table>
                 <Table>
                     <Name>DimCustomer</Name>
                     <CreationQuery>
                         CREATE TABLE [DimCustomer] (
-                            [CustomerID_SK] [int] PRIMARY KEY NOT NULL,
-                            [CustomerType] [nvarchar](255) NULL,
-                            [Gender] [nvarchar](255) NULL,
-                            [SourceId] int,
-                            [Status] [nvarchar](255) DEFAULT 'active',
-                            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
-                            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                        [CustomerID_SK] [int] PRIMARY KEY NOT NULL,
+                        [CustomerType] [nvarchar](255) NULL,
+                        [Gender] [nvarchar](255) NULL,
+                        [SourceId] int,
+                        [Status] [nvarchar](255) DEFAULT 'active',
+                        [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                        [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                         )
                     </CreationQuery>
+                    <SourceInfo>
+                        <SourcesAsString>[BI_NDS].[dbo].[Customer]</SourcesAsString>
+                        <Sources>
+                            <Source>[BI_NDS].[dbo].[Customer]</Source>
+                        </Sources>
+                    </SourceInfo>
                 </Table>
                 <Table>
                     <Name>DimPayment</Name>
                     <CreationQuery>
                         CREATE TABLE [DimPayment](
-                            [PaymentID_SK] [int] PRIMARY KEY NOT NULL,
-                            [Payment] [nvarchar](255) NULL,
-                            [SourceId] int,
-                            [Status] [nvarchar](255) DEFAULT 'active',
-                            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
-                            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                        [PaymentID_SK] [int] PRIMARY KEY NOT NULL,
+                        [Payment] [nvarchar](255) NULL,
+                        [SourceId] int,
+                        [Status] [nvarchar](255) DEFAULT 'active',
+                        [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                        [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                         )
                     </CreationQuery>
+                    <SourceInfo>
+                        <SourcesAsString>[BI_NDS].[dbo].[Payment]</SourcesAsString>
+                        <Sources>
+                            <Source>[BI_NDS].[dbo].[Payment]</Source>
+                        </Sources>
+                    </SourceInfo>
                 </Table>
                 <Table>
                     <Name>DimProduct</Name>
                     <CreationQuery>
                         CREATE TABLE [DimProduct] (
-                            [ProductID_SK] [int] PRIMARY KEY NOT NULL,
-                            [ProductID_NK] [nvarchar](255) NULL,
-                            [UnitPrice] [float] NULL,
-                            [ProductLineID_NK] [nvarchar](255) NULL,
-                            [ProductLine] [nvarchar](255) NULL,
-                            [Product_SourceId] int,
-                            [Productline_SourceId] int,
-                            [Product_Status] [nvarchar](255) DEFAULT 'active',
-                            [Productline_Status] [nvarchar](255) DEFAULT 'active',
-                            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
-                            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                        [ProductID_SK] [int] PRIMARY KEY NOT NULL,
+                        [ProductID_NK] [nvarchar](255) NULL,
+                        [UnitPrice] [float] NULL,
+                        [ProductLineID_NK] [nvarchar](255) NULL,
+                        [ProductLine] [nvarchar](255) NULL,
+                        [Product_SourceId] int,
+                        [Productline_SourceId] int,
+                        [Product_Status] [nvarchar](255) DEFAULT 'active',
+                        [Productline_Status] [nvarchar](255) DEFAULT 'active',
+                        [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                        [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                         )
                     </CreationQuery>
+                    <SourceInfo>
+                        <SourcesAsString>[BI_NDS].[dbo].[Product], [BI_NDS].[dbo].[Productline]</SourcesAsString>
+                        <Sources>
+                            <Source>[BI_NDS].[dbo].[Product]</Source>
+                            <Source>[BI_NDS].[dbo].[Productline]</Source>
+                        </Sources>
+                    </SourceInfo>
                 </Table>
                 <Table>
                     <Name>DimDate</Name>
                     <CreationQuery>
                         CREATE TABLE [DimDate] (
-                            [Date_SK] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
-                            [Date] DATETIME2,
-                            [Minute] int,
-                            [Hour] int,
-                            [Day] int,
-                            [Month] int,
-                            [Year] int,
-                            [SourceId] int,
-                            [Status] [nvarchar](255) DEFAULT 'active',
-                            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
-                            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                        [Date_SK] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
+                        [Date] DATETIME2,
+                        [Minute] int,
+                        [Hour] int,
+                        [Day] int,
+                        [Month] int,
+                        [Year] int,
+                        [SourceId] int,
+                        [Status] [nvarchar](255) DEFAULT 'active',
+                        [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                        [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
                         )
                     </CreationQuery>
+                    <SourceInfo>
+                        <SourcesAsString>[BI_NDS].[dbo].[SupermarketSale]</SourcesAsString>
+                        <Sources>
+                            <Source>[BI_NDS].[dbo].[SupermarketSale]</Source>
+                        </Sources>
+                    </SourceInfo>
                 </Table>
                 <Table>
                     <Name>FactSupermarketSale</Name>
                     <CreationQuery>
                         CREATE TABLE [FactSupermarketSale] (
-                            [InvoiceID_sk] [int] PRIMARY KEY NOT NULL,
-                            [ProductID_SK] int,
-                            [CityID_SK] int,
-                            [CustomerID_SK] int,
-                            [PaymentID_SK] int,
-                            [Date_SK] int,
-                            [InvoiceID_nk] nvarchar(255),
-                            [NumberOfCustomer] int DEFAULT 1,
-                            [Quantity] float,
-                            [UnitPrice] [float] NULL,
-                            [Rating] float,
-                            [Tax_5_percent] float,
-                            [Total] float,
-                            [cogs] float,
-                            [gross_margin_percentage] float,
-                            [gross_income] float,
-                            [SourceId] int,
-                            [Status] [nvarchar](255) DEFAULT 'active',
-                            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
-                            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
-                            FOREIGN KEY ([CityID_SK]) REFERENCES [DimCity]([CityID_SK]),
-                            FOREIGN KEY ([CustomerID_SK]) REFERENCES [DimCustomer]([CustomerID_SK]),
-                            FOREIGN KEY ([PaymentID_SK]) REFERENCES [DimPayment]([PaymentID_SK]),
-                            FOREIGN KEY ([ProductID_SK]) REFERENCES [DimProduct]([ProductID_SK]),
-                            FOREIGN KEY ([Date_SK]) REFERENCES [DimDate]([Date_SK])
+                        [InvoiceID_sk] [int] PRIMARY KEY NOT NULL,
+                        [ProductID_SK] int,
+                        [CityID_SK] int,
+                        [CustomerID_SK] int,
+                        [PaymentID_SK] int,
+                        [Date_SK] int,
+                        [InvoiceID_nk] nvarchar(255),
+                        [NumberOfCustomer] int DEFAULT 1,
+                        [Quantity] float,
+                        [UnitPrice] [float] NULL,
+                        [Rating] float,
+                        [Tax_5_percent] float,
+                        [Total] float,
+                        [cogs] float,
+                        [gross_margin_percentage] float,
+                        [gross_income] float,
+                        [SourceId] int,
+                        [Status] [nvarchar](255) DEFAULT 'active',
+                        [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                        [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+                        FOREIGN KEY ([CityID_SK]) REFERENCES [DimCity]([CityID_SK]),
+                        FOREIGN KEY ([CustomerID_SK]) REFERENCES [DimCustomer]([CustomerID_SK]),
+                        FOREIGN KEY ([PaymentID_SK]) REFERENCES [DimPayment]([PaymentID_SK]),
+                        FOREIGN KEY ([ProductID_SK]) REFERENCES [DimProduct]([ProductID_SK]),
+                        FOREIGN KEY ([Date_SK]) REFERENCES [DimDate]([Date_SK])
                         );
                     </CreationQuery>
+                    <SourceInfo>
+                        <SourcesAsString>[BI_NDS].[dbo].[SupermarketSale], [BI_DDS].[dbo].[DimDate]</SourcesAsString>
+                        <Sources>
+                            <Source>[BI_NDS].[dbo].[SupermarketSale]</Source>
+                            <Source>[BI_DDS].[dbo].[DimDate]</Source>
+                        </Sources>
+                    </SourceInfo>
                 </Table>
             </Tables>
             <Triggers>

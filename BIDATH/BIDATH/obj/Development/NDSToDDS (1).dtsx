@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="95"
-  DTS:VersionGUID="{A316451A-DB7A-4278-B166-F57855F42E26}">
+  DTS:VersionBuild="105"
+  DTS:VersionGUID="{A8029E47-2590-44D5-ADCF-09BF02E02A46}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -30,6 +30,22 @@
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
           DTS:ConnectionString="Data Source=(local);Initial Catalog=BI_DDS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{B2A9D017-F411-4211-9AA5-B7E32A224916}(local).BI_DDS;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[metadata]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{2BE11C6C-417F-4328-96B7-FB4961C7A9F8}"
+      DTS:ObjectName="metadata">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[$Package::MetadataDataBaseName]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[$Package::MetadataServerName]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=(local);Initial Catalog=BI_MetadataDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{2BE11C6C-417F-4328-96B7-FB4961C7A9F8}(local).BI_MetadataDB;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -59,6 +75,26 @@
       <DTS:Property
         DTS:DataType="8"
         DTS:Name="ParameterValue">D:\BI\DATH\BIDATH\Config.xml</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{F458818A-8AD1-4F96-BF68-9EB8C82FC9EC}"
+      DTS:ObjectName="MetadataDataBaseName"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">BI_MetadataDB</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{C6903AEE-B7D4-4B83-BEF0-2AC096135287}"
+      DTS:ObjectName="MetadataServerName"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">(local)</DTS:Property>
     </DTS:PackageParameter>
     <DTS:PackageParameter
       DTS:CreationName=""
@@ -94,7 +130,8 @@
       DTS:CreationName=""
       DTS:DataType="8"
       DTS:DTSID="{5E2CB3E7-D12D-4FBA-8304-CFD19376812E}"
-      DTS:ObjectName="OLED_SourceServerName">
+      DTS:ObjectName="OLED_SourceServerName"
+      DTS:Required="True">
       <DTS:Property
         DTS:DataType="8"
         DTS:Name="ParameterValue">(local)</DTS:Property>
@@ -215,7 +252,7 @@
       DTS:refId="Package\DimCity"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{A95506D3-1A70-4D0A-82DD-A84C09072E93}"
+      DTS:DTSID="{5B93CFA3-04A5-4EE5-9170-FEE6E1F44DCD}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="DimCity"
@@ -263,7 +300,7 @@
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">3</property>
+                  typeConverter="AccessMode">0</property>
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
@@ -275,7 +312,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                  name="FastLoadOptions"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
@@ -348,6 +385,15 @@
                       length="255"
                       name="City" />
                     <externalMetadataColumn
+                      refId="Package\DimCity\DimCity.Inputs[OLE DB Destination Input].ExternalColumns[SourceId]"
+                      dataType="i4"
+                      name="SourceId" />
+                    <externalMetadataColumn
+                      refId="Package\DimCity\DimCity.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
+                      dataType="wstr"
+                      length="255"
+                      name="Status" />
+                    <externalMetadataColumn
                       refId="Package\DimCity\DimCity.Inputs[OLE DB Destination Input].ExternalColumns[CreatedDate]"
                       dataType="dbTimeStamp2"
                       name="CreatedDate"
@@ -357,15 +403,6 @@
                       dataType="dbTimeStamp2"
                       name="UpdatedDate"
                       scale="7" />
-                    <externalMetadataColumn
-                      refId="Package\DimCity\DimCity.Inputs[OLE DB Destination Input].ExternalColumns[SourceId]"
-                      dataType="i4"
-                      name="SourceId" />
-                    <externalMetadataColumn
-                      refId="Package\DimCity\DimCity.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
-                      dataType="wstr"
-                      length="255"
-                      name="Status" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -410,7 +447,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[City]</property>
+                  name="OpenRowset"></property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -486,26 +523,6 @@ WHERE UpdatedDate &gt; ? and UpdatedDate &lt; ?</property>
                       name="City"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DimCity\NDS City.Outputs[OLE DB Source Output].Columns[CreatedDate]"
-                      dataType="dbTimeStamp2"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DimCity\NDS City.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
-                      lineageId="Package\DimCity\NDS City.Outputs[OLE DB Source Output].Columns[CreatedDate]"
-                      name="CreatedDate"
-                      scale="7"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DimCity\NDS City.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
-                      dataType="dbTimeStamp2"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DimCity\NDS City.Outputs[OLE DB Source Output].ExternalColumns[UpdatedDate]"
-                      lineageId="Package\DimCity\NDS City.Outputs[OLE DB Source Output].Columns[UpdatedDate]"
-                      name="UpdatedDate"
-                      scale="7"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\DimCity\NDS City.Outputs[OLE DB Source Output].Columns[SourceId]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
@@ -542,6 +559,15 @@ WHERE UpdatedDate &gt; ? and UpdatedDate &lt; ?</property>
                       length="255"
                       name="City" />
                     <externalMetadataColumn
+                      refId="Package\DimCity\NDS City.Outputs[OLE DB Source Output].ExternalColumns[SourceId]"
+                      dataType="i4"
+                      name="SourceId" />
+                    <externalMetadataColumn
+                      refId="Package\DimCity\NDS City.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                      dataType="wstr"
+                      length="255"
+                      name="Status" />
+                    <externalMetadataColumn
                       refId="Package\DimCity\NDS City.Outputs[OLE DB Source Output].ExternalColumns[CreatedDate]"
                       dataType="dbTimeStamp2"
                       name="CreatedDate"
@@ -551,15 +577,6 @@ WHERE UpdatedDate &gt; ? and UpdatedDate &lt; ?</property>
                       dataType="dbTimeStamp2"
                       name="UpdatedDate"
                       scale="7" />
-                    <externalMetadataColumn
-                      refId="Package\DimCity\NDS City.Outputs[OLE DB Source Output].ExternalColumns[SourceId]"
-                      dataType="i4"
-                      name="SourceId" />
-                    <externalMetadataColumn
-                      refId="Package\DimCity\NDS City.Outputs[OLE DB Source Output].ExternalColumns[Status]"
-                      dataType="wstr"
-                      length="255"
-                      name="Status" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -596,18 +613,6 @@ WHERE UpdatedDate &gt; ? and UpdatedDate &lt; ?</property>
                       lineageId="Package\DimCity\NDS City.Outputs[OLE DB Source Error Output].Columns[Status]"
                       name="Status" />
                     <outputColumn
-                      refId="Package\DimCity\NDS City.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
-                      dataType="dbTimeStamp2"
-                      lineageId="Package\DimCity\NDS City.Outputs[OLE DB Source Error Output].Columns[CreatedDate]"
-                      name="CreatedDate"
-                      scale="7" />
-                    <outputColumn
-                      refId="Package\DimCity\NDS City.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
-                      dataType="dbTimeStamp2"
-                      lineageId="Package\DimCity\NDS City.Outputs[OLE DB Source Error Output].Columns[UpdatedDate]"
-                      name="UpdatedDate"
-                      scale="7" />
-                    <outputColumn
                       refId="Package\DimCity\NDS City.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
                       lineageId="Package\DimCity\NDS City.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
@@ -625,11 +630,11 @@ WHERE UpdatedDate &gt; ? and UpdatedDate &lt; ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\DimCity\NDS in DDS (3)"
+              refId="Package\DimCity\NDS to DDS"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="NDS in DDS (3)"
+              name="NDS to DDS"
               usesDispositions="true"
               version="6">
               <properties>
@@ -676,7 +681,7 @@ where [refTable].[CityID_SK] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CityID_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Branch" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="City" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CreatedDate" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="UpdatedDate" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CityID_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Branch" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="City" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SourceId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Status" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CreatedDate" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;referenceColumn name="UpdatedDate" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="7" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -693,7 +698,7 @@ where [refTable].[CityID_SK] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\DimCity\NDS in DDS (3).Connections[OleDbConnection]"
+                  refId="Package\DimCity\NDS to DDS.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[DDS]"
                   connectionManagerRefId="Package.ConnectionManagers[DDS]"
                   description="Connection manager used to access lookup data."
@@ -701,11 +706,11 @@ where [refTable].[CityID_SK] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\DimCity\NDS in DDS (3).Inputs[Lookup Input]"
+                  refId="Package\DimCity\NDS to DDS.Inputs[Lookup Input]"
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DimCity\NDS in DDS (3).Inputs[Lookup Input].Columns[CityID_SK]"
+                      refId="Package\DimCity\NDS to DDS.Inputs[Lookup Input].Columns[CityID_SK]"
                       cachedDataType="i4"
                       cachedName="CityID_SK"
                       lineageId="Package\DimCity\NDS City.Outputs[OLE DB Source Output].Columns[CityID_SK]">
@@ -726,38 +731,38 @@ where [refTable].[CityID_SK] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DimCity\NDS in DDS (3).Outputs[Lookup Match Output]"
+                  refId="Package\DimCity\NDS to DDS.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
                   exclusionGroup="1"
                   name="Lookup Match Output"
-                  synchronousInputId="Package\DimCity\NDS in DDS (3).Inputs[Lookup Input]">
+                  synchronousInputId="Package\DimCity\NDS to DDS.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DimCity\NDS in DDS (3).Outputs[Lookup No Match Output]"
+                  refId="Package\DimCity\NDS to DDS.Outputs[Lookup No Match Output]"
                   description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                   exclusionGroup="1"
                   name="Lookup No Match Output"
-                  synchronousInputId="Package\DimCity\NDS in DDS (3).Inputs[Lookup Input]">
+                  synchronousInputId="Package\DimCity\NDS to DDS.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DimCity\NDS in DDS (3).Outputs[Lookup Error Output]"
+                  refId="Package\DimCity\NDS to DDS.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Lookup Error Output"
-                  synchronousInputId="Package\DimCity\NDS in DDS (3).Inputs[Lookup Input]">
+                  synchronousInputId="Package\DimCity\NDS to DDS.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DimCity\NDS in DDS (3).Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\DimCity\NDS to DDS.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DimCity\NDS in DDS (3).Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DimCity\NDS to DDS.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DimCity\NDS in DDS (3).Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\DimCity\NDS to DDS.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DimCity\NDS in DDS (3).Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DimCity\NDS to DDS.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -785,10 +790,10 @@ where [refTable].[CityID_SK] = ?</property>
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [DimCity]
 SET
-    [Branch] = ?,
     [City] = ?,
     [UpdatedDate] = GETUTCDATE(),
-[SourceId] = ?
+[SourceId] = ?,
+[Status] = ?
 WHERE
     [CityID_SK] = ?;
 </property>
@@ -814,25 +819,25 @@ WHERE
                   name="OLE DB Command Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DimCity\Update DimCity.Inputs[OLE DB Command Input].Columns[Branch]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="Branch"
-                      externalMetadataColumnId="Package\DimCity\Update DimCity.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
-                      lineageId="Package\DimCity\NDS City.Outputs[OLE DB Source Output].Columns[Branch]" />
-                    <inputColumn
                       refId="Package\DimCity\Update DimCity.Inputs[OLE DB Command Input].Columns[City]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="City"
-                      externalMetadataColumnId="Package\DimCity\Update DimCity.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      externalMetadataColumnId="Package\DimCity\Update DimCity.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
                       lineageId="Package\DimCity\NDS City.Outputs[OLE DB Source Output].Columns[City]" />
                     <inputColumn
                       refId="Package\DimCity\Update DimCity.Inputs[OLE DB Command Input].Columns[SourceId]"
                       cachedDataType="i4"
                       cachedName="SourceId"
-                      externalMetadataColumnId="Package\DimCity\Update DimCity.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      externalMetadataColumnId="Package\DimCity\Update DimCity.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
                       lineageId="Package\DimCity\NDS City.Outputs[OLE DB Source Output].Columns[SourceId]" />
+                    <inputColumn
+                      refId="Package\DimCity\Update DimCity.Inputs[OLE DB Command Input].Columns[Status]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Status"
+                      externalMetadataColumnId="Package\DimCity\Update DimCity.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\DimCity\NDS City.Outputs[OLE DB Source Output].Columns[Status]" />
                     <inputColumn
                       refId="Package\DimCity\Update DimCity.Inputs[OLE DB Command Input].Columns[CityID_SK]"
                       cachedDataType="i4"
@@ -856,25 +861,25 @@ WHERE
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\DimCity\Update DimCity.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                      dataType="wstr"
-                      length="255"
+                      dataType="i4"
                       name="Param_1">
                       <properties>
                         <property
                           dataType="System.Int32"
                           description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">65</property>
+                          name="DBParamInfoFlags">81</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\DimCity\Update DimCity.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
-                      dataType="i4"
+                      dataType="wstr"
+                      length="255"
                       name="Param_2">
                       <properties>
                         <property
                           dataType="System.Int32"
                           description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">81</property>
+                          name="DBParamInfoFlags">65</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
@@ -929,15 +934,15 @@ WHERE
               refId="Package\DimCity.Paths[Lookup Match Output]"
               endId="Package\DimCity\Update DimCity.Inputs[OLE DB Command Input]"
               name="Lookup Match Output"
-              startId="Package\DimCity\NDS in DDS (3).Outputs[Lookup Match Output]" />
+              startId="Package\DimCity\NDS to DDS.Outputs[Lookup Match Output]" />
             <path
               refId="Package\DimCity.Paths[Lookup No Match Output]"
               endId="Package\DimCity\DimCity.Inputs[OLE DB Destination Input]"
               name="Lookup No Match Output"
-              startId="Package\DimCity\NDS in DDS (3).Outputs[Lookup No Match Output]" />
+              startId="Package\DimCity\NDS to DDS.Outputs[Lookup No Match Output]" />
             <path
               refId="Package\DimCity.Paths[OLE DB Source Output]"
-              endId="Package\DimCity\NDS in DDS (3).Inputs[Lookup Input]"
+              endId="Package\DimCity\NDS to DDS.Inputs[Lookup Input]"
               name="OLE DB Source Output"
               startId="Package\DimCity\NDS City.Outputs[OLE DB Source Output]" />
           </paths>
@@ -10651,7 +10656,7 @@ where [refTable].[InvoiceID_sk] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\FactSupermarketSale (v2)\1281:invalid};</property>
+                  name="ParameterMap">#{Package\FactSupermarketSale (v2)\1265:invalid};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -11700,12 +11705,12 @@ WHERE
       DTS:LocaleID="-1"
       DTS:ObjectName="Get CET, LSET DimCity"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="4">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{B2A9D017-F411-4211-9AA5-B7E32A224916}"
-          SQLTask:SqlStatementSource="SELECT CET, LSET FROM [AuditTableLog] &#xA;WHERE TableName = 'DimCity';"
+          SQLTask:Connection="{2BE11C6C-417F-4328-96B7-FB4961C7A9F8}"
+          SQLTask:SqlStatementSource="SELECT CET, LSET FROM [AuditTableLog] &#xA;WHERE TableName = 'DimCity' and TableType='dds';"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="CET"
@@ -11725,12 +11730,12 @@ WHERE
       DTS:LocaleID="-1"
       DTS:ObjectName="Get CET, LSET DimCustomer"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="3">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{B2A9D017-F411-4211-9AA5-B7E32A224916}"
-          SQLTask:SqlStatementSource="SELECT CET, LSET FROM [AuditTableLog] &#xA;WHERE TableName = 'DimCustomer';"
+          SQLTask:Connection="{2BE11C6C-417F-4328-96B7-FB4961C7A9F8}"
+          SQLTask:SqlStatementSource="SELECT CET, LSET FROM [AuditTableLog] &#xA;WHERE TableName = 'DimCustomer' and TableType='dds';"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="CET"
@@ -11750,12 +11755,12 @@ WHERE
       DTS:LocaleID="-1"
       DTS:ObjectName="Get CET, LSET DimDate"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="4">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{B2A9D017-F411-4211-9AA5-B7E32A224916}"
-          SQLTask:SqlStatementSource="SELECT CET, LSET FROM [AuditTableLog] &#xA;WHERE TableName = 'DimDate';"
+          SQLTask:Connection="{2BE11C6C-417F-4328-96B7-FB4961C7A9F8}"
+          SQLTask:SqlStatementSource="SELECT CET, LSET FROM [AuditTableLog] &#xA;WHERE TableName = 'DimDate' and TableType='dds';"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="CET"
@@ -11775,12 +11780,12 @@ WHERE
       DTS:LocaleID="-1"
       DTS:ObjectName="Get CET, LSET DimPayment"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="3">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{B2A9D017-F411-4211-9AA5-B7E32A224916}"
-          SQLTask:SqlStatementSource="SELECT CET, LSET FROM [AuditTableLog] &#xA;WHERE TableName = 'DimPayment';"
+          SQLTask:Connection="{2BE11C6C-417F-4328-96B7-FB4961C7A9F8}"
+          SQLTask:SqlStatementSource="SELECT CET, LSET FROM [AuditTableLog] &#xA;WHERE TableName = 'DimPayment' and TableType='dds';"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="CET"
@@ -11800,12 +11805,12 @@ WHERE
       DTS:LocaleID="-1"
       DTS:ObjectName="Get CET, LSET DimProduct"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{B2A9D017-F411-4211-9AA5-B7E32A224916}"
-          SQLTask:SqlStatementSource="SELECT CET, LSET FROM [AuditTableLog] &#xA;WHERE TableName = 'DimProduct';"
+          SQLTask:Connection="{2BE11C6C-417F-4328-96B7-FB4961C7A9F8}"
+          SQLTask:SqlStatementSource="SELECT CET, LSET FROM [AuditTableLog] &#xA;WHERE TableName = 'DimProduct' and TableType='dds';"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="CET"
@@ -11829,8 +11834,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{B2A9D017-F411-4211-9AA5-B7E32A224916}"
-          SQLTask:SqlStatementSource="SELECT CET, LSET FROM [AuditTableLog] &#xA;WHERE TableName = 'FactSupermarketSale';"
+          SQLTask:Connection="{2BE11C6C-417F-4328-96B7-FB4961C7A9F8}"
+          SQLTask:SqlStatementSource="SELECT CET, LSET FROM [AuditTableLog] &#xA;WHERE TableName = 'FactSupermarketSale' and TableType='dds';"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="CET"
@@ -11850,12 +11855,12 @@ WHERE
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET DimCity"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="4">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{B2A9D017-F411-4211-9AA5-B7E32A224916}"
-          SQLTask:SqlStatementSource="UPDATE [AuditTableLog] &#xA;SET CET = GETUTCDATE()&#xA;WHERE TableName = 'DimCity'; " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:Connection="{2BE11C6C-417F-4328-96B7-FB4961C7A9F8}"
+          SQLTask:SqlStatementSource="UPDATE [AuditTableLog] &#xA;SET CET = GETUTCDATE() &#xA;WHERE TableName = 'DimCity' and TableType='dds'; " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -11867,12 +11872,12 @@ WHERE
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET DimCustomer"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="3">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{B2A9D017-F411-4211-9AA5-B7E32A224916}"
-          SQLTask:SqlStatementSource="UPDATE [AuditTableLog] &#xA;SET CET = GETUTCDATE()&#xA;WHERE TableName = 'DimCustomer'; " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:Connection="{2BE11C6C-417F-4328-96B7-FB4961C7A9F8}"
+          SQLTask:SqlStatementSource="UPDATE [AuditTableLog] &#xA;SET CET = GETUTCDATE() &#xA;WHERE TableName = 'DimCustomer' and TableType='dds'; " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -11884,12 +11889,12 @@ WHERE
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET DimDate"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="4">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{B2A9D017-F411-4211-9AA5-B7E32A224916}"
-          SQLTask:SqlStatementSource="UPDATE [AuditTableLog] &#xA;SET CET = GETUTCDATE()&#xA;WHERE TableName = 'DimDate'; " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:Connection="{2BE11C6C-417F-4328-96B7-FB4961C7A9F8}"
+          SQLTask:SqlStatementSource="UPDATE [AuditTableLog] &#xA;SET CET = GETUTCDATE() &#xA;WHERE TableName = 'DimDate' and TableType='dds'; " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -11901,12 +11906,12 @@ WHERE
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET DimPayment"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="3">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{B2A9D017-F411-4211-9AA5-B7E32A224916}"
-          SQLTask:SqlStatementSource="UPDATE [AuditTableLog] &#xA;SET CET = GETUTCDATE()&#xA;WHERE TableName = 'DimPayment'; " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:Connection="{2BE11C6C-417F-4328-96B7-FB4961C7A9F8}"
+          SQLTask:SqlStatementSource="UPDATE [AuditTableLog] &#xA;SET CET = GETUTCDATE() &#xA;WHERE TableName = 'DimPayment' and TableType='dds'; " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -11918,12 +11923,12 @@ WHERE
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET DimProduct"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{B2A9D017-F411-4211-9AA5-B7E32A224916}"
-          SQLTask:SqlStatementSource="UPDATE [AuditTableLog] &#xA;SET CET = GETUTCDATE()&#xA;WHERE TableName = 'DimProduct'; " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:Connection="{2BE11C6C-417F-4328-96B7-FB4961C7A9F8}"
+          SQLTask:SqlStatementSource="UPDATE [AuditTableLog] &#xA;SET CET = GETUTCDATE() &#xA;WHERE TableName = 'DimProduct' and TableType='dds'; " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -11939,8 +11944,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{B2A9D017-F411-4211-9AA5-B7E32A224916}"
-          SQLTask:SqlStatementSource="UPDATE [AuditTableLog] &#xA;SET CET = GETDATE() &#xA;WHERE TableName = 'FactSupermarketSale'; " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:Connection="{2BE11C6C-417F-4328-96B7-FB4961C7A9F8}"
+          SQLTask:SqlStatementSource="UPDATE [AuditTableLog] &#xA;SET CET = GETUTCDATE() &#xA;WHERE TableName = 'FactSupermarketSale' and TableType='dds'; " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -11952,12 +11957,12 @@ WHERE
       DTS:LocaleID="-1"
       DTS:ObjectName="Set LSET DimCity"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="4">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{B2A9D017-F411-4211-9AA5-B7E32A224916}"
-          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET LSET =GETUTCDATE()&#xA;WHERE TableName = 'DimCity';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:Connection="{2BE11C6C-417F-4328-96B7-FB4961C7A9F8}"
+          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET LSET =GETUTCDATE() &#xA;WHERE TableName = 'DimCity' and TableType='dds';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -11969,12 +11974,12 @@ WHERE
       DTS:LocaleID="-1"
       DTS:ObjectName="Set LSET DimCustomer"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="3">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{B2A9D017-F411-4211-9AA5-B7E32A224916}"
-          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET LSET = GETUTCDATE()&#xA;WHERE TableName = 'DimCustomer';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:Connection="{2BE11C6C-417F-4328-96B7-FB4961C7A9F8}"
+          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET LSET = GETUTCDATE()&#xA;WHERE TableName = 'DimCustomer' and TableType='dds';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -11986,12 +11991,12 @@ WHERE
       DTS:LocaleID="-1"
       DTS:ObjectName="Set LSET DimDate"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="4">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{B2A9D017-F411-4211-9AA5-B7E32A224916}"
-          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET LSET = GETUTCDATE()&#xA;WHERE TableName = 'DimDate';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:Connection="{2BE11C6C-417F-4328-96B7-FB4961C7A9F8}"
+          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET LSET = GETUTCDATE() &#xA;WHERE TableName = 'DimDate' and TableType='dds';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -12003,12 +12008,12 @@ WHERE
       DTS:LocaleID="-1"
       DTS:ObjectName="Set LSET DimPayment"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="3">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{B2A9D017-F411-4211-9AA5-B7E32A224916}"
-          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET LSET = GETUTCDATE()&#xA;WHERE TableName = 'DimPayment';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:Connection="{2BE11C6C-417F-4328-96B7-FB4961C7A9F8}"
+          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET LSET = GETUTCDATE() &#xA;WHERE TableName = 'DimPayment' and TableType='dds';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -12020,12 +12025,12 @@ WHERE
       DTS:LocaleID="-1"
       DTS:ObjectName="Set LSET DimProduct"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{B2A9D017-F411-4211-9AA5-B7E32A224916}"
-          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET LSET = GETUTCDATE()&#xA;WHERE TableName = 'DimProduct';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:Connection="{2BE11C6C-417F-4328-96B7-FB4961C7A9F8}"
+          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET LSET = GETUTCDATE() &#xA;WHERE TableName = 'DimProduct' and TableType='dds';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -12041,8 +12046,8 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{B2A9D017-F411-4211-9AA5-B7E32A224916}"
-          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET LSET = GETDATE()&#xA;WHERE TableName = 'FactSupermarketSale';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:Connection="{2BE11C6C-417F-4328-96B7-FB4961C7A9F8}"
+          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET LSET = GETUTCDATE() &#xA;WHERE TableName = 'FactSupermarketSale' and TableType='dds';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -12063,15 +12068,6 @@ WHERE
           VSTAMinorVersion="0"
           Language="CSharp"
           ReadOnlyVariables="$Package::ConfigFilePath,$Package::OLED_DestinationDatabaseName,$Package::OLED_DestinationServerName,$Package::OLED_SourceDatabaseName,$Package::OLED_SourceServerName">
-          <ProjectItem
-            Name="Properties\Settings.settings"
-            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.resx"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -12194,6 +12190,35 @@ WHERE
           <ProjectItem
             Name="ST_5a3cc4256a3e4e79aefa9051cb394a52.csproj"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?><Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"><PropertyGroup><ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids><Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration><Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform><ProductVersion>8.0.30703</ProductVersion><SchemaVersion>2.0</SchemaVersion><ProjectGuid>{E2618C15-5795-4E68-A9F8-75116FF87E4A}</ProjectGuid><OutputType>Library</OutputType><AppDesignerFolder>Properties</AppDesignerFolder><RootNamespace>ST_c6eef40b273547c5bf97ae1ed81b2944</RootNamespace><AssemblyName>ST_5a3cc4256a3e4e79aefa9051cb394a52</AssemblyName><TargetFrameworkVersion>v4.7</TargetFrameworkVersion><FileAlignment>512</FileAlignment><ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch><TargetFrameworkProfile></TargetFrameworkProfile></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Debug' "><DebugSymbols>true</DebugSymbols><DebugType>full</DebugType><Optimize>false</Optimize><OutputPath>.\bin\Debug\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>DEBUG;TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><PropertyGroup Condition=" '$(Configuration)' == 'Release' "><DebugSymbols>false</DebugSymbols><Optimize>true</Optimize><OutputPath>.\bin\Release\</OutputPath><EnableUnmanagedDebugging>false</EnableUnmanagedDebugging><DefineConstants>TRACE</DefineConstants><ErrorReport>prompt</ErrorReport><WarningLevel>4</WarningLevel></PropertyGroup><ItemGroup><Reference Include="System" /><Reference Include="System.Data" /><Reference Include="System.Windows.Forms" /><Reference Include="System.Xml" /><Reference Include="Microsoft.SqlServer.ManagedDTS, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /><Reference Include="Microsoft.SqlServer.ScriptTask, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" /></ItemGroup><ItemGroup><AppDesigner Include="Properties\" /><Compile Include="Properties\AssemblyInfo.cs"><SubType>Code</SubType></Compile><EmbeddedResource Include="Properties\Resources.resx"><Generator>ResXFileCodeGenerator</Generator><LastGenOutput>Resources.Designer.cs</LastGenOutput></EmbeddedResource><Compile Include="Properties\Resources.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Resources.resx</DependentUpon></Compile><None Include="Properties\Settings.settings"><Generator>SettingsSingleFileGenerator</Generator><LastGenOutput>Settings.Designer.cs</LastGenOutput></None><Compile Include="Properties\Settings.Designer.cs"><AutoGen>True</AutoGen><DependentUpon>Settings.settings</DependentUpon></Compile><Compile Include="ScriptMain.cs"><SubType>Code</SubType></Compile></ItemGroup><!-- Include the build rules for a C# project.--><Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" /><ProjectExtensions><VisualStudio><FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}"><ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" /><Host Name="ScriptTask" /><ProjectClient><HostIdentifier>SSIS_ST160</HostIdentifier></ProjectClient></FlavorProperties></VisualStudio></ProjectExtensions></Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_c6eef40b273547c5bf97ae1ed81b2944.Properties.Settings.get_Default():ST_c6eef40b273547c5bf97ae1ed81b2944.Properties.Sett" +
+    "ings")]
+
+namespace ST_c6eef40b273547c5bf97ae1ed81b2944.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
           <ProjectItem
             Name="ScriptMain.cs"
             Encoding="UTF8"><![CDATA[#region Help:  Introduction to the script task
@@ -12345,35 +12370,6 @@ namespace ST_c6eef40b273547c5bf97ae1ed81b2944
   </msb:ItemGroup>
 </c:Project>]]></ProjectItem>
           <ProjectItem
-            Name="Properties\Settings.Designer.cs"
-            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
-// <auto-generated>
-//     This code was generated by a tool.
-//
-//     Changes to this file may cause incorrect behavior and will be lost if
-//     the code is regenerated.
-// </auto-generated>
-//------------------------------------------------------------------------------
-
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_c6eef40b273547c5bf97ae1ed81b2944.Properties.Settings.get_Default():ST_c6eef40b273547c5bf97ae1ed81b2944.Properties.Sett" +
-    "ings")]
-
-namespace ST_c6eef40b273547c5bf97ae1ed81b2944.Properties {
-    
-    
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
-        
-        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-        private static Settings defaultInstance = new Settings();
-        
-        public static Settings Default {
-            get {
-                return defaultInstance;
-            }
-        }
-    }
-}]]></ProjectItem>
-          <ProjectItem
             Name="Properties\AssemblyInfo.cs"
             Encoding="UTF8"><![CDATA[using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -12403,6 +12399,15 @@ using System.Runtime.CompilerServices;
 // by using the '*' as shown below:
 
 [assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.Designer.cs"
             Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -12605,7 +12610,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{64E8B6FC-0F25-4A3E-A7C4-01398CCB2600}"
+      DTS:DTSID="{EC0A38F3-7650-4E84-A9D6-6159C860E69D}"
       DTS:From="Package\Get CET, LSET DimCity"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
@@ -12709,7 +12714,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
-      DTS:DTSID="{80EDFEEF-B066-41C2-B3D3-C657A1894C7F}"
+      DTS:DTSID="{EE504A7E-9BFB-48F3-877E-36680811D618}"
       DTS:From="Package\DimCity"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
@@ -12792,10 +12797,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <GraphLayout
         Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="115,42"
-          Id="Package\DimCity"
-          TopLeft="129,230" />
-        <NodeLayout
           Size="143,42"
           Id="Package\DimCustomer"
           TopLeft="303.25,231.25" />
@@ -12876,7 +12877,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           Id="Package\Set LSET DimCity"
           TopLeft="119,305" />
         <NodeLayout
-          Size="140,42"
+          Size="146,42"
           Id="Package\Set LSET DimCustomer"
           TopLeft="304.25,313.25" />
         <NodeLayout
@@ -12913,28 +12914,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,33.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="188.25,188">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,42"
-              Start="0,0"
-              End="0,34.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,34.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -13067,13 +13046,13 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 13]"
-          TopLeft="374.25,355.25">
+          TopLeft="377.25,355.25">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="135.333333333333,87.5"
+              EndConnector="132.333333333333,87.5"
               Start="0,0"
-              End="135.333333333333,80">
+              End="132.333333333333,80">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -13084,13 +13063,13 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                     Point2="0,52.1192203082502"
                     Point3="4,52.1192203082502" />
                   <mssgle:LineSegment
-                    End="131.333333333333,52.1192203082502" />
+                    End="128.333333333333,52.1192203082502" />
                   <mssgle:CubicBezierSegment
-                    Point1="131.333333333333,52.1192203082502"
-                    Point2="135.333333333333,52.1192203082502"
-                    Point3="135.333333333333,56.1192203082502" />
+                    Point1="128.333333333333,52.1192203082502"
+                    Point2="132.333333333333,52.1192203082502"
+                    Point3="132.333333333333,56.1192203082502" />
                   <mssgle:LineSegment
-                    End="135.333333333333,80" />
+                    End="132.333333333333,80" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -13256,28 +13235,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="187.75,272">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,33"
-              Start="0,0"
-              End="0,25.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
           TopLeft="368.5,104.25">
           <EdgeLayout.Curve>
@@ -13323,7 +13280,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="374.5,273.25">
+          TopLeft="376,273.25">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -13453,44 +13410,24 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </Package>
-  <TaskHost
-    design-time-name="Package\DimCity">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="152,42"
-          Id="Package\DimCity\Update DimCity"
-          TopLeft="314,267" />
-        <NodeLayout
-          Size="152,42"
-          Id="Package\DimCity\NDS in DDS (3)"
-          TopLeft="413,151" />
-        <NodeLayout
-          Size="120,42"
-          Id="Package\DimCity\NDS City"
-          TopLeft="427,60" />
         <NodeLayout
           Size="115,42"
-          Id="Package\DimCity\DimCity"
-          TopLeft="539,266.777777777778" />
+          Id="Package\DimCity"
+          TopLeft="130,227" />
         <EdgeLayout
-          Id="Package\DimCity.Paths[OLE DB Source Output]"
-          TopLeft="488,102">
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="188.75,188">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,49"
+              EndConnector="0,39"
               Start="0,0"
-              End="0,41.5">
+              End="0,31.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,41.5" />
+                    End="0,31.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -13500,129 +13437,30 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DimCity.Paths[Lookup No Match Output]"
-          TopLeft="513,193">
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="188.25,269">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="83.5,73.777777777778"
+              EndConnector="0,36"
               Start="0,0"
-              End="83.5,66.277777777778">
+              End="0,28.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,25.9722222222223" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,25.9722222222223"
-                    Point2="0,29.9722222222223"
-                    Point3="4,29.9722222222223" />
-                  <mssgle:LineSegment
-                    End="79.5,29.9722222222223" />
-                  <mssgle:CubicBezierSegment
-                    Point1="79.5,29.9722222222223"
-                    Point2="83.5,29.9722222222223"
-                    Point3="83.5,33.9722222222223" />
-                  <mssgle:LineSegment
-                    End="83.5,66.277777777778" />
+                    End="0,28.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-14.05638671875,34.9722222222223,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DimCity.Paths[Lookup Match Output]"
-          TopLeft="465,193">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-75,74"
-              Start="0,0"
-              End="-75,66.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.0625" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26.0625"
-                    Point2="0,30.0625"
-                    Point3="-4,30.0625" />
-                  <mssgle:LineSegment
-                    End="-71,30.0625" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-71,30.0625"
-                    Point2="-75,30.0625"
-                    Point3="-75,34.0625" />
-                  <mssgle:LineSegment
-                    End="-75,66.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-85.69138671875,35.0625,96.3827734375,11.609375"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\DimCity\NDS in DDS (3)">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[DimCity]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DimCity\NDS City">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DimCity\DimCity">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
+  </Package>
   <TaskHost
     design-time-name="Package\DimCustomer">
     <LayoutInfo>
@@ -13796,17 +13634,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="143,42"
-          Id="Package\DimDate\DDS DimDate"
-          TopLeft="389.222222222223,527.111111111111" />
-        <NodeLayout
           Size="159,42"
           Id="Package\DimDate\SupermarketSale"
           TopLeft="376.777777777778,177.444444444445" />
-        <NodeLayout
-          Size="143,42"
-          Id="Package\DimDate\Add Datetime"
-          TopLeft="387,331" />
         <NodeLayout
           Size="182,42"
           Id="Package\DimDate\NDS SupermarketSale"
@@ -13815,6 +13645,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           Size="138,42"
           Id="Package\DimDate\Lookup Date"
           TopLeft="392.333333333334,248.555555555556" />
+        <NodeLayout
+          Size="143,42"
+          Id="Package\DimDate\Add Datetime"
+          TopLeft="387,331" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\DimDate\Derived Column"
+          TopLeft="380,418" />
+        <NodeLayout
+          Size="143,42"
+          Id="Package\DimDate\DDS DimDate"
+          TopLeft="389.222222222223,527.111111111111" />
         <EdgeLayout
           Id="Package\DimDate.Paths[Sort Output]"
           TopLeft="458.805555555556,219.444444444445">
@@ -13834,7 +13676,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -13856,7 +13700,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -13883,32 +13729,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="154,42"
-          Id="Package\DimDate\Derived Column"
-          TopLeft="380,418" />
-        <EdgeLayout
-          Id="Package\DimDate.Paths[Derived Column Output]"
-          TopLeft="458.861111111112,460">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,67.111111111111"
-              Start="0,0"
-              End="0,59.611111111111">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,59.611111111111" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\DimDate.Paths[Derived Column Output1]"
           TopLeft="457.75,373">
@@ -13928,12 +13748,51 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DimDate.Paths[Derived Column Output]"
+          TopLeft="458.861111111112,460">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,67.111111111111"
+              Start="0,0"
+              End="0,59.611111111111">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59.611111111111" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimDate\NDS SupermarketSale">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\DimDate\Lookup Date">
     <Properties>
@@ -13954,19 +13813,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DimDate\NDS SupermarketSale">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -14943,7 +14789,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -15098,7 +14946,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -15108,7 +14956,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -15161,6 +15009,168 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DimCity">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="120,42"
+          Id="Package\DimCity\NDS City"
+          TopLeft="437,216" />
+        <NodeLayout
+          Size="115,42"
+          Id="Package\DimCity\DimCity"
+          TopLeft="553,379" />
+        <NodeLayout
+          Size="152,42"
+          Id="Package\DimCity\Update DimCity"
+          TopLeft="325,388" />
+        <NodeLayout
+          Size="136,42"
+          Id="Package\DimCity\NDS to DDS"
+          TopLeft="424,296" />
+        <EdgeLayout
+          Id="Package\DimCity.Paths[OLE DB Source Output]"
+          TopLeft="494.5,258">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38"
+              Start="0,0"
+              End="0,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DimCity.Paths[Lookup No Match Output]"
+          TopLeft="513.333333333333,338">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="97.1666666666666,41"
+              Start="0,0"
+              End="97.1666666666666,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.6860465116279" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.6860465116279"
+                    Point2="0,16.6860465116279"
+                    Point3="4,16.6860465116279" />
+                  <mssgle:LineSegment
+                    End="93.1666666666666,16.6860465116279" />
+                  <mssgle:CubicBezierSegment
+                    Point1="93.1666666666666,16.6860465116279"
+                    Point2="97.1666666666666,16.6860465116279"
+                    Point3="97.1666666666666,20.6860465116279" />
+                  <mssgle:LineSegment
+                    End="97.1666666666666,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-7.22305338541668,21.6860465116279,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DimCity.Paths[Lookup Match Output]"
+          TopLeft="470.666666666667,338">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-69.6666666666667,50"
+              Start="0,0"
+              End="-69.6666666666667,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.3488372093023" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.3488372093023"
+                    Point2="0,20.3488372093023"
+                    Point3="-4,20.3488372093023" />
+                  <mssgle:LineSegment
+                    End="-65.6666666666667,20.3488372093023" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-65.6666666666667,20.3488372093023"
+                    Point2="-69.6666666666667,20.3488372093023"
+                    Point3="-69.6666666666667,24.3488372093023" />
+                  <mssgle:LineSegment
+                    End="-69.6666666666667,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-83.0247200520834,25.3488372093023,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimCity\NDS City">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimCity\DimCity">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DimCity\NDS to DDS">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimCity]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
