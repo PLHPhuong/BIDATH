@@ -9,6 +9,7 @@
         <Source>D:\BI\DATH\data\productline.csv</Source>
         <Source>D:\BI\DATH\data\supermarket_sales.csv</Source>
         <Source>D:\BI\DATH\data\supermarket_sales.xls</Source>
+        <Source IsOriginal="true">D:\BI\DATH\data\supermarket_sales_source.xlsx</Source>
       </Sources>
     </OtherSources>
   </DataSource>

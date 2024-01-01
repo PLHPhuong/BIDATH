@@ -1,0 +1,80 @@
+            string filePath = (string)Dts.Variables["User::FilePath"].Value;
+
+            Dts.TaskResult = (int)ScriptResults.Success;
+            if (File.Exists(filePath))
+            {
+                FileInfo fileInfo = new FileInfo(filePath);
+                DateTime lastWriteTime = fileInfo.LastWriteTime;
+                Dts.Variables["User::FileLastUpdateDate"].Value = lastWriteTime;
+                MessageBox.Show($"{Dts.Variables["User::FileLastUpdateDate"].Value}");
+            }
+            else
+            {
+                MessageBox.Show($"{filePath} not exist");
+            }
+
+(DT_DBTIMESTAMP)  "12/18/2023 11:56:31 AM"
+
+ISNULL([Unit price]) ? [Unit_price(supermarket_sales)] : [Unit price]
+
+ISNULL() ? :
+
+DT_DBTIMESTAMP
+
+DT_WSTR
+Unit_price  can be null -> error
+Unit_price same | StartDate same | EndDate same | productline same -> DoNothing		|
+Unit_price same | StartDate same | EndDate same | productline diff -> Update		|
+------------------------------------------------------------------------------------------
+Unit_price same | StartDate same | EndDate same | productline same/diff-> Update
+Unit_price same | StartDate same | EndDate > NDS_EndDate  | productline same/diff -> error (less to none where EndDate would be different)
+Unit_price same | StartDate same | EndDate < NDS_EndDate  | productline same/diff -> error (less to none where EndDate would be different)
+Unit_price same | StartDate same | EndDate != NDS_EndDate (null) | productline same/diff -> update
+Unit_price same | StartDate same | EndDate (null) != NDS_EndDate  | productline same/diff -> error (less to none where EndDate would be different)
+
+Unit_price same | StartDate > NDS_startDate| NDS_EndDate = null | productline same/diff -> Update NDS end date 
+Removed: same <ID,date,price>
+Same (ID,date): 
+
+2.price (diff), source (same);
+4.price (diff), source (diff);
+
+Is it possible to have a data in NDS to have EndDate is not null (greater or smaller than new data startdate) -> Hign change no since EndDate was created by purchase/invoice created date (with current source 1). After StartDate was create by union purchase/invoice of new data and pull from NDS, it will get sorted decs, if there is new or update price, EndDate will always use StartDate of previous row what has same ID value  
+
+UPDATE [Product]
+SET  
+[UnitPrice] = ?,
+[ProductLineID_SK] = ?,
+[StartDate] = ?,
+[EndDate] = ?,
+UpdatedDate = GETUTCDATE(),
+[SourceId] = ?,
+[Status] = ?
+WHERE [ProductID_SK] = ?;
+
+
+SELECT * FROM [dbo].[Product] WHERE [ProductID_NK] IN 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

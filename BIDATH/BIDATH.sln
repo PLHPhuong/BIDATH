@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.34114.132
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "BIDATH", "BIDATH\BIDATH.dtproj", "{8C428754-7067-47E2-AF7F-AD0B5DBE4187}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionalApplication", "FunctionalApplication\FunctionalApplication.csproj", "{1C8E2B82-D37B-4C7E-87C9-72FE52C47AB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{3F719675-D509-408C-A9EF-A3AE3659D13D}"
+EndProject
+Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "OLAP_1", "OLAP\OLAP_1.dwproj", "{83DA1C1B-1D85-4696-BBB0-A894F0268883}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +30,21 @@ Global
 		{1C8E2B82-D37B-4C7E-87C9-72FE52C47AB2}.Development|Any CPU.Build.0 = Debug|Any CPU
 		{1C8E2B82-D37B-4C7E-87C9-72FE52C47AB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C8E2B82-D37B-4C7E-87C9-72FE52C47AB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F719675-D509-408C-A9EF-A3AE3659D13D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F719675-D509-408C-A9EF-A3AE3659D13D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F719675-D509-408C-A9EF-A3AE3659D13D}.Development|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F719675-D509-408C-A9EF-A3AE3659D13D}.Development|Any CPU.Build.0 = Debug|Any CPU
+		{3F719675-D509-408C-A9EF-A3AE3659D13D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F719675-D509-408C-A9EF-A3AE3659D13D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83DA1C1B-1D85-4696-BBB0-A894F0268883}.Debug|Any CPU.ActiveCfg = Development
+		{83DA1C1B-1D85-4696-BBB0-A894F0268883}.Debug|Any CPU.Build.0 = Development
+		{83DA1C1B-1D85-4696-BBB0-A894F0268883}.Debug|Any CPU.Deploy.0 = Development
+		{83DA1C1B-1D85-4696-BBB0-A894F0268883}.Development|Any CPU.ActiveCfg = Development
+		{83DA1C1B-1D85-4696-BBB0-A894F0268883}.Development|Any CPU.Build.0 = Development
+		{83DA1C1B-1D85-4696-BBB0-A894F0268883}.Development|Any CPU.Deploy.0 = Development
+		{83DA1C1B-1D85-4696-BBB0-A894F0268883}.Release|Any CPU.ActiveCfg = Development
+		{83DA1C1B-1D85-4696-BBB0-A894F0268883}.Release|Any CPU.Build.0 = Development
+		{83DA1C1B-1D85-4696-BBB0-A894F0268883}.Release|Any CPU.Deploy.0 = Development
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
