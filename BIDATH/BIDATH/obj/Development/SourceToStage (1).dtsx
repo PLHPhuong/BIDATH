@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="173"
-  DTS:VersionGUID="{1797AF0C-AC52-42A8-9B32-AD0AB3AE48E2}">
+  DTS:VersionBuild="178"
+  DTS:VersionGUID="{A8D7C000-2916-4066-87A7-5442139F1E74}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1750,7 +1750,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Get CET, LSET city"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="3">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1775,7 +1775,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Get CET, LSET product"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1800,7 +1800,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Get CET, LSET ProductLine"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="3">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1825,7 +1825,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Get CET, LSET supermarket_sales"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="4">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1850,12 +1850,12 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET city"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="3">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{EC2539C7-ED58-4C7D-839E-6A21AD30D32A}"
-          SQLTask:SqlStatementSource="UPDATE [AuditTableLog] &#xA;SET CET = GETUTCDATE() &#xA;WHERE TableName = 'city' and TableType='stage'; " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE [AuditTableLog] &#xA;SET CET = GETDATE() &#xA;WHERE TableName = 'city' and TableType='stage'; " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1867,12 +1867,12 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET product"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{EC2539C7-ED58-4C7D-839E-6A21AD30D32A}"
-          SQLTask:SqlStatementSource="UPDATE [AuditTableLog] &#xA;SET CET = GETUTCDATE() &#xA;WHERE TableName = 'product' and TableType='stage'; " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE [AuditTableLog] &#xA;SET CET = GETDATE() &#xA;WHERE TableName = 'product' and TableType='stage'; " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1884,12 +1884,12 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET ProductLine"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="3">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{EC2539C7-ED58-4C7D-839E-6A21AD30D32A}"
-          SQLTask:SqlStatementSource="UPDATE [AuditTableLog] &#xA;SET CET = GETUTCDATE() &#xA;WHERE TableName = 'ProductLine' and TableType='stage'; " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE [AuditTableLog] &#xA;SET CET = GETDATE() &#xA;WHERE TableName = 'ProductLine' and TableType='stage'; " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1901,12 +1901,12 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET supermarket_sales"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="4">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{EC2539C7-ED58-4C7D-839E-6A21AD30D32A}"
-          SQLTask:SqlStatementSource="UPDATE [AuditTableLog] &#xA;SET CET = GETUTCDATE() &#xA;WHERE TableName = 'supermarket_sales' and TableType='stage'; " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE [AuditTableLog] &#xA;SET CET = GETDATE() &#xA;WHERE TableName = 'supermarket_sales' and TableType='stage'; " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1918,12 +1918,12 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Set LSET city"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="3">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{EC2539C7-ED58-4C7D-839E-6A21AD30D32A}"
-          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET LSET = GETUTCDATE()&#xA;WHERE TableName = 'city' and TableType='stage';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET LSET = GETDATE()&#xA;WHERE TableName = 'city' and TableType='stage';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1935,12 +1935,12 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Set LSET product"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{EC2539C7-ED58-4C7D-839E-6A21AD30D32A}"
-          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET LSET = GETUTCDATE()&#xA;WHERE TableName = 'product' and TableType='stage';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET LSET = GETDATE() &#xA;WHERE TableName = 'product' and TableType='stage';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1952,12 +1952,12 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Set LSET ProductLine"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="3">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{EC2539C7-ED58-4C7D-839E-6A21AD30D32A}"
-          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET LSET = GETUTCDATE()&#xA;WHERE TableName = 'ProductLine' and TableType='stage';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET LSET = GETDATE()&#xA;WHERE TableName = 'ProductLine' and TableType='stage';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1969,12 +1969,12 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Set LSET supermarket_sales"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="4">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{EC2539C7-ED58-4C7D-839E-6A21AD30D32A}"
-          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET LSET = GETUTCDATE()&#xA;WHERE TableName = 'supermarket_sales' and TableType='stage';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE [AuditTableLog]&#xA;SET LSET = GETDATE() &#xA;WHERE TableName = 'supermarket_sales' and TableType='stage';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1986,7 +1986,7 @@
       DTS:ExecutableType="Microsoft.ScriptTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Test check variables and params"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="4">
       <DTS:Variables />
       <DTS:ObjectData>
         <ScriptProject
@@ -1995,15 +1995,6 @@
           VSTAMinorVersion="0"
           Language="CSharp"
           ReadOnlyVariables="$Package::ConfigFilePath,$Package::DestinationOLEDDatabaseName,$Package::DestinationOLEDServerName,$Package::SourceFilePath,$Project::FilePathConfig">
-          <ProjectItem
-            Name="Properties\Settings.settings"
-            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.resx"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -2123,6 +2114,35 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
 </root>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_c6eef40b273547c5bf97ae1ed81b2944.Properties.Settings.get_Default():ST_c6eef40b273547c5bf97ae1ed81b2944.Properties.Sett" +
+    "ings")]
+
+namespace ST_c6eef40b273547c5bf97ae1ed81b2944.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
           <ProjectItem
             Name="ST_b78c7d3ea07d450dac39027d251dfd6d.csproj"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -2361,35 +2381,6 @@ namespace ST_c6eef40b273547c5bf97ae1ed81b2944
   </msb:ItemGroup>
 </c:Project>]]></ProjectItem>
           <ProjectItem
-            Name="Properties\Settings.Designer.cs"
-            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
-// <auto-generated>
-//     This code was generated by a tool.
-//
-//     Changes to this file may cause incorrect behavior and will be lost if
-//     the code is regenerated.
-// </auto-generated>
-//------------------------------------------------------------------------------
-
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_c6eef40b273547c5bf97ae1ed81b2944.Properties.Settings.get_Default():ST_c6eef40b273547c5bf97ae1ed81b2944.Properties.Sett" +
-    "ings")]
-
-namespace ST_c6eef40b273547c5bf97ae1ed81b2944.Properties {
-    
-    
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
-        
-        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-        private static Settings defaultInstance = new Settings();
-        
-        public static Settings Default {
-            get {
-                return defaultInstance;
-            }
-        }
-    }
-}]]></ProjectItem>
-          <ProjectItem
             Name="Properties\AssemblyInfo.cs"
             Encoding="UTF8"><![CDATA[using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -2419,6 +2410,15 @@ using System.Runtime.CompilerServices;
 // by using the '*' as shown below:
 
 [assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.Designer.cs"
             Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -2617,7 +2617,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Stage Tables"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -2771,78 +2771,78 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         <NodeLayout
           Size="131,42"
           Id="Package\Extract city"
-          TopLeft="946,393.5" />
+          TopLeft="461,450.5" />
         <NodeLayout
           Size="151,42"
           Id="Package\Extract product"
-          TopLeft="1120,392" />
+          TopLeft="635,449" />
         <NodeLayout
           Size="170,42"
           Id="Package\Extract ProductLine"
-          TopLeft="1476,393" />
+          TopLeft="991,450" />
         <NodeLayout
           Size="170,42"
           Id="Package\Extract supermarket_sales"
-          TopLeft="1292,393" />
+          TopLeft="807,450" />
         <NodeLayout
           Size="167,42"
           Id="Package\Get CET, LSET city"
-          TopLeft="924,318.25" />
+          TopLeft="439,375.25" />
         <NodeLayout
           Size="186,42"
           Id="Package\Get CET, LSET product"
-          TopLeft="1104,316" />
+          TopLeft="619,373" />
         <NodeLayout
           Size="167,42"
           Id="Package\Get CET, LSET ProductLine"
-          TopLeft="1474,312" />
+          TopLeft="989,369" />
         <NodeLayout
           Size="167,42"
           Id="Package\Get CET, LSET supermarket_sales"
-          TopLeft="1295,314" />
+          TopLeft="810,371" />
         <NodeLayout
           Size="136,42"
           Id="Package\Set CET city"
-          TopLeft="947,235.25" />
+          TopLeft="462,292.25" />
         <NodeLayout
           Size="155,42"
           Id="Package\Set CET product"
-          TopLeft="1118,233" />
+          TopLeft="633,290" />
         <NodeLayout
           Size="136,42"
           Id="Package\Set CET ProductLine"
-          TopLeft="1488,228" />
+          TopLeft="1003,285" />
         <NodeLayout
           Size="171,42"
           Id="Package\Set CET supermarket_sales"
-          TopLeft="1294,228" />
+          TopLeft="809,285" />
         <NodeLayout
           Size="140,42"
           Id="Package\Set LSET city"
-          TopLeft="941.25,468.5" />
+          TopLeft="456.25,525.5" />
         <NodeLayout
           Size="140,42"
           Id="Package\Set LSET product"
-          TopLeft="1122,468" />
+          TopLeft="637,525" />
         <NodeLayout
           Size="140,42"
           Id="Package\Set LSET ProductLine"
-          TopLeft="1485,466" />
+          TopLeft="1000,523" />
         <NodeLayout
           Size="166,42"
           Id="Package\Set LSET supermarket_sales"
-          TopLeft="1296,467" />
+          TopLeft="811,524" />
         <NodeLayout
           Size="233,42"
           Id="Package\Test check variables and params"
-          TopLeft="1267.5,30.75" />
+          TopLeft="720.5,110.75" />
         <NodeLayout
           Size="184,42"
           Id="Package\Truncate Stage Tables"
-          TopLeft="1222,122" />
+          TopLeft="737,179" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="1011.375,435.5">
+          TopLeft="526.375,492.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2864,7 +2864,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="1261.2,164">
+          TopLeft="776.2,221">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2898,7 +2898,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 10]"
-          TopLeft="1196.25,358">
+          TopLeft="711.25,415">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2920,7 +2920,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 11]"
-          TopLeft="1377.75,356">
+          TopLeft="892.75,413">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2942,7 +2942,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 12]"
-          TopLeft="1559.25,354">
+          TopLeft="1074.25,411">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2964,7 +2964,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 13]"
-          TopLeft="1193.75,434">
+          TopLeft="708.75,491">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2986,7 +2986,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 14]"
-          TopLeft="1378,435">
+          TopLeft="893,492">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3008,7 +3008,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 15]"
-          TopLeft="1558,435">
+          TopLeft="1073,492">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3030,7 +3030,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="1296.4,164">
+          TopLeft="811.4,221">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3064,7 +3064,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="1331.6,164">
+          TopLeft="846.6,221">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3098,7 +3098,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="1366.8,164">
+          TopLeft="881.8,221">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3132,7 +3132,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="1011.25,277.25">
+          TopLeft="526.25,334.25">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3154,7 +3154,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="1196.25,275">
+          TopLeft="711.25,332">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3176,7 +3176,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 7]"
-          TopLeft="1379,270">
+          TopLeft="894,327">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3198,7 +3198,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 8]"
-          TopLeft="1556.75,270">
+          TopLeft="1071.75,327">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3220,7 +3220,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 9]"
-          TopLeft="1009.5,360.25">
+          TopLeft="524.5,417.25">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3246,7 +3246,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           FontInfo="{assembly:Null}"
           Size="184,104"
           Id="b637fe6a-a817-47ba-b174-a61577eb6e56"
-          TopLeft="734,294" />
+          TopLeft="478,103" />
       </GraphLayout>
     </LayoutInfo>
   </Package>

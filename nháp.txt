@@ -55,13 +55,13 @@ WHERE [ProductID_SK] = ?;
 
 SELECT * FROM [dbo].[Product] WHERE [ProductID_NK] IN 
 
+Tờ A4 được đem đi thi phải viết tay hay in ra
 
 
 
+GETDATE()
 
 
-
-asdaweqqrq
 
 
 

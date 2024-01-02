@@ -47,10 +47,10 @@
             TableName NVARCHAR(255) NOT NULL,
             TableType NVARCHAR(255) NULL,
             SoucreData NVARCHAR(MAX) NULL,
-            LSET DATETIME DEFAULT GETDATE(),
-            CET DATETIME DEFAULT GETDATE(),
-            CreatedTime DATETIME NOT NULL DEFAULT GETDATE(),
-            UpdatedTime DATETIME DEFAULT GETDATE(),
+            LSET DATETIME2 DEFAULT GETUTCDATE(),
+            CET DATETIME2 DEFAULT GETUTCDATE(),
+            CreatedTime DATETIME2 NOT NULL DEFAULT GETUTCDATE(),
+            UpdatedTime DATETIME2 DEFAULT GETUTCDATE(),
             );
           </CreationQuery>
         </Table>
@@ -89,7 +89,7 @@
             SET @TableNameToUpdate = ''' + @TableName + ''';
 
             UPDATE [BI_MetadataDB].[dbo].[AuditTableLog]
-            SET UpdatedTime = GETDATE()
+            SET UpdatedTime = GETUTCDATE()
             WHERE TableName = @TableNameToUpdate;
             END;
             ';
@@ -265,7 +265,7 @@
             SET @TableNameToUpdate = ''' + @TableName + ''';
 
             UPDATE [BI_MetadataDB].[dbo].[AuditTableLog]
-            SET UpdatedTime = GETDATE()
+            SET UpdatedTime = GETUTCDATE()
             WHERE TableName = @TableNameToUpdate;
             END;
             ';
@@ -339,8 +339,8 @@
             [City] [nvarchar](255) NULL,
             [SourceId] int,
             [Status] [nvarchar](255) DEFAULT 'active',
-            [CreatedDate] DATETIME DEFAULT GETDATE(),
-            [UpdatedDate] DATETIME DEFAULT GETDATE(),
+            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
             )
           </CreationQuery>
           <SourceInfo>
@@ -361,8 +361,8 @@
             [Gender] [nvarchar](255) NULL,
             [SourceId] int,
             [Status] [nvarchar](255) DEFAULT 'active',
-            [CreatedDate] DATETIME DEFAULT GETDATE(),
-            [UpdatedDate] DATETIME DEFAULT GETDATE(),
+            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
             )
           </CreationQuery>
           <SourceInfo>
@@ -380,8 +380,8 @@
             [Payment] [nvarchar](255) NULL,
             [SourceId] int,
             [Status] [nvarchar](255) DEFAULT 'active',
-            [CreatedDate] DATETIME DEFAULT GETDATE(),
-            [UpdatedDate] DATETIME DEFAULT GETDATE(),
+            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
             )
           </CreationQuery>
           <SourceInfo>
@@ -400,8 +400,8 @@
             [ProductLine] [nvarchar](255) NULL,
             [SourceId] int,
             [Status] [nvarchar](255) DEFAULT 'active',
-            [CreatedDate] DATETIME DEFAULT GETDATE(),
-            [UpdatedDate] DATETIME DEFAULT GETDATE(),
+            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
             )
           </CreationQuery>
           <SourceInfo>
@@ -424,8 +424,8 @@
             [EndDate] [datetime] NULL,
             [SourceId] int,
             [Status] [nvarchar](255) DEFAULT 'active',
-            [CreatedDate] DATETIME DEFAULT GETDATE(),
-            [UpdatedDate] DATETIME DEFAULT GETDATE(),
+            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
             FOREIGN KEY (ProductLineID_SK) REFERENCES Productline(ProductLineID_SK)
             )
           </CreationQuery>
@@ -464,8 +464,8 @@
             [ProductID_SK] int,
             [SourceId] int,
             [Status] [nvarchar](255) DEFAULT 'active',
-            [CreatedDate] DATETIME DEFAULT GETDATE(),
-            [UpdatedDate] DATETIME DEFAULT GETDATE(),
+            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
             FOREIGN KEY ([CityID_SK]) REFERENCES [City]([CityID_SK]),
             FOREIGN KEY ([CustomerID_SK]) REFERENCES [Customer]([CustomerID_SK]),
             FOREIGN KEY ([PaymentID_SK]) REFERENCES [Payment]([PaymentID_SK]),
@@ -522,7 +522,7 @@
             SET @TableNameToUpdate = ''' + @TableName + ''';
 
             UPDATE [BI_MetadataDB].[dbo].[AuditTableLog]
-            SET UpdatedTime = GETDATE()
+            SET UpdatedTime = GETUTCDATE()
             WHERE TableName = @TableNameToUpdate;
             END;
             ';
@@ -596,8 +596,8 @@
             [City] [nvarchar](255) NULL,
             [SourceId] int,
             [Status] [nvarchar](255) DEFAULT 'active',
-            [CreatedDate] DATETIME DEFAULT GETDATE(),
-            [UpdatedDate] DATETIME DEFAULT GETDATE(),
+            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
             )
           </CreationQuery>
           <SourceInfo>
@@ -616,8 +616,8 @@
             [Gender] [nvarchar](255) NULL,
             [SourceId] int,
             [Status] [nvarchar](255) DEFAULT 'active',
-            [CreatedDate] DATETIME DEFAULT GETDATE(),
-            [UpdatedDate] DATETIME DEFAULT GETDATE(),
+            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
             )
           </CreationQuery>
           <SourceInfo>
@@ -635,8 +635,8 @@
             [Payment] [nvarchar](255) NULL,
             [SourceId] int,
             [Status] [nvarchar](255) DEFAULT 'active',
-            [CreatedDate] DATETIME DEFAULT GETDATE(),
-            [UpdatedDate] DATETIME DEFAULT GETDATE(),
+            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
             )
           </CreationQuery>
           <SourceInfo>
@@ -661,8 +661,8 @@
             [Productline_SourceId] int,
             [Product_Status] [nvarchar](255) DEFAULT 'active',
             [Productline_Status] [nvarchar](255) DEFAULT 'active',
-            [CreatedDate] DATETIME DEFAULT GETDATE(),
-            [UpdatedDate] DATETIME DEFAULT GETDATE(),
+            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
             )
           </CreationQuery>
           <SourceInfo>
@@ -686,8 +686,8 @@
             [Year] int,
             [SourceId] int,
             [Status] [nvarchar](255) DEFAULT 'active',
-            [CreatedDate] DATETIME DEFAULT GETDATE(),
-            [UpdatedDate] DATETIME DEFAULT GETDATE(),
+            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
             )
           </CreationQuery>
           <SourceInfo>
@@ -719,8 +719,8 @@
             [gross_income] float,
             [SourceId] int,
             [Status] [nvarchar](255) DEFAULT 'active',
-            [CreatedDate] DATETIME DEFAULT GETDATE(),
-            [UpdatedDate] DATETIME DEFAULT GETDATE(),
+            [CreatedDate] DATETIME2 DEFAULT GETUTCDATE(),
+            [UpdatedDate] DATETIME2 DEFAULT GETUTCDATE(),
             FOREIGN KEY ([CityID_SK]) REFERENCES [DimCity]([CityID_SK]),
             FOREIGN KEY ([CustomerID_SK]) REFERENCES [DimCustomer]([CustomerID_SK]),
             FOREIGN KEY ([PaymentID_SK]) REFERENCES [DimPayment]([PaymentID_SK]),
