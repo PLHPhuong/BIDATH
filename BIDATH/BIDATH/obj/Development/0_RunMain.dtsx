@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="RunMain"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{DDEBA790-F0D2-48CE-8784-D143A0EC46A2}">
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{1142F68F-BDAA-49AD-BC19-91C329CB11EC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -30,7 +30,7 @@
       <DTS:ObjectData>
         <ExecutePackageTask>
           <UseProjectReference>True</UseProjectReference>
-          <PackageName>Main (2).dtsx</PackageName>
+          <PackageName>Main (3).dtsx</PackageName>
         </ExecutePackageTask>
       </DTS:ObjectData>
     </DTS:Executable>

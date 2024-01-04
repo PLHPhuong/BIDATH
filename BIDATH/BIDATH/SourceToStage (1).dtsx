@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="178"
-  DTS:VersionGUID="{A8D7C000-2916-4066-87A7-5442139F1E74}">
+  DTS:VersionBuild="182"
+  DTS:VersionGUID="{9D43815E-4E2F-4C4C-AC11-06E78A27BAC4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -63,6 +63,18 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="metadata"
+      DTS:CreationName="Microsoft.LogProviderSQLServer"
+      DTS:Description="Writes log entries for events to a SQL Server database"
+      DTS:DTSID="{449ED8B8-2426-42ED-80AE-3EDF9FDCC2E3}"
+      DTS:ObjectName="SSIS log provider for SQL Server">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
   <DTS:PackageParameters>
     <DTS:PackageParameter
       DTS:CreationName=""
@@ -232,6 +244,9 @@
         DTS:DataType="8">D:\BI\DATH\supermarket_sales.xls</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1" />
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\Extract city"
@@ -243,6 +258,125 @@
       DTS:ObjectName="Extract city"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="EventFilter">6,7,OnError,13,OnInformation,13,OnPostExecute,12,OnPreExecute,13,OnQueryCancel,12,OnTaskFailed</DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnError"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnInformation"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPostExecute"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPreExecute"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnQueryCancel"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnTaskFailed"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:SelectedLogProviders>
+          <DTS:SelectedLogProvider
+            DTS:InstanceID="{449ED8B8-2426-42ED-80AE-3EDF9FDCC2E3}" />
+        </DTS:SelectedLogProviders>
+      </DTS:LoggingOptions>
       <DTS:ObjectData>
         <pipeline
           version="1">
@@ -407,7 +541,7 @@
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">3</property>
+                  typeConverter="AccessMode">0</property>
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
@@ -517,6 +651,14 @@
       DTS:ObjectName="Extract product"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1">
+        <DTS:SelectedLogProviders>
+          <DTS:SelectedLogProvider
+            DTS:InstanceID="{449ED8B8-2426-42ED-80AE-3EDF9FDCC2E3}" />
+        </DTS:SelectedLogProviders>
+      </DTS:LoggingOptions>
       <DTS:ObjectData>
         <pipeline
           version="1">
@@ -819,6 +961,14 @@
       DTS:ObjectName="Extract ProductLine"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1">
+        <DTS:SelectedLogProviders>
+          <DTS:SelectedLogProvider
+            DTS:InstanceID="{449ED8B8-2426-42ED-80AE-3EDF9FDCC2E3}" />
+        </DTS:SelectedLogProviders>
+      </DTS:LoggingOptions>
       <DTS:ObjectData>
         <pipeline
           version="1">
@@ -1477,6 +1627,14 @@
       DTS:ObjectName="Extract supermarket_sales"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1">
+        <DTS:SelectedLogProviders>
+          <DTS:SelectedLogProvider
+            DTS:InstanceID="{449ED8B8-2426-42ED-80AE-3EDF9FDCC2E3}" />
+        </DTS:SelectedLogProviders>
+      </DTS:LoggingOptions>
       <DTS:ObjectData>
         <pipeline
           version="1">
@@ -1750,8 +1908,11 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Get CET, LSET city"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="3">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1" />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{EC2539C7-ED58-4C7D-839E-6A21AD30D32A}"
@@ -1775,8 +1936,11 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Get CET, LSET product"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1" />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{EC2539C7-ED58-4C7D-839E-6A21AD30D32A}"
@@ -1800,8 +1964,11 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Get CET, LSET ProductLine"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="1">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1" />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{EC2539C7-ED58-4C7D-839E-6A21AD30D32A}"
@@ -1825,8 +1992,11 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Get CET, LSET supermarket_sales"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="3">
+      DTS:ThreadHint="2">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1" />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{EC2539C7-ED58-4C7D-839E-6A21AD30D32A}"
@@ -1850,8 +2020,11 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET city"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="3">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1" />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{EC2539C7-ED58-4C7D-839E-6A21AD30D32A}"
@@ -1867,8 +2040,11 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET product"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1" />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{EC2539C7-ED58-4C7D-839E-6A21AD30D32A}"
@@ -1884,8 +2060,11 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET ProductLine"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="1">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1" />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{EC2539C7-ED58-4C7D-839E-6A21AD30D32A}"
@@ -1901,8 +2080,11 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Set CET supermarket_sales"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="3">
+      DTS:ThreadHint="2">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1" />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{EC2539C7-ED58-4C7D-839E-6A21AD30D32A}"
@@ -1918,8 +2100,11 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Set LSET city"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="3">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1" />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{EC2539C7-ED58-4C7D-839E-6A21AD30D32A}"
@@ -1935,8 +2120,11 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Set LSET product"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1" />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{EC2539C7-ED58-4C7D-839E-6A21AD30D32A}"
@@ -1952,8 +2140,11 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Set LSET ProductLine"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="1">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1" />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{EC2539C7-ED58-4C7D-839E-6A21AD30D32A}"
@@ -1969,8 +2160,11 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Set LSET supermarket_sales"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="3">
+      DTS:ThreadHint="2">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1" />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{EC2539C7-ED58-4C7D-839E-6A21AD30D32A}"
@@ -1988,6 +2182,67 @@
       DTS:ObjectName="Test check variables and params"
       DTS:ThreadHint="4">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="EventFilter">3,7,OnError,13,OnInformation,12,OnTaskFailed</DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnError"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnInformation"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnTaskFailed"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+      </DTS:LoggingOptions>
       <DTS:ObjectData>
         <ScriptProject
           Name="ST_b78c7d3ea07d450dac39027d251dfd6d"
@@ -1996,35 +2251,14 @@
           Language="CSharp"
           ReadOnlyVariables="$Package::ConfigFilePath,$Package::DestinationOLEDDatabaseName,$Package::DestinationOLEDServerName,$Package::SourceFilePath,$Project::FilePathConfig">
           <ProjectItem
-            Name="Properties\AssemblyInfo.cs"
-            Encoding="UTF8"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
-
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("ST_c6eef40b273547c5bf97ae1ed81b2944")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ST_c6eef40b273547c5bf97ae1ed81b2944")]
-[assembly: AssemblyCopyright("Copyright @  2023")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-
-[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.resx"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -2411,14 +2645,35 @@ namespace ST_c6eef40b273547c5bf97ae1ed81b2944.Properties {
     }
 }]]></ProjectItem>
           <ProjectItem
-            Name="Properties\Settings.settings"
-            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_c6eef40b273547c5bf97ae1ed81b2944")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_c6eef40b273547c5bf97ae1ed81b2944")]
+[assembly: AssemblyCopyright("Copyright @  2023")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.Designer.cs"
             Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -2619,6 +2874,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1" />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{CADC5063-75AC-4E3F-9629-D8FBF212F6C4}"
@@ -2771,67 +3029,67 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         <NodeLayout
           Size="131,42"
           Id="Package\Extract city"
-          TopLeft="461,450.5" />
+          TopLeft="293,487.5" />
         <NodeLayout
           Size="151,42"
           Id="Package\Extract product"
-          TopLeft="635,449" />
+          TopLeft="573,492" />
         <NodeLayout
           Size="170,42"
           Id="Package\Extract ProductLine"
-          TopLeft="991,450" />
+          TopLeft="1181,494" />
         <NodeLayout
           Size="170,42"
           Id="Package\Extract supermarket_sales"
-          TopLeft="807,450" />
+          TopLeft="881,491" />
         <NodeLayout
           Size="167,42"
           Id="Package\Get CET, LSET city"
-          TopLeft="439,375.25" />
+          TopLeft="271,412.25" />
         <NodeLayout
           Size="186,42"
           Id="Package\Get CET, LSET product"
-          TopLeft="619,373" />
+          TopLeft="557,416" />
         <NodeLayout
           Size="167,42"
           Id="Package\Get CET, LSET ProductLine"
-          TopLeft="989,369" />
+          TopLeft="1179,413" />
         <NodeLayout
           Size="167,42"
           Id="Package\Get CET, LSET supermarket_sales"
-          TopLeft="810,371" />
+          TopLeft="884,412" />
         <NodeLayout
           Size="136,42"
           Id="Package\Set CET city"
-          TopLeft="462,292.25" />
+          TopLeft="294,329.25" />
         <NodeLayout
           Size="155,42"
           Id="Package\Set CET product"
-          TopLeft="633,290" />
+          TopLeft="571,333" />
         <NodeLayout
           Size="136,42"
           Id="Package\Set CET ProductLine"
-          TopLeft="1003,285" />
+          TopLeft="1193,329" />
         <NodeLayout
           Size="171,42"
           Id="Package\Set CET supermarket_sales"
-          TopLeft="809,285" />
+          TopLeft="883,326" />
         <NodeLayout
           Size="140,42"
           Id="Package\Set LSET city"
-          TopLeft="456.25,525.5" />
+          TopLeft="288.25,562.5" />
         <NodeLayout
           Size="140,42"
           Id="Package\Set LSET product"
-          TopLeft="637,525" />
+          TopLeft="575,568" />
         <NodeLayout
           Size="140,42"
           Id="Package\Set LSET ProductLine"
-          TopLeft="1000,523" />
+          TopLeft="1190,567" />
         <NodeLayout
           Size="166,42"
           Id="Package\Set LSET supermarket_sales"
-          TopLeft="811,524" />
+          TopLeft="885,565" />
         <NodeLayout
           Size="233,42"
           Id="Package\Test check variables and params"
@@ -2842,7 +3100,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           TopLeft="737,179" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="526.375,492.5">
+          TopLeft="358.375,529.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2868,26 +3126,26 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-246.2,71.25"
+              EndConnector="-414.2,108.25"
               Start="0,0"
-              End="-246.2,63.75">
+              End="-414.2,100.75">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17.2881097560976" />
+                    End="0,28.3429878048781" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,17.2881097560976"
-                    Point2="0,21.2881097560976"
-                    Point3="-4,21.2881097560976" />
+                    Point1="0,28.3429878048781"
+                    Point2="0,32.3429878048781"
+                    Point3="-4,32.3429878048781" />
                   <mssgle:LineSegment
-                    End="-242.2,21.2881097560976" />
+                    End="-410.2,32.3429878048781" />
                   <mssgle:CubicBezierSegment
-                    Point1="-242.2,21.2881097560976"
-                    Point2="-246.2,21.2881097560976"
-                    Point3="-246.2,25.2881097560976" />
+                    Point1="-410.2,32.3429878048781"
+                    Point2="-414.2,32.3429878048781"
+                    Point3="-414.2,36.3429878048781" />
                   <mssgle:LineSegment
-                    End="-246.2,63.75" />
+                    End="-414.2,100.75" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2898,7 +3156,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 10]"
-          TopLeft="711.25,415">
+          TopLeft="649.25,458">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2920,7 +3178,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 11]"
-          TopLeft="892.75,413">
+          TopLeft="966.75,454">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2942,7 +3200,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 12]"
-          TopLeft="1074.25,411">
+          TopLeft="1264.25,455">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2964,7 +3222,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 13]"
-          TopLeft="708.75,491">
+          TopLeft="646.75,534">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2986,7 +3244,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 14]"
-          TopLeft="893,492">
+          TopLeft="967,533">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3008,7 +3266,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 15]"
-          TopLeft="1073,492">
+          TopLeft="1263,536">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3034,26 +3292,26 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-100.9,69"
+              EndConnector="-162.9,112"
               Start="0,0"
-              End="-100.9,61.5">
+              End="-162.9,104.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.8509615384616" />
+                    End="0,46.0769230769231" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,26.8509615384616"
-                    Point2="0,30.8509615384616"
-                    Point3="-4,30.8509615384616" />
+                    Point1="0,46.0769230769231"
+                    Point2="0,50.0769230769231"
+                    Point3="-4,50.0769230769231" />
                   <mssgle:LineSegment
-                    End="-96.9000000000001,30.8509615384616" />
+                    End="-158.9,50.0769230769231" />
                   <mssgle:CubicBezierSegment
-                    Point1="-96.9000000000001,30.8509615384616"
-                    Point2="-100.9,30.8509615384616"
-                    Point3="-100.9,34.8509615384616" />
+                    Point1="-158.9,50.0769230769231"
+                    Point2="-162.9,50.0769230769231"
+                    Point3="-162.9,54.0769230769231" />
                   <mssgle:LineSegment
-                    End="-100.9,61.5" />
+                    End="-162.9,104.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3068,26 +3326,26 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="47.9000000000001,64"
+              EndConnector="121.9,105"
               Start="0,0"
-              End="47.9000000000001,56.5">
+              End="121.9,97.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,24.6153846153846" />
+                    End="0,42.9471153846154" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,24.6153846153846"
-                    Point2="0,28.6153846153846"
-                    Point3="4,28.6153846153846" />
+                    Point1="0,42.9471153846154"
+                    Point2="0,46.9471153846154"
+                    Point3="4,46.9471153846154" />
                   <mssgle:LineSegment
-                    End="43.9000000000001,28.6153846153846" />
+                    End="117.9,46.9471153846154" />
                   <mssgle:CubicBezierSegment
-                    Point1="43.9000000000001,28.6153846153846"
-                    Point2="47.9000000000001,28.6153846153846"
-                    Point3="47.9000000000001,32.6153846153846" />
+                    Point1="117.9,46.9471153846154"
+                    Point2="121.9,46.9471153846154"
+                    Point3="121.9,50.9471153846154" />
                   <mssgle:LineSegment
-                    End="47.9000000000001,56.5" />
+                    End="121.9,97.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3102,26 +3360,26 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="189.2,64"
+              EndConnector="379.2,108"
               Start="0,0"
-              End="189.2,56.5">
+              End="379.2,100.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,15.1219512195122" />
+                    End="0,28.2682926829269" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,15.1219512195122"
-                    Point2="0,19.1219512195122"
-                    Point3="4,19.1219512195122" />
+                    Point1="0,28.2682926829269"
+                    Point2="0,32.2682926829269"
+                    Point3="4,32.2682926829269" />
                   <mssgle:LineSegment
-                    End="185.2,19.1219512195122" />
+                    End="375.2,32.2682926829269" />
                   <mssgle:CubicBezierSegment
-                    Point1="185.2,19.1219512195122"
-                    Point2="189.2,19.1219512195122"
-                    Point3="189.2,23.1219512195122" />
+                    Point1="375.2,32.2682926829269"
+                    Point2="379.2,32.2682926829269"
+                    Point3="379.2,36.2682926829269" />
                   <mssgle:LineSegment
-                    End="189.2,56.5" />
+                    End="379.2,100.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3132,7 +3390,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="526.25,334.25">
+          TopLeft="358.25,371.25">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3154,7 +3412,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="711.25,332">
+          TopLeft="649.25,375">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3176,7 +3434,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 7]"
-          TopLeft="894,327">
+          TopLeft="968,368">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3198,7 +3456,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 8]"
-          TopLeft="1071.75,327">
+          TopLeft="1261.75,371">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3220,7 +3478,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 9]"
-          TopLeft="524.5,417.25">
+          TopLeft="356.5,454.25">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"

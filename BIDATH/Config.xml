@@ -46,9 +46,54 @@
             AuditTableLogID INT PRIMARY KEY IDENTITY(1,1),
             TableName NVARCHAR(255) NOT NULL,
             TableType NVARCHAR(255) NULL,
+            PackageID NVARCHAR(255) NULL,
+            PackageName NVARCHAR(255) NULL,
             SoucreData NVARCHAR(MAX) NULL,
             LSET DATETIME DEFAULT GETDATE(),
             CET DATETIME DEFAULT GETDATE(),
+            sourceID INT NULL,
+            CreatedTime DATETIME NOT NULL DEFAULT GETDATE(),
+            UpdatedTime DATETIME DEFAULT GETDATE(),
+            );
+          </CreationQuery>
+        </Table>
+        <Table Name="ResultOfRTLPackageRunLog">
+          <Name>ResultOfRTLPackageRunLog</Name>
+          <CreationQuery>
+            CREATE TABLE ResultOfRTLPackageRunLog (
+            ResultOfRTLPackageRunLogID INT PRIMARY KEY IDENTITY(1,1),
+            PackageID NVARCHAR(255) NULL,
+            PackageName NVARCHAR(255) NULL,
+            PackageStartTime DATETIME DEFAULT GETDATE(),
+            TableName NVARCHAR(255) NOT NULL,
+            TableType NVARCHAR(255) NULL,
+            NumberOfSucessfulProcessingRow INT DEFAULT 0,
+            NumberOfWarningProcessingRow INT DEFAULT 0,
+            NumberOfFailedProcessingRow INT DEFAULT 0,
+            sourceID INT NULL,
+            CreatedTime DATETIME NOT NULL DEFAULT GETDATE(),
+            UpdatedTime DATETIME DEFAULT GETDATE(),
+            );
+          </CreationQuery>
+        </Table>
+        <Table Name="RequiredToResolveTableLog">
+          <Name>RequiredToResolveTable</Name>
+          <CreationQuery>
+            CREATE TABLE RequiredToResolveTable (
+            RequiredToResolveTableID INT PRIMARY KEY IDENTITY(1,1),
+            PackageID NVARCHAR(255) NULL,
+            PackageName NVARCHAR(255) NULL,
+            PackageStartTime DATETIME DEFAULT GETDATE(),
+            TaskID NVARCHAR(255) NULL,
+            TaskName NVARCHAR(255) NULL,
+            TableName NVARCHAR(255) NOT NULL,
+            TableType NVARCHAR(255) NULL,
+            ResolveType NVARCHAR(255) NULL,
+            Message NVARCHAR(MAX),
+            RowValue NVARCHAR(MAX),
+            RowValueAsJson NVARCHAR(MAX),
+            IsResovled BIT DEFAULT 0,
+            sourceID INT NULL,
             CreatedTime DATETIME NOT NULL DEFAULT GETDATE(),
             UpdatedTime DATETIME DEFAULT GETDATE(),
             );
